@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!-- multistep form -->
+<form id="msform">
+  <!-- progressbar -->
+  <ul id="progressbar">
+    <li class="active">CONFIGURAÇÃO DA CONTA</li>
+    <li>INFORMAÇÕES PESSOAIS</li>
+  
+  </ul>
+  <!-- fieldsets -->
+  <fieldset>
+    <h2 class="fs-title">CRIE SUA CONTA</h2>
+    <h3 class="fs-subtitle"></h3>
+    <input type="text" name="email" placeholder="Email" />
+    <input type="senha" name="pass" placeholder="Senha" />
+    <input type="senha" name="cpass" placeholder="Confirme sua senha" />
+    <input type="button" name="next" class="next action-button" value="Próximo" />
+  </fieldset>
+  <fieldset>
+    <h2 class="fs-title">INFORMAÇÕES PESSOAIS</h2>
+    <h3 class="fs-subtitle"></h3>
+    <input type="text" name="nome" placeholder="Nome Completo" />
+    <input type="date" name="aniversário" placeholder="Data de aniversário" />
+    <input type="text" name="CNPJ" placeholder="CNPJ" />
+    <input type="text" name="Telefone" placeholder="Telefone" />
+    <input type="text" name="CEP" placeholder="CEP" />
+    <input type="text" name="Número" placeholder="Número" />
+    <input type="button" name="previous" class="previous action-button" value="Voltar" />
+    <input type="button" name="next" class="next action-button" value="Proximo" />
+  </fieldset>
+
+  <fieldset>
+    <h2 class="fs-title">INFORMAÇÕES FORMAÇÃO</h2>
+    <h3 class="fs-subtitle"></h3>
+    <input type="text" name="instituto" placeholder="Instituto de formação" />
+    <input type="date" name="ano" placeholder="Ano de formação" />
+    <input type="text" name="area" placeholder="Área de atuação" />
+    <input type="text" name="Descrição" placeholder="Fale sobre você" />
+    <input type="button" name="previous" class="previous action-button" value="Voltar" />
+    <input type="button" name="next" class="Finalizar action-button" value="Finalizar" />
+  </fieldset>
+
+</form>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
