@@ -1,6 +1,8 @@
 package projeto.modelo.info.endereco;
 
-public class Endereço {
+
+
+public class EndereÃ§o {
 
 	private int Id;
 	private String rua;
@@ -8,7 +10,7 @@ public class Endereço {
 	private int numero;
 	private String complemento;
 
-	public Endereço(String rua, String cep, int numero, String complemento) {
+	public EndereÃ§o(String rua, String cep, int numero, String complemento) {
 
 		setRua(rua);
 		setCep(cep);
@@ -16,7 +18,7 @@ public class Endereço {
 		setNumero(numero);
 	}
 
-	public Endereço(int Id) {
+	public EndereÃ§o(int Id) {
 		
 		setId(Id);
 		

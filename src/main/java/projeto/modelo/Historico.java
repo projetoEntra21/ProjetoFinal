@@ -20,14 +20,13 @@ import projeto.modelo.entidade.paciente.Paciente;
 
 @Entity
 @Table(name = "historico")
-// ID TUDO MINUSCULO
 
 public class Historico implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@javax.persistence.Id
-	@Column(name = "id_historico")
+	@Column(name = "id_paciente")
 	private int Id;
 
 	@Column(name = "peso_historico", nullable = false, unique = false)

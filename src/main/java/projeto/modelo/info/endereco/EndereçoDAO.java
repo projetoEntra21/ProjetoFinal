@@ -1,23 +1,19 @@
 package projeto.modelo.info.endereco;
 
-import java.util.List;
+public interface EndereÃ§oDAO {
 
-import projeto.modelo.entidade.paciente.Paciente;
+	public void inserirEndereÃ§o(EndereÃ§o endereÃ§o);
 
-public interface EndereçoDAO {
+	public void deletarEndereÃ§o(EndereÃ§o endereÃ§o);
 
-	public void inserirEndereço(Endereço endereço);
+	public void alterarRua(EndereÃ§o endereco);
 
-	public void deletarEndereço(Endereço endereço);
+	public void alterarCep(EndereÃ§o endereco);
 
-	public void alterarRua(Endereço endereco);
+	public void alterarNumero(EndereÃ§o endereco);
 
-	public void alterarCep(Endereço endereco);
+	public void alterarComplemento(EndereÃ§o endereco);
 
-	public void alterarNumero(Endereço endereco);
-
-	public void alterarComplemento(Endereço endereco);
-
-	List<Endereço> consultarEndereço(Paciente paciente);
+	//List<EndereÃ§o> consultarEndereÃ§o(Paciente paciente);
 
 }

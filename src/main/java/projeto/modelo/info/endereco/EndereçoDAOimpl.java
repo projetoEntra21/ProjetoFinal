@@ -1,32 +1,24 @@
 package projeto.modelo.info.endereco;
 
-import java.util.List;
+import modelo.factory.conexao.ConexaoFactory;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Join;
-import javax.persistence.criteria.ParameterExpression;
-import javax.persistence.criteria.Root;
+public class EndereÃ§oDAOimpl implements EndereÃ§oDAO {
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
+	private ConexaoFactory fabrica;
 
-import projeto.modelo.entidade.paciente.Paciente;
+	public EndereÃ§oDAOimpl() {
+		fabrica = new ConexaoFactory();
+	}
 
-public class EndereçoDAOimpl implements EndereçoDAO {
-
-	public void inserirEndereço(Endereço endereço) {
+	public void inserirEndereÃ§o(EndereÃ§o endereÃ§o) {
 
 		org.hibernate.Session sessao = null;
 		try {
 
-			sessao = ((SessionFactory) conectarBanco()).openSession();
+			sessao = fabrica.getConexao().openSession();
 			sessao.beginTransaction();
 
-			sessao.save(endereço);
+			sessao.save(endereÃ§o);
 
 			sessao.getTransaction().commit();
 
@@ -46,16 +38,15 @@ public class EndereçoDAOimpl implements EndereçoDAO {
 		}
 	}
 
-
-	public void deletarEndereço(Endereço endereço) {
+	public void deletarEndereÃ§o(EndereÃ§o endereÃ§o) {
 
 		org.hibernate.Session sessao = null;
 		try {
 
-			sessao = ((SessionFactory) conectarBanco()).openSession();
+			sessao = fabrica.getConexao().openSession();
 			sessao.beginTransaction();
 
-			sessao.delete(endereço);
+			sessao.delete(endereÃ§o);
 
 			sessao.getTransaction().commit();
 
@@ -75,14 +66,13 @@ public class EndereçoDAOimpl implements EndereçoDAO {
 		}
 	}
 
-	public void alterarRua(Endereço endereço) {
+	public void alterarRua(EndereÃ§o endereÃ§o) {
 		org.hibernate.Session sessao = null;
 		try {
-
-			sessao = ((SessionFactory) conectarBanco()).openSession();
+			sessao = fabrica.getConexao().openSession();
 			sessao.beginTransaction();
 
-			sessao.update(endereço);
+			sessao.update(endereÃ§o);
 
 			sessao.getTransaction().commit();
 
@@ -102,12 +92,11 @@ public class EndereçoDAOimpl implements EndereçoDAO {
 		}
 	}
 
-	
-	public void alterarCep(Endereço endereco) {
+	public void alterarCep(EndereÃ§o endereco) {
 		org.hibernate.Session sessao = null;
 		try {
 
-			sessao = ((SessionFactory) conectarBanco()).openSession();
+			sessao = fabrica.getConexao().openSession();
 			sessao.beginTransaction();
 
 			sessao.update(endereco);
@@ -130,12 +119,11 @@ public class EndereçoDAOimpl implements EndereçoDAO {
 		}
 	}
 
-
-	public void alterarNumero(Endereço endereco) {
+	public void alterarNumero(EndereÃ§o endereco) {
 		org.hibernate.Session sessao = null;
 		try {
 
-			sessao = ((SessionFactory) conectarBanco()).openSession();
+			sessao = fabrica.getConexao().openSession();
 			sessao.beginTransaction();
 
 			sessao.update(endereco);
@@ -158,12 +146,11 @@ public class EndereçoDAOimpl implements EndereçoDAO {
 		}
 	}
 
-	
-	public void alterarComplemento(Endereço endereco) {
+	public void alterarComplemento(EndereÃ§o endereco) {
 		org.hibernate.Session sessao = null;
 		try {
 
-			sessao = ((SessionFactory) conectarBanco()).openSession();
+			sessao = fabrica.getConexao().openSession();
 			sessao.beginTransaction();
 
 			sessao.update(endereco);
@@ -184,72 +171,5 @@ public class EndereçoDAOimpl implements EndereçoDAO {
 				sessao.close();
 			}
 		}
-	}
-
-	public List<Endereço> consultarEndereço(Paciente paciente) {
-
-		Session sessao = null;
-		List<Endereço> endereço = null;
-
-		try {
-
-			sessao = ((SessionFactory) conectarBanco()).openSession();
-			sessao.beginTransaction();
-
-			CriteriaBuilder construtor = sessao.getCriteriaBuilder();
-
-			CriteriaQuery<Endereço> criteria = construtor.createQuery(Endereço.class);
-			Root<Endereço> raizEndereço = criteria.from(Endereço.class);
-
-			Join<Endereço, Paciente> juncaoPaciente = raizEndereço.join(Endereço.paciente);
-			ParameterExpression<String> cpfPaciente = construtor.parameter(String.class);
-			criteria.where(construtor.equal(juncaoPaciente.get(Endereço.class), paciente.getCpf()));
-
-			endereço = sessao.createQuery(criteria).setParameter(cpfPaciente, paciente.getCpf()).getResultList();
-
-			sessao.getTransaction().commit();
-
-		} catch (Exception sqlException) {
-
-			sqlException.printStackTrace();
-
-			if (sessao.getTransaction() != null) {
-				sessao.getTransaction().rollback();
-			}
-
-		} finally {
-
-			if (sessao != null) {
-				sessao.close();
-			}
-		}
-
-		return endereço;
-	}
-
-	private SessionFactory conectarBanco() {
-
-		Configuration configuracao = new Configuration();
-
-		configuracao.addAnnotatedClass(projeto.controle.execptions.IdadeINvalidaExecption.class);
-		configuracao.addAnnotatedClass(projeto.controle.execptions.CinturaInvalidadExecption.class);
-		configuracao.addAnnotatedClass(projeto.controle.execptions.DensidadeInvalidaExecption.class);
-		configuracao.addAnnotatedClass(projeto.controle.execptions.AlturaInvalidaExecption.class);
-		configuracao.addAnnotatedClass(projeto.controle.execptions.ImcInvalidoExecption.class);
-		configuracao.addAnnotatedClass(projeto.controle.execptions.PesoInvalidoExecption.class);
-		configuracao.addAnnotatedClass(projeto.controle.execptions.QuadrilInvalidoException.class);
-		configuracao.addAnnotatedClass(projeto.modelo.Historico.class);
-		configuracao.addAnnotatedClass(projeto.modelo.entidade.paciente.Paciente.class);
-		configuracao.addAnnotatedClass(projeto.modelo.entidade.nutricionista.Nutricionista.class);
-		configuracao.addAnnotatedClass(projeto.modelo.info.consulta.Consulta.class);
-		configuracao.addAnnotatedClass(projeto.modelo.info.contato.Contato.class);
-		configuracao.configure("scr/main/hibernate.cfg.xml");
-
-		ServiceRegistry servico = new StandardServiceRegistryBuilder().applySettings(configuracao.getProperties())
-				.build();
-
-		SessionFactory fabricaSessao = configuracao.buildSessionFactory(servico);
-
-		return fabricaSessao;
 	}
 }

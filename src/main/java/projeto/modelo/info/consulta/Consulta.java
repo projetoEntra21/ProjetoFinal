@@ -7,6 +7,12 @@ public class Consulta {
 	Date hora;
 	Date data;
 	
+	public Consulta(int Id, Date hora, Date data) {
+		
+		setId(Id);
+		setHora(hora);
+		setData(data);
+	}
 	
 	public int getId() {
 		return Id;

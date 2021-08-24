@@ -22,7 +22,7 @@ public class Nutricionista implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_nutricionista")
+	@Column(name = "id_paciente")
 	private int Id;
 
 	@Column(name = "nome_nutricionista", nullable = false, unique = false)
