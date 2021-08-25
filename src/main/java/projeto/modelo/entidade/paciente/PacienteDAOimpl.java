@@ -279,7 +279,7 @@ public class PacienteDAOimpl implements PacienteDAO {
 		configuracao.addAnnotatedClass(projeto.modelo.entidade.nutricionista.Nutricionista.class);
 		configuracao.addAnnotatedClass(projeto.modelo.info.consulta.Consulta.class);
 		configuracao.addAnnotatedClass(projeto.modelo.info.contato.Contato.class);
-		configuracao.configure("scr/main/hibernate.cfg.xml");
+		configuracao.configure("src/main/java/resources/hibernate.cfg.xml");
 
 		StandardServiceRegistry servico = new StandardServiceRegistryBuilder().applySettings(configuracao.getProperties())
 				.build();

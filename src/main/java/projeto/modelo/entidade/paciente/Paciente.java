@@ -54,12 +54,27 @@ public class Paciente {
 	
 	public Paciente() {}
 
-	public Paciente(int Id, int endereço, int contato, String cpf, String nome, String sobrenome, int idade,
-			Nutricionista nutricionista) throws IdadeINvalidaExecption {
+	public Paciente(int Id, int endereço, int contato, String cpf, String nome, String sobrenome, int idade
+			) throws IdadeINvalidaExecption {
+
+		
+		setId(Id);
+		setCpf(cpf);
+		setIdade(idade);
+		setId_contato_paciente(contato);
+		setId_endereço_paciente(endereço);
+		setNome(nome);
+		setSobrenome(sobrenome);
+
+	}
+	
+
+	public Paciente(int endereço, int contato, String cpf, String nome, String sobrenome, int idade
+			) throws IdadeINvalidaExecption {
 
 		setCpf(cpf);
-		setId(idade);
-		setId_contato_paciente(contato);
+		setIdade(idade);
+		setId_contato_paciente(contato);;
 		setId_endereço_paciente(endereço);
 		setNome(nome);
 		setSobrenome(sobrenome);
@@ -118,7 +133,7 @@ public class Paciente {
 		return idade;
 	}
 
-	public void setIdade(byte idade) throws IdadeINvalidaExecption {
+	public void setIdade(int idade) throws IdadeINvalidaExecption {
 
 		if (idade < 0) {
 			throw new IdadeINvalidaExecption("A sua idade está invalida");
