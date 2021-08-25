@@ -14,16 +14,24 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
+import modelo.factory.conexao.ConexaoFactory;
 import projeto.modelo.entidade.paciente.Paciente;
 
 public class EndereçoDAOimpl implements EndereçoDAO {
 
+	private ConexaoFactory fabrica;
+
+	public EndereçoDAOimpl() {
+		fabrica = new ConexaoFactory();
+	}
+	
 	public void inserirEndereço(Endereço endereço) {
 
-		org.hibernate.Session sessao = null;
+		Session sessao = null;
+
 		try {
 
-			sessao = ((SessionFactory) conectarBanco()).openSession();
+			sessao = fabrica.getConexao().openSession();
 			sessao.beginTransaction();
 
 			sessao.save(endereço);
@@ -49,10 +57,11 @@ public class EndereçoDAOimpl implements EndereçoDAO {
 
 	public void deletarEndereço(Endereço endereço) {
 
-		org.hibernate.Session sessao = null;
+		Session sessao = null;
+
 		try {
 
-			sessao = ((SessionFactory) conectarBanco()).openSession();
+			sessao = fabrica.getConexao().openSession();
 			sessao.beginTransaction();
 
 			sessao.delete(endereço);
@@ -76,10 +85,11 @@ public class EndereçoDAOimpl implements EndereçoDAO {
 	}
 
 	public void alterarRua(Endereço endereço) {
-		org.hibernate.Session sessao = null;
+		Session sessao = null;
+
 		try {
 
-			sessao = ((SessionFactory) conectarBanco()).openSession();
+			sessao = fabrica.getConexao().openSession();
 			sessao.beginTransaction();
 
 			sessao.update(endereço);
@@ -104,10 +114,11 @@ public class EndereçoDAOimpl implements EndereçoDAO {
 
 	
 	public void alterarCep(Endereço endereco) {
-		org.hibernate.Session sessao = null;
+		Session sessao = null;
+
 		try {
 
-			sessao = ((SessionFactory) conectarBanco()).openSession();
+			sessao = fabrica.getConexao().openSession();
 			sessao.beginTransaction();
 
 			sessao.update(endereco);
@@ -132,10 +143,11 @@ public class EndereçoDAOimpl implements EndereçoDAO {
 
 
 	public void alterarNumero(Endereço endereco) {
-		org.hibernate.Session sessao = null;
+		Session sessao = null;
+
 		try {
 
-			sessao = ((SessionFactory) conectarBanco()).openSession();
+			sessao = fabrica.getConexao().openSession();
 			sessao.beginTransaction();
 
 			sessao.update(endereco);
@@ -157,13 +169,13 @@ public class EndereçoDAOimpl implements EndereçoDAO {
 			}
 		}
 	}
-
 	
 	public void alterarComplemento(Endereço endereco) {
-		org.hibernate.Session sessao = null;
+		Session sessao = null;
+
 		try {
 
-			sessao = ((SessionFactory) conectarBanco()).openSession();
+			sessao = fabrica.getConexao().openSession();
 			sessao.beginTransaction();
 
 			sessao.update(endereco);
@@ -193,7 +205,7 @@ public class EndereçoDAOimpl implements EndereçoDAO {
 
 		try {
 
-			sessao = ((SessionFactory) conectarBanco()).openSession();
+			sessao = fabrica.getConexao().openSession();
 			sessao.beginTransaction();
 
 			CriteriaBuilder construtor = sessao.getCriteriaBuilder();
@@ -225,31 +237,5 @@ public class EndereçoDAOimpl implements EndereçoDAO {
 		}
 
 		return endereço;
-	}
-
-	private SessionFactory conectarBanco() {
-
-		Configuration configuracao = new Configuration();
-
-		configuracao.addAnnotatedClass(projeto.controle.execptions.IdadeINvalidaExecption.class);
-		configuracao.addAnnotatedClass(projeto.controle.execptions.CinturaInvalidadExecption.class);
-		configuracao.addAnnotatedClass(projeto.controle.execptions.DensidadeInvalidaExecption.class);
-		configuracao.addAnnotatedClass(projeto.controle.execptions.AlturaInvalidaExecption.class);
-		configuracao.addAnnotatedClass(projeto.controle.execptions.ImcInvalidoExecption.class);
-		configuracao.addAnnotatedClass(projeto.controle.execptions.PesoInvalidoExecption.class);
-		configuracao.addAnnotatedClass(projeto.controle.execptions.QuadrilInvalidoException.class);
-		configuracao.addAnnotatedClass(projeto.modelo.Historico.class);
-		configuracao.addAnnotatedClass(projeto.modelo.entidade.paciente.Paciente.class);
-		configuracao.addAnnotatedClass(projeto.modelo.entidade.nutricionista.Nutricionista.class);
-		configuracao.addAnnotatedClass(projeto.modelo.info.consulta.Consulta.class);
-		configuracao.addAnnotatedClass(projeto.modelo.info.contato.Contato.class);
-		configuracao.configure("scr/main/hibernate.cfg.xml");
-
-		ServiceRegistry servico = new StandardServiceRegistryBuilder().applySettings(configuracao.getProperties())
-				.build();
-
-		SessionFactory fabricaSessao = configuracao.buildSessionFactory(servico);
-
-		return fabricaSessao;
 	}
 }
