@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="pt-br" >
 <head>
   <meta charset="UTF-8">
   <title>home</title>
   <link rel="stylesheet" href="./style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-
+  <link rel="stylesheet" href="css/main.css"
 </head>
 <body>
   <!-- partial:index.partial.html home -->
@@ -13,7 +13,7 @@
   <li data-num="1" class="tab wave dark">HOME</li>
   <li data-num="2" class="tab wave dark">PLANOS</li>
   <li data-num="3" class="tab wave dark">CONTATO</li>
-  <li data-num="4" class="tab wave dark">PERFIL</li>
+  <li data-num="4" class="tab wave dark" >PERFIL</li>
  
   <div class="indicator"></div>
 </ul>
@@ -24,7 +24,22 @@
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
   </div>
     
-  </body>
+  <!-- nav -->
+  <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="../dist/foto1.jpg" width="80"  class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="../dist/foto2.jpg" width="80" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="../dist/foto3.jpg" class="d-block w-100" alt="...">
+      </div>
+    </div>
+  </div>
+   <!-- nav -->
+ 
 <!-- partial:index.partial.html boneca -->
 
 <div class="boneca"> 
@@ -128,51 +143,7 @@
 <!-- balao -->
 
 <!--Card-->
-<header>
-  <h1>Our Pricing</h1>
-  <div class="toggle">
-    <label>Annually </label>
-    <div class="toggle-btn">
-      <input type="checkbox" class="checkbox" id="checkbox" />
-      <label class="sub" id="sub" for="checkbox">
-        <div class="circle"></div>
-      </label>
-    </div>
-    <label> Monthly</label>
-  </div>
-</header>
-<div class="cards">
-  <div class="card shadow">
-    <ul>
-      <li class="pack">Basic</li>
-      <li id="basic" class="price bottom-bar">&dollar;199.99</li>
-      <li class="bottom-bar">500 GB Storage</li>
-      <li class="bottom-bar">2 Users Allowed</li>
-      <li class="bottom-bar">Send up to 3 GB</li>
-      <li><button class="btn">Learn More</button></li>
-    </ul>
-  </div>
-  <div class="card active">
-    <ul>
-      <li class="pack">Professional</li>
-      <li id="professional" class="price bottom-bar">&dollar;249.99</li>
-      <li class="bottom-bar">1 TB Storage</li>
-      <li class="bottom-bar">5 Users Allowed</li>
-      <li class="bottom-bar">Send up to 10 GB</li>
-      <li><button class="btn active-btn">Learn More</button></li>
-    </ul>
-  </div>
-  <div class="card shadow">
-    <ul>
-      <li class="pack">Master</li>
-      <li id="master" class="price bottom-bar">&dollar;399.99</li>
-      <li class="bottom-bar">2 TB Storage</li>
-      <li class="bottom-bar">10 Users Allowed</li>
-      <li class="bottom-bar">Send up to 20 GB</li>
-      <li><button class="btn">Learn More</button></li>
-    </ul>
-  </div>
-</div>
+
 
 
 <!-- partial -->
@@ -180,4 +151,7 @@
 <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/CustomWiggle3.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.1/gsap.min.js'></script><script  src="./script.js"></script>
 
+  
+  
+</body>
 </html>
