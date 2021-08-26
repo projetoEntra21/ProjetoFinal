@@ -20,10 +20,11 @@ public class Principal {
 //
 //	
 
-		PacienteDAO pacienteDAO = new PacienteDAOimpl();
+		
+		PacienteDAO pacienteDAO1 = new PacienteDAOimpl();
 
-		pacienteDAO.inserirPaciente(new Paciente(454, 12, "11.645.099-52", "lucas", "bento", 16));
 
+		pacienteDAO1.inserirPaciente(new Paciente("060.324.425", "Gabriel", "Santos", 17));
 	}
 
 }
