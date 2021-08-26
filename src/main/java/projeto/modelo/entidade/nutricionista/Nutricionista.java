@@ -9,10 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import projeto.modelo.entidade.paciente.Paciente;
 
 @Entity
 @Table(name = "nutricionista")
@@ -34,33 +33,27 @@ public class Nutricionista implements Serializable {
 	@Column(name = "nome_nutricionista", nullable = false, unique = false)
 	private String cnpj;
 
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_contato")
+	@OneToOne(fetch = FetchType.LAZY)
+	@MapsId
 	@JoinColumn(name = "id_paciente")
-	@JoinColumn(name = "id_historico")
-	@JoinColumn(name = "id_login")
-
-	private Paciente paciente;
 
 	private Nutricionista nutricionista;
 
 	public Nutricionista() {
 	}
 
-	public Nutricionista(String nome, String sobrenome, String cpnj, Paciente paciente) {
+	public Nutricionista(String nome, String sobrenome, String cpnj) {
 
 		setNome(nome);
 		setSobrenome(sobrenome);
 		setCnpj(cpnj);
-		setPaciente(paciente);
 	}
 
-	public Nutricionista(int Id, String nome, String sobrenome, String cpnj, Paciente paciente) {
+	public Nutricionista(int Id, String nome, String sobrenome, String cpnj) {
 		setId(Id);
 		setNome(sobrenome);
 		setSobrenome(sobrenome);
 		setCnpj(cpnj);
-		setPaciente(paciente);
 	}
 
 	public int getId() {
@@ -93,14 +86,6 @@ public class Nutricionista implements Serializable {
 
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
-	}
-
-	public Paciente getPaciente() {
-		return paciente;
-	}
-
-	public void setPaciente(Paciente paciente) {
-		this.paciente = paciente;
 	}
 
 }

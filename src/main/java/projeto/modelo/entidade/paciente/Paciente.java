@@ -54,11 +54,8 @@ public class Paciente {
 	
 	public Paciente() {}
 
-	public Paciente(int Id, int endereço, int contato, String cpf, String nome, String sobrenome, int idade
-			) throws IdadeINvalidaExecption {
+	public Paciente( int endereço, int contato, String cpf, String nome, String sobrenome, int idade) throws IdadeINvalidaExecption {
 
-		
-		setId(Id);
 		setCpf(cpf);
 		setIdade(idade);
 		setId_contato_paciente(contato);
@@ -68,13 +65,12 @@ public class Paciente {
 
 	}
 	
-
-	public Paciente(int endereço, int contato, String cpf, String nome, String sobrenome, int idade
-			) throws IdadeINvalidaExecption {
+	public Paciente(int Id, int endereço, int contato, String cpf, String nome, String sobrenome, int idade) throws IdadeINvalidaExecption {
 
 		setCpf(cpf);
+		setId(Id);
 		setIdade(idade);
-		setId_contato_paciente(contato);;
+		setId_contato_paciente(contato);
 		setId_endereço_paciente(endereço);
 		setNome(nome);
 		setSobrenome(sobrenome);
