@@ -13,6 +13,8 @@ import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import projeto.modelo.entidade.paciente.Paciente;
+
 @Entity
 @Table(name = "nutricionista")
 public class Nutricionista implements Serializable {
@@ -27,17 +29,16 @@ public class Nutricionista implements Serializable {
 	@Column(name = "nome_nutricionista", nullable = false, unique = false)
 	private String nome;
 
-	@Column(name = "nome_nutricionista", nullable = false, unique = false)
+	@Column(name = "sobrenome_nutricionista", nullable = false, unique = false)
 	private String sobrenome;
 
-	@Column(name = "nome_nutricionista", nullable = false, unique = false)
+	@Column(name = "cpnj_nutricionista", length = 14, nullable = false, unique = false)
 	private String cnpj;
 
 	@OneToOne(fetch = FetchType.LAZY)
 	@MapsId
 	@JoinColumn(name = "id_paciente")
-
-	private Nutricionista nutricionista;
+	private Paciente paciente;
 
 	public Nutricionista() {
 	}
