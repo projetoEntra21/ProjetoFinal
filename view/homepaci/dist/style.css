@@ -5,7 +5,7 @@ body {
   display: flex;
   align-items: left;
   justify-content: left;
-  overflow: hidden;
+  
   
   
 }
@@ -20,7 +20,7 @@ svg {
 body {
   height: 100%;
   background: #FAFAFA;
-  overflow: hidden;
+ 
   font-family: 'Roboto', sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
