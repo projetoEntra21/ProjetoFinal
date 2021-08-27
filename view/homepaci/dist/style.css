@@ -234,8 +234,8 @@ button.learnmore:active::before {
 
 .drawing {
   position: relative;
-  top: -490px;
-  right: -1780px;
+  top: -1820px;
+  right: -2360px;
   transform: translate(-50%, -50%);
 }
 
