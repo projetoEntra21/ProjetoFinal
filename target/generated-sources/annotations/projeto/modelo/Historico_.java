@@ -1,7 +1,7 @@
 package projeto.modelo;
 
 import java.sql.Date;
-import javax.annotation.Generated;
+import javax.annotation.processing.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import projeto.modelo.entidade.paciente.Paciente;

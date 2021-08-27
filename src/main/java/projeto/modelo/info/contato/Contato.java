@@ -12,25 +12,25 @@ import javax.persistence.Table;
 import projeto.modelo.entidade.paciente.Paciente;
 
 @Entity
-@Table(name = "contato")
+@Table(name = "contatos")
 public class Contato {
 
 	@Id
-	@Column(name = "id_cliente")
+	@Column(name = "id_contatos")
 	private int Id;
 
-	@Column(name = "email_contato")
+	@Column(name = "email_contatos")
 	private String email;
 
-	@Column(name = "telefone_contato")
+	@Column(name = "telefone_contatos")
 	private String telefone;
 
-	@Column(name = "celular_contato")
+	@Column(name = "celular_contatos")
 	private String celular;
 
 	@OneToOne(fetch = FetchType.LAZY)
 	@MapsId
-	@JoinColumn(name = "id_contato_paciente")
+	@JoinColumn(name = "id_contatos_paciente")
 	private Paciente paciente;
 
 	public Contato() {}

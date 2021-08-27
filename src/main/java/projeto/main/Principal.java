@@ -1,9 +1,11 @@
 package projeto.main;
 
 import projeto.controle.execptions.IdadeINvalidaExecption;
-import projeto.modelo.entidade.paciente.Paciente;
 import projeto.modelo.entidade.paciente.PacienteDAO;
 import projeto.modelo.entidade.paciente.PacienteDAOimpl;
+import projeto.modelo.info.contato.Contato;
+import projeto.modelo.info.contato.ContatoDAO;
+import projeto.modelo.info.contato.ContatoDAOimpl;
 
 public class Principal {
 
@@ -22,9 +24,12 @@ public class Principal {
 
 		
 		PacienteDAO pacienteDAO1 = new PacienteDAOimpl();
-
-
-		pacienteDAO1.inserirPaciente(new Paciente("060.324.425", "Gabriel", "Santos", 17));
+		ContatoDAO contatoDAO = new ContatoDAOimpl();
+		
+		contatoDAO.inserirContato(new Contato("email@gmail.com", "3337-7777","47998809324" ));
+		
+		
+		
 	}
 
 }

@@ -11,7 +11,7 @@
 		<property name="show_sql">true</property>
 		<property name="hibernate.current_session_context_class">org.hibernate.context.internal.ThreadLocalSessionContext</property>
 		<mapping class="exemplo.modelo.entidade.cliente.Cliente" />
-		<mapping class="exemplo.modelo.entidade.Contato" />
+		<mapping class="projeto.modelo.info.contato.Contato" />
 		<mapping class="exemplo.modelo.entidade.Endereco" />
 		<mapping class="exemplo.modelo.entidade.Pedido" />
 	</session-factory>

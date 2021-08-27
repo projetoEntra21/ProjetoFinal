@@ -16,12 +16,7 @@ public class Endereço {
 		setNumero(numero);
 	}
 
-	public Endereço(int Id) {
-		
-		setId(Id);
-		
-	}
-
+	
 	public int getId() {
 		return Id;
 	}
