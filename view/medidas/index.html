@@ -8,51 +8,17 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <main>
-        <h1>Cadastre suas medidas</h1>
-        <div>
-            <form action="">
-                <label for="peso">
-                    <span>Peso</span>
-                    <input type="number" id="peso" nome= "peso">
-               
-                </label>
-                <label for="altura">
-                    <span>Altura</span>
-                    <input type="number" id="peso" nome= "peso">
-                
-                </label>
-                <label for="cintura">
-                    <span>Medida da cintura</span>
-                    <input type="number" id="cintura" nome= "cintura">
-               
-                </label>
-                <label for="quadril">
-                    <span>Medida do quadril</span>
-                    <input type="number" id="quadril" nome= "quadril">
-                
-                </label>
-                <label for="busto">
-                    <span>Medida do busto</span>
-                    <input type="number" id="busto" nome= "busto">
-                
-            
-                
-                </label>
-                <br>
-                <a href="../imc/index.html">Calcule o seu IMC  </a>
-                <input type="submit" value="Finalizar cadastro" id="button">
-                </form>
-        
-    </main>
-    <section class="images">
-        <img src="logo.jpg" alt="logo">
-        <div class="circle"></div>
-    </section>
-
-
-
-
-
+    <form id="msform">
+        <fieldset>
+            <h2 class="fs-title">Informe as medidas</h2>
+            <h3 class="fs-subtitle"></h3>
+            <input type="number" name="peso" placeholder="Peso" />
+            <input type="number" name="altura" placeholder="Altura" />
+            <input type="number" name="medidacintura" placeholder="Medida cintura" />
+            <input type="number" name="medidaquadril" placeholder="Medida quadril" />
+            <input type="number" name="medidabusto" placeholder="Medida busto" />
+            <input type="button" name="next" class="Finalizar action-button" value="Finalizar" />
+          </fieldset>
+        </form>
 </body>
 </html>
