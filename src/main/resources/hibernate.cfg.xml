@@ -10,9 +10,11 @@
 		<property name="hibernate.connection.password">root</property>
 		<property name="show_sql">true</property>
 		<property name="hibernate.current_session_context_class">org.hibernate.context.internal.ThreadLocalSessionContext</property>
-		<mapping class="exemplo.modelo.entidade.cliente.Cliente" />
-		<mapping class="exemplo.modelo.entidade.Contato" />
-		<mapping class="exemplo.modelo.entidade.Endereco" />
-		<mapping class="exemplo.modelo.entidade.Pedido" />
+		<mapping class="projeto.modelo.entidade.paciente" />
+		<mapping class="projeto.modelo.info.contato" />
+		<mapping class="projeto.modelo.info.endereco" />
+		<mapping class="projeto.modelo.info.consulta" />
+		<mapping class="projeto.modelo.entidade.nutricionista" />
+		<mapping class="projeto.modelo.entidade.historico" />
 	</session-factory>
 </hibernate-configuration>

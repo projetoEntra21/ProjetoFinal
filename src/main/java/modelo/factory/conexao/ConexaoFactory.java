@@ -18,11 +18,11 @@ public class ConexaoFactory {
 		configuracao.addAnnotatedClass(projeto.controle.execptions.ImcInvalidoExecption.class);
 		configuracao.addAnnotatedClass(projeto.controle.execptions.PesoInvalidoExecption.class);
 		configuracao.addAnnotatedClass(projeto.controle.execptions.QuadrilInvalidoException.class);
-		configuracao.addAnnotatedClass(projeto.modelo.Historico.class);
-		configuracao.addAnnotatedClass(projeto.modelo.entidade.paciente.Paciente.class);
-		configuracao.addAnnotatedClass(projeto.modelo.entidade.nutricionista.Nutricionista.class);
-		configuracao.addAnnotatedClass(projeto.modelo.info.consulta.Consulta.class);
-		configuracao.addAnnotatedClass(projeto.modelo.info.contato.Contato.class);
+		configuracao.addAnnotatedClass(projeto.modelo.entidade.historico.Historico.class);
+		configuracao.addAnnotatedClass(projeto.modelo.entidade.historico.entidade.paciente.Paciente.class);
+		configuracao.addAnnotatedClass(projeto.modelo.entidade.historico.entidade.nutricionista.Nutricionista.class);
+		configuracao.addAnnotatedClass(projeto.modelo.entidade.historico.info.consulta.Consulta.class);
+		configuracao.addAnnotatedClass(projeto.modelo.entidade.historico.info.contato.Contato.class);
 	
 		configuracao.configure("hibernate.cfg.xml");
 

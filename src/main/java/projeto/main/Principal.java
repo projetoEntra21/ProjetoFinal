@@ -1,13 +1,19 @@
 package projeto.main;
 
 import projeto.controle.execptions.IdadeINvalidaExecption;
-import projeto.modelo.entidade.paciente.Paciente;
-import projeto.modelo.entidade.paciente.PacienteDAO;
-import projeto.modelo.entidade.paciente.PacienteDAOimpl;
+import projeto.modelo.entidade.historico.Historico;
+import projeto.modelo.entidade.historico.HistoricoDAO;
+import projeto.modelo.entidade.historico.HistoricoDAOImpl;
+import projeto.modelo.entidade.historico.entidade.paciente.Paciente;
+import projeto.modelo.entidade.historico.entidade.paciente.PacienteDAO;
+import projeto.modelo.entidade.historico.entidade.paciente.PacienteDAOimpl;
+import projeto.modelo.entidade.historico.info.contato.Contato;
+import projeto.modelo.entidade.historico.info.contato.ContatoDAO;
+import projeto.modelo.entidade.historico.info.contato.ContatoDAOimpl;
 
 public class Principal {
 
-	public static void main(String[] args) throws IdadeINvalidaExecption  {
+	public static void main(String[] args) throws IdadeINvalidaExecption {
 //
 //		FoodDAO foodDAO = new FoodDAOImpl();
 //
@@ -21,10 +27,11 @@ public class Principal {
 //	
 
 		
-		PacienteDAO pacienteDAO1 = new PacienteDAOimpl();
-
-
-		pacienteDAO1.inserirPaciente(new Paciente("060.324.425", "Gabriel", "Santos", 17));
+		ContatoDAO contatoDAO = new ContatoDAOimpl();
+		
+		contatoDAO.inserirContato(new Contato("entra21@projeto.com", "33377878", "47988880808"));
+		
+		
 	}
 
 }
