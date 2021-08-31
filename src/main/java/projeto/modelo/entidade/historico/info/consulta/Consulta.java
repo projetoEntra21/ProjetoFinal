@@ -4,10 +4,14 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Table;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import projeto.modelo.entidade.historico.entidade.paciente.Paciente;
 
 @Entity
 @Table(name = "consulta")
@@ -22,6 +26,11 @@ public class Consulta {
 
 	@Column(name = "data_consulta", nullable = false, unique = false)
 	Date data;
+
+	@OneToOne(fetch = FetchType.LAZY)
+	@MapsId
+	@JoinColumn(name = "id_paciente")
+	private Paciente paciente;
 
 	public Consulta() {
 	}
@@ -63,6 +72,14 @@ public class Consulta {
 
 	public void setData(Date data) {
 		this.data = data;
+	}
+
+	public Paciente getPaciente() {
+		return paciente;
+	}
+
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
 	}
 
 }

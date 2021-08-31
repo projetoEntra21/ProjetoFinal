@@ -1,18 +1,13 @@
 package projeto.modelo.entidade.historico.entidade.nutricionista;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import projeto.modelo.entidade.historico.entidade.paciente.Paciente;
 
 @Entity
 @Table(name = "nutricionista")
@@ -34,10 +29,8 @@ public class Nutricionista implements Serializable {
 	@Column(name = "cnpj_nutricionista", length = 14, nullable = false, unique = false)
 	private String cnpj;
 
-//	@OneToMany(mappedBy = "paciente")
-//	private List<Paciente> pacientes = new ArrayList<Paciente>();
-	
-	
+//AVALIAR O BANCO DE NUTRICIONISTA EM RELAÇÃO AS CHAVES ESTRANGEIRAS.
+
 	public Nutricionista() {
 	}
 

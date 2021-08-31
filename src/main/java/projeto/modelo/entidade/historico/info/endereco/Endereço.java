@@ -1,17 +1,11 @@
 package projeto.modelo.entidade.historico.info.endereco;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -40,14 +34,13 @@ public class Endereço implements Serializable {
 	@Column(name = "complemento_endereco", length = 30, nullable = false, unique = false)
 	private String complemento;
 
-	@ManyToMany(mappedBy = "enderecos")
-	private List<Paciente> pacientes = new ArrayList<Paciente>();
-	
 	@OneToOne(fetch = FetchType.LAZY)
 	@MapsId
 	@JoinColumn(name = "id_paciente")
 	private Paciente paciente;
 
+	public Endereço() {}
+	
 	public Endereço(String rua, String cep, int numero, String complemento) {
 
 		setRua(rua);
@@ -56,10 +49,13 @@ public class Endereço implements Serializable {
 		setNumero(numero);
 	}
 
-	public Endereço(int Id) {
+	public Endereço(int id,String rua, String cep, int numero, String complemento) {
 
-		setId(Id);
-
+		setId(id);
+		setRua(rua);
+		setCep(cep);
+		setComplemento(complemento);
+		setNumero(numero);
 	}
 
 	public int getId() {
@@ -102,11 +98,13 @@ public class Endereço implements Serializable {
 		this.complemento = complemento;
 	}
 
-	public List<Paciente> getPacientes() {
-		return pacientes;
+	public Paciente getPaciente() {
+		return paciente;
 	}
 
-	public void setPacientes(List<Paciente> pacientes) {
-		this.pacientes = pacientes;
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
 	}
+
+
 }

@@ -12,7 +12,7 @@
 		<property name="hibernate.current_session_context_class">org.hibernate.context.internal.ThreadLocalSessionContext</property>
 		<mapping class="projeto.modelo.entidade.paciente" />
 		<mapping class="projeto.modelo.info.contato" />
-		<mapping class="projeto.modelo.info.endereco" />
+		<mapping class="projeto.modelo.entidade.historico.info.endereco.Endereço" />
 		<mapping class="projeto.modelo.info.consulta" />
 		<mapping class="projeto.modelo.entidade.nutricionista" />
 		<mapping class="projeto.modelo.entidade.historico" />

@@ -22,25 +22,13 @@ public class Paciente implements Serializable {
 	@Column(name = "id_paciente")
 	private int Id;
 
-	@Column(name = "id_endereco_paciente", nullable = false, unique = true)
-	private int id_endereço_paciente;
-	
-	@Column(name = "id_consulta_paciente", nullable = false, unique = true)
-	private int id_consulta_paciente;
-
-	@Column(name = "id_contato_paciente", nullable = false, unique = true)
-	private int id_contato_paciente;
-
 	@Column(name = "cpf_paciente", nullable = false, unique = true)
 	private String cpf;
-
-	@Column(name = "id_historico_paciente", nullable = false, unique = true)
-	private int id_historico_paciente;
 
 	@Column(name = "nome_paciente", length = 25, nullable = false, unique = false)
 	private String nome;
 
-	@Column(name = "sobrenome", length = 25, nullable = false, unique = false)
+	@Column(name = "sobrenome_paciente", length = 25, nullable = false, unique = false)
 	private String sobrenome;
 
 	@Column(name = "idade_paciente", nullable = false, unique = false)
@@ -74,22 +62,6 @@ public class Paciente implements Serializable {
 
 	public void setId(int id) {
 		Id = id;
-	}
-
-	public int getId_endereço_paciente() {
-		return id_endereço_paciente;
-	}
-
-	public void setId_endereço_paciente(int id_endereço_paciente) {
-		this.id_endereço_paciente = id_endereço_paciente;
-	}
-
-	public int getId_contato_paciente() {
-		return id_contato_paciente;
-	}
-
-	public void setId_contato_paciente(int id_contato_paciente) {
-		this.id_contato_paciente = id_contato_paciente;
 	}
 
 	public String getCpf() {

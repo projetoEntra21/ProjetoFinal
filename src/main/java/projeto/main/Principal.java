@@ -1,15 +1,15 @@
 package projeto.main;
 
 import projeto.controle.execptions.IdadeINvalidaExecption;
-import projeto.modelo.entidade.historico.Historico;
-import projeto.modelo.entidade.historico.HistoricoDAO;
-import projeto.modelo.entidade.historico.HistoricoDAOImpl;
 import projeto.modelo.entidade.historico.entidade.paciente.Paciente;
 import projeto.modelo.entidade.historico.entidade.paciente.PacienteDAO;
 import projeto.modelo.entidade.historico.entidade.paciente.PacienteDAOimpl;
 import projeto.modelo.entidade.historico.info.contato.Contato;
 import projeto.modelo.entidade.historico.info.contato.ContatoDAO;
 import projeto.modelo.entidade.historico.info.contato.ContatoDAOimpl;
+import projeto.modelo.entidade.historico.info.endereco.Endereço;
+import projeto.modelo.entidade.historico.info.endereco.EndereçoDAO;
+import projeto.modelo.entidade.historico.info.endereco.EndereçoDAOimpl;
 
 public class Principal {
 
@@ -26,12 +26,38 @@ public class Principal {
 //
 //	
 
-		
+		EndereçoDAO endereçoDAO = new EndereçoDAOimpl();
+		PacienteDAO pacienteDAO = new PacienteDAOimpl();
 		ContatoDAO contatoDAO = new ContatoDAOimpl();
+
+		String nome = "Gabriel";
+		String sobrenome = "Santos";
+		String cpf = "123.456.789-00";
+		int idade = 17;
+
+		Paciente paciente = new Paciente();
+
+		paciente.setNome(nome);
+		paciente.setIdade(idade);
+		paciente.setCpf(cpf);
+		paciente.setSobrenome(sobrenome);
+
+		pacienteDAO.inserirPaciente(paciente);
+
+		String email = "entra21@teste.pfvvai";
+		String telefone = "33377676";
+		String celular = "478997382";
 		
-		contatoDAO.inserirContato(new Contato("entra21@projeto.com", "33377878", "47988880808"));
+		Contato contato = new Contato();
+
+		contato.setCelular(celular);
+		contato.setEmail(email);
+		contato.setTelefone(telefone);
+		contato.setPaciente(paciente);
+	
+		contatoDAO.inserirContato(contato);
 		
-		
+
 	}
 
 }
