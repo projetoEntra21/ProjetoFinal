@@ -4,10 +4,19 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import projeto.modelo.entidade.historico.entidade.paciente.Paciente;
+
 
 @Entity
 @Table(name = "nutricionista")
@@ -26,11 +35,14 @@ public class Nutricionista implements Serializable {
 	@Column(name = "sobrenome_nutricionista", length = 25, nullable = false, unique = false)
 	private String sobrenome;
 
-	@Column(name = "cnpj_nutricionista", length = 14, nullable = false, unique = false)
+	@Column(name = "cnpj_nutricionista", length = 14, nullable = false, unique = true)
 	private String cnpj;
 
-//AVALIAR O BANCO DE NUTRICIONISTA EM RELAÇÃO AS CHAVES ESTRANGEIRAS.
-
+	@OneToOne(fetch = FetchType.LAZY)
+	@MapsId
+	@JoinColumn(name =  "id_paciente")
+	private Paciente paciente;
+	
 	public Nutricionista() {
 	}
 
@@ -80,12 +92,18 @@ public class Nutricionista implements Serializable {
 		this.cnpj = cnpj;
 	}
 
-//	public List<Paciente> getPacientes() {
-//		return pacientes;
-//	}
-//
-//	public void setPacientes(List<Paciente> pacientes) {
-//		this.pacientes = pacientes;
-//	}
+	public Paciente getPaciente() {
+		return paciente;
+	}
+
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
+	}
+
+	
+
+
+
+
 
 }

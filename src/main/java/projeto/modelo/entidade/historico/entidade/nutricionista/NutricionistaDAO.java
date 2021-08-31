@@ -12,7 +12,7 @@ public interface NutricionistaDAO {
 	
 	public void deletarNutricionista(Nutricionista nutricionista);
 	
-	List<Nutricionista> ConsultarNutricionistasPacientes(Paciente paciente);
+	List<Paciente> ConsultarPacientesNutricionista(Nutricionista nutricionista);
 	
 
 }
