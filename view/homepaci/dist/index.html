@@ -11,14 +11,15 @@
   <!-- partial:index.partial.html home -->
 <ul class="tab-bar">
   <li data-num="1" class="tab wave dark">HOME</li>
-  <li data-num="2" class="tab wave dark">PLANOS</li>
+  <li data-num="2" class="tab wave dark" ><a href="#planos">PLANOS</a></li>
   <li data-num="3" class="tab wave dark">CONTATO</li>
   <li data-num="4" class="tab wave dark" >PERFIL</li>
- 
   <div class="indicator"></div>
 </ul>
+
+
 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-indicators">
+  <div class="carousel-indicators" >
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
@@ -26,7 +27,8 @@
     
   <!-- nav -->
   <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
+    <div class="carousel-inner" >
+      
       <div class="carousel-item active">
         <img src="../dist/foto1.jpg" width="80"  class="d-block w-100" alt="...">
       </div>
@@ -125,37 +127,22 @@
     </div>
   <button class="learnmore">Saiba mais</button>
   
-  </div>
- </div>
- <div class="drawing">
-  <div class="chef-hat">
-    <div class="chef-hat__ruffle"></div>
-    <div class="chef-hat__ruffle"></div>
-    <div class="chef-hat__ruffle"></div>
-  </div>
-  <div class="chef-moustache">
-    <div class="chef-moustache__nose"></div>
-    <div class="chef-moustache__tail"></div>
-    <div class="chef-moustache__tail"></div>
-  </div>
-</div>
- 
+  
 <!-- balao -->
 
 <!--Card-->
-<div id= "planos">
-  <body>
+<div id="planos">
     <div class="planos">
       <div class="card-group">
         <div class="card">
           <img src="../dist/card2.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
+          <div class="card-body" >
             <h5 class="card-title">Emagreça Rapidamente</h5>
             <p class="card-text">Conforme suas medidas nossos profissionais irão analisar uma forma rápida e saudável para você emagrecer</p>
             <a href="#" class="btn btn-primary">Entre em contato</a>
           </div>
         </div>
-        <div class="card">
+        <div class="card" id="teste">
           <img src="../dist/card1.jpg" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">Reconstrua sua alimentação</h5>

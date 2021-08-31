@@ -21,8 +21,8 @@
     align-content: center;
     justify-content: center;
     padding: 12px;
-    background: #ee9ca7;
-    background: linear-gradient(#ee9ca7, #a7bfe8);
+    background: #a7bfe8;
+    background: #97D5b1;
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="$mauve", endColorstr="$blush",GradientType=1 );
     font-family: "brandon-grotesque", "Brandon Grotesque", "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
     font-size: 16px;
@@ -45,11 +45,11 @@
   }
   
   ::-moz-selection {
-    background: #ee9ca7;
+    background: #a7bfe8;
   }
   
   ::selection {
-    background: #ee9ca7;
+    background: #a7bfe8;
   }
   
   #settings {
@@ -64,7 +64,7 @@
     background: white;
     box-shadow: 0 0 20px rgba(21, 21, 29, 0.2);
     overflow: hidden;
-    color: #ee9ca7;
+    color: #a7bfe8;
     border-radius: 2px;
     width: 100%;
     max-width: 600px;
@@ -108,7 +108,7 @@
     right: -1px;
     width: 2px;
     height: 100%;
-    background: #f3e3e2;
+    background: #a7bfe8;
   }
   span.nav:last-of-type:after {
     display: none;
@@ -127,10 +127,10 @@
     height: 53px;
   }
   input.nav:hover + span, input.nav:focus + span {
-    background: #f3e3e2;
+    background: #d9e7ff;
   }
   input.nav:active + span, input.nav:checked + span {
-    background: #ee9ca7;
+    background: #a7bfe8;
     color: white;
   }
   input.nav:active + span {
@@ -186,7 +186,7 @@
   main {
     align-self: flex-end;
     position: relative;
-    border-top: 2px solid #f3e3e2;
+    border-top: 2px solid #a7bfe8;
     width: 100%;
     height: calc(100% - 52px);
   }
@@ -257,7 +257,7 @@
   }
   section.upcoming h1 {
     font-size: 32px;
-    color: #cccccc;
+    color: #a7bfe8;
   }
   
   .avatar {
@@ -298,7 +298,7 @@
     width: 100%;
     padding-bottom: 4px;
     font-weight: 500;
-    color: #cd908b;
+    color:#a7bfe8;
     line-height: 1.5;
   }
   .material hr {
@@ -311,7 +311,7 @@
     border: 0;
     border-radius: 4px;
     margin: 0;
-    background: #ebebeb;
+    background: #a7bfe8;
   }
   .material hr:after {
     transition: all 150ms ease-out;
@@ -326,7 +326,7 @@
     width: 100%;
     height: 100%;
     border-radius: 4px;
-    background: #cd908b;
+    background: #a7bfe8;
   }
   .material input {
     display: block;
@@ -339,7 +339,7 @@
     margin: 0;
     width: 100%;
     background: none;
-    color: #ee9ca7;
+    color: #a7bfe8;
     font-size: 16px;
     line-height: 1.5;
   }
@@ -365,7 +365,7 @@
     width: 24px;
     height: 24px;
     border-radius: 2px;
-    background: #ebebeb;
+    background: #a7bfe8;
   }
   .material-checkbox svg {
     display: block;
@@ -374,7 +374,7 @@
   }
   .material-checkbox line {
     fill: none;
-    stroke: #ee9ca7;
+    stroke: #a7bfe8;
     stroke-width: 2px;
     stroke-linecap: round;
   }
@@ -459,7 +459,7 @@
     background: #a7bfe8;
   }
   .material-button button.save:active, .material-button input[type=submit].save:active {
-    background: #ee9ca7;
+    background: #a7bfe8;
   }
   @media only screen and (max-height: 444px) {
     .material-button button.save, .material-button input[type=submit].save {
@@ -480,7 +480,7 @@
   }
   .material-button button.gh.connected, .material-button input[type=submit].gh.connected {
     background: #ebebeb;
-    color: #ee9ca7;
+    color: #a7bfe8;
   }
   .material-button button.gh.connected:hover, .material-button button.gh.connected:focus, .material-button input[type=submit].gh.connected:hover, .material-button input[type=submit].gh.connected:focus {
     background: #a7bfe8;
@@ -497,7 +497,7 @@
   }
   .material-button button.tw.connected, .material-button input[type=submit].tw.connected {
     background: #ebebeb;
-    color: #ee9ca7;
+    color: #a7bfe8;
   }
   .material-button button.tw.connected:hover, .material-button button.tw.connected:focus, .material-button input[type=submit].tw.connected:hover, .material-button input[type=submit].tw.connected:focus {
     background: #a7bfe8;
@@ -514,7 +514,7 @@
   }
   .material-button button.fb.connected, .material-button input[type=submit].fb.connected {
     background: #ebebeb;
-    color: #ee9ca7;
+    color: #a7bfe8;
   }
   .material-button button.fb.connected:hover, .material-button button.fb.connected:focus, .material-button input[type=submit].fb.connected:hover, .material-button input[type=submit].fb.connected:focus {
     background: #a7bfe8;
@@ -530,8 +530,8 @@
     background: #a7bfe8;
   }
   .material-button button.li.connected, .material-button input[type=submit].li.connected {
-    background: #ebebeb;
-    color: #ee9ca7s;
+    background: #a7bfe8;
+    color: #a7bfe8;
   }
   .material-button button.li.connected:hover, .material-button button.li.connected:focus, .material-button input[type=submit].li.connected:hover, .material-button input[type=submit].li.connected:focus {
     background: #a7bfe8;
