@@ -14,10 +14,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import projeto.controle.execptions.IdadeINvalidaExecption;
 import projeto.modelo.entidade.historico.entidade.nutricionista.Nutricionista;
+import projeto.modelo.entidade.historico.info.consulta.Consulta;
 
 @Entity
 @Table(name = "paciente")
@@ -42,9 +45,8 @@ public class Paciente implements Serializable {
 	@Column(name = "idade_paciente", nullable = false, unique = false)
 	private int idade;
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL, CascadeType.MERGE })
-	@JoinTable(name = "nutricionista_paciente", joinColumns = @JoinColumn(name = "id_paciente"), inverseJoinColumns = @JoinColumn(name = "id_nutricionista"))
-	private List<Nutricionista> nutricionistas = new ArrayList<Nutricionista>();
+	@OneToMany(mappedBy = "consultas")
+	private List<Consulta> consultas = new ArrayList<Consulta>();
 
 	public Paciente() {
 	}
@@ -109,11 +111,13 @@ public class Paciente implements Serializable {
 
 	}
 
-	public List<Nutricionista> getNutricionistas() {
-		return nutricionistas;
+	public List<Consulta> getConsultas() {
+		return consultas;
 	}
 
-	public void adicionarNutricionista(Nutricionista nutricionista) {
-		this.nutricionistas.add(nutricionista);
+	public void AdicionarConsulta(Consulta consulta) {
+		this.consultas.add(consulta);
 	}
+
+
 }
