@@ -4,12 +4,17 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import projeto.controle.execptions.IdadeINvalidaExecption;
+import projeto.modelo.entidade.historico.entidade.nutricionista.Nutricionista;
 
 @Entity
 @Table(name = "paciente")
@@ -33,6 +38,11 @@ public class Paciente implements Serializable {
 
 	@Column(name = "idade_paciente", nullable = false, unique = false)
 	private int idade;
+
+	@OneToOne(fetch = FetchType.LAZY)
+	@MapsId
+	@JoinColumn(name = "id_nutricionista")
+	private Nutricionista nutricionista;
 
 	public Paciente() {
 	}
