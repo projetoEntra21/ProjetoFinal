@@ -144,4 +144,10 @@ public class NutricionistaDAOimpl implements NutricionistaDAO {
 
 		return fabricaSessao;
 	}
+
+	@Override
+	public List<Paciente> ConsultarPacientesNutricionista(Nutricionista nutricionista) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

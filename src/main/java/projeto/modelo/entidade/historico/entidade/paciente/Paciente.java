@@ -1,7 +1,10 @@
 package projeto.modelo.entidade.historico.entidade.paciente;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,8 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.MapsId;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import projeto.controle.execptions.IdadeINvalidaExecption;
@@ -39,10 +42,9 @@ public class Paciente implements Serializable {
 	@Column(name = "idade_paciente", nullable = false, unique = false)
 	private int idade;
 
-	@OneToOne(fetch = FetchType.LAZY)
-	@MapsId
-	@JoinColumn(name = "id_nutricionista")
-	private Nutricionista nutricionista;
+	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL, CascadeType.MERGE })
+	@JoinTable(name = "nutricionista_paciente", joinColumns = @JoinColumn(name = "id_paciente"), inverseJoinColumns = @JoinColumn(name = "id_nutricionista"))
+	private List<Nutricionista> nutricionistas = new ArrayList<Nutricionista>();
 
 	public Paciente() {
 	}
@@ -107,7 +109,11 @@ public class Paciente implements Serializable {
 
 	}
 
-//	public void setNutricionista(List<Nutricionista> nutricionista) {
-//		this.nutricionista = nutricionista;
-//	}
+	public List<Nutricionista> getNutricionistas() {
+		return nutricionistas;
+	}
+
+	public void adicionarNutricionista(Nutricionista nutricionista) {
+		this.nutricionistas.add(nutricionista);
+	}
 }
