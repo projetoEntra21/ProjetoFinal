@@ -35,58 +35,35 @@ public class Principal {
 		ContatoDAO contatoDAO = new ContatoDAOimpl();
 		HistoricoDAO historicoDAO = new HistoricoDAOImpl();
 		NutricionistaDAO nutricionistaDAO = new NutricionistaDAOimpl();
+
+		String nome = "Julia";
+		String cpf = "142.425.634.80";
+		String sobrenome = "Teste";
+		int idade = 18;
+
+		Paciente paciente = new Paciente();
+
+		paciente.setCpf(cpf);
+		paciente.setIdade(idade);
+		paciente.setNome(sobrenome);
+		paciente.setSobrenome(sobrenome);
+
+		String nome1 = "Mauro";
+		String sobrenome1 = "José";
+		String cpnj = "36.152.690/0001-64";
 		
-//		String nome = "Gabriel";
-//		String sobrenome = "Santos";
-//		String cpf = "123.456.789-00";
-//		int idade = 17;
-//
-//		Paciente paciente = new Paciente();
-//
-//		paciente.setNome(nome);
-//		paciente.setIdade(idade);
-//		paciente.setCpf(cpf);
-//		paciente.setSobrenome(sobrenome);
-//
-//		pacienteDAO.inserirPaciente(paciente);
-//
-//		String email = "entra21@teste.pfvvai";
-//		String telefone = "33377676";
-//		String celular = "478997382";
-//		
-//		Contato contato = new Contato();
-//
-//		contato.setCelular(celular);
-//		contato.setEmail(email);
-//		contato.setTelefone(telefone);
-//		contato.setPaciente(paciente);
-//	
-//		contatoDAO.inserirContato(contato);
-		
-		Paciente paciente2 = new Paciente();
-		
-		String nome2 = "Ana";
-		String sobrenome2 = "Eshelley";
-		String cpf2 = "123.466.789-00";
-		int idade2 = 18;
-		
-		paciente2.setNome(nome2);
-		paciente2.setIdade(idade2);
-		paciente2.setCpf(cpf2);
-		paciente2.setSobrenome(sobrenome2);	
-		
-		Nutricionista nutricionista =  new Nutricionista();
-				;
-		String nome3 = "Paulo";
-		String sobrenome3 = "José";
-		String cpnj = "36.152.690/0001-41";
+		Nutricionista nutricionista = new Nutricionista();
 		
 		nutricionista.setCnpj(cpnj);
-		nutricionista.setNome(nome3);
-		nutricionista.setSobrenome(sobrenome3);
-		nutricionista.setPaciente(paciente2);
+		nutricionista.setNome(nome1);
+		nutricionista.setSobrenome(sobrenome1);
+		
+		
+		paciente.adicionarNutricionista(nutricionista);
 		
 		nutricionistaDAO.cadastrarNutricionista(nutricionista);
+		
+		pacienteDAO.inserirPaciente(paciente);
 		
 		
 	}

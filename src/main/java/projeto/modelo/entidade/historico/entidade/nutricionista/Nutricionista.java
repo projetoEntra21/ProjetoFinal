@@ -1,22 +1,18 @@
 package projeto.modelo.entidade.historico.entidade.nutricionista;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import projeto.modelo.entidade.historico.entidade.paciente.Paciente;
-
 
 @Entity
 @Table(name = "nutricionista")
@@ -38,11 +34,9 @@ public class Nutricionista implements Serializable {
 	@Column(name = "cnpj_nutricionista", length = 14, nullable = false, unique = true)
 	private String cnpj;
 
-	@OneToOne(fetch = FetchType.LAZY)
-	@MapsId
-	@JoinColumn(name =  "id_paciente")
-	private Paciente paciente;
-	
+	@ManyToMany(mappedBy = "nutricionistas")
+	private List<Paciente> pacientes = new ArrayList<Paciente>();
+
 	public Nutricionista() {
 	}
 
@@ -92,18 +86,12 @@ public class Nutricionista implements Serializable {
 		this.cnpj = cnpj;
 	}
 
-	public Paciente getPaciente() {
-		return paciente;
+	public List<Paciente> getPacientes() {
+		return pacientes;
 	}
 
-	public void setPaciente(Paciente paciente) {
-		this.paciente = paciente;
+	public void adicionarPacientes(Paciente pacientes) {
+		this.pacientes.add(pacientes);
 	}
-
-	
-
-
-
-
 
 }
