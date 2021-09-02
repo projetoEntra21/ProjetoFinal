@@ -10,9 +10,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import projeto.modelo.entidade.historico.entidade.paciente.Paciente;
+import projeto.modelo.entidade.historico.info.consulta.Consulta;
 
 @Entity
 @Table(name = "nutricionista")
@@ -34,8 +37,8 @@ public class Nutricionista implements Serializable {
 	@Column(name = "cnpj_nutricionista", length = 14, nullable = false, unique = true)
 	private String cnpj;
 
-	@ManyToMany(mappedBy = "nutricionistas")
-	private List<Paciente> pacientes = new ArrayList<Paciente>();
+	@OneToMany(mappedBy = "consultas")
+	private List<Consulta> consultas = new ArrayList<Consulta>();
 
 	public Nutricionista() {
 	}
@@ -86,12 +89,14 @@ public class Nutricionista implements Serializable {
 		this.cnpj = cnpj;
 	}
 
-	public List<Paciente> getPacientes() {
-		return pacientes;
+	public List<Consulta> getConsultas() {
+		return consultas;
 	}
 
-	public void adicionarPacientes(Paciente pacientes) {
-		this.pacientes.add(pacientes);
+	public void adicionarConsulta(Consulta consulta) {
+		this.consultas.add(consulta);
 	}
+
+	
 
 }
