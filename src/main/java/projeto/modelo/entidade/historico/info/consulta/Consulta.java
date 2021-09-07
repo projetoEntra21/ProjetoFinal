@@ -2,6 +2,8 @@ package projeto.modelo.entidade.historico.info.consulta;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +22,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import projeto.modelo.entidade.historico.entidade.nutricionista.Nutricionista;
 import projeto.modelo.entidade.historico.entidade.paciente.Paciente;
 
 @Entity
@@ -28,31 +31,34 @@ public class Consulta {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_paciente")
+	@Column(name = "id_consulta")
 	int Id;
 
 	@Column(name = "horario_consulta", nullable = false, unique = false)
-	Time hora;
+	LocalTime hora;
 
 	@Column(name = "data_consulta", nullable = false, unique = false)
-	Date data;
+	LocalDate data;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.ALL, CascadeType.MERGE })
-	@JoinTable(name = "consulta_pacientes", joinColumns = @JoinColumn(name = "id_paciente"), inverseJoinColumns = @JoinColumn(name = "id_nutricionista"), inverseJoinColumns = @JoinColumn(name = "id_consultas"))
-	private List<Consulta> consultas = new ArrayList<Consulta>();
-
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_nutricionista")
+	private Nutricionista nutricionista;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_paciente")
+	private Paciente paciente;
 
 	public Consulta() {
 	}
 
-	public Consulta(Time hora, Date data) {
+	public Consulta(LocalTime hora, LocalDate data) {
 
 		setData(data);
 		setHora(hora);
 
 	}
 
-	public Consulta(int id, Time hora, Date data) {
+	public Consulta(int id, LocalTime hora, LocalDate data) {
 
 		setData(data);
 		setHora(hora);
@@ -68,28 +74,37 @@ public class Consulta {
 		Id = id;
 	}
 
-	public Time getHora() {
+	public LocalTime getHora() {
 		return hora;
 	}
 
-	public void setHora(Time time) {
+	public void setHora(LocalTime time) {
 		this.hora = time;
 	}
 
-	public Date getData() {
+	public LocalDate getData() {
 		return data;
 	}
 
-	public void setData(Date data) {
+	public void setData(LocalDate data) {
 		this.data = data;
 	}
 
-//	public Paciente getPaciente() {
-//		return paciente;
-//	}
-//
-//	public void setPaciente(Paciente paciente) {
-//		this.paciente = paciente;
-//	}
+	public Nutricionista getNutricionista() {
+		return nutricionista;
+	}
+
+	public void setNutricionista(Nutricionista nutricionista) {
+		this.nutricionista = nutricionista;
+	}
+
+	public Paciente getPaciente() {
+		return paciente;
+	}
+
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
+	}
+
 
 }

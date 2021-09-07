@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -37,8 +38,9 @@ public class Nutricionista implements Serializable {
 	@Column(name = "cnpj_nutricionista", length = 14, nullable = false, unique = true)
 	private String cnpj;
 
-	@OneToMany(mappedBy = "consultas")
-	private List<Consulta> consultas = new ArrayList<Consulta>();
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "nutricionista")
+	private List<Consulta> consultas;
+
 
 	public Nutricionista() {
 	}
@@ -93,9 +95,11 @@ public class Nutricionista implements Serializable {
 		return consultas;
 	}
 
-	public void adicionarConsulta(Consulta consulta) {
-		this.consultas.add(consulta);
+	public void setConsultas(List<Consulta> consultas) {
+		this.consultas = consultas;
 	}
+
+	
 
 	
 

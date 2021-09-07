@@ -2,10 +2,16 @@ package projeto.main;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.Month;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.crypto.Data;
 
 import org.hibernate.dialect.InterbaseDialect;
+import org.hibernate.type.descriptor.java.LocalDateJavaDescriptor;
 
 import projeto.controle.execptions.IdadeINvalidaExecption;
 import projeto.modelo.entidade.historico.HistoricoDAO;
@@ -54,6 +60,7 @@ public class Principal {
 		
 		Paciente paciente =  new Paciente();
 		
+		paciente.setId(39);
 		paciente.setIdade(idade);
 		paciente.setNome(nome);
 		paciente.setCpf(cpf);
@@ -66,32 +73,42 @@ public class Principal {
 		int mes = 8;
 		int dia = 10;  
 		
-		Time time = new Time(hora, minuto, segundo);
+		LocalTime time = LocalTime.of(dia, minuto);
 		
-		Date date = new Date(ano, mes, dia); 
+		LocalDate date = LocalDate.of(2021, Month.AUGUST, 07);
 		
 		Consulta consulta =  new Consulta();
+		List<Consulta> consultas = new ArrayList<Consulta>();
+		
+		
 		
 		consulta.setData(date);
 		consulta.setHora(time);
 		
-		paciente.AdicionarConsulta(consulta);
+		
 		
 		String nome1 = "Rogerio";
 		String cpnj = "17.604.856/0001-79";
 		String sobrenome1 = "Rodrigues";
 		
 		Nutricionista nutricionista = new Nutricionista();
+		consulta.setNutricionista(nutricionista);
+		consulta.setPaciente(paciente);
 		
+		nutricionista.setId(26);
 		nutricionista.setCnpj(cpnj);
 		nutricionista.setNome(nome1);
 		nutricionista.setSobrenome(sobrenome1);
 		
-		nutricionista.adicionarConsulta(consulta);
+		consultas.add(consulta);
 		
-		pacienteDAO.inserirPaciente(paciente);
+		nutricionista.setConsultas(consultas);
+		paciente.setConsultas(consultas);
+		
+	
+//		pacienteDAO.inserirPaciente(paciente);
 		consultaDAO.inserirConsulta(consulta);
-		nutricionistaDAO.cadastrarNutricionista(nutricionista);
+//		nutricionistaDAO.cadastrarNutricionista(nutricionista);
 		
 	}
 

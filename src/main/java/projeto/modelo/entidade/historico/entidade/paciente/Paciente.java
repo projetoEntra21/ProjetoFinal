@@ -45,8 +45,8 @@ public class Paciente implements Serializable {
 	@Column(name = "idade_paciente", nullable = false, unique = false)
 	private int idade;
 
-	@OneToMany(mappedBy = "consultas")
-	private List<Consulta> consultas = new ArrayList<Consulta>();
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "paciente")
+	private List<Consulta> consultas;
 
 	public Paciente() {
 	}
@@ -115,9 +115,11 @@ public class Paciente implements Serializable {
 		return consultas;
 	}
 
-	public void AdicionarConsulta(Consulta consulta) {
-		this.consultas.add(consulta);
+	public void setConsultas(List<Consulta> consultas) {
+		this.consultas = consultas;
 	}
+
+	
 
 
 }
