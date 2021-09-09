@@ -8,7 +8,6 @@
 	<name>sistema de vendas</name>
 	<description>sistema de cadastro de clientes e pedidos</description>
 	<dependencies>
-		<!-- https://mvnrepository.com/artifact/org.json/json -->
 		<dependency>
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>
