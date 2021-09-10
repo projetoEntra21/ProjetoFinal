@@ -4,28 +4,28 @@ import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Join;
 import javax.persistence.criteria.ParameterExpression;
 import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
 
-import projeto.modelo.entidade.historico.entidade.nutricionista.Nutricionista;
-import projeto.modelo.entidade.historico.entidade.paciente.Paciente;
-
+import modelo.factory.conexao.ConexaoFactory;
 
 public class ContatoDAOimpl implements ContatoDAO {
 
+	private ConexaoFactory fabrica;
+
+	public ContatoDAOimpl() {
+		fabrica = new ConexaoFactory();
+	}
+
 	public void inserirContato(Contato contato) {
 
-		org.hibernate.Session sessao = null;
+		Session sessao = null;
+
 		try {
 
-			sessao = conectarBanco().openSession();
+			sessao = fabrica.getConexao().openSession();
 			sessao.beginTransaction();
 
 			sessao.save(contato);
@@ -47,13 +47,14 @@ public class ContatoDAOimpl implements ContatoDAO {
 			}
 		}
 	}
+
 	public void deletarContato(Contato contato) {
 
-		org.hibernate.Session sessao = null;
+		Session sessao = null;
 
 		try {
 
-			sessao = conectarBanco().openSession();
+			sessao = fabrica.getConexao().openSession();
 			sessao.beginTransaction();
 
 			sessao.delete(contato);
@@ -76,99 +77,43 @@ public class ContatoDAOimpl implements ContatoDAO {
 		}
 	}
 
-	public void novoEmail(Contato contato, String novoEmail) {
-		org.hibernate.Session sessao = null;
-
-		try {
-
-			sessao = conectarBanco().openSession();
-			sessao.beginTransaction();
-
-			sessao.update(contato);
-
-			sessao.getTransaction().commit();
-
-		} catch (Exception sqlException) {
-
-			sqlException.printStackTrace();
-
-			if (sessao.getTransaction() != null) {
-				sessao.getTransaction().rollback();
-			}
-
-		} finally {
-
-			if (sessao != null) {
-				sessao.close();
-			}
-		}
-	}
-	
-	public void novoTelefone(Contato contato, String novoTelefone) {
-		org.hibernate.Session sessao = null;
-
-		try {
-
-			sessao = conectarBanco().openSession();
-			sessao.beginTransaction();
-
-			sessao.update(contato);
-
-			sessao.getTransaction().commit();
-
-		} catch (Exception sqlException) {
-
-			sqlException.printStackTrace();
-
-			if (sessao.getTransaction() != null) {
-				sessao.getTransaction().rollback();
-			}
-
-		} finally {
-
-			if (sessao != null) {
-				sessao.close();
-			}
-		}
-	}
-
-
-	public void novoCelular(Contato contato, String novoCelular) {
-		org.hibernate.Session sessao = null;
-
-		try {
-
-			sessao = conectarBanco().openSession();
-			sessao.beginTransaction();
-
-			sessao.update(contato);
-
-			sessao.getTransaction().commit();
-
-		} catch (Exception sqlException) {
-
-			sqlException.printStackTrace();
-
-			if (sessao.getTransaction() != null) {
-				sessao.getTransaction().rollback();
-			}
-
-		} finally {
-
-			if (sessao != null) {
-				sessao.close();
-			}
-		}
-	}
-	
-	public List<Contato> consultarContato(Paciente paciente) {
+	public void atualizarContato(Contato contato) {
 
 		Session sessao = null;
-		List<Contato> contatos = null;
 
 		try {
 
-			sessao = ((SessionFactory) conectarBanco()).openSession();
+			sessao = fabrica.getConexao().openSession();
+			sessao.beginTransaction();
+
+			sessao.update(contato);
+
+			sessao.getTransaction().commit();
+
+		} catch (Exception sqlException) {
+
+			sqlException.printStackTrace();
+
+			if (sessao.getTransaction() != null) {
+				sessao.getTransaction().rollback();
+			}
+
+		} finally {
+
+			if (sessao != null) {
+				sessao.close();
+			}
+		}
+	}
+
+	public Contato recuperarContato(Contato contato) {
+
+		Session sessao = null;
+		Contato contatoRecuperado = null;
+
+		try {
+
+			sessao = fabrica.getConexao().openSession();
 			sessao.beginTransaction();
 
 			CriteriaBuilder construtor = sessao.getCriteriaBuilder();
@@ -176,11 +121,51 @@ public class ContatoDAOimpl implements ContatoDAO {
 			CriteriaQuery<Contato> criteria = construtor.createQuery(Contato.class);
 			Root<Contato> raizContato = criteria.from(Contato.class);
 
-			Join<Contato, Paciente> juncaoPaciente = raizContato.join(Contato_.paciente);
-			ParameterExpression<String> cpfPaciente = construtor.parameter(String.class);
-			criteria.where(construtor.equal(juncaoPaciente.get(Nutricionista.class), paciente.getCpf()));
+			criteria.select(raizContato);
 
-			contatos = sessao.createQuery(criteria).setParameter(cpfPaciente, paciente.getCpf()).getResultList();
+			ParameterExpression<Long> idContato = construtor.parameter(Long.class);
+			criteria.where(construtor.equal(raizContato.get("id"), idContato));
+
+			contatoRecuperado = sessao.createQuery(criteria).setParameter(idContato, contato.getId()).getSingleResult();
+
+			sessao.getTransaction().commit();
+
+		} catch (Exception sqlException) {
+
+			sqlException.printStackTrace();
+
+			if (sessao.getTransaction() != null) {
+				sessao.getTransaction().rollback();
+			}
+
+		} finally {
+
+			if (sessao != null) {
+				sessao.close();
+			}
+		}
+
+		return contatoRecuperado;
+	}
+
+	public List<Contato> recuperarContatos() {
+
+		Session sessao = null;
+		List<Contato> contatos = null;
+
+		try {
+
+			sessao = fabrica.getConexao().openSession();
+			sessao.beginTransaction();
+
+			CriteriaBuilder construtor = sessao.getCriteriaBuilder();
+
+			CriteriaQuery<Contato> criteria = construtor.createQuery(Contato.class);
+			Root<Contato> raizContato = criteria.from(Contato.class);
+
+			criteria.select(raizContato);
+
+			contatos = sessao.createQuery(criteria).getResultList();
 
 			sessao.getTransaction().commit();
 
@@ -200,32 +185,5 @@ public class ContatoDAOimpl implements ContatoDAO {
 		}
 
 		return contatos;
-	}
-
-	private SessionFactory conectarBanco() {
-
-		Configuration configuracao = new Configuration();
-
-
-		configuracao.addAnnotatedClass(projeto.controle.execptions.IdadeINvalidaExecption.class);
-		configuracao.addAnnotatedClass(projeto.controle.execptions.CinturaInvalidadExecption.class);
-		configuracao.addAnnotatedClass(projeto.controle.execptions.DensidadeInvalidaExecption.class);
-		configuracao.addAnnotatedClass(projeto.controle.execptions.AlturaInvalidaExecption.class);
-		configuracao.addAnnotatedClass(projeto.controle.execptions.ImcInvalidoExecption.class);
-		configuracao.addAnnotatedClass(projeto.controle.execptions.PesoInvalidoExecption.class);
-		configuracao.addAnnotatedClass(projeto.controle.execptions.QuadrilInvalidoException.class);
-		configuracao.addAnnotatedClass(projeto.modelo.entidade.historico.Historico.class);
-		configuracao.addAnnotatedClass(projeto.modelo.entidade.historico.entidade.paciente.Paciente.class);
-		configuracao.addAnnotatedClass(projeto.modelo.entidade.historico.entidade.nutricionista.Nutricionista.class);
-		configuracao.addAnnotatedClass(projeto.modelo.entidade.historico.info.consulta.Consulta.class);
-		configuracao.addAnnotatedClass(projeto.modelo.entidade.historico.info.contato.Contato.class);
-		configuracao.configure("hibernate.cfg.xml");
-
-		ServiceRegistry servico = new StandardServiceRegistryBuilder().applySettings(configuracao.getProperties())
-				.build();
-
-		SessionFactory fabricaSessao = configuracao.buildSessionFactory(servico);
-
-		return fabricaSessao;
 	}
 }

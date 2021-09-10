@@ -1,25 +1,18 @@
 package projeto.modelo.entidade.historico.entidade.paciente;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import projeto.controle.execptions.IdadeINvalidaExecption;
-import projeto.modelo.entidade.historico.entidade.nutricionista.Nutricionista;
 import projeto.modelo.entidade.historico.info.consulta.Consulta;
 
 @Entity
@@ -48,8 +41,7 @@ public class Paciente implements Serializable {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "paciente")
 	private List<Consulta> consultas;
 
-	public Paciente() {
-	}
+	public Paciente() {}
 
 	public Paciente(String cpf, String nome, String sobrenome, int idade) throws IdadeINvalidaExecption {
 
