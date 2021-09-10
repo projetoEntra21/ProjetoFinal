@@ -2,16 +2,16 @@ package projeto.modelo.entidade.usuario;
 
 import java.util.List;
 
-import projeto.modelo.entidade.historico.entidade.paciente.Paciente;
-
 public interface UsuarioDAO {
 
-	void inserirUsuario(Usuario usuario);
+	public void inserirUsuario(Usuario usuario);
 
-	void deletarUsuario(Usuario usuario);
+	public void deletarUsuario(Usuario usuario);
 
-	void atualizarContato(Usuario usuario);
+	public void atualizarUsuario(Usuario usuario);
 
+	Usuario recuperarUsuario(Usuario usuario);
+	
 	List<Usuario> recuperarUsuarios();
 
 

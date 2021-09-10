@@ -4,24 +4,22 @@ import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Join;
 import javax.persistence.criteria.ParameterExpression;
 import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 
 import modelo.factory.conexao.ConexaoFactory;
-import projeto.modelo.entidade.historico.entidade.paciente.Paciente;
 
-public class EndereçoDAOimpl implements EndereçoDAO {
+public class EnderecoDAOimpl implements EndereÃ§oDAO {
 
 	private ConexaoFactory fabrica;
 
-	public EndereçoDAOimpl() {
+	public EnderecoDAOimpl() {
 		fabrica = new ConexaoFactory();
 	}
-	
-	public void inserirEndereço(Endereço endereço) {
+
+	public void inserirEndereÃ§o(EndereÃ§o endereÃ§o) {
 
 		Session sessao = null;
 
@@ -30,7 +28,7 @@ public class EndereçoDAOimpl implements EndereçoDAO {
 			sessao = fabrica.getConexao().openSession();
 			sessao.beginTransaction();
 
-			sessao.save(endereço);
+			sessao.save(endereÃ§o);
 
 			sessao.getTransaction().commit();
 
@@ -50,8 +48,7 @@ public class EndereçoDAOimpl implements EndereçoDAO {
 		}
 	}
 
-
-	public void deletarEndereço(Endereço endereço) {
+	public void deletarEndereÃ§o(EndereÃ§o endereÃ§o) {
 
 		Session sessao = null;
 
@@ -60,7 +57,7 @@ public class EndereçoDAOimpl implements EndereçoDAO {
 			sessao = fabrica.getConexao().openSession();
 			sessao.beginTransaction();
 
-			sessao.delete(endereço);
+			sessao.delete(endereÃ§o);
 
 			sessao.getTransaction().commit();
 
@@ -80,7 +77,8 @@ public class EndereçoDAOimpl implements EndereçoDAO {
 		}
 	}
 
-	public void alterarRua(Endereço endereço) {
+	public void atualizarEndereÃ§o(EndereÃ§o endereÃ§o) {
+
 		Session sessao = null;
 
 		try {
@@ -88,7 +86,7 @@ public class EndereçoDAOimpl implements EndereçoDAO {
 			sessao = fabrica.getConexao().openSession();
 			sessao.beginTransaction();
 
-			sessao.update(endereço);
+			sessao.update(endereÃ§o);
 
 			sessao.getTransaction().commit();
 
@@ -108,96 +106,10 @@ public class EndereçoDAOimpl implements EndereçoDAO {
 		}
 	}
 
-	
-	public void alterarCep(Endereço endereco) {
-		Session sessao = null;
-
-		try {
-
-			sessao = fabrica.getConexao().openSession();
-			sessao.beginTransaction();
-
-			sessao.update(endereco);
-
-			sessao.getTransaction().commit();
-
-		} catch (Exception sqlException) {
-
-			sqlException.printStackTrace();
-
-			if (sessao.getTransaction() != null) {
-				sessao.getTransaction().rollback();
-			}
-
-		} finally {
-
-			if (sessao != null) {
-				sessao.close();
-			}
-		}
-	}
-
-
-	public void alterarNumero(Endereço endereco) {
-		Session sessao = null;
-
-		try {
-
-			sessao = fabrica.getConexao().openSession();
-			sessao.beginTransaction();
-
-			sessao.update(endereco);
-
-			sessao.getTransaction().commit();
-
-		} catch (Exception sqlException) {
-
-			sqlException.printStackTrace();
-
-			if (sessao.getTransaction() != null) {
-				sessao.getTransaction().rollback();
-			}
-
-		} finally {
-
-			if (sessao != null) {
-				sessao.close();
-			}
-		}
-	}
-	
-	public void alterarComplemento(Endereço endereco) {
-		Session sessao = null;
-
-		try {
-
-			sessao = fabrica.getConexao().openSession();
-			sessao.beginTransaction();
-
-			sessao.update(endereco);
-
-			sessao.getTransaction().commit();
-
-		} catch (Exception sqlException) {
-
-			sqlException.printStackTrace();
-
-			if (sessao.getTransaction() != null) {
-				sessao.getTransaction().rollback();
-			}
-
-		} finally {
-
-			if (sessao != null) {
-				sessao.close();
-			}
-		}
-	}
-
-	public List<Endereço> consultarEndereço(Paciente paciente) {
+	public EndereÃ§o recuperarEndereÃ§o(EndereÃ§o endereÃ§o) {
 
 		Session sessao = null;
-		List<Endereço> endereço = null;
+		EndereÃ§o endereÃ§oRecuperado = null;
 
 		try {
 
@@ -206,14 +118,16 @@ public class EndereçoDAOimpl implements EndereçoDAO {
 
 			CriteriaBuilder construtor = sessao.getCriteriaBuilder();
 
-			CriteriaQuery<Endereço> criteria = construtor.createQuery(Endereço.class);
-			Root<Endereço> raizEndereço = criteria.from(Endereço.class);
+			CriteriaQuery<EndereÃ§o> criteria = construtor.createQuery(EndereÃ§o.class);
+			Root<EndereÃ§o> raizEndereÃ§o = criteria.from(EndereÃ§o.class);
 
-			Join<Endereço, Paciente> juncaoPaciente = raizEndereço.join(Endereço.paciente);
-			ParameterExpression<String> cpfPaciente = construtor.parameter(String.class);
-			criteria.where(construtor.equal(juncaoPaciente.get(Endereço.class), paciente.getCpf()));
+			criteria.select(raizEndereÃ§o);
 
-			endereço = sessao.createQuery(criteria).setParameter(cpfPaciente, paciente.getCpf()).getResultList();
+			ParameterExpression<Long> idEndereÃ§o = construtor.parameter(Long.class);
+			criteria.where(construtor.equal(raizEndereÃ§o.get("id"), idEndereÃ§o));
+
+			endereÃ§oRecuperado = sessao.createQuery(criteria).setParameter(idEndereÃ§o, endereÃ§o.getId())
+					.getSingleResult();
 
 			sessao.getTransaction().commit();
 
@@ -232,6 +146,46 @@ public class EndereçoDAOimpl implements EndereçoDAO {
 			}
 		}
 
-		return endereço;
+		return endereÃ§oRecuperado;
 	}
+
+	public List<EndereÃ§o> recuperarEndereÃ§os() {
+
+		Session sessao = null;
+		List<EndereÃ§o> enderecos = null;
+
+		try {
+
+			sessao = fabrica.getConexao().openSession();
+			sessao.beginTransaction();
+
+			CriteriaBuilder construtor = sessao.getCriteriaBuilder();
+
+			CriteriaQuery<EndereÃ§o> criteria = construtor.createQuery(EndereÃ§o.class);
+			Root<EndereÃ§o> raizEndereÃ§o = criteria.from(EndereÃ§o.class);
+
+			criteria.select(raizEndereÃ§o);
+
+			enderecos = sessao.createQuery(criteria).getResultList();
+
+			sessao.getTransaction().commit();
+
+		} catch (Exception sqlException) {
+
+			sqlException.printStackTrace();
+
+			if (sessao.getTransaction() != null) {
+				sessao.getTransaction().rollback();
+			}
+
+		} finally {
+
+			if (sessao != null) {
+				sessao.close();
+			}
+		}
+
+		return enderecos;
+	}
+
 }

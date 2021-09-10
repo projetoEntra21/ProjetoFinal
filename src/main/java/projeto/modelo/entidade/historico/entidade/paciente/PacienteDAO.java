@@ -1,13 +1,18 @@
 package projeto.modelo.entidade.historico.entidade.paciente;
 
+import java.util.List;
+
 public interface PacienteDAO {
 
-	void inserirPaciente(Paciente paciente);
+	public void inserirPaciente(Paciente paciente);
 
-	void deletarPaciente(Paciente paciente);
+	public void deletarPaciente(Paciente paciente);
 
-	void atualizarPaciente(Paciente paciente);
+	public void atualizarPaciente(Paciente paciente);
 
+	Paciente recuperarPaciente(Paciente paciente);
+	
+	List<Paciente> recuperarPacientes();
 	
 
 }

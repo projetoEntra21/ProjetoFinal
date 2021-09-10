@@ -5,8 +5,6 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
@@ -23,7 +21,7 @@ public class Historico implements Serializable {
 
 	@Id
 	@Column(name = "id_paciente")
-	private int Id;
+	private Long Id;
 
 	@Column(name = "peso_historico", nullable = false, unique = false)
 	private double peso;
@@ -39,10 +37,10 @@ public class Historico implements Serializable {
 
 	@Column(name = "imc_historico", nullable = false, unique = false)
 	private double imc;
-	
+
 	@Column(name = "densidade_historico", nullable = false, unique = false)
 	private double densidade;
-	
+
 	@OneToOne(fetch = FetchType.LAZY)
 	@MapsId
 	@JoinColumn(name = "id_paciente")
@@ -59,7 +57,8 @@ public class Historico implements Serializable {
 
 	}
 
-	public Historico(int id, double peso, double altura, double quadril, double cintura, double imc, double densidade) {
+	public Historico(Long id, double peso, double altura, double quadril, double cintura, double imc,
+			double densidade) {
 
 		setId(id);
 		setAltura(altura);
@@ -125,11 +124,11 @@ public class Historico implements Serializable {
 
 	}
 
-	public int getId() {
+	public Long getId() {
 		return Id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		Id = id;
 	}
 

@@ -21,7 +21,7 @@ public class Contato implements Serializable {
 
 	@Id
 	@Column(name = "id_consulta")
-	private int Id;
+	private Long Id;
 
 	@Column(name = "email_contatos", length = 40, nullable = false, unique = true)
 	private String email;
@@ -40,7 +40,7 @@ public class Contato implements Serializable {
 	public Contato() {
 	}
 
-	public Contato(int id, String email, String telefone, String celular) {
+	public Contato(Long id, String email, String telefone, String celular) {
 
 		setId(id);
 		setCelular(celular);
@@ -57,11 +57,11 @@ public class Contato implements Serializable {
 
 	}
 
-	public int getId() {
+	public Long getId() {
 		return Id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		Id = id;
 	}
 

@@ -14,13 +14,13 @@ import projeto.modelo.entidade.historico.entidade.paciente.Paciente;
 
 @Entity
 @Table(name = "endereco")
-public class Endereço implements Serializable {
+public class EndereÃ§o implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name = "id_paciente")
-	private int Id;
+	private Long Id;
 
 	@Column(name = "rua_endereco", nullable = false, unique = false)
 	private String rua;
@@ -39,9 +39,15 @@ public class Endereço implements Serializable {
 	@JoinColumn(name = "id_paciente")
 	private Paciente paciente;
 
-	public Endereço() {}
+	public EndereÃ§o() {}
 	
-	public Endereço(String rua, String cep, int numero, String complemento) {
+	public EndereÃ§o(Long id){
+		
+		setId(Id);
+		
+	}
+	
+	public EndereÃ§o(String rua, String cep, int numero, String complemento) {
 
 		setRua(rua);
 		setCep(cep);
@@ -49,7 +55,7 @@ public class Endereço implements Serializable {
 		setNumero(numero);
 	}
 
-	public Endereço(int id,String rua, String cep, int numero, String complemento) {
+	public EndereÃ§o(Long id,String rua, String cep, int numero, String complemento) {
 
 		setId(id);
 		setRua(rua);
@@ -58,11 +64,11 @@ public class Endereço implements Serializable {
 		setNumero(numero);
 	}
 
-	public int getId() {
+	public Long getId() {
 		return Id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		Id = id;
 	}
 
