@@ -2,7 +2,7 @@
 <html lang="pt-br" >
 <head>
   <meta charset="UTF-8">
-  <title>Cadastro paciente</title>
+  <title>Cadastro nutricionista</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 <link rel="stylesheet" href="./style.css">
 
@@ -21,10 +21,10 @@
   <fieldset>
     <h2 class="fs-title">CRIE SUA CONTA</h2>
     <h3 class="fs-subtitle"></h3>
-    <input type="email" id="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
-    <input type="password" id="pwd" placeholder="Senha" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-  title="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres">
-  <input type="password" id="pwd" placeholder="Confirme sua senha" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+    <input type="email" id="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="O email teve conter um @" required>
+    <input type="password" placeholder="Senha" id="password" required  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres">
+        <input type="password" placeholder="Confirme Senha" id="confirm_password" required>
+      
     <button type="submit" class="button">Enviar <span class="send"><i class="far fa-paper-plane"></i></span></button>
   
 
