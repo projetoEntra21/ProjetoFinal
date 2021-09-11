@@ -1,9 +1,15 @@
-function montaTr(paciente){
-    var pacienteTr = document.createElement("tr");
-    pacienteTr.classList.add("paciente");
+function peso(peso){
+    if(peso >= 0 && peso <= 1000) {
+        return true;
+    }else{
+        return false;
+    }
+}
 
-    if (paciente.peso <= 0 || paciente.peso >= 200){       
-        tdImc.textContent = "Peso inválido";
-        pacienteTr.classList.add("paciente-invalido");
+function altura(altura){
+    if(altura => 0 && altura <= 3.0) {
+        return true;
+    }else{
+        return false;
     }
 }
