@@ -1,42 +1,23 @@
 package projeto.main;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.Month;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 import org.json.JSONObject;
 
-import projeto.controle.execptions.IdadeINvalidaExecption;
-import projeto.modelo.entidade.historico.HistoricoDAO;
-import projeto.modelo.entidade.historico.HistoricoDAOImpl;
-import projeto.modelo.entidade.historico.entidade.food.FoodDAO;
-import projeto.modelo.entidade.historico.entidade.food.FoodDAOImpl;
-import projeto.modelo.entidade.historico.entidade.nutricionista.Nutricionista;
-import projeto.modelo.entidade.historico.entidade.nutricionista.NutricionistaDAO;
-import projeto.modelo.entidade.historico.entidade.nutricionista.NutricionistaDAOimpl;
-import projeto.modelo.entidade.historico.entidade.paciente.Paciente;
-import projeto.modelo.entidade.historico.entidade.paciente.PacienteDAO;
-import projeto.modelo.entidade.historico.entidade.paciente.PacienteDAOimpl;
-import projeto.modelo.entidade.historico.info.consulta.Consulta;
-import projeto.modelo.entidade.historico.info.consulta.ConsultaDAO;
-import projeto.modelo.entidade.historico.info.consulta.ConsultaDAOimpl;
-import projeto.modelo.entidade.historico.info.contato.ContatoDAO;
-import projeto.modelo.entidade.historico.info.contato.ContatoDAOimpl;
-import projeto.modelo.entidade.historico.info.endereco.EndereçoDAO;
+
+import projeto.modelo.entidade.food.FoodDAO;
+import projeto.modelo.entidade.food.FoodDAOimpl;
 
 public class Principal {
 
-	public static void main(String[] args) throws IdadeINvalidaExecption {
+	public static void main(String[] args) {
 
 		Scanner leitor = new Scanner(System.in);
 
 		System.out.println("Digite um alimento: ");
 		String alimento = leitor.nextLine();
 
-		FoodDAO foodDAO = new FoodDAOImpl();
+		FoodDAO foodDAO = new FoodDAOimpl();
 
 		JSONObject jsonObject = foodDAO.readJsonFromUrl(
 				"https://api.edamam.com/api/food-database/v2/parser?app_id=0ade5519&app_key=765cf001c347b17087e6af924d562b33&ingr="
