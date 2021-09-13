@@ -25,7 +25,7 @@
 					<span class="input-icon">
 						<i class="far fa-user"></i>
 					</span>
-					<input id="Nome" type="text" class="form-input" required placeholder="Entre com seu nome" pattern="^[a-zA-Z]{3,25}$" title="Indique seu nome completo sem números">
+					<input id="Nome" type="text" class="form-input"  placeholder="Entre com seu nome" pattern="^[a-zA-Z]{3,25}$" title="Indique seu nome completo sem números" required>
 				</div>
 			</div>
 
@@ -49,24 +49,24 @@
 					<span class="input-icon">
 						<i class="far fa-clock"></i>
 					</span>
-					<input id="time" type="time" class="form-input" required min="07:00" max="18:00" step="3600">
+					<input id="time" type="time" class="form-input" required  pattern="([01][0-9]|2[0-3]):[0-5][0-9]">
 				</div>
 			</div>
 
 
 			<div class="form-section">
 				<div class="form-label">
-					<label for="">Serviço</label>
+					<label for="">Nutricionista</label>
 				</div>
 				<div class="input-container">
 					<span class="input-icon">
 						<i class="fas fa-asterisk"></i>
 					</span>
 					<select id="service" class="form-select" required>
-						<option value="" selected disabled>Selecione um Serviço de sua preferencia</option>
-						<option value="Option 1">Opção 1</option>
-						<option value="Option 2">Opção 2</option>
-						<option value="Option 3">Opção 3</option>
+						<option value="" selected disabled>Selecione um nutricionista de sua preferencia</option>
+						<option value="Option 1">Nutricionista 1 </option>
+						<option value="Option 2">Nutricionista 2</option>
+						<option value="Option 3">Nutricionista 3</option>
 			
 					</select>
 				</div>
@@ -76,6 +76,6 @@
 	</div>
 </div>
 <!-- partial -->
-  
+  <script src="script.js"></script>
 </body>
 </html>

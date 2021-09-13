@@ -1,5 +1,6 @@
 function peso(peso){
-    if(peso >= 0 && peso <= 1000) {
+    var number = document.createElementbyId("medidas").innerHTML;
+    if(peso >= 0 && peso <= 500) {
         return true;
     }else{
         return false;
