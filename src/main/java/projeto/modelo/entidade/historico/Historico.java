@@ -46,6 +46,11 @@ public class Historico implements Serializable {
 	@JoinColumn(name = "id_paciente")
 	private Paciente paciente;
 
+	public Historico (Long id) {
+		
+		setId(id);
+	}
+	
 	public Historico(double peso, double altura, double quadril, double cintura, double imc, double densidade) {
 
 		setAltura(altura);
@@ -69,7 +74,6 @@ public class Historico implements Serializable {
 		setQuadril(quadril);
 
 	}
-
 	public double getPeso() {
 		return peso;
 	}
