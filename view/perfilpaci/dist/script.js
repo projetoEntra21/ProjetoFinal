@@ -17,9 +17,6 @@ $("document").ready(function () {
 });
 
 
-
-
-
 document.getElementById('getval').addEventListener('change', readURL, true);
 function readURL(){
     var file = document.getElementById("getval").files[0];
@@ -35,12 +32,6 @@ function readURL(){
 
 
 
-
-
-
-
-
-
 $(function () {
   var $text = $('#texte');
   var $input = $('.texte');
@@ -50,3 +41,19 @@ $(function () {
     }, 0);
   });
 })
+
+var password = document.getElementById("password")
+   , confirm_password = document.getElementById("confirm_password");
+ 
+ function validatePassword(){
+   if(password.value != confirm_password.value) {
+     confirm_password.setCustomValidity("Senhas diferentes!");
+   } else {
+     confirm_password.setCustomValidity('');
+   }
+ }
+ 
+ password.onchange = validatePassword;
+ confirm_password.onkeyup = validatePassword;
+
+ 
