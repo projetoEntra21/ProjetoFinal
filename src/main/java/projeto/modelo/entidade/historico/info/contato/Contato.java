@@ -29,7 +29,7 @@ public class Contato implements Serializable {
 	@Column(name = "telefone_contatos", length = 8, nullable = false, unique = true)
 	private String telefone;
 
-	@Column(name = "celular_contatos", length = 11, nullable = false, unique = true )
+	@Column(name = "celular_contatos", length = 11, nullable = false, unique = true)
 	private String celular;
 
 	@OneToOne(fetch = FetchType.LAZY)
@@ -46,6 +46,12 @@ public class Contato implements Serializable {
 		setCelular(celular);
 		setEmail(email);
 		setTelefone(telefone);
+
+	}
+
+	public Contato(Long id) {
+
+		setId(id);
 
 	}
 

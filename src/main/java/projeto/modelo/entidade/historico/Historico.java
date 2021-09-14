@@ -41,6 +41,8 @@ public class Historico implements Serializable {
 	@Column(name = "densidade_historico", nullable = false, unique = false)
 	private double densidade;
 
+	//	ADICIONAR LOCALDATE 
+	
 	@OneToOne(fetch = FetchType.LAZY)
 	@MapsId
 	@JoinColumn(name = "id_paciente")
@@ -74,6 +76,14 @@ public class Historico implements Serializable {
 		setQuadril(quadril);
 
 	}
+	
+	public Historico(Long id) {
+
+		setId(id);
+		
+
+	}
+	
 	public double getPeso() {
 		return peso;
 	}

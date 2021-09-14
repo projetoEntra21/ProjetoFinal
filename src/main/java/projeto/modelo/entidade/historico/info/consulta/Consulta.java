@@ -42,17 +42,26 @@ public class Consulta {
 	public Consulta() {
 	}
 
-	public Consulta(LocalTime hora, LocalDate data) {
+	public Consulta(LocalTime hora, LocalDate data, Nutricionista nutricionista, Paciente paciente) {
 
 		setData(data);
 		setHora(hora);
-
+		setNutricionista(nutricionista);
+		setPaciente(paciente);
 	}
 
-	public Consulta(Long id, LocalTime hora, LocalDate data) {
+	public Consulta(Long id, LocalTime hora, LocalDate data, Nutricionista nutricionista, Paciente paciente) {
 
+		setId(id);
 		setData(data);
 		setHora(hora);
+		setNutricionista(nutricionista);
+		setPaciente(paciente);
+	}
+	
+	public Consulta(Long id) {
+
+
 		setId(id);
 
 	}

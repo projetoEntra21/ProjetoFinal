@@ -124,7 +124,7 @@ public class ConsultaDAOimpl implements ConsultaDAO {
 			criteria.select(raizConsulta);
 
 			ParameterExpression<Long> idConsulta = construtor.parameter(Long.class);
-			criteria.where(construtor.equal(raizConsulta.get("id"), idConsulta));
+			criteria.where(construtor.equal(raizConsulta.get("id_consulta"), idConsulta));
 
 			consultaRecuperado = sessao.createQuery(criteria).setParameter(idConsulta, consulta.getId())
 					.getSingleResult();

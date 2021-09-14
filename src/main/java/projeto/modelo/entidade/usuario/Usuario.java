@@ -23,6 +23,28 @@ public class Usuario implements Serializable {
 	@Column(name = "senha_usuario", length = 45, nullable = false, unique = false)
 	private String senha;
 
+	public Usuario() {
+
+	}
+
+	public Usuario(String login, String senha) {
+
+		this.login = login;
+		this.senha = senha;
+	}
+
+	public Usuario(Long id) {
+
+		this.id = id;
+
+	}
+
+	public Usuario(Long id, String login, String senha) {
+		this.id = id;
+		this.login = login;
+		this.senha = senha;
+	}
+
 	public Long getId() {
 		return id;
 	}
