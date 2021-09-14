@@ -1,4 +1,5 @@
 function validadata(d){
+
     var data = d.value; // pega o valor do input
     data = data.replace(/\//g, "-"); // substitui eventuais barras (ex. IE) "/" por hífen "-"
     var data_array = data.split("-"); // quebra a data em array
@@ -8,6 +9,7 @@ function validadata(d){
  
     // para o IE onde será inserido no formato dd/MM/yyyy
     if(data_array[0].length != 4){
+
        dia = data_array[0];
        mes = data_array[1];
        ano = data_array[2];
@@ -25,18 +27,9 @@ function validadata(d){
     diff = diff / (1000 * 60 * 60 * 24);
     
     if(diff < 0){
-       console.log("Data não pode ser anterior ao dia de hoje!");
+      alert("Data não pode ser anterior ao dia de hoje!");
     }else if(diff > 30){
-       console.log("Data não pode ser mais do que 30 dias pra frente!");
-    }else{
-       console.log("Data válida!");
+      alert("Data não exceder o limite de 30 dias!");
     }
     
  }
-
-var patternData = /^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/;
-if(!patternData.test(dataentrada)){
-    alert("Digite a data no formato Dia/Mês/Ano");
-	form_registra_entrada.dataentrada.focus();
-    return false;
-}
