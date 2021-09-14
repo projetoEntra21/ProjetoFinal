@@ -1,10 +1,15 @@
 package projeto.modelo.entidade.historico.info.consulta;
 
-import modelo.factory.conexao.ConexaoFactory;
+import java.util.List;
 
-import java.util.Objects;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.ParameterExpression;
+import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
+
+import modelo.factory.conexao.ConexaoFactory;
 
 public class ConsultaDAOimpl implements ConsultaDAO {
 
@@ -14,7 +19,6 @@ public class ConsultaDAOimpl implements ConsultaDAO {
 		fabrica = new ConexaoFactory();
 	}
 
-	@Override
 	public void inserirConsulta(Consulta consulta) {
 
 		Session sessao = null;
@@ -28,16 +32,22 @@ public class ConsultaDAOimpl implements ConsultaDAO {
 
 			sessao.getTransaction().commit();
 
-		} catch (Exception sql) {
-			sql.printStackTrace();
-		} finally {
-			if (Objects.nonNull(sessao))
-				sessao.close();
-		}
+		} catch (Exception sqlException) {
 
+			sqlException.printStackTrace();
+
+			if (sessao.getTransaction() != null) {
+				sessao.getTransaction().rollback();
+			}
+
+		} finally {
+
+			if (sessao != null) {
+				sessao.close();
+			}
+		}
 	}
 
-	@Override
 	public void deletarConsulta(Consulta consulta) {
 
 		Session sessao = null;
@@ -51,18 +61,23 @@ public class ConsultaDAOimpl implements ConsultaDAO {
 
 			sessao.getTransaction().commit();
 
-		} catch (Exception sql) {
-			sql.printStackTrace();
-			// TODO: handle exception
-		} finally {
-			if (Objects.nonNull(sessao))
-				sessao.close();
-		}
+		} catch (Exception sqlException) {
 
+			sqlException.printStackTrace();
+
+			if (sessao.getTransaction() != null) {
+				sessao.getTransaction().rollback();
+			}
+
+		} finally {
+
+			if (sessao != null) {
+				sessao.close();
+			}
+		}
 	}
 
-	@Override
-	public void atualizarDia(Consulta consulta) {
+	public void atualizarConsulta(Consulta consulta) {
 
 		Session sessao = null;
 
@@ -75,36 +90,102 @@ public class ConsultaDAOimpl implements ConsultaDAO {
 
 			sessao.getTransaction().commit();
 
-		} catch (Exception sql) {
-			sql.printStackTrace();
-			// TODO: handle exception
-		} finally {
-			if (Objects.nonNull(sessao))
-				sessao.close();
-		}
+		} catch (Exception sqlException) {
 
+			sqlException.printStackTrace();
+
+			if (sessao.getTransaction() != null) {
+				sessao.getTransaction().rollback();
+			}
+
+		} finally {
+
+			if (sessao != null) {
+				sessao.close();
+			}
+		}
 	}
 
-	@Override
-	public void atualizarHora(Consulta consulta) {
+	public Consulta recuperarConsulta(Consulta consulta) {
 
 		Session sessao = null;
+		Consulta consultaRecuperado = null;
 
 		try {
+
 			sessao = fabrica.getConexao().openSession();
 			sessao.beginTransaction();
 
-			sessao.update(consulta);
+			CriteriaBuilder construtor = sessao.getCriteriaBuilder();
+
+			CriteriaQuery<Consulta> criteria = construtor.createQuery(Consulta.class);
+			Root<Consulta> raizConsulta = criteria.from(Consulta.class);
+
+			criteria.select(raizConsulta);
+
+			ParameterExpression<Long> idConsulta = construtor.parameter(Long.class);
+			criteria.where(construtor.equal(raizConsulta.get("id_consulta"), idConsulta));
+
+			consultaRecuperado = sessao.createQuery(criteria).setParameter(idConsulta, consulta.getId())
+					.getSingleResult();
 
 			sessao.getTransaction().commit();
 
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (Exception sqlException) {
+
+			sqlException.printStackTrace();
+
+			if (sessao.getTransaction() != null) {
+				sessao.getTransaction().rollback();
+			}
+
 		} finally {
-			if (Objects.nonNull(sessao))
+
+			if (sessao != null) {
 				sessao.close();
+			}
 		}
 
+		return consultaRecuperado;
+	}
+
+	public List<Consulta> recuperarConsultas() {
+
+		Session sessao = null;
+		List<Consulta> contatos = null;
+
+		try {
+
+			sessao = fabrica.getConexao().openSession();
+			sessao.beginTransaction();
+
+			CriteriaBuilder construtor = sessao.getCriteriaBuilder();
+
+			CriteriaQuery<Consulta> criteria = construtor.createQuery(Consulta.class);
+			Root<Consulta> raizConsulta = criteria.from(Consulta.class);
+
+			criteria.select(raizConsulta);
+
+			contatos = sessao.createQuery(criteria).getResultList();
+
+			sessao.getTransaction().commit();
+
+		} catch (Exception sqlException) {
+
+			sqlException.printStackTrace();
+
+			if (sessao.getTransaction() != null) {
+				sessao.getTransaction().rollback();
+			}
+
+		} finally {
+
+			if (sessao != null) {
+				sessao.close();
+			}
+		}
+
+		return contatos;
 	}
 
 }

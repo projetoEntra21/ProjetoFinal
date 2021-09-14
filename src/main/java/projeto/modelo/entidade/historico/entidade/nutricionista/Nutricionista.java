@@ -1,7 +1,6 @@
 package projeto.modelo.entidade.historico.entidade.nutricionista;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -10,10 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import projeto.modelo.entidade.historico.info.consulta.Consulta;
@@ -27,7 +23,7 @@ public class Nutricionista implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_nutricionista")
-	private int Id;
+	private long Id;
 
 	@Column(name = "nome_nutricionista", length = 20, nullable = false, unique = false)
 	private String nome;
@@ -45,6 +41,11 @@ public class Nutricionista implements Serializable {
 	public Nutricionista() {
 	}
 
+	public Nutricionista(long Id) {
+		setId(Id);
+		
+	}
+	
 	public Nutricionista(String nome, String sobrenome, String cpnj) {
 
 		setNome(nome);
@@ -52,18 +53,18 @@ public class Nutricionista implements Serializable {
 		setCnpj(cpnj);
 	}
 
-	public Nutricionista(int Id, String nome, String sobrenome, String cpnj) {
+	public Nutricionista(long Id, String nome, String sobrenome, String cpnj) {
 		setId(Id);
 		setNome(sobrenome);
 		setSobrenome(sobrenome);
 		setCnpj(cpnj);
 	}
 
-	public int getId() {
+	public long getId() {
 		return Id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		Id = id;
 	}
 

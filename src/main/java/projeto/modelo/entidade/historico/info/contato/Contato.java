@@ -21,7 +21,7 @@ public class Contato implements Serializable {
 
 	@Id
 	@Column(name = "id_consulta")
-	private int Id;
+	private Long Id;
 
 	@Column(name = "email_contatos", length = 40, nullable = false, unique = true)
 	private String email;
@@ -29,7 +29,7 @@ public class Contato implements Serializable {
 	@Column(name = "telefone_contatos", length = 8, nullable = false, unique = true)
 	private String telefone;
 
-	@Column(name = "celular_contatos", length = 11, nullable = false, unique = true )
+	@Column(name = "celular_contatos", length = 11, nullable = false, unique = true)
 	private String celular;
 
 	@OneToOne(fetch = FetchType.LAZY)
@@ -40,12 +40,18 @@ public class Contato implements Serializable {
 	public Contato() {
 	}
 
-	public Contato(int id, String email, String telefone, String celular) {
+	public Contato(Long id, String email, String telefone, String celular) {
 
 		setId(id);
 		setCelular(celular);
 		setEmail(email);
 		setTelefone(telefone);
+
+	}
+
+	public Contato(Long id) {
+
+		setId(id);
 
 	}
 
@@ -57,11 +63,11 @@ public class Contato implements Serializable {
 
 	}
 
-	public int getId() {
+	public Long getId() {
 		return Id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		Id = id;
 	}
 

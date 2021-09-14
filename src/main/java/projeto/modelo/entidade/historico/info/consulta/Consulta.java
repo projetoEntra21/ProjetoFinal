@@ -1,13 +1,8 @@
 package projeto.modelo.entidade.historico.info.consulta;
 
-import java.sql.Date;
-import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,11 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import projeto.modelo.entidade.historico.entidade.nutricionista.Nutricionista;
@@ -32,7 +23,7 @@ public class Consulta {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_consulta")
-	int Id;
+	Long Id;
 
 	@Column(name = "horario_consulta", nullable = false, unique = false)
 	LocalTime hora;
@@ -43,7 +34,7 @@ public class Consulta {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_nutricionista")
 	private Nutricionista nutricionista;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_paciente")
 	private Paciente paciente;
@@ -51,26 +42,35 @@ public class Consulta {
 	public Consulta() {
 	}
 
-	public Consulta(LocalTime hora, LocalDate data) {
+	public Consulta(LocalTime hora, LocalDate data, Nutricionista nutricionista, Paciente paciente) {
 
 		setData(data);
 		setHora(hora);
-
+		setNutricionista(nutricionista);
+		setPaciente(paciente);
 	}
 
-	public Consulta(int id, LocalTime hora, LocalDate data) {
+	public Consulta(Long id, LocalTime hora, LocalDate data, Nutricionista nutricionista, Paciente paciente) {
 
+		setId(id);
 		setData(data);
 		setHora(hora);
+		setNutricionista(nutricionista);
+		setPaciente(paciente);
+	}
+	
+	public Consulta(Long id) {
+
+
 		setId(id);
 
 	}
 
-	public int getId() {
+	public Long getId() {
 		return Id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		Id = id;
 	}
 
@@ -105,6 +105,5 @@ public class Consulta {
 	public void setPaciente(Paciente paciente) {
 		this.paciente = paciente;
 	}
-
 
 }

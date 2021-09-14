@@ -335,8 +335,11 @@
     border: 1px solid #ddd;
     padding: 8px;
   }
-  
+ 
   #customers tr:nth-child(even){background-color: #F5FFFA;}
+  
+  #customers tr:nth-child(even){background-color: #FFFAFA;}
+
   
   #customers tr:hover {background-color: #F0FFF0;}
   
@@ -344,8 +347,7 @@
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color:#97d5b1
-    ;
+    background-color:#97d5b1;
     color: white;
   }
 
@@ -401,4 +403,6 @@
 
     }
     
-    
+  }
+
+  

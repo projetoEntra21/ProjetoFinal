@@ -1,3 +1,6 @@
-projeto\modelo\entidade\paciente\Paciente_.class
-projeto\modelo\entidade\nutricionista\Nutricionista_.class
-projeto\modelo\Historico_.class
+modelo/entidade/contato/Contato.class
+controle/servlet/ContatoServlet.class
+modelo/dao/contato/ContatoDAOImpl.class
+modelo/dao/contato/ContatoDAO.class
+modelo/entidade/contato/Contato_.class
+modelo/factory/conexao/ConexaoFactory.class

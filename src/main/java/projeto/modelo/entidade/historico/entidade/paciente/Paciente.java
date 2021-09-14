@@ -1,25 +1,18 @@
 package projeto.modelo.entidade.historico.entidade.paciente;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import projeto.controle.execptions.IdadeINvalidaExecption;
-import projeto.modelo.entidade.historico.entidade.nutricionista.Nutricionista;
 import projeto.modelo.entidade.historico.info.consulta.Consulta;
 
 @Entity
@@ -31,7 +24,7 @@ public class Paciente implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_paciente")
-	private int Id;
+	private long Id;
 
 	@Column(name = "cpf_paciente", nullable = false, unique = true)
 	private String cpf;
@@ -51,7 +44,7 @@ public class Paciente implements Serializable {
 	public Paciente() {
 	}
 
-	public Paciente(String cpf, String nome, String sobrenome, int idade) throws IdadeINvalidaExecption {
+	public Paciente(String cpf, String nome, String sobrenome, int idade){
 
 		setCpf(cpf);
 		setIdade(idade);
@@ -60,7 +53,7 @@ public class Paciente implements Serializable {
 
 	}
 
-	public Paciente(int Id, String cpf, String nome, String sobrenome, int idade) throws IdadeINvalidaExecption {
+	public Paciente(long Id, String cpf, String nome, String sobrenome, int idade){
 
 		setCpf(cpf);
 		setId(Id);
@@ -70,11 +63,17 @@ public class Paciente implements Serializable {
 
 	}
 
-	public int getId() {
+	public Paciente(long Id) {
+
+		setId(Id);
+
+	}
+
+	public long getId() {
 		return Id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		Id = id;
 	}
 
@@ -118,8 +117,5 @@ public class Paciente implements Serializable {
 	public void setConsultas(List<Consulta> consultas) {
 		this.consultas = consultas;
 	}
-
-	
-
 
 }

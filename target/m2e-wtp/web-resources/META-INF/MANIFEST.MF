@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+HEAD:target/classes/META-INF/MANIFEST.MF
+Built-By: ana.souza23
+Build-Jdk: 16.0.2
+Built-By: eshelley.silva
+Build-Jdk: 1.8.0_261
+master:target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
+Created-By: Maven Integration for Eclipse
+
