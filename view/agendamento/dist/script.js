@@ -25,9 +25,9 @@ function validadata(d){
     diff = diff / (1000 * 60 * 60 * 24);
     
     if(diff < 0){
-       console.log("Data não pode ser anterior ao dia de hoje!");
+       console.log("A Data não pode ser anterior ao dia de hoje!");
     }else if(diff > 30){
-       console.log("Data não pode ser mais do que 30 dias pra frente!");
+       console.log("A Data não pode exceder o limite de 30 dias!");
     }else{
        console.log("Data válida!");
     }
