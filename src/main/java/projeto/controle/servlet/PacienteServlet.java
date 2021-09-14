@@ -1,3 +1,4 @@
+package projeto.controle.servlet;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -13,6 +14,7 @@ import projeto.controle.execptions.IdadeINvalidaExecption;
 import projeto.modelo.entidade.historico.entidade.paciente.Paciente;
 import projeto.modelo.entidade.historico.entidade.paciente.PacienteDAO;
 import projeto.modelo.entidade.historico.entidade.paciente.PacienteDAOimpl;
+
 
 @WebServlet("/")
 public class PacienteServlet extends HttpServlet {
@@ -75,7 +77,7 @@ public class PacienteServlet extends HttpServlet {
 		String nome = request.getParameter("nome_paciente");
 		String cpf = request.getParameter("cpf_paciente");
 		String sobrenome = request.getParameter("sobrenome_paciente");
-		long idade = Long.parseLong(request.getParameter("idade_paciente"));
+		int idade = Integer.parseInt(request.getParameter("idade_paciente"));
 		dao.inserirPaciente(new Paciente(nome, cpf, sobrenome, idade));
 		response.sendRedirect("listar");
 	}
@@ -97,7 +99,7 @@ public class PacienteServlet extends HttpServlet {
 		String nome = request.getParameter("nome_paciente");
 		String cpf = request.getParameter("cpf_paciente");
 		String sobrenome = request.getParameter("sobrenome_paciente");
-		long idade = Long.parseLong(request.getParameter("idade_paciente"));
+		int idade = Integer.parseInt(request.getParameter("idade_paciente"));
 		dao.atualizarPaciente(new Paciente(id, nome, cpf, sobrenome, idade));
 		response.sendRedirect("listar");
 

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -80,13 +81,19 @@ public class ConsultaServlet extends HttpServlet {
 	private void inserirConsulta(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 
+		List<Consulta> consultas = new ArrayList<Consulta>();
+
+		String nome = request.getParameter("nome_paciente");
+		String sobrenome = request.getParameter("sobrenome_paciente");
 		long idnutri = Long.parseLong(request.getParameter("id_nutricionista"));
-		long idpaciente = Long.parseLong(request.getParameter("id_paciente"));
 		LocalDate date = LocalDate.parse(request.getParameter("dia"));
 		LocalTime hora = LocalTime.parse(request.getParameter("hora"));
-		Paciente paciente = dao2.recuperarPaciente(new Paciente(idpaciente));
+		Paciente paciente = dao2.recuperarPaciente(new Paciente(nome, sobrenome));
 		Nutricionista nutricionista = dao3.recuperarNutricionista(new Nutricionista(idnutri));
-		dao.inserirConsulta(new Consulta(hora, date, nutricionista, paciente));
+		Consulta consulta = dao.inserirConsulta(new Consulta(hora, date, nutricionista, paciente));
+		consultas.add(consulta);
+		dao2.atualizarPaciente(new Paciente(nome, sobrenome, consultas));
+		dao3.atualizarNutriocionista(new Nutricionista(idnutri, consultas));
 
 	}
 
@@ -109,7 +116,7 @@ public class ConsultaServlet extends HttpServlet {
 		LocalTime hora = LocalTime.parse(request.getParameter("horario_consulta"));
 		Paciente paciente = dao2.recuperarPaciente(new Paciente(idpaciente));
 		Nutricionista nutricionista = dao3.recuperarNutricionista(new Nutricionista(idnutri));
-		dao.atualizarConsulta(new Consulta(idconsulta,hora, date, nutricionista, paciente));
+		dao.atualizarConsulta(new Consulta(idconsulta, hora, date, nutricionista, paciente));
 
 	}
 
