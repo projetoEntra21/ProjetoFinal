@@ -24,7 +24,10 @@ public class Paciente implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_paciente")
+
+	private Long Id;
 	private long Id;
+
 
 	@Column(name = "cpf_paciente", nullable = false, unique = true)
 	private String cpf;
@@ -36,7 +39,7 @@ public class Paciente implements Serializable {
 	private String sobrenome;
 
 	@Column(name = "idade_paciente", nullable = false, unique = false)
-	private int idade;
+	private Long idade;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "paciente")
 	private List<Consulta> consultas;
@@ -44,7 +47,17 @@ public class Paciente implements Serializable {
 	public Paciente() {
 	}
 
+
+	public Paciente (Long id) {
+		
+		setId(id);
+		
+	}
+	
+	public Paciente(String cpf, String nome, String sobrenome, Long idade) throws IdadeINvalidaExecption {
+
 	public Paciente(String cpf, String nome, String sobrenome, int idade){
+
 
 		setCpf(cpf);
 		setIdade(idade);
@@ -53,7 +66,10 @@ public class Paciente implements Serializable {
 
 	}
 
+
+	public Paciente(Long Id, String cpf, String nome, String sobrenome, Long idade) throws IdadeINvalidaExecption {
 	public Paciente(long Id, String cpf, String nome, String sobrenome, int idade){
+
 
 		setCpf(cpf);
 		setId(Id);
@@ -63,6 +79,11 @@ public class Paciente implements Serializable {
 
 	}
 
+	public Long getId() {
+		return Id;
+	}
+
+	public void setId(Long id) {
 	public Paciente(long Id) {
 
 		setId(Id);
@@ -101,11 +122,11 @@ public class Paciente implements Serializable {
 		this.sobrenome = sobrenome;
 	}
 
-	public int getIdade() {
+	public Long getIdade() {
 		return idade;
 	}
 
-	public void setIdade(int idade) {
+	public void setIdade(Long idade) {
 		this.idade = idade;
 
 	}

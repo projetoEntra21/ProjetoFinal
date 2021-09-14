@@ -29,7 +29,7 @@ public class Endereço implements Serializable {
 	private String cep;
 
 	@Column(name = "numero_endereco", nullable = false, unique = true)
-	private int numero;
+	private Long numero;
 
 	@Column(name = "complemento_endereco", length = 30, nullable = false, unique = false)
 	private String complemento;
@@ -47,7 +47,7 @@ public class Endereço implements Serializable {
 		
 	}
 	
-	public Endereço(String rua, String cep, int numero, String complemento) {
+	public Endereço(String rua, String cep, Long numero, String complemento) {
 
 		setRua(rua);
 		setCep(cep);
@@ -55,7 +55,7 @@ public class Endereço implements Serializable {
 		setNumero(numero);
 	}
 
-	public Endereço(Long id,String rua, String cep, int numero, String complemento) {
+	public Endereço(Long id,String rua, String cep, Long numero, String complemento) {
 
 		setId(id);
 		setRua(rua);
@@ -88,11 +88,11 @@ public class Endereço implements Serializable {
 		this.cep = cep;
 	}
 
-	public int getNumero() {
+	public Long getNumero() {
 		return numero;
 	}
 
-	public void setNumero(int numero) {
+	public void setNumero(Long numero) {
 		this.numero = numero;
 	}
 
