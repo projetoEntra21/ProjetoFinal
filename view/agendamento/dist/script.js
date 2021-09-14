@@ -1,8 +1,42 @@
-$(document).on('click', 'button', function(){
-    var campo = $('input').val(); // Pega valor do campo
-nomeSobrenome = /\b[A-Za-zÀ-ú][A-Za-zÀ-ú]+,?\s[A-Za-zÀ-ú][A-Za-zÀ-ú]{2,19}\b/gi;
-// Regex para duas strings, separadas com espaço e com no mínimo 3 caracteres. Aceita acentuação e rejeita números.
+function validadata(d){
+    var data = d.value; // pega o valor do input
+    data = data.replace(/\//g, "-"); // substitui eventuais barras (ex. IE) "/" por hífen "-"
+    var data_array = data.split("-"); // quebra a data em array
+    var dia = data_array[2];
+    var mes = data_array[1];
+    var ano = data_array[0];
+ 
+    // para o IE onde será inserido no formato dd/MM/yyyy
+    if(data_array[0].length != 4){
+       dia = data_array[0];
+       mes = data_array[1];
+       ano = data_array[2];
+    }
+ 
+    var hoje = new Date();
+    var d1 = hoje.getDate();
+    var m1 = hoje.getMonth()+1;
+    var a1 = hoje.getFullYear();
+ 
+    var d1 = new Date(a1, m1, d1);
+    var d2 = new Date(ano, mes, dia);
+ 
+    var diff = d2.getTime() - d1.getTime();
+    diff = diff / (1000 * 60 * 60 * 24);
+    
+    if(diff < 0){
+       console.log("Data não pode ser anterior ao dia de hoje!");
+    }else if(diff > 30){
+       console.log("Data não pode ser mais do que 30 dias pra frente!");
+    }else{
+       console.log("Data válida!");
+    }
+    
+ }
 
-// Faz a validacao do regex no campo indicado
-if(!(nomeSobrenome.test(campo))){
-        alert('Inválido'); } });
+var patternData = /^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/;
+if(!patternData.test(dataentrada)){
+    alert("Digite a data no formato Dia/Mês/Ano");
+	form_registra_entrada.dataentrada.focus();
+    return false;
+}
