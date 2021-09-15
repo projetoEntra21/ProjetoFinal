@@ -41,15 +41,15 @@ public class UsuarioServlet extends HttpServlet {
 
 			switch (action) {
 
-			case "/inserir":
+			case "/inserirUsuario":
 				inserirUsuario(request, response);
 				break;
 
-			case "/deletar":
+			case "/deletarUsuario":
 				deletarUsuario(request, response);
 				break;
 
-			case "/atualizar":
+			case "/atualizarUsuario":
 				atualizarUsuario(request, response);
 				break;
 
@@ -79,7 +79,7 @@ public class UsuarioServlet extends HttpServlet {
 
 		String login = request.getParameter("login_usuario");
 		String senha = request.getParameter("senha_usuario");
-		dao.atualizarUsuario(new Usuario(login, senha));
+		dao.inserirUsuario(new Usuario(login, senha));
 
 	}
 

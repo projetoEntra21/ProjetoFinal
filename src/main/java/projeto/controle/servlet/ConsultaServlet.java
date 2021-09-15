@@ -48,10 +48,10 @@ public class ConsultaServlet extends HttpServlet {
 		try {
 
 			switch (action) {
-			case "/inserir":
+			case "/inserirConsulta":
 				inserirConsulta(request, response);
 				break;
-			case "/deletar":
+			case "/deletarConsulta":
 				deletarConsulta(request, response);
 				break;
 			case "/atualizarConsulta":
