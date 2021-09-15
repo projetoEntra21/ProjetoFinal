@@ -41,15 +41,15 @@ public class contatoServlet extends HttpServlet {
 
 			switch (action) {
 
-			case "/inserir":
+			case "/inserirContato":
 				inserirContato(request, response);
 				break;
 
-			case "/deletar":
+			case "/deletarContato":
 				deletarContato(request, response);
 				break;
 
-			case "/atualizar":
+			case "/atualizarContato":
 				atualizarContato(request, response);
 				break;
 

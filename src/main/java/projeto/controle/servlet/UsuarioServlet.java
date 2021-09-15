@@ -41,15 +41,15 @@ public class UsuarioServlet extends HttpServlet {
 
 			switch (action) {
 
-			case "/inserir":
+			case "/inserirUsuario":
 				inserirUsuario(request, response);
 				break;
 
-			case "/deletar":
+			case "/deletarUsuario":
 				deletarUsuario(request, response);
 				break;
 
-			case "/atualizar":
+			case "/atualizarUsuario":
 				atualizarUsuario(request, response);
 				break;
 
