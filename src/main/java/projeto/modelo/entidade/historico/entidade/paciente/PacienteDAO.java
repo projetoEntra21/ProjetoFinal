@@ -12,6 +12,10 @@ public interface PacienteDAO {
 
 	Paciente recuperarPaciente(Paciente paciente);
 	
+	Paciente recuperarPacientePeloNome(Paciente paciente);
+	
+	Paciente recuperarPacientePeloSobrenome(Paciente paciente);
+	
 	List<Paciente> recuperarPacientes();
 	
 

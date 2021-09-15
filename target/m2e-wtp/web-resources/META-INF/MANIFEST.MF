@@ -1,5 +1,7 @@
-Manifest-Version: 1.0
+Manifest-Version: 1.0 HEAD
 Built-By: ana.souza23
+Built-By: gabriel.henrique
+master
 Build-Jdk: 16.0.2
 Created-By: Maven Integration for Eclipse
 

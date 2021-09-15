@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface ConsultaDAO {
 
-	public void inserirConsulta(Consulta consulta);
+	public Consulta inserirConsulta(Consulta consulta);
 
 	public void deletarConsulta(Consulta consulta);
 

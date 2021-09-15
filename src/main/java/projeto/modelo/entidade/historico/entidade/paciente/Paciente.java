@@ -24,10 +24,7 @@ public class Paciente implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_paciente")
-
 	private Long Id;
-	private long Id;
-
 
 	@Column(name = "cpf_paciente", nullable = false, unique = true)
 	private String cpf;
@@ -39,7 +36,7 @@ public class Paciente implements Serializable {
 	private String sobrenome;
 
 	@Column(name = "idade_paciente", nullable = false, unique = false)
-	private Long idade;
+	private int idade;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "paciente")
 	private List<Consulta> consultas;
@@ -47,17 +44,20 @@ public class Paciente implements Serializable {
 	public Paciente() {
 	}
 
+	public Paciente(String nome) {
 
-	public Paciente (Long id) {
-		
-		setId(id);
-		
+		setNome(nome);
+
 	}
 	
-	public Paciente(String cpf, String nome, String sobrenome, Long idade) throws IdadeINvalidaExecption {
+	
+	public Paciente(Long id) {
 
-	public Paciente(String cpf, String nome, String sobrenome, int idade){
+		setId(id);
 
+	}
+
+	public Paciente(String cpf, String nome, String sobrenome, int idade) {
 
 		setCpf(cpf);
 		setIdade(idade);
@@ -66,10 +66,23 @@ public class Paciente implements Serializable {
 
 	}
 
+	public Paciente(String nome, String sobrenome, List<Consulta> consultas) {
 
-	public Paciente(Long Id, String cpf, String nome, String sobrenome, Long idade) throws IdadeINvalidaExecption {
-	public Paciente(long Id, String cpf, String nome, String sobrenome, int idade){
+		setSobrenome(sobrenome);
+		setNome(nome);
+		setConsultas(consultas);
 
+	}
+	
+	public Paciente(String nome, String sobrenome) {
+
+		setSobrenome(sobrenome);
+		setNome(nome);
+		
+
+	}
+
+	public Paciente(long Id, String cpf, String nome, String sobrenome, int idade) {
 
 		setCpf(cpf);
 		setId(Id);
@@ -79,11 +92,11 @@ public class Paciente implements Serializable {
 
 	}
 
-	public Long getId() {
-		return Id;
+	public void setId(Long id) {
+		this.Id = id;
+
 	}
 
-	public void setId(Long id) {
 	public Paciente(long Id) {
 
 		setId(Id);
@@ -122,11 +135,11 @@ public class Paciente implements Serializable {
 		this.sobrenome = sobrenome;
 	}
 
-	public Long getIdade() {
+	public int getIdade() {
 		return idade;
 	}
 
-	public void setIdade(Long idade) {
+	public void setIdade(int idade) {
 		this.idade = idade;
 
 	}
