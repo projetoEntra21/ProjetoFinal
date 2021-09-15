@@ -1,3 +1,4 @@
+package projeto.controle.servlet;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -37,7 +38,7 @@ public class NutricionistaServlet extends HttpServlet {
 
 			switch (action) {
 
-			case "/inserirNutricionista":
+			case "/inserirNutricionista": 
 				inserirNutricionista(request, response);
 				break;
 
@@ -76,7 +77,6 @@ public class NutricionistaServlet extends HttpServlet {
 		String sobrenome = request.getParameter("sobrenome_nutricionista");
 		String cnpj = request.getParameter("cnpj");
 		dao.inserirNutricionista(new Nutricionista(nome, sobrenome, cnpj));
-		response.sendRedirect("listar");
 
 	}
 
@@ -86,7 +86,6 @@ public class NutricionistaServlet extends HttpServlet {
 		long id = Long.parseLong(request.getParameter("id_nutricionista"));
 		Nutricionista nustricionista = dao.recuperarNutricionista(new Nutricionista(id));
 		dao.deletarNutricionista(nustricionista);
-		response.sendRedirect("listar");
 
 	}
 
@@ -98,7 +97,6 @@ public class NutricionistaServlet extends HttpServlet {
 		String sobrenome = request.getParameter("sobrenome_nutricionista");
 		String cnpj = request.getParameter("cnpj");
 		dao.atualizarNutriocionista(new Nutricionista(id, nome, sobrenome, cnpj));
-		response.sendRedirect("listar");
 
 	}
 
