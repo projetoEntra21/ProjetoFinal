@@ -79,7 +79,7 @@ public class UsuarioServlet extends HttpServlet {
 
 		String login = request.getParameter("login_usuario");
 		String senha = request.getParameter("senha_usuario");
-		dao.atualizarUsuario(new Usuario(login, senha));
+		dao.inserirUsuario(new Usuario(login, senha));
 
 	}
 
