@@ -8,16 +8,17 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <script src="script.js"></script>
     <form id="medidas">
         <fieldset>
             <h2 class="fs-titulo">Informe as medidas</h2>
             <h3 class="fs-subtitulo"></h3>
-            <input type="number" name="peso" placeholder="Peso" id="peso"  pattern= "(peso >= 0 && peso = 300)" title="Seu peso deve ser maior que 0 e menor que 500" required />
-            <input type="number" name="altura" placeholder="Altura" id="altura"  pattern= "(altura >= 0 && altura = 3.0)" title="Sua altura deve ser maior que 0 e menor que 3.0" required />
-            <input type="number" name="medidacintura" placeholder="Medida cintura"  pattern= "(cintura >= 0 && cintura = 102)" title="Sua cintura deve ser maior que 0 e menor que 102" required/>
-            <input type="number" name="medidaquadril" placeholder="Medida quadril"  pattern= "(quadril >= 0 && quadril = 1)" title="Seu quadril deve ser maior que 0 e menor que 1"required />
-            <input type="number" name="medidabusto" placeholder="Medida busto"  pattern= "(busto >= 0 && busto = 200)" title="Seu busto deve ser maior que 0 e menor que 200" required />
-            <button type="submit" class="button">Enviar <span class="send"><i class="far fa-paper-plane"></i></span></button>
+            <input type="number" name="peso" placeholder="Peso" id="peso" title="Seu peso deve ser maior que 0 e menor que 500" required />
+            <input type="number" name="altura" placeholder="Altura" id="altura" title="Sua altura deve ser maior que 0 e menor que 3.0" required />
+            <input type="number" name="medidacintura" placeholder="Medida cintura" id="cintura"  title="Sua cintura deve ser maior que 0 e menor que 102" required/>
+            <input type="number" name="medidaquadril" placeholder="Medida quadril" id="quadril"  title="Seu quadril deve ser maior que 0 e menor que 1"required />
+            <input type="number" name="medidabusto" placeholder="Medida busto" id="busto"  title="Seu busto deve ser maior que 0 e menor que 200" required />
+            <button type="submit" id="botao" class="button">Enviar <span class="send"><i class="far fa-paper-plane"></i></span></button>
           </fieldset>
         </form>
 </body>

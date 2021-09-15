@@ -17,3 +17,16 @@ function validatePassword(){
     confirm_password.setCustomValidity('');
   }
 }
+
+var validaForm = document.getElementById("password"),
+  confirm_password = document.getElementById("confirm_passord"),
+    cnpj = document.getElementById("cnpj")
+
+  if(password == null || cnpj == null){
+    
+  }
+  
+
+
+
+    
