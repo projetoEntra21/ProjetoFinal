@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<html>
+    
+<html lang ="pt-br">
 <head>
 <title>Cadastro de Paciente</title>
 </head>
@@ -41,10 +42,7 @@
 						value="<c:out value='${paciente.idade}'/>" name="idade">
 				    <label>Cpf:</label> <input type="text"
 						value="<c:out value='${paciente.cpf}'/>" name="cpf">
-				    <label>Contato:</label> <input type="text"
-						value="<c:out value='${paciente.contato}'/>" name="contato">
-				    <label>Endereco:</label> <input type="text"
-						value="<c:out value='${paciente.endereco}'/>" name="endereço">
+			
 				<button type="submit">Salvar</button>
 				</form>
 			</div>
