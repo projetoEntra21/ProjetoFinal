@@ -2,8 +2,8 @@
 <html lang="pt-br" >
 <head>
   <meta charset="UTF-8">
-  <title>Cadastro paciente</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <title>Cadastro paciente</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 <link rel="stylesheet" href="./style.css">
 <script src="./script.js"></script>
 
@@ -15,14 +15,38 @@
 
   
   </ul>
-  <!-- fieldsets -->
+
   <fieldset>
     <h2 class="fs-title">CRIE SUA CONTA</h2>
     <h3 class="fs-subtitle"></h3>
     <input type="email" id="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="O email teve conter um @" required>
     <input type="password" placeholder="Senha" id="password" required  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres">
         <input type="password" placeholder="Confirme Senha" id="confirm_password" required> 
-  <button type="submit" class="button">Enviar <span class="send"><i class="far fa-paper-plane"></i></span></button>
+
+  <button type="button" id=botao class="modal-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Enviar
+              </button>
+              <input type="checkbox" id="modal" />
+<label for="modal" class="modal-btn">
+    <i class="fa fa-fire" aria-hidden="true"></i>
+</label>
+<!-- <div class="modal-bg"></div> -->
+<label for="modal" class="modal-bg"></label>
+<div class="modal-content">
+    <label for="modal" class="close">
+        <i class="fa fa-times" aria-hidden="true"></i>
+    </label>
+    <header>
+        <h2>Confirmação de cadastro</h3>
+    </header>
+    <article class="content">
+        <p>Seu cadastro foi concluido com sucesso :).</p>
+    </article>
+    <footer>
+        <label for="modal" class="button ">Fechar</label>
+    </footer>
+</div>
+ 
   </fieldset>
   
 </form>

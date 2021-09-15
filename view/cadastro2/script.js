@@ -22,3 +22,9 @@ console.log(validateEmail('texto')); // false
  
  password.onchange = validatePassword;
  confirm_password.onkeyup = validatePassword;
+
+ var button= document.getElementById ('botao');
+
+if(button != null) 
+
+alert ("Enviado com sucesso");
