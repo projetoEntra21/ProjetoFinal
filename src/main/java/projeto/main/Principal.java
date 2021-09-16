@@ -4,9 +4,8 @@ import java.util.Scanner;
 
 import org.json.JSONObject;
 
-
-import projeto.modelo.entidade.food.FoodDAO;
-import projeto.modelo.entidade.food.FoodDAOimpl;
+import modelo.dao.food.FoodDAO;
+import modelo.dao.food.FoodDAOimpl;
 
 public class Principal {
 

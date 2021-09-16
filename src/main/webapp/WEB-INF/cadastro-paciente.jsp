@@ -9,13 +9,9 @@
 <meta charset="UTF-8">
 <title>Cadastro paciente</title>
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-<link rel="stylesheet" href="./style.css">
-<script src="./script.js"></script>
 
 </head>
 <body>
-<!-- partial:index.partial.html -->
-<!-- multistep form -->
 <form id="msform">
 
   
