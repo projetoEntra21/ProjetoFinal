@@ -73,7 +73,7 @@ public class ConsultaServlet extends HttpServlet {
 
 		List<Consulta> consultas = dao.recuperarConsultas();
 		request.setAttribute("consulta", consultas);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("consulta-paciente.jsp");
 		dispatcher.forward(request, response);
 
 	}
@@ -94,7 +94,7 @@ public class ConsultaServlet extends HttpServlet {
 		consultas.add(consulta);
 		dao2.atualizarPaciente(new Paciente(nome, sobrenome, consultas));
 		dao3.atualizarNutriocionista(new Nutricionista(idnutri, consultas));
-
+		response.sendRedirect("listar");
 	}
 
 	private void deletarConsulta(HttpServletRequest request, HttpServletResponse response)
@@ -103,6 +103,7 @@ public class ConsultaServlet extends HttpServlet {
 		long id = Long.parseLong(request.getParameter("id_consulta"));
 		Consulta consulta = dao.recuperarConsulta(new Consulta(id));
 		dao.deletarConsulta(consulta);
+		response.sendRedirect("listar");
 
 	}
 
@@ -117,6 +118,7 @@ public class ConsultaServlet extends HttpServlet {
 		Paciente paciente = dao2.recuperarPaciente(new Paciente(idpaciente));
 		Nutricionista nutricionista = dao3.recuperarNutricionista(new Nutricionista(idnutri));
 		dao.atualizarConsulta(new Consulta(idconsulta, hora, date, nutricionista, paciente));
+		response.sendRedirect("listar");
 
 	}
 
