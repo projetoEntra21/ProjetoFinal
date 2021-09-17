@@ -14,7 +14,7 @@ import modelo.dao.nutricionista.NutricionistaDAO;
 import modelo.dao.nutricionista.NutricionistaDAOimpl;
 import modelo.entidade.nutricionista.Nutricionista;
 
-@WebServlet("/")
+@WebServlet("/Nutricionista")
 public class NutricionistaServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;

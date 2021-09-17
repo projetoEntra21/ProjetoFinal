@@ -15,7 +15,7 @@ import modelo.dao.historico.HistoricoDAO;
 import modelo.dao.historico.HistoricoDAOImpl;
 import modelo.entidade.historico.Historico;
 
-@WebServlet("/")
+@WebServlet("/Historico")
 public class HistoricoServelet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;

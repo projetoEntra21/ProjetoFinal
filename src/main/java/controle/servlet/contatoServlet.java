@@ -15,7 +15,7 @@ import modelo.dao.contato.ContatoDAO;
 import modelo.dao.contato.ContatoDAOimpl;
 import modelo.entidade.contato.Contato;
 
-@WebServlet("/")
+@WebServlet("/Contato")
 public class contatoServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;

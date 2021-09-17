@@ -15,7 +15,7 @@ import modelo.dao.usuario.UsuarioDAO;
 import modelo.dao.usuario.UsuarioDAOimpl;
 import modelo.entidade.usuario.Usuario;
 
-@WebServlet("/")
+@WebServlet("/Usuario")
 public class UsuarioServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;

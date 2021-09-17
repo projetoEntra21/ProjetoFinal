@@ -22,7 +22,7 @@ import modelo.entidade.consulta.Consulta;
 import modelo.entidade.nutricionista.Nutricionista;
 import modelo.entidade.paciente.Paciente;
 
-@WebServlet("/")
+@WebServlet("/Consulta")
 public class ConsultaServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;

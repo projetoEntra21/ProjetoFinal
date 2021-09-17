@@ -26,6 +26,8 @@ public class Principal {
 		double lucas = food.getJSONObject("nutrients").getDouble("ENERC_KCAL");
 
 		System.out.println(lucas);
+		
+leitor.close();
 
 //		EndereçoDAO endereçoDAO = new EndereçoDAOimpl();
 //		PacienteDAO pacienteDAO = new PacienteDAOimpl();

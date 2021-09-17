@@ -14,10 +14,10 @@ import modelo.dao.endereco.EnderecoDAOimpl;
 import modelo.dao.endereco.EndereçoDAO;
 import modelo.entidade.endereco.Endereço;
 
-@WebServlet("/")
+@WebServlet("/Endereço")
 public class EndereçoServlet extends HttpServlet {
 
-	private static final long serialVersion = 1L;
+	private static final long serialVersionUID = 1L;
 	private EndereçoDAO dao;
 
 	public void init() {
