@@ -22,9 +22,11 @@ console.log(validateEmail('texto')); // false
  
  password.onchange = validatePassword;
  confirm_password.onkeyup = validatePassword;
-
- var button= document.getElementById ('botao');
-
-if(button != null) 
-
-alert ("Enviado com sucesso");
+ $("#submit").on("click", function() {
+  if ($("#form-login").valid()) { //Verifica se o formulário está válido.
+    $('#myModal').modal('show'); //Se for válido, exibe o modal.
+  }
+});
+$('#myModal').on('shown.bs.modal', function () {
+  $('#meuInput').trigger('focus')
+})

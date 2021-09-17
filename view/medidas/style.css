@@ -17,10 +17,13 @@ body {
 }
 /*form styles*/
 #medidas{
-	width: 400px;
+	width: 500px;
 	margin: 250px auto;
+  left: 680px;
 	text-align: center;
-	position: relative;
+	position:absolute;
+  background: 
+  #97D5b1;
 }
 #medidas fieldset {
 	background: white;

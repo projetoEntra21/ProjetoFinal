@@ -18,10 +18,13 @@ body {
 }
 /*form styles*/
 #msform {
-	width: 400px;
-	margin: 270px auto;
+	width: 500px;
+	margin: 250px auto;
+  left: 680px;
 	text-align: center;
-	position: relative;
+	position:absolute;
+  background: 
+  #97D5b1;
 }
 #msform fieldset {
 	background: white;
@@ -82,4 +85,7 @@ body {
 	font-size: 13px;
 	color: #666;
 	margin-bottom: 20px;
+}
+.modal{
+	
 }
