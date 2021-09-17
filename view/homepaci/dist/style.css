@@ -23,7 +23,7 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
@@ -235,6 +235,7 @@ button.learnmore:active::before {
 .card{
   
   top: -190px;
+
 }
 body .footer {
   z-index: 1;
@@ -338,3 +339,4 @@ body .footer .content > div .image {
     bottom: var(--distance, 10rem);
   }
 }
+
