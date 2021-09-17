@@ -1,4 +1,4 @@
-package modelo.dao.consulta;
+package modelo.dao.usuario;
 
 import java.util.List;
 
@@ -9,19 +9,18 @@ import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 
-import modelo.entidade.consulta.Consulta;
+import modelo.entidade.usuario.Usuario;
 import modelo.factory.conexao.ConexaoFactory;
 
-public class ConsultaDAOimpl implements ConsultaDAO {
+public class UsuarioDAOimpl implements UsuarioDAO {
 
 	private ConexaoFactory fabrica;
 
-	public ConsultaDAOimpl() {
+	public UsuarioDAOimpl() {
 		fabrica = new ConexaoFactory();
 	}
 
-	public Consulta inserirConsulta(Consulta consulta) {
-
+	public void inserirUsuario(Usuario usuario) {
 		Session sessao = null;
 
 		try {
@@ -29,37 +28,7 @@ public class ConsultaDAOimpl implements ConsultaDAO {
 			sessao = fabrica.getConexao().openSession();
 			sessao.beginTransaction();
 
-			sessao.save(consulta);
-
-			sessao.getTransaction().commit();
-
-		} catch (Exception sqlException) {
-
-			sqlException.printStackTrace();
-
-			if (sessao.getTransaction() != null) {
-				sessao.getTransaction().rollback();
-			}
-
-		} finally {
-
-			if (sessao != null) {
-				sessao.close();
-			}
-		}
-		return consulta;
-	}
-
-	public void deletarConsulta(Consulta consulta) {
-
-		Session sessao = null;
-
-		try {
-
-			sessao = fabrica.getConexao().openSession();
-			sessao.beginTransaction();
-
-			sessao.delete(consulta);
+			sessao.save(usuario);
 
 			sessao.getTransaction().commit();
 
@@ -79,8 +48,7 @@ public class ConsultaDAOimpl implements ConsultaDAO {
 		}
 	}
 
-	public void atualizarConsulta(Consulta consulta) {
-
+	public void deletarUsuario(Usuario usuario) {
 		Session sessao = null;
 
 		try {
@@ -88,7 +56,7 @@ public class ConsultaDAOimpl implements ConsultaDAO {
 			sessao = fabrica.getConexao().openSession();
 			sessao.beginTransaction();
 
-			sessao.update(consulta);
+			sessao.delete(usuario);
 
 			sessao.getTransaction().commit();
 
@@ -108,28 +76,15 @@ public class ConsultaDAOimpl implements ConsultaDAO {
 		}
 	}
 
-	public Consulta recuperarConsulta(Consulta consulta) {
-
+	public void atualizarUsuario(Usuario usuario) {
 		Session sessao = null;
-		Consulta consultaRecuperado = null;
 
 		try {
 
 			sessao = fabrica.getConexao().openSession();
 			sessao.beginTransaction();
 
-			CriteriaBuilder construtor = sessao.getCriteriaBuilder();
-
-			CriteriaQuery<Consulta> criteria = construtor.createQuery(Consulta.class);
-			Root<Consulta> raizConsulta = criteria.from(Consulta.class);
-
-			criteria.select(raizConsulta);
-
-			ParameterExpression<Long> idConsulta = construtor.parameter(Long.class);
-			criteria.where(construtor.equal(raizConsulta.get("id_consulta"), idConsulta));
-
-			consultaRecuperado = sessao.createQuery(criteria).setParameter(idConsulta, consulta.getId())
-					.getSingleResult();
+			sessao.update(usuario);
 
 			sessao.getTransaction().commit();
 
@@ -147,14 +102,11 @@ public class ConsultaDAOimpl implements ConsultaDAO {
 				sessao.close();
 			}
 		}
-
-		return consultaRecuperado;
 	}
 
-	public List<Consulta> recuperarConsultas() {
-
+	public Usuario recuperarUsuario(Usuario usuario) {
 		Session sessao = null;
-		List<Consulta> contatos = null;
+		Usuario usuarioRecuperado = null;
 
 		try {
 
@@ -163,12 +115,15 @@ public class ConsultaDAOimpl implements ConsultaDAO {
 
 			CriteriaBuilder construtor = sessao.getCriteriaBuilder();
 
-			CriteriaQuery<Consulta> criteria = construtor.createQuery(Consulta.class);
-			Root<Consulta> raizConsulta = criteria.from(Consulta.class);
+			CriteriaQuery<Usuario> criteria = construtor.createQuery(Usuario.class);
+			Root<Usuario> raizUsuario = criteria.from(Usuario.class);
 
-			criteria.select(raizConsulta);
+			criteria.select(raizUsuario);
 
-			contatos = sessao.createQuery(criteria).getResultList();
+			ParameterExpression<Long> idUsuario = construtor.parameter(Long.class);
+			criteria.where(construtor.equal(raizUsuario.get("id"), idUsuario));
+
+			usuarioRecuperado = sessao.createQuery(criteria).setParameter(idUsuario, usuario.getId()).getSingleResult();
 
 			sessao.getTransaction().commit();
 
@@ -187,7 +142,44 @@ public class ConsultaDAOimpl implements ConsultaDAO {
 			}
 		}
 
-		return contatos;
+		return usuarioRecuperado;
 	}
 
+	public List<Usuario> recuperarUsuarios() {
+		Session sessao = null;
+		List<Usuario> usuarios = null;
+
+		try {
+
+			sessao = fabrica.getConexao().openSession();
+			sessao.beginTransaction();
+
+			CriteriaBuilder construtor = sessao.getCriteriaBuilder();
+
+			CriteriaQuery<Usuario> criteria = construtor.createQuery(Usuario.class);
+			Root<Usuario> raizUsuario = criteria.from(Usuario.class);
+
+			criteria.select(raizUsuario);
+
+			usuarios = sessao.createQuery(criteria).getResultList();
+
+			sessao.getTransaction().commit();
+
+		} catch (Exception sqlException) {
+
+			sqlException.printStackTrace();
+
+			if (sessao.getTransaction() != null) {
+				sessao.getTransaction().rollback();
+			}
+
+		} finally {
+
+			if (sessao != null) {
+				sessao.close();
+			}
+		}
+
+		return usuarios;
+	}
 }
