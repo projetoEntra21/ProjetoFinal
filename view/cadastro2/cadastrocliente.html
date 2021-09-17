@@ -3,53 +3,60 @@
 <head>
   <meta charset="UTF-8">
     <title>Cadastro paciente</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-<link rel="stylesheet" href="./style.css">
-<script src="./script.js"></script>
+  
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
 
 </head>
 <body>
 <!-- partial:index.partial.html -->
 <!-- multistep form -->
+</head>
+<body>
+ 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="script.js"></script>
 <form id="msform">
-
-  
   </ul>
-
+ 
   <fieldset>
     <h2 class="fs-title">CRIE SUA CONTA</h2>
     <h3 class="fs-subtitle"></h3>
-    <input type="email" id="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="O email deve conter um @" required>
-    <input type="password" placeholder="Senha" id="password" required  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Deve conter letras maiúsculas e minúsculas, um número e mais de 8 caracteres.">
-        <input type="password" placeholder="Confirme Senha" id="confirm_password" required> 
+    <input type="text" id="cnpj" placeholder="cnpj" pattern="/^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$/" title="Siga o formato  XX. XXX. XXX/XXXX-XX." required>
+    <input type="password" placeholder="Senha" id="password" required  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres">
+        <input type="password" placeholder="Confirme Senha" id="confirm_password" required>
+      
+        <button type="button" id="botao" class="button" data-toggle="modal" data-target="#exampleModal">
+         Cadastrar
+            </button>
+        
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirmação de cadastro
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+               Seu cadastro foi concluido. Suas informações estão certas?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="submit" class="btn btn-primary">Salvar informações </button >
+              </div>
+              </div>
+            </div>
+            </div>
+          </fieldset>
+  </form>
 
-  <button type="button" id=botao class="modal-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Enviar
-              </button>
-              <input type="checkbox" id="modal" />
-<label for="modal" class="modal-btn">
-    <i class="fa fa-fire" aria-hidden="true"></i>
-</label>
-<!-- <div class="modal-bg"></div> -->
-<label for="modal" class="modal-bg"></label>
-<div class="modal-content">
-    <label for="modal" class="close">
-        <i class="fa fa-times" aria-hidden="true"></i>
-    </label>
-    <header>
-        <h2>Confirmação de cadastro</h3>
-    </header>
-    <article class="content">
-        <p>Seu cadastro foi concluido com sucesso :).</p>
-    </article>
-    <footer>
-        <label for="modal" class="button ">Fechar</label>
-    </footer>
-</div>
- 
-  </fieldset>
-  
-</form>
 <!-- partial -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script><script  src="./script.js"></script>
