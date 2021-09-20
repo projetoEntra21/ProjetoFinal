@@ -1,4 +1,5 @@
-
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -19,7 +20,7 @@
 <body>
 	<div class="header">Agende sua consulta</div>
 	<div class="form-container">
-		<div class="subtitle">Informe sua informaÃ§Ã£o de reserva.</div>
+		<div class="subtitle">Informe sua informação de reserva.</div>
 	</div>
 	<div>
 		<div>
@@ -37,8 +38,8 @@
 							<label>Nome:</label><input type="text" tclass="form-input"
 								placeholder="Entre com seu nome"
 								patern="^[a-zA-Z][a-zA-Z-_\.]{3,20}$"
-								title="Indique seu nome sem nÃºmeros" required
-								value="<c:out value='${consulta.nome}'/>" name="nome">
+								title="Indique seu nome sem números" required
+								value="<c:out value='${consulta.nome}'/>" name="nome"> <br>
 						</div>
 					</div>
 					<div class="form-section">
@@ -48,7 +49,7 @@
 							</span> <label>Sobrenome:</label><input type="text" class="form-input"
 								placeholder="Entre com seu Sobrenome"
 								pattern="^([AZ] {1} [az] {1,30} [-] {0,1} | [AZ] {1} [- \ '] { 1} [AZ] {0,1} [az] {1,30} [-] {0,1} | [az] {1,2} [- \ '] {1} [AZ] {1} [ az] {1,30}) {2,5} {3,20}$  "
-								title="Indique seu sobrenome completo sem nÃºmeros" required
+								title="Indique seu sobrenome completo sem números" required
 								value="<c:out value='${consulta.sobrenome}' />" name="sobrenome">
 						</div>
 					</div>
@@ -61,7 +62,7 @@
 								</span> <label>Data:</label><input type="date" id="txtDat"
 									class="form-input" onchange="validardata(this)" required
 									pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}"
-									title="Entre com uma data vÃ¡lida"
+									title="Entre com uma data válida"
 									value="<c:out value='${consulta.date}' />" name="date">
 							</div>
 						</div>
