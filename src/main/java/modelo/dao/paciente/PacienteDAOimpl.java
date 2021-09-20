@@ -12,7 +12,7 @@ import org.hibernate.Session;
 import modelo.entidade.paciente.Paciente;
 import modelo.factory.conexao.ConexaoFactory;
 
-public class PacienteDAOimpl<pubic> implements PacienteDAO {
+public class PacienteDAOimpl implements PacienteDAO {
 
 	private ConexaoFactory fabrica;
 
