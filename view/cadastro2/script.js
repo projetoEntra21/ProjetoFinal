@@ -9,18 +9,18 @@ console.log(validateEmail('texto.com')); // false
 console.log(validateEmail('texto')); // false
 
 
-   var password = document.getElementById("password")
+   var password = document.getElementById("myPassword")
    , confirm_password = document.getElementById("confirm_password");
  
  function validatePassword(){
-   if(password.value != confirm_password.value) {
+   if(myPassword.value != confirm_password.value) {
      confirm_password.setCustomValidity("Senhas diferentes!");
    } else {
      confirm_password.setCustomValidity('');
    }
  }
  
- password.onchange = validatePassword;
+ myPassword.onchange = validatePassword;
  confirm_password.onkeyup = validatePassword;
 
 
@@ -65,3 +65,11 @@ $('#myForm').on('submit', function(e) {
     password.closest('.form-group').removeClass('has-error').addClass('has-success');
   }
 });
+function mouseoverPass(obj) {
+  var obj = document.getElementById('myPassword');
+  obj.type = "text";
+}
+function mouseoutPass(obj) {
+  var obj = document.getElementById('myPassword');
+  obj.type = "password";
+}
