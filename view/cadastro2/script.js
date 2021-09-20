@@ -22,6 +22,8 @@ console.log(validateEmail('texto')); // false
  
  password.onchange = validatePassword;
  confirm_password.onkeyup = validatePassword;
+
+
  $("#submit").on("click", function() {
   if ($("#form-login").valid()) { //Verifica se o formulário está válido.
     $('#myModal').modal('show'); //Se for válido, exibe o modal.
