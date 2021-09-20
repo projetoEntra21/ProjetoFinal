@@ -1,5 +1,7 @@
  
-  @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
+  @import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap);
+  @import url(https://fonts.googleapis.com/css?family=Roboto);
+
  
  body{
     background:#97D5b1;
@@ -393,6 +395,7 @@ body {
   transform: translate(-20px, -20px);
 }
 
+
 .text {
   position: absolute;
   width: 40px;
@@ -521,12 +524,62 @@ body {
 
 
 .card-text{
-  text-align: center;
+  text-align: relative;
   position:absolute;
-	top:400px;
-	left:690px;
-	width:200%;
-  padding-top:50px;
+	top:250px;
+	left:500px;
+	width:300%;
+  padding-bottom:55px;
+  transform:translate(-50% , -50%);
+  background-position: 10px;
+
+}
+
+.card-title1{
+  top: 100px;
+  left: 950px;
+  font-size: 70px;
+  text-align: relative;
+  position:absolute;
+	width:500%;
+  padding-bottom:55px;
+  transform:translate(-50% , -50%);
+  background-position: 10px;
+  color: #a7bfe8;
+
+
+}
+
+.img{
+  max-width: 150%;
+  height: 500px;
+  display: relative;
+  margin-right: 369px;
+  margin-left: -50px;
+}
+
+
+.card-title2{
+  top: 225px;
+  left: 1000px;
+  font-size: 50px;
+  text-align: relative;
+  position:absolute;
+	width:500%;
+  padding-bottom:55px;
+  transform:translate(-50% , -50%);
+  background-position: 10px;
+  color: #a7bfe8;
+
+
+}
+
+.card-text2{
+  text-align: relative;
+  position:absolute;
+	top:550px;
+	left:500px;
+	width:300%;
   padding-bottom:55px;
   transform:translate(-50% , -50%);
   background-position: 10px;
@@ -552,6 +605,7 @@ body {
 .card-title{
   font-weight:bold;
   font-size:1.8rem;
+
 }
 
 .badge-wrap{
@@ -723,3 +777,7 @@ body.is-login{
     z-index:5;
   }
  
+  .img{
+    top: 150px;
+    left: 0;
+  }
