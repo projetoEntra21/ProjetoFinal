@@ -86,5 +86,17 @@ body {
 	color: #666;
 	margin-bottom: 20px;
 }
+#myPassword {
+	width: 170px;
+	padding-right: 80px;
+  }
+  
+  .olho {
+	cursor: pointer;
+	left: 345px;
+	position: absolute;
+	width: 20px;
+	top: 135px;
+  }
 
   
