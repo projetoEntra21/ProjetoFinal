@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +10,7 @@
 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <link rel="stylesheet" href="./cadastronutricionista.css">
+    <link rel="stylesheet" href="./style.css">
 
 </head>
 <body>
@@ -27,8 +29,8 @@
   <fieldset>
     <h2 class="fs-title">CRIE SUA CONTA</h2>
     <h3 class="fs-subtitle"></h3>
-    <input type="text" id="cnpj" placeholder="Cnpj"  title="Siga o formato  XX. XXX. XXX/XXXX-XX." required>
-    <input type="password" placeholder="Senha" id="password" required  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Deve conter pelo menos um nÃºmero e uma letra maiÃºscula e minÃºscula e pelo menos 8 ou mais caracteres">
+    <input type="text" id="cnpj" placeholder="cnpj"  title="Siga o formato  XX. XXX. XXX/XXXX-XX." required>
+    <input type="password" placeholder="Senha" id="password" required  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres">
         <input type="password" placeholder="Confirme Senha" id="confirm_password" required>
       
         <button type="button" id="botao" class="button" data-toggle="modal" data-target="#exampleModal">
@@ -40,18 +42,18 @@
             <div class="modal-dialog" role="document">
               <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">ConfirmaÃ§Ã£o de cadastro
+                <h5 class="modal-title" id="exampleModalLabel">Confirmação de cadastro
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
-               Seu cadastro estÃ¡ prestes a ser concluido. Suas informaÃ§Ãµes estÃ£o certas?
+               Seu cadastro foi concluido. Suas informações estão certas?
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                <button type="submit" class="btn btn-primary">Salvar informaÃ§Ãµes </button >
+                <button type="submit" class="btn btn-primary">Salvar informações </button >
               </div>
               </div>
             </div>

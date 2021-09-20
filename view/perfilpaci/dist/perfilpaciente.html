@@ -5,14 +5,14 @@
   <title>perfil</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./perfilpaciente.css">
 
 </head>
 <body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="script.js"></script>
 <!-- partial:index.partial.html -->
 <div class="sttngs">
     <h2>Seu perfil</h2>
@@ -43,7 +43,7 @@
 <form action="">
 
 	<label class="label" for="input">Nome de usuário </label>
-	<input class="input" type="text" id="input" pattern="^[a-zA-Z]{3,25}$" title="Indique seu nome completo sem números"> 
+	<input class="input" type="text" id="input" required pattern="^[a-zA-Z]{3,25}$" title="Indique seu nome completo sem números e sem espaços"> 
 
   <label class="label" for="input">Email</label>
 	<input class="input" type="email" id="input"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="O email teve conter um @" required>
@@ -65,13 +65,13 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Confirmação de agendamento</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Confirmação de atualização da conta</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-       Seu agendamento foi concluido. Suas informações estão certas?
+       Sua atualização está prestes a ser concluid. Suas informações estão certas?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
@@ -117,36 +117,38 @@
   <label class="label" for="input">Complemento</label>	
 	<input class="input e" type="text" id="input" required pattern="[a-z\s]+$" title="Informe um complemento sem números">
 
-  	<!-- Button trigger modal -->
+  <!-- Button trigger modal -->
 <button type="button" id="botao" class="button" data-toggle="modal" data-target="#exampleModal">
   Salvar
-    </button>
-    
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Confirmação de agendamento</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-       Seu agendamento foi concluido. Suas informações estão certas?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button type="submit" class="btn btn-primary">Salvar informações </button >
-      </div>
-      </div>
-    </div>
-    </div>
-      </div>
-    </form>
-    
-    </article>
-  </section>
+     </button>
+     
+     <!-- Modal -->
+     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     <div class="modal-dialog" role="document">
+       <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title" id="exampleModalLabel">Confirmação de atualização da conta</h5>
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+         </button>
+       </div>
+       <div class="modal-body">
+        Sua atualização está prestes a ser concluid. Suas informações estão certas?
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+         <button type="submit" class="btn btn-primary">Salvar informações </button >
+       </div>
+       </div>
+     </div>
+     </div>
+   
+       
+       </div>
+     </form>
+       
+     </article>
+   </section>
 
   <section id="section3">
     <input class="t" type="radio" name="sections" id="option3">
