@@ -74,18 +74,20 @@
 									class="form-input" min="07:00" max="18:00" required
 									pattern="([01][0-9]|2[0-3]):[0-5][0-9]"
 									value="<c:out value='${consulta.hora}' />" name="hora">
-										</div>
-			</div>
 							</div>
 						</div>
+						<button type="button" id="botao" class="button"
+						data-toggle="modal" data-target="#exampleModal">Agendar</button>
 			</div>
+		</div>
+	</div>
 
-			<script
-				src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-			<script
-				src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
-			<script
-				src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-			<script src="script.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<script src="script.js"></script>
 </body>
 </html>
