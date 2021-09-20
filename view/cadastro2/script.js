@@ -30,3 +30,36 @@ console.log(validateEmail('texto')); // false
 $('#myModal').on('shown.bs.modal', function () {
   $('#meuInput').trigger('focus')
 })
+
+$('#myForm').on('submit', function(e) {
+  var email = $('#email');
+ 
+
+  // Check if there is an entered value
+  if(!email.val()) {
+    // Add errors highlight
+    email.closest('.form-group').removeClass('has-success').addClass('has-error');
+
+    // Stop submission of the form
+    e.preventDefault();
+  } else {
+    // Remove the errors highlight
+    email.closest('.form-group').removeClass('has-error').addClass('has-success');
+  }
+});
+$('#myForm').on('submit', function(e) {
+  var password = $('#password');
+ 
+
+  // Check if there is an entered value
+  if(!password.val()) {
+    // Add errors highlight
+    password.closest('.form-group').removeClass('has-success').addClass('has-error');
+
+    // Stop submission of the form
+    e.preventDefault();
+  } else {
+    // Remove the errors highlight
+    password.closest('.form-group').removeClass('has-error').addClass('has-success');
+  }
+});
