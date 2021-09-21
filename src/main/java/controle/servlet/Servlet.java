@@ -199,9 +199,9 @@ public class Servlet extends HttpServlet {
 			case "/telainicial":
 				telainicial(request, response);
 
-			default:
-				listarPacientes(request, response);
-				break;
+//			default:
+////				listarPacientes(request, response);
+//				break;
 			}
 
 		} catch (
@@ -422,14 +422,14 @@ public class Servlet extends HttpServlet {
 
 	}
 
-	public void listarPacientes(HttpServletRequest request, HttpServletResponse response)
-			throws SQLException, IOException, ServletException {
-
-		List<Paciente> pacientes = daoPaciente.recuperarPacientes();
-		request.setAttribute("paciente", pacientes);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("cadastro-paciente.jsp");
-		dispatcher.forward(request, response);
-	}
+//	public void listarPacientes(HttpServletRequest request, HttpServletResponse response)
+//			throws SQLException, IOException, ServletException {
+//
+//		List<Paciente> pacientes = daoPaciente.recuperarPacientes();
+//		request.setAttribute("paciente", pacientes);
+//		RequestDispatcher dispatcher = request.getRequestDispatcher("cadastro-paciente.jsp");
+//		dispatcher.forward(request, response);
+//	}
 
 	public void inserirPaciente(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException {
