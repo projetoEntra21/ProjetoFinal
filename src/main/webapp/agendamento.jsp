@@ -26,7 +26,7 @@
 		<div>
 			<div>
 				<c:if test="${consulta == null}">
-					<form action="inserir" method="post">	
+					<form action="inserirNutricionista" method="post">	
 				</c:if>
 				<c:if test="${consulta != null}">
 					<input type="hidden" name="id"
@@ -39,7 +39,7 @@
 								placeholder="Entre com seu nome"
 								patern="^[a-zA-Z][a-zA-Z-_\.]{3,20}$"
 								title="Indique seu nome sem números" required
-								value="<c:out value='${consulta.nome}'/>" name="nome_paciente"> <br>
+								value="<c:out value='${consulta.nome}'/>" name="nome_nutricionista"> <br>
 						</div>
 					</div>
 					<div class="form-section">
