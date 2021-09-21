@@ -44,8 +44,8 @@
 							<form action="inserir" method="post">
 						</c:if>
 						<c:if test="${nutricionista != null}">
-							<input type="hidden" name="id"
-								value="<c:out value='${consulta.id}'/>" />
+							<input type="hidden" name="id_nutricionista"
+								value="<c:out value='${nutricionista.id}'/>" />
 						</c:if>
 
 						<label>Cnpj</label><input type="text" id="cnpj"
@@ -56,22 +56,17 @@
 							 <label>Senha:</label> <input type="password"
 							placeholder="Senha" id="password" required
 							pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-							title="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres"
-							required value="<c:out value='${nutricionista.senha}'/>"
-							name="senha" />
+							title="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres">
 							
 							 <label>Confirmar Senha:</label><input
 							type="password" placeholder="Confirme Senha"
 							id="confirm_password" required
-							value="<c:out value='${nutricionista.confirmar}' />"name="confirmar" />
+							value="<c:out value='${nutricionista.senha}' />"name="confirmar" />
 						
 						<button type="button" id="botao" class="button"
 							data-toggle="modal" data-target="#exampleModal">Cadastrar</button>
 					</div>
 				</div>
 			</div>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script><script  src="./script.js"></script>
-
 </body>
 </html>

@@ -26,7 +26,7 @@
 		<div>
 			<div>
 				<c:if test="${consulta == null}">
-					<form action="inserir" method="post">
+					<form action="inserir" method="post">	
 				</c:if>
 				<c:if test="${consulta != null}">
 					<input type="hidden" name="id"
@@ -39,7 +39,7 @@
 								placeholder="Entre com seu nome"
 								patern="^[a-zA-Z][a-zA-Z-_\.]{3,20}$"
 								title="Indique seu nome sem números" required
-								value="<c:out value='${consulta.nome}'/>" name="nome"> <br>
+								value="<c:out value='${consulta.nome}'/>" name="nome_paciente"> <br>
 						</div>
 					</div>
 					<div class="form-section">
@@ -48,9 +48,9 @@
 							<span class="input-icon"> <i class="far fa-user"></i>
 							</span> <label>Sobrenome:</label><input type="text" class="form-input"
 								placeholder="Entre com seu Sobrenome"
-								pattern="^([AZ] {1} [az] {1,30} [-] {0,1} | [AZ] {1} [- \ '] { 1} [AZ] {0,1} [az] {1,30} [-] {0,1} | [az] {1,2} [- \ '] {1} [AZ] {1} [ az] {1,30}) {2,5} {3,20}$  "
+								pattern="^([AZ] {1} [az] {1,30} [-] {0,1} | [AZ] {1} [- \ '] { 1} [AZ] {0,1} [az] {1,30} [-] {0,1} | [az] {1,2} [- \ '] {1} [AZ] {1} [ az] {1,30}) {2,5} {3,20}$"
 								title="Indique seu sobrenome completo sem números" required
-								value="<c:out value='${consulta.sobrenome}' />" name="sobrenome">
+								value="<c:out value='${consulta.sobrenome}' />" name="sobrenome_paciente">
 						</div>
 					</div>
 
@@ -63,7 +63,7 @@
 									class="form-input" onchange="validardata(this)" required
 									pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}"
 									title="Entre com uma data válida"
-									value="<c:out value='${consulta.date}' />" name="date">
+									value="<c:out value='${consulta.date}' />" name="dia">
 							</div>
 						</div>
 						<div class="form-section">
@@ -81,7 +81,6 @@
 			</div>
 		</div>
 	</div>
-
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script
