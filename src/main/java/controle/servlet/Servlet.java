@@ -209,7 +209,7 @@ public class Servlet extends HttpServlet {
 	public void mostrarCadastroNutricionista(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("cadastronutricionista.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("cadastro-nutricionista.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -348,7 +348,6 @@ public class Servlet extends HttpServlet {
 	private void inserirEndereço(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException {
 
-		String rua = request.getParameter("rua_endereço");
 		String cep = request.getParameter("cep_endereço");
 		long numero = Long.parseLong(request.getParameter("numero_endereço"));
 		String complemento = request.getParameter("complemento_endereço");
@@ -368,7 +367,6 @@ public class Servlet extends HttpServlet {
 			throws SQLException, IOException {
 
 		long id = Long.parseLong(request.getParameter("id_paciente"));
-		String rua = request.getParameter("rua_endereço");
 		String cep = request.getParameter("cep_endereço");
 		long numero = Long.parseLong(request.getParameter("numero_endereço"));
 		String complemento = request.getParameter("complemento_endereço");

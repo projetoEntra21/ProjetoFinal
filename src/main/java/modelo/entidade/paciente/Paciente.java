@@ -137,6 +137,14 @@ public class Paciente implements Serializable {
 		this.sobrenome = sobrenome;
 	}
 
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
 	public int getIdade() {
 		return idade;
 	}

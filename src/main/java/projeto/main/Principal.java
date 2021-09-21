@@ -1,38 +1,59 @@
 package projeto.main;
 
-import java.util.Scanner;
-
-import org.json.JSONObject;
-
-import modelo.dao.food.FoodDAO;
-import modelo.dao.food.FoodDAOimpl;
-
 public class Principal {
 
 	public static void main(String[] args) {
 
-		Scanner leitor = new Scanner(System.in);
-
-		System.out.println("Digite um alimento: ");
-		String alimento = leitor.nextLine();
-
-		FoodDAO foodDAO = new FoodDAOimpl();
-
-		JSONObject jsonObject = foodDAO.readJsonFromUrl(
-				"https://api.edamam.com/api/food-database/v2/parser?app_id=0ade5519&app_key=765cf001c347b17087e6af924d562b33&ingr="
-						+ alimento + "&nutrition-type=cooking");
-
-		JSONObject food = jsonObject.getJSONArray("parsed").getJSONObject(0).getJSONObject("food");
-		double lucas = food.getJSONObject("nutrients").getDouble("ENERC_KCAL");
-
-		System.out.println(lucas);
-
-//		EndereçoDAO endereçoDAO = new EndereçoDAOimpl();
+//		Scanner leitor = new Scanner(System.in);
+//
+//		System.out.println("Digite um alimento: ");
+//		String alimento = leitor.nextLine();
+//
+//		FoodDAO foodDAO = new FoodDAOimpl();
+//
+//		JSONObject jsonObject = foodDAO.readJsonFromUrl(
+//				"https://api.edamam.com/api/food-database/v2/parser?app_id=0ade5519&app_key=765cf001c347b17087e6af924d562b33&ingr="
+//						+ alimento + "&nutrition-type=cooking");
+//
+//		JSONObject food = jsonObject.getJSONArray("parsed").getJSONObject(0).getJSONObject("food");
+//		double lucas = food.getJSONObject("nutrients").getDouble("ENERC_KCAL");
+//
+//		System.out.println(lucas);
+//		
+//		EndereçoDAO endereçoDAO = new EnderecoDAOimpl();
 //		PacienteDAO pacienteDAO = new PacienteDAOimpl();
-//		ContatoDAO contatoDAO = new ContatoDAOimpl();
-//		HistoricoDAO historicoDAO = new HistoricoDAOImpl();
 //		NutricionistaDAO nutricionistaDAO = new NutricionistaDAOimpl();
-//		ConsultaDAO consultaDAO = new ConsultaDAOimpl();
+//	
+//		
+//		Paciente paciente =  new Paciente();
+//		
+//		paciente.setId(40);
+//		
+//		pacienteDAO.recuperarPaciente(paciente);
+//		
+//		paciente.setSenha("1234567");
+//		
+//		pacienteDAO.atualizarPaciente(paciente);
+//		
+//		Nutricionista nutricionista = new Nutricionista();
+//		
+//		nutricionista.setId(26);
+//		
+//		nutricionistaDAO.recuperarNutricionista(nutricionista);
+//		
+//		nutricionista.setSenha("testando");
+//
+//		
+//		
+//		nutricionistaDAO.atualizarNutriocionista(nutricionista);
+//		
+//		
+//		Endereço endereço = new Endereço();
+//		
+//		endereço.setCep("89069034");
+//		
+//		endereçoDAO.atualizarEndereço(endereço);
+		
 //
 //		String nome = "Pedro";
 //		String sobrenome = "Fonseca";
