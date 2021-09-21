@@ -148,45 +148,45 @@ public class PacienteDAOimpl implements PacienteDAO {
 
 		return pacienteRecuperado;
 	}
-//
-//	public List<Paciente> recuperarPacientes() {
-//
-//		Session sessao = null;
-//		List<Paciente> pacientes = null;
-//
-//		try {
-//
-//			sessao = fabrica.getConexao().openSession();
-//			sessao.beginTransaction();
-//
-//			CriteriaBuilder construtor = sessao.getCriteriaBuilder();
-//
-//			CriteriaQuery<Paciente> criteria = construtor.createQuery(Paciente.class);
-//			Root<Paciente> raizPaciente = criteria.from(Paciente.class);
-//
-//			criteria.select(raizPaciente);
-//
-//			pacientes = sessao.createQuery(criteria).getResultList();
-//
-//			sessao.getTransaction().commit();
-//
-//		} catch (Exception sqlException) {
-//
-//			sqlException.printStackTrace();
-//
-//			if (sessao.getTransaction() != null) {
-//				sessao.getTransaction().rollback();
-//			}
-//
-//		} finally {
-//
-//			if (sessao != null) {
-//				sessao.close();
-//			}
-//		}
-//
-//		return pacientes;
-//	}
+
+	public List<Paciente> recuperarPacientes() {
+
+		Session sessao = null;
+		List<Paciente> pacientes = null;
+
+		try {
+
+			sessao = fabrica.getConexao().openSession();
+			sessao.beginTransaction();
+
+			CriteriaBuilder construtor = sessao.getCriteriaBuilder();
+
+			CriteriaQuery<Paciente> criteria = construtor.createQuery(Paciente.class);
+			Root<Paciente> raizPaciente = criteria.from(Paciente.class);
+
+			criteria.select(raizPaciente);
+
+			pacientes = sessao.createQuery(criteria).getResultList();
+
+			sessao.getTransaction().commit();
+
+		} catch (Exception sqlException) {
+
+			sqlException.printStackTrace();
+
+			if (sessao.getTransaction() != null) {
+				sessao.getTransaction().rollback();
+			}
+
+		} finally {
+
+			if (sessao != null) {
+				sessao.close();
+			}
+		}
+
+		return pacientes;
+	}
 
 	public Paciente recuperarPacientePeloNome(Paciente paciente) {
 

@@ -36,6 +36,9 @@ public class Paciente implements Serializable {
 
 	@Column(name = "idade_paciente", nullable = false, unique = false)
 	private int idade;
+	
+	@Column(name = "senha_paciente", unique = true, nullable = false)
+	private String senha;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "paciente")
 	private List<Consulta> consultas;

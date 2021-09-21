@@ -26,15 +26,12 @@ import modelo.dao.nutricionista.NutricionistaDAO;
 import modelo.dao.nutricionista.NutricionistaDAOimpl;
 import modelo.dao.paciente.PacienteDAO;
 import modelo.dao.paciente.PacienteDAOimpl;
-import modelo.dao.usuario.UsuarioDAO;
-import modelo.dao.usuario.UsuarioDAOimpl;
 import modelo.entidade.consulta.Consulta;
 import modelo.entidade.contato.Contato;
 import modelo.entidade.endereco.Endereço;
 import modelo.entidade.historico.Historico;
 import modelo.entidade.nutricionista.Nutricionista;
 import modelo.entidade.paciente.Paciente;
-import modelo.entidade.usuario.Usuario;
 
 @WebServlet("/")
 public class Servlet extends HttpServlet {
@@ -43,7 +40,7 @@ public class Servlet extends HttpServlet {
 
 	private PacienteDAO daoPaciente;
 	private NutricionistaDAO daoNutricionista;
-	private UsuarioDAO daoUsuario;
+
 	private EndereçoDAO daoEndereço;
 	private ConsultaDAO daoConsulta;
 	private HistoricoDAO daoHistorico;
@@ -55,10 +52,6 @@ public class Servlet extends HttpServlet {
 
 	public void initNutricionista() {
 		daoNutricionista = new NutricionistaDAOimpl();
-	}
-
-	public void initUsuario() {
-		daoUsuario = new UsuarioDAOimpl();
 	}
 
 	public void initEndereço() {
@@ -169,18 +162,6 @@ public class Servlet extends HttpServlet {
 			case "/atualizarNutricionista":
 				atualizarNutricionista(request, response);
 
-			case "/inserirUsuario":
-				inserirUsuario(request, response);
-				break;
-
-			case "/deletarUsuario":
-				deletarUsuario(request, response);
-				break;
-
-			case "/atualizarUsuario":
-				atualizarUsuario(request, response);
-				break;
-
 			case "/mostrarAgendamento":
 				mostrarAgendamento(request, response);
 				break;
@@ -199,9 +180,9 @@ public class Servlet extends HttpServlet {
 			case "/telainicial":
 				telainicial(request, response);
 
-//			default:
-////				listarPacientes(request, response);
-//				break;
+			default:
+				mostrarHome(request, response);
+				break;
 			}
 
 		} catch (
@@ -371,7 +352,7 @@ public class Servlet extends HttpServlet {
 		String cep = request.getParameter("cep_endereço");
 		long numero = Long.parseLong(request.getParameter("numero_endereço"));
 		String complemento = request.getParameter("complemento_endereço");
-		daoEndereço.inserirEndereço(new Endereço(rua, cep, numero, complemento));
+		daoEndereço.inserirEndereço(new Endereço(cep, numero, complemento));
 	}
 
 	private void deletarEndereço(HttpServletRequest request, HttpServletResponse response)
@@ -391,45 +372,17 @@ public class Servlet extends HttpServlet {
 		String cep = request.getParameter("cep_endereço");
 		long numero = Long.parseLong(request.getParameter("numero_endereço"));
 		String complemento = request.getParameter("complemento_endereço");
-		daoEndereço.atualizarEndereço(new Endereço(id, rua, cep, numero, complemento));
+		daoEndereço.atualizarEndereço(new Endereço(id, cep, numero, complemento));
 	}
 
-	private void inserirUsuario(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	public void listarPacientes(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException, ServletException {
 
-		String login = request.getParameter("login_usuario");
-		String senha = request.getParameter("senha_usuario");
-		daoUsuario.inserirUsuario(new Usuario(login, senha));
-
+		List<Paciente> pacientes = daoPaciente.recuperarPacientes();
+		request.setAttribute("paciente", pacientes);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("cadastro-paciente.jsp");
+		dispatcher.forward(request, response);
 	}
-
-	private void deletarUsuario(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		long id = Long.parseLong(request.getParameter("id_usuario"));
-		Usuario usuario = daoUsuario.recuperarUsuario(new Usuario(id));
-		daoUsuario.deletarUsuario(usuario);
-
-	}
-
-	private void atualizarUsuario(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		long id = Long.parseLong(request.getParameter("id_usuario"));
-		String loginString = request.getParameter("login_usuario");
-		String senha = request.getParameter("senha_usuario");
-		daoUsuario.atualizarUsuario(new Usuario(id, loginString, senha));
-
-	}
-
-//	public void listarPacientes(HttpServletRequest request, HttpServletResponse response)
-//			throws SQLException, IOException, ServletException {
-//
-//		List<Paciente> pacientes = daoPaciente.recuperarPacientes();
-//		request.setAttribute("paciente", pacientes);
-//		RequestDispatcher dispatcher = request.getRequestDispatcher("cadastro-paciente.jsp");
-//		dispatcher.forward(request, response);
-//	}
 
 	public void inserirPaciente(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException {

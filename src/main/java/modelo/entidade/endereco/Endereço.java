@@ -23,9 +23,6 @@ public class Endereço implements Serializable {
 	@Column(name = "id_paciente")
 	private Long Id;
 
-	@Column(name = "rua_endereco", nullable = false, unique = false)
-	private String rua;
-
 	@Column(name = "cep_endereco", nullable = false, unique = false)
 	private String cep;
 
@@ -40,26 +37,25 @@ public class Endereço implements Serializable {
 	@JoinColumn(name = "id_paciente")
 	private Paciente paciente;
 
-	public Endereço() {}
-	
-	public Endereço(Long id){
-		
-		setId(Id);
-		
+	public Endereço() {
 	}
-	
-	public Endereço(String rua, String cep, Long numero, String complemento) {
 
-		setRua(rua);
+	public Endereço(Long id) {
+
+		setId(Id);
+
+	}
+
+	public Endereço(String cep, Long numero, String complemento) {
+
 		setCep(cep);
 		setComplemento(complemento);
 		setNumero(numero);
 	}
 
-	public Endereço(Long id,String rua, String cep, Long numero, String complemento) {
+	public Endereço(Long id, String cep, Long numero, String complemento) {
 
 		setId(id);
-		setRua(rua);
 		setCep(cep);
 		setComplemento(complemento);
 		setNumero(numero);
@@ -71,14 +67,6 @@ public class Endereço implements Serializable {
 
 	public void setId(Long id) {
 		Id = id;
-	}
-
-	public String getRua() {
-		return rua;
-	}
-
-	public void setRua(String rua) {
-		this.rua = rua;
 	}
 
 	public String getCep() {
@@ -112,6 +100,5 @@ public class Endereço implements Serializable {
 	public void setPaciente(Paciente paciente) {
 		this.paciente = paciente;
 	}
-
 
 }
