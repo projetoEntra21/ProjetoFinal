@@ -34,6 +34,10 @@ public class Nutricionista implements Serializable {
 	@Column(name = "cnpj_nutricionista", length = 14, nullable = false, unique = true)
 	private String cnpj;
 
+	@Column(name = "senha_nutricionista", nullable = false, unique = true)
+	private String senha;
+	
+	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "nutricionista")
 	private List<Consulta> consultas;
 
@@ -95,6 +99,14 @@ public class Nutricionista implements Serializable {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	public String getSobrenome() {
