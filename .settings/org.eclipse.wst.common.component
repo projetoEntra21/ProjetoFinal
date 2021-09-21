@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
         
-    <wb-module deploy-name="Exemplo19">
+    <wb-module deploy-name="HealthSociety">
                 
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
                 
@@ -10,9 +10,8 @@
                 
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
                 
-        <property name="context-root" value="Exemplo19"/>
-                
         <property name="java-output-path" value="/Exemplo19/target/classes"/>
+        <property name="context-root" value="HealthSociety"/>
             
     </wb-module>
     
