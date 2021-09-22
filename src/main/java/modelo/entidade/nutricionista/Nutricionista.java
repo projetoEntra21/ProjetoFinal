@@ -36,15 +36,14 @@ public class Nutricionista implements Serializable {
 
 	@Column(name = "senha_nutricionista", nullable = false, unique = true)
 	private String senha;
-	
-	
+
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "nutricionista")
 	private List<Consulta> consultas;
 
 	public Nutricionista() {
 	}
 
-	public Nutricionista(long Id) {
+	public Nutricionista(Long Id) {
 		setId(Id);
 
 	}
@@ -55,8 +54,7 @@ public class Nutricionista implements Serializable {
 		setConsultas(consultas);
 
 	}
-	
-	
+
 	public Nutricionista(String nome, String sobrenome, String cpnj, List<Consulta> consultas) {
 
 		setConsultas(consultas);
@@ -65,15 +63,17 @@ public class Nutricionista implements Serializable {
 		setCnpj(cpnj);
 	}
 
-	public Nutricionista(String nome, String sobrenome, String cpnj) {
+	public Nutricionista(String nome, String sobrenome, String cpnj, String senha) {
 
+		setSenha(senha);
 		setNome(nome);
 		setSobrenome(sobrenome);
 		setCnpj(cpnj);
 	}
 
-	public Nutricionista(long Id, String nome, String sobrenome, String cpnj) {
+	public Nutricionista(Long Id, String nome, String sobrenome, String cpnj, String senha) {
 
+		setSenha(senha);
 		setId(Id);
 		setNome(sobrenome);
 		setSobrenome(sobrenome);
@@ -84,13 +84,8 @@ public class Nutricionista implements Serializable {
 		this.Id = id;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return Id;
-	}
-
-	public void setId(long id) {
-
-		Id = id;
 	}
 
 	public String getNome() {

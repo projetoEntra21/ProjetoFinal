@@ -3,11 +3,9 @@ modelo\dao\consulta\ConsultaDAOimpl.class
 controle\execptions\CinturaInvalidadExecption.class
 modelo\factory\conexao\ConexaoFactory.class
 projeto\main\Principal.class
-controle\servlet\Servlet.class
 modelo\entidade\nutricionista\Nutricionista.class
 modelo\entidade\nutricionista\Nutricionista_.class
 modelo\entidade\historico\Historico.class
-modelo\dao\nutricionista\NutricionistaDAOimpl.class
 controle\execptions\ImcInvalidoExecption.class
 modelo\dao\historico\HistoricoDAO.class
 modelo\entidade\consulta\Consulta.class
