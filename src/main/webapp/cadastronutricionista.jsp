@@ -14,9 +14,9 @@
 			value="${nutricionista.sobrenome}" name="sobrenome">
 	</p>
 	<p>
-		<label for="cnpj"> CNPJ </label> <input id="cpnj"
+		<label for="cnpj"> CNPJ: </label> <input id="cnpj"
 			required="required" type="text"
-			value="${nutricionista.cnpj}" name="cpnj">
+			value="${nutricionista.cnpj}" name="cnpj">
 	</p>
 	<p>
 		<label for="senha"> Senha: </label> <input id="senha"

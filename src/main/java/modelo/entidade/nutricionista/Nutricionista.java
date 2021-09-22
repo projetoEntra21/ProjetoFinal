@@ -23,7 +23,7 @@ public class Nutricionista implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_nutricionista")
-	private int Id;
+	private Long Id;
 
 	@Column(name = "nome_nutricionista", length = 20, nullable = false, unique = false)
 	private String nome;
@@ -43,12 +43,12 @@ public class Nutricionista implements Serializable {
 	public Nutricionista() {
 	}
 
-	public Nutricionista(int Id) {
+	public Nutricionista(Long Id) {
 		setId(Id);
 
 	}
 
-	public Nutricionista(int Id, List<Consulta> consultas) {
+	public Nutricionista(Long Id, List<Consulta> consultas) {
 
 		setId(Id);
 		setConsultas(consultas);
@@ -71,7 +71,7 @@ public class Nutricionista implements Serializable {
 		setCnpj(cpnj);
 	}
 
-	public Nutricionista(int Id, String nome, String sobrenome, String cpnj, String senha) {
+	public Nutricionista(Long Id, String nome, String sobrenome, String cpnj, String senha) {
 
 		setSenha(senha);
 		setId(Id);
@@ -80,11 +80,11 @@ public class Nutricionista implements Serializable {
 		setCnpj(cpnj);
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.Id = id;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return Id;
 	}
 

@@ -6,7 +6,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,8 +13,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.hibernate.annotations.common.util.StringHelper;
 
 import modelo.dao.consulta.ConsultaDAO;
 import modelo.dao.consulta.ConsultaDAOimpl;
@@ -48,28 +45,16 @@ public class Servlet extends HttpServlet {
 	private HistoricoDAO daoHistorico;
 	private ContatoDAO daoContato;
 
-	public void initPaciente() {
+	public void init() {
+		
 		daoPaciente = new PacienteDAOimpl();
-	}
-
-	public void initNutricionista() {
 		daoNutricionista = new NutricionistaDAOimpl();
-	}
-
-	public void initEndereço() {
 		daoEndereço = new EnderecoDAOimpl();
-	}
-
-	public void initConsulta() {
-		daoConsulta = new ConsultaDAOimpl();
-	}
-
-	public void initHistorico() {
+		daoConsulta =  new ConsultaDAOimpl();
 		daoHistorico = new HistoricoDAOImpl();
-	}
-
-	public void initContato() {
 		daoContato = new ContatoDAOimpl();
+	
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -312,7 +297,7 @@ public class Servlet extends HttpServlet {
 
 		String nome = request.getParameter("nome_paciente");
 		String sobrenome = request.getParameter("sobrenome_paciente");
-		int idnutri = Integer.parseInt(request.getParameter("id_nutricionista"));
+		Long idnutri = Long.parseLong(request.getParameter("id_nutricionista"));
 		LocalDate date = LocalDate.parse(request.getParameter("dia"));
 		LocalTime hora = LocalTime.parse(request.getParameter("hora"));
 		Paciente paciente = daoPaciente.recuperarPaciente(new Paciente(nome, sobrenome));
@@ -337,7 +322,7 @@ public class Servlet extends HttpServlet {
 			throws SQLException, IOException, ServletException {
 
 		long idconsulta = Long.parseLong(request.getParameter("id_consulta"));
-		int idnutri = Integer.parseInt(request.getParameter("id_nutricionista"));
+		Long idnutri = Long.parseLong(request.getParameter("id_nutricionista"));
 		long idpaciente = Long.parseLong(request.getParameter("id_paciente"));
 		LocalDate date = LocalDate.parse(request.getParameter("data_consulta"));
 		LocalTime hora = LocalTime.parse(request.getParameter("horario_consulta"));
@@ -350,7 +335,6 @@ public class Servlet extends HttpServlet {
 	private void inserirEndereço(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException {
 
-		String rua = request.getParameter("rua_endereço");
 		String cep = request.getParameter("cep_endereço");
 		long numero = Long.parseLong(request.getParameter("numero_endereço"));
 		String complemento = request.getParameter("complemento_endereço");
@@ -419,20 +403,24 @@ public class Servlet extends HttpServlet {
 	}
 
 	private void inserirNutricionista(HttpServletRequest request, HttpServletResponse response)
-			throws SQLException, IOException {
+			throws SQLException, IOException, ServletException {
 
 		String nome = request.getParameter("nome");
 		String sobrenome = request.getParameter("sobrenome");
-		String cnpj = request.getParameter("cnpj_nutricionista");
+		String cnpj = request.getParameter("cnpj");
 		String senha = request.getParameter("senha");
+
 		daoNutricionista.inserirNutricionista(new Nutricionista(nome, sobrenome, cnpj, senha));
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("perfilPaciente.jsp");
+		dispatcher.forward(request, response);
 
 	}
 
 	private void deletarNutricionista(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException {
 
-		int id = Integer.parseInt(request.getParameter("id_nutricionista"));
+		Long id = Long.parseLong(request.getParameter("id_nutricionista"));
 		Nutricionista nustricionista = daoNutricionista.recuperarNutricionista(new Nutricionista(id));
 		daoNutricionista.deletarNutricionista(nustricionista);
 
@@ -441,7 +429,7 @@ public class Servlet extends HttpServlet {
 	public void atualizarNutricionista(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException {
 
-		int id = Integer.parseInt(request.getParameter("id_nutricionista"));
+		Long id = Long.parseLong(request.getParameter("id_nutricionista"));
 		String nome = request.getParameter("nome_nutricionista");
 		String sobrenome = request.getParameter("sobrenome_nutricionista");
 		String cnpj = request.getParameter("cnpj_nutricionista");

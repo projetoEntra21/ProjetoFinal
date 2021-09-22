@@ -1,37 +1,34 @@
 package projeto.main;
 
-import java.util.Scanner;
-
-import org.json.JSONObject;
-
-import modelo.dao.food.FoodDAO;
-import modelo.dao.food.FoodDAOimpl;
+import modelo.dao.nutricionista.NutricionistaDAO;
+import modelo.dao.nutricionista.NutricionistaDAOimpl;
+import modelo.entidade.nutricionista.Nutricionista;
 
 public class Principal {
 
 	public static void main(String[] args) {
 
-		Scanner leitor = new Scanner(System.in);
-
-		System.out.println("Digite um alimento: ");
-		String alimento = leitor.nextLine();
-
-		FoodDAO foodDAO = new FoodDAOimpl();
-
-		JSONObject jsonObject = foodDAO.readJsonFromUrl(
-				"https://api.edamam.com/api/food-database/v2/parser?app_id=0ade5519&app_key=765cf001c347b17087e6af924d562b33&ingr="
-						+ alimento + "&nutrition-type=cooking");
-
-		JSONObject food = jsonObject.getJSONArray("parsed").getJSONObject(0).getJSONObject("food");
-		double lucas = food.getJSONObject("nutrients").getDouble("ENERC_KCAL");
-
-		System.out.println(lucas);
+//		Scanner leitor = new Scanner(System.in);
+//
+//		System.out.println("Digite um alimento: ");
+//		String alimento = leitor.nextLine();
+//
+//		FoodDAO foodDAO = new FoodDAOimpl();
+//
+//		JSONObject jsonObject = foodDAO.readJsonFromUrl(
+//				"https://api.edamam.com/api/food-database/v2/parser?app_id=0ade5519&app_key=765cf001c347b17087e6af924d562b33&ingr="
+//						+ alimento + "&nutrition-type=cooking");
+//
+//		JSONObject food = jsonObject.getJSONArray("parsed").getJSONObject(0).getJSONObject("food");
+//		double lucas = food.getJSONObject("nutrients").getDouble("ENERC_KCAL");
+//
+//		System.out.println(lucas);
 
 //		EndereçoDAO endereçoDAO = new EndereçoDAOimpl();
 //		PacienteDAO pacienteDAO = new PacienteDAOimpl();
 //		ContatoDAO contatoDAO = new ContatoDAOimpl();
 //		HistoricoDAO historicoDAO = new HistoricoDAOImpl();
-//		NutricionistaDAO nutricionistaDAO = new NutricionistaDAOimpl();
+		NutricionistaDAO nutricionistaDAO = new NutricionistaDAOimpl();
 //		ConsultaDAO consultaDAO = new ConsultaDAOimpl();
 //
 //		String nome = "Pedro";
@@ -85,6 +82,13 @@ public class Principal {
 ////		pacienteDAO.inserirPaciente(paciente);
 //		consultaDAO.inserirConsulta(consulta);
 ////		nutricionistaDAO.cadastrarNutricionista(nutricionista);
+		
+		
+		
+		
+//		nutricionistaDAO.inserirNutricionista(new Nutricionista("Gabriel", "Santos", "66.192.798/0001-29", "testesenha"));
+		
+		
 
 	}
 

@@ -13,9 +13,7 @@ public class ConexaoFactory {
 
 		configuracao.addAnnotatedClass(controle.execptions.IdadeINvalidaExecption.class);
 		configuracao.addAnnotatedClass(controle.execptions.CinturaInvalidadExecption.class);
-		configuracao.addAnnotatedClass(controle.execptions.DensidadeInvalidaExecption.class);
 		configuracao.addAnnotatedClass(controle.execptions.AlturaInvalidaExecption.class);
-		configuracao.addAnnotatedClass(controle.execptions.ImcInvalidoExecption.class);
 		configuracao.addAnnotatedClass(controle.execptions.PesoInvalidoExecption.class);
 		configuracao.addAnnotatedClass(controle.execptions.QuadrilInvalidoException.class);
 		configuracao.addAnnotatedClass(modelo.entidade.historico.Historico.class);
