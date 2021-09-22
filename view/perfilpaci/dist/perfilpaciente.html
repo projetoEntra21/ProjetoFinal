@@ -50,7 +50,8 @@
 	
   <label class="label" for="input">Senha</label>
 	<input class="input" type="password" id="myPassword"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres" required>
-	
+  
+
   <label class="label" for="input">Confirmação da senha</label>
 	<input class="input" type="password" id="confirm_password" required>
 	
@@ -175,11 +176,15 @@
   </section>
 
   <section id="section5">
+ 
     <input class="t" type="radio" name="sections" id="option5">
     <label for="option5" class="trr">Minhas Consultas</label>
     <article>
 
-     
+<a href="/agendamento/dist/agendamento.html"><button type="button" id="botao" class="button" data-toggle="modal" data-target="#exampleModal">
+agendar minha consulta
+     </button></a>
+    
     </article>
   </section>
 </div>
