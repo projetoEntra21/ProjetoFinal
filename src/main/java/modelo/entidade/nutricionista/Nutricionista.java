@@ -23,7 +23,7 @@ public class Nutricionista implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_nutricionista")
-	private Long Id;
+	private int Id;
 
 	@Column(name = "nome_nutricionista", length = 20, nullable = false, unique = false)
 	private String nome;
@@ -36,27 +36,25 @@ public class Nutricionista implements Serializable {
 
 	@Column(name = "senha_nutricionista", nullable = false, unique = true)
 	private String senha;
-	
-	
+
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "nutricionista")
 	private List<Consulta> consultas;
 
 	public Nutricionista() {
 	}
 
-	public Nutricionista(long Id) {
+	public Nutricionista(int Id) {
 		setId(Id);
 
 	}
 
-	public Nutricionista(Long Id, List<Consulta> consultas) {
+	public Nutricionista(int Id, List<Consulta> consultas) {
 
 		setId(Id);
 		setConsultas(consultas);
 
 	}
-	
-	
+
 	public Nutricionista(String nome, String sobrenome, String cpnj, List<Consulta> consultas) {
 
 		setConsultas(consultas);
@@ -65,32 +63,29 @@ public class Nutricionista implements Serializable {
 		setCnpj(cpnj);
 	}
 
-	public Nutricionista(String nome, String sobrenome, String cpnj) {
+	public Nutricionista(String nome, String sobrenome, String cpnj, String senha) {
 
+		setSenha(senha);
 		setNome(nome);
 		setSobrenome(sobrenome);
 		setCnpj(cpnj);
 	}
 
-	public Nutricionista(long Id, String nome, String sobrenome, String cpnj) {
+	public Nutricionista(int Id, String nome, String sobrenome, String cpnj, String senha) {
 
+		setSenha(senha);
 		setId(Id);
 		setNome(sobrenome);
 		setSobrenome(sobrenome);
 		setCnpj(cpnj);
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.Id = id;
 	}
 
-	public long getId() {
+	public int getId() {
 		return Id;
-	}
-
-	public void setId(long id) {
-
-		Id = id;
 	}
 
 	public String getNome() {
