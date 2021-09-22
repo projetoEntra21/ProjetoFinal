@@ -18,8 +18,8 @@ import modelo.dao.consulta.ConsultaDAO;
 import modelo.dao.consulta.ConsultaDAOimpl;
 import modelo.dao.contato.ContatoDAO;
 import modelo.dao.contato.ContatoDAOimpl;
-import modelo.dao.endereco.EnderecoDAOimpl;
-import modelo.dao.endereco.EndereçoDAO;
+//import modelo.dao.endereco.EnderecoDAOimpl;
+//import modelo.dao.endereco.EndereçoDAO;
 import modelo.dao.historico.HistoricoDAO;
 import modelo.dao.historico.HistoricoDAOImpl;
 import modelo.dao.nutricionista.NutricionistaDAO;
@@ -28,7 +28,6 @@ import modelo.dao.paciente.PacienteDAO;
 import modelo.dao.paciente.PacienteDAOimpl;
 import modelo.entidade.consulta.Consulta;
 import modelo.entidade.contato.Contato;
-import modelo.entidade.endereco.Endereço;
 import modelo.entidade.historico.Historico;
 import modelo.entidade.nutricionista.Nutricionista;
 import modelo.entidade.paciente.Paciente;
@@ -40,7 +39,7 @@ public class Servlet extends HttpServlet {
 
 	private PacienteDAO daoPaciente;
 	private NutricionistaDAO daoNutricionista;
-	private EndereçoDAO daoEndereço;
+//	private EndereçoDAO daoEndereço;
 	private ConsultaDAO daoConsulta;
 	private HistoricoDAO daoHistorico;
 	private ContatoDAO daoContato;
@@ -49,7 +48,7 @@ public class Servlet extends HttpServlet {
 		
 		daoPaciente = new PacienteDAOimpl();
 		daoNutricionista = new NutricionistaDAOimpl();
-		daoEndereço = new EnderecoDAOimpl();
+//		daoEndereço = new EnderecoDAOimpl();
 		daoConsulta =  new ConsultaDAOimpl();
 		daoHistorico = new HistoricoDAOImpl();
 		daoContato = new ContatoDAOimpl();
@@ -114,17 +113,7 @@ public class Servlet extends HttpServlet {
 				atualizarConsulta(request, response);
 				break;
 
-			case "/inserirEndereço":
-				inserirEndereço(request, response);
-				break;
-
-			case "/deletarEndereço":
-				deletarEndereço(request, response);
-				break;
-
-			case "/atualizarEndereço":
-				atualizarEndereço(request, response);
-				break;
+//			
 
 			case "/inserirPaciente":
 				inserirPaciente(request, response);
@@ -297,7 +286,7 @@ public class Servlet extends HttpServlet {
 
 		String nome = request.getParameter("nome_paciente");
 		String sobrenome = request.getParameter("sobrenome_paciente");
-		Long idnutri = Long.parseLong(request.getParameter("id_nutricionista"));
+		long idnutri = Long.parseLong(request.getParameter("id_nutricionista"));
 		LocalDate date = LocalDate.parse(request.getParameter("dia"));
 		LocalTime hora = LocalTime.parse(request.getParameter("hora"));
 		Paciente paciente = daoPaciente.recuperarPaciente(new Paciente(nome, sobrenome));
@@ -332,33 +321,33 @@ public class Servlet extends HttpServlet {
 
 	}
 
-	private void inserirEndereço(HttpServletRequest request, HttpServletResponse response)
-			throws SQLException, IOException {
-
-		String cep = request.getParameter("cep_endereço");
-		long numero = Long.parseLong(request.getParameter("numero_endereço"));
-		String complemento = request.getParameter("complemento_endereço");
-		daoEndereço.inserirEndereço(new Endereço(cep, numero, complemento));
-	}
-
-	private void deletarEndereço(HttpServletRequest request, HttpServletResponse response)
-			throws SQLException, IOException {
-
-		long id = Long.parseLong(request.getParameter("id_paciente"));
-		Endereço endereço = daoEndereço.recuperarEndereço(new Endereço(id));
-		daoEndereço.deletarEndereço(endereço);
-
-	}
-
-	private void atualizarEndereço(HttpServletRequest request, HttpServletResponse response)
-			throws SQLException, IOException {
-
-		long id = Long.parseLong(request.getParameter("id_paciente"));
-		String cep = request.getParameter("cep_endereço");
-		long numero = Long.parseLong(request.getParameter("numero_endereço"));
-		String complemento = request.getParameter("complemento_endereço");
-		daoEndereço.atualizarEndereço(new Endereço(id, cep, numero, complemento));
-	}
+//	private void inserirEndereço(HttpServletRequest request, HttpServletResponse response)
+//			throws SQLException, IOException {
+//
+//		String cep = request.getParameter("cep_endereço");
+//		long numero = Long.parseLong(request.getParameter("numero_endereço"));
+//		String complemento = request.getParameter("complemento_endereço");
+//		daoEndereço.inserirEndereço(new Endereço(cep, numero, complemento));
+//	}
+//
+//	private void deletarEndereço(HttpServletRequest request, HttpServletResponse response)
+//			throws SQLException, IOException {
+//
+//		long id = Long.parseLong(request.getParameter("id_paciente"));
+//		Endereço endereço = daoEndereço.recuperarEndereço(new Endereço(id));
+//		daoEndereço.deletarEndereço(endereço);
+//
+//	}
+//
+//	private void atualizarEndereço(HttpServletRequest request, HttpServletResponse response)
+//			throws SQLException, IOException {
+//
+//		long id = Long.parseLong(request.getParameter("id_paciente"));
+//		String cep = request.getParameter("cep_endereço");
+//		long numero = Long.parseLong(request.getParameter("numero_endereço"));
+//		String complemento = request.getParameter("complemento_endereço");
+//		daoEndereço.atualizarEndereço(new Endereço(id, cep, numero, complemento));
+//	}
 
 	public void listarPacientes(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
@@ -374,9 +363,10 @@ public class Servlet extends HttpServlet {
 
 		String nome = request.getParameter("nome_paciente");
 		String cpf = request.getParameter("cpf_paciente");
+		String email = request.getParameter("email_paciente");
 		String sobrenome = request.getParameter("sobrenome_paciente");
-		int idade = Integer.parseInt(request.getParameter("idade_paciente"));
-		daoPaciente.inserirPaciente(new Paciente(nome, cpf, sobrenome, idade));
+		long idade = Long.parseLong(request.getParameter("idade_paciente"));
+		daoPaciente.inserirPaciente(new Paciente(email, nome, cpf, sobrenome, idade));
 		response.sendRedirect("listar");
 	}
 

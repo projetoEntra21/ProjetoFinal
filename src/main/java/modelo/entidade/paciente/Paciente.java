@@ -23,19 +23,22 @@ public class Paciente implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_paciente")
-	private Long Id;
+	private long Id;
 
 	@Column(name = "cpf_paciente", nullable = false, unique = true)
 	private String cpf;
 
 	@Column(name = "nome_paciente", length = 25, nullable = false, unique = false)
 	private String nome;
-
+	
+	@Column(name = "email_paciente", length = 25, nullable = false, unique = true)
+	private String email;
+	
 	@Column(name = "sobrenome_paciente", length = 25, nullable = false, unique = false)
 	private String sobrenome;
 
 	@Column(name = "idade_paciente", nullable = false, unique = false)
-	private int idade;
+	private long idade;
 	
 	@Column(name = "senha_paciente", unique = true, nullable = false)
 	private String senha;
@@ -51,16 +54,16 @@ public class Paciente implements Serializable {
 		setNome(nome);
 
 	}
-	
-	
-	public Paciente(Long id) {
 
-		setId(id);
+	public Paciente(long Id) {
+
+		setId(Id);
 
 	}
 
-	public Paciente(String cpf, String nome, String sobrenome, int idade) {
+	public Paciente(String email, String cpf, String nome, String sobrenome,long idade) {
 
+		setEmail(email);
 		setCpf(cpf);
 		setIdade(idade);
 		setNome(nome);
@@ -84,7 +87,7 @@ public class Paciente implements Serializable {
 
 	}
 
-	public Paciente(long Id, String cpf, String nome, String sobrenome, int idade) {
+	public Paciente(long Id, String cpf, String nome, String sobrenome, long idade) {
 
 		setCpf(cpf);
 		setId(Id);
@@ -94,14 +97,8 @@ public class Paciente implements Serializable {
 
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.Id = id;
-
-	}
-
-	public Paciente(long Id) {
-
-		setId(Id);
 
 	}
 
@@ -109,9 +106,7 @@ public class Paciente implements Serializable {
 		return Id;
 	}
 
-	public void setId(long id) {
-		Id = id;
-	}
+
 
 	public String getCpf() {
 		return cpf;
@@ -137,11 +132,11 @@ public class Paciente implements Serializable {
 		this.sobrenome = sobrenome;
 	}
 
-	public int getIdade() {
+	public long getIdade() {
 		return idade;
 	}
 
-	public void setIdade(int idade) {
+	public void setIdade(long idade) {
 		this.idade = idade;
 
 	}
@@ -152,6 +147,14 @@ public class Paciente implements Serializable {
 
 	public void setConsultas(List<Consulta> consultas) {
 		this.consultas = consultas;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }
