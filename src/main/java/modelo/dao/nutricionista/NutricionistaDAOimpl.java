@@ -127,8 +127,7 @@ public class NutricionistaDAOimpl implements NutricionistaDAO {
 			ParameterExpression<Long> idNutricionista = construtor.parameter(Long.class);
 			criteria.where(construtor.equal(raizNutricionista.get("id"), idNutricionista));
 
-			nutricionistaRecuperado = sessao.createQuery(criteria).setParameter(idNutricionista, nutricionista.getId())
-					.getSingleResult();
+			nutricionistaRecuperado = sessao.createQuery(criteria).setParameter(idNutricionista, nutricionista.getId()).getSingleResult();
 
 			sessao.getTransaction().commit();
 

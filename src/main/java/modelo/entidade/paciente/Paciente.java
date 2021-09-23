@@ -3,6 +3,7 @@ package modelo.entidade.paciente;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -30,17 +31,17 @@ public class Paciente implements Serializable {
 
 	@Column(name = "nome_paciente", length = 25, nullable = false, unique = false)
 	private String nome;
-	
+
 	@Column(name = "email_paciente", length = 25, nullable = false, unique = true)
 	private String email;
-	
+
 	@Column(name = "sobrenome_paciente", length = 25, nullable = false, unique = false)
 	private String sobrenome;
 
 	@Column(name = "idade_paciente", nullable = false, unique = false)
 	private long idade;
-	
-	@Column(name = "senha_paciente", unique = true, nullable = false)
+
+	@Column(name = "senha_paciente", nullable = false, unique = true)
 	private String senha;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "paciente")
@@ -61,13 +62,14 @@ public class Paciente implements Serializable {
 
 	}
 
-	public Paciente(String email, String cpf, String nome, String sobrenome,long idade) {
+	public Paciente(String email, String cpf, String nome, String sobrenome, long idade, String senha) {
 
 		setEmail(email);
 		setCpf(cpf);
 		setIdade(idade);
 		setNome(nome);
 		setSobrenome(sobrenome);
+		setSenha(senha);
 
 	}
 
@@ -78,12 +80,11 @@ public class Paciente implements Serializable {
 		setConsultas(consultas);
 
 	}
-	
+
 	public Paciente(String nome, String sobrenome) {
 
 		setSobrenome(sobrenome);
 		setNome(nome);
-		
 
 	}
 
@@ -105,8 +106,6 @@ public class Paciente implements Serializable {
 	public long getId() {
 		return Id;
 	}
-
-
 
 	public String getCpf() {
 		return cpf;
@@ -155,6 +154,14 @@ public class Paciente implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 }
