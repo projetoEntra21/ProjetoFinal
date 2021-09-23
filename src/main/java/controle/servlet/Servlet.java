@@ -111,9 +111,7 @@ public class Servlet extends HttpServlet {
 				break;
 			case "/atualizarConsulta":
 				atualizarConsulta(request, response);
-				break;
-
-//			
+				break;	
 
 			case "/inserirPaciente":
 				inserirPaciente(request, response);
@@ -361,12 +359,18 @@ public class Servlet extends HttpServlet {
 	public void inserirPaciente(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException {
 
-		String nome = request.getParameter("nome_paciente");
-		String cpf = request.getParameter("cpf_paciente");
-		String email = request.getParameter("email_paciente");
-		String sobrenome = request.getParameter("sobrenome_paciente");
-		long idade = Long.parseLong(request.getParameter("idade_paciente"));
-		daoPaciente.inserirPaciente(new Paciente(email, nome, cpf, sobrenome, idade));
+		String nome = request.getParameter("nome");
+		String cpf = request.getParameter("cpf");
+		String email = request.getParameter("email");
+		String sobrenome = request.getParameter("sobrenome");
+		String senha = request.getParameter("senha");
+		long idade = Long.parseLong(request.getParameter("idade"));
+		
+		daoPaciente.inserirPaciente(new Paciente(email, nome, cpf, sobrenome, idade, senha));
+		
+		
+		
+		
 		response.sendRedirect("listar");
 	}
 
