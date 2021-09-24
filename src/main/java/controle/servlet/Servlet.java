@@ -197,7 +197,7 @@ public class Servlet extends HttpServlet {
 	public void mostrarHome(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("home.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("newhome.jsp");
 		dispatcher.forward(request, response);
 
 	}
@@ -294,6 +294,11 @@ public class Servlet extends HttpServlet {
 		daoPaciente.atualizarPaciente(new Paciente(nome, sobrenome, consultas));
 		daoNutricionista.atualizarNutriocionista(new Nutricionista(idnutri, consultas));
 
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("perfilpaciente.jsp");
+		dispatcher.forward(request, response);
+
+		
 	}
 
 	private void deletarConsulta(HttpServletRequest request, HttpServletResponse response)
@@ -354,10 +359,13 @@ public class Servlet extends HttpServlet {
 		request.setAttribute("paciente", pacientes);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("cadastro-paciente.jsp");
 		dispatcher.forward(request, response);
+		
+		
+		
 	}
 
 	public void inserirPaciente(HttpServletRequest request, HttpServletResponse response)
-			throws SQLException, IOException {
+			throws SQLException, IOException, ServletException {
 
 		String nome = request.getParameter("nome");
 		String cpf = request.getParameter("cpf");
@@ -368,10 +376,11 @@ public class Servlet extends HttpServlet {
 		
 		daoPaciente.inserirPaciente(new Paciente(email, nome, cpf, sobrenome, idade, senha));
 		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("perfilpaciente.jsp");
+		dispatcher.forward(request, response);
+
 		
 		
-		
-		response.sendRedirect("listar");
 	}
 
 	public void deletarPaciente(HttpServletRequest request, HttpServletResponse response)
@@ -406,7 +415,7 @@ public class Servlet extends HttpServlet {
 
 		daoNutricionista.inserirNutricionista(new Nutricionista(nome, sobrenome, cnpj, senha));
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("perfilPaciente.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("perfilpaciente.jsp");
 		dispatcher.forward(request, response);
 
 	}
