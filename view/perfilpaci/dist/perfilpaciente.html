@@ -41,16 +41,17 @@
  
 <div class="tr">
 <form action="">
+  <form id="msform">
 
+    
 	<label class="label" for="input">Nome de usuário </label>
-	<input class="input" type="text" id="input" required pattern="^[a-zA-Z]{3,25}$" title="Indique seu nome completo sem números e sem espaços"> 
+	<input class="input" type="text" id="input" name="usuario" required pattern="^[a-zA-Z]{3,25}$" title="Indique seu nome completo sem números e sem espaços"> 
 
   <label class="label" for="input">Email</label>
-	<input class="input" type="email" id="input"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="O email teve conter um @" required>
+	<input class="input" type="email" id="input" name="email"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="O email teve conter um @" required>
 	
   <label class="label" for="input">Senha</label>
-	<input class="input" type="password" id="myPassword"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres" required>
-  
+<input class="input" type="password" id="myPassword" name="password"  title="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres" required>
 
   <label class="label" for="input">Confirmação da senha</label>
 	<input class="input" type="password" id="confirm_password" required>
@@ -85,7 +86,7 @@
       
       </div>
     </form>
-      
+    </form>
     </article>
   </section>
  
