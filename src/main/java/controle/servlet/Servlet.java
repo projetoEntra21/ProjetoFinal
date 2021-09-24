@@ -282,9 +282,9 @@ public class Servlet extends HttpServlet {
 
 		List<Consulta> consultas = new ArrayList<Consulta>();
 
-		String nome = request.getParameter("nome_paciente");
-		String sobrenome = request.getParameter("sobrenome_paciente");
-		long idnutri = Long.parseLong(request.getParameter("id_nutricionista"));
+		String nome = request.getParameter("nome");
+		String sobrenome = request.getParameter("sobrenome");
+		long idnutri = Long.parseLong(request.getParameter("id"));
 		LocalDate date = LocalDate.parse(request.getParameter("dia"));
 		LocalTime hora = LocalTime.parse(request.getParameter("hora"));
 		Paciente paciente = daoPaciente.recuperarPaciente(new Paciente(nome, sobrenome));
