@@ -1,16 +1,20 @@
-function validamedidas(){
+var peso = document.querySelector("#peso");
 
-    var number = document.getElementbyId("peso");
-    if(peso >= 0 && peso <= 500) 
-        console.log("O seu peso está incorreto");
+peso.addEventListener("keyup", () => {
+  let value = peso.value.replace(/[^0-9]/g, "").replace(/^(\d{1,})(\d{3})$/, "$1.$2");
+  
+  peso.value = value;
+});
     
 
-var number = document.getElementbyId("altura");
-    if(altura => 0 && altura <= 3.0) 
+    
+
+var altura = document.getElementbyId("altura");
+    if(altura > 0 && altura <= 3.0) 
     console.log("A sua altura está incorreta");
  
 
-var number = document.getElementbyId("cintura");
+var cintura = document.getElementbyId("cintura");
     if (cintura >= 0 && cintura <= 102)
     console.log("A sua cintura está incorreta");
 
@@ -20,8 +24,7 @@ var quadril = document.getElementbyId("quadril");
     console.log("O seu quadril está incorreto");
 
 
-var number = document.getElementbyId("busto");
+var busto = document.getElementbyId("busto");
     if (busto >= 0 && busto <= 200)
     console.log("O seu busto está incorreto");
 
-}
