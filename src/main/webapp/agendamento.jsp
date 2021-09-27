@@ -72,25 +72,20 @@
 					pattern="([01][0-9]|2[0-3]):[0-5][0-9]"
 					value="<c:out value='${consulta.hora}'/>" name="hora" />
 			</div>
-
-			<div class="form-section">
-				<div class="form-label">
-					<label for="">Nutricionista</label>
-				</div>
-				<div class="input-container">
-					<span class="input-icon">
-						<i class="fas fa-asterisk"></i>
-					</span>
-					<c:forEach var="nutricionista" items="${nutricionistas}">
-					<select id="service" class="form-select" required>
-						<option value="" selected disabled>Selecione um nutricionista de sua preferencia</option>
-						<option value="Option 1">Nutricionista 1 </option>
-						<option value="Option 2">Nutricionista 2</option>
-						<option value="Option 3">Nutricionista 3</option>
-					</c:forEach>
-					</select>
-				</div>
-			</div>
+			 <c:forEach var="consulta" items="${consultas}">
+            <p><a href="listarNutricionistas?idNutricionista=<c:out value='${nutricionista.id}'/>"><c:out value="${nutriconista.nome}"/></a></p>                            
+            </c:forEach>      
+            <div class="input-container">
+            <span class="input-icon"> <i class="fas fa-asterisk"></i>
+            </span> <select id="service" class="form-select" required>
+            <option value="" selected disabled <a href="<%=request.getContextPath()%>/listarNutricionistas">
+        	</a>>Selecione um nutricionista de sua preferencia</option>
+            <option value="">Nutricionista 1</option>
+            <option value="">Nutricionista 2</option>
+            <option value="">Nutricionista 3</option>
+ 			</select>
+         </div>
+     </div>
 			<!-- Button trigger modal -->
 <button type="button" id="botao" class="button" data-toggle="modal" data-target="#exampleModal">
 Agendar
