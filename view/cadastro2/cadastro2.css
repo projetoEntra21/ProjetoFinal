@@ -15,6 +15,8 @@ html {
 
 body {
 	font-family: montserrat, arial, verdana;
+	background: 
+	#97D5b1;
 }
 /*form styles*/
 #msform {
@@ -22,7 +24,7 @@ body {
 	margin: 250px auto;
   left: 680px;
 	text-align: center;
-	position:absolute;
+	position:auto;
   background: 
   #97D5b1;
 }
@@ -36,12 +38,14 @@ body {
 	width: 80%;
 	margin: 0 10%;
 	
+	
 	/*stacking fieldsets above each other*/
 	position: relative;
 }
 /*Hide all except first fieldset*/
 #msform fieldset:not(:first-of-type) {
 	display: none;
+	
 }
 /*inputs*/
 #msform input, #msform textarea {
@@ -54,6 +58,7 @@ body {
 	font-family: montserrat;
 	color: #2C3E50;
 	font-size: 13px;
+	
 }
 /*buttons*/
 .button {
@@ -79,12 +84,14 @@ body {
 	text-transform: uppercase;
 	color: #2C3E50;
 	margin-bottom: 10px;
+	
 }
 .fs-subtitle {
 	font-weight: normal;
 	font-size: 13px;
 	color: #666;
 	margin-bottom: 20px;
+	
 }
 
 
@@ -117,3 +124,41 @@ body {
 	width: 20px;
 	top: 380px;
   }
+  @media only screen and (max-device-width: 900px) {
+	/* .menu { width:100%; } */
+	}
+	@media only screen and (max-device-width: 900px) {
+		/* .menu { width:600px; } */
+		}
+		@media only screen and (max-device-width: 700px) {
+			/* .menu { width:400px; } */
+			}
+			@media only screen and (max-device-width: 580px) {
+				/* .menu { width:400px; } */
+				}
+				@media only screen and (max-width: 545px) {
+					#msform {
+						width: calc(100% - 50px);
+					}
+					.fs-title{
+						margin-bottom: 0.5em;
+						display: flex;
+						flex-direction: column;
+					}
+					.fs-subtitle {
+						width: 100%;
+						margin-bottom: 0.5em;
+						margin-right: 0;
+						font-size: 0.8em;
+						font-weight: 600;
+						text-align: left;
+					}
+				}
+				@media only screen and (max-width: 300px) {
+					#msform {
+						width: calc(100%);
+					}
+					.form-container {
+						border-radius: 0;
+					}
+				}

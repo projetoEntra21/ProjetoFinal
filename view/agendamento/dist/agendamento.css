@@ -135,3 +135,15 @@ input[type="date"]::-webkit-outer-spin-button {
 	-moz-appearance: none;
 	appearance: none;
 }
+@media only screen and (max-device-width: 900px) {
+	/* .menu { width:100%; } */
+	}
+	@media only screen and (max-device-width: 900px) {
+		/* .menu { width:600px; } */
+		}
+		@media only screen and (max-device-width: 700px) {
+			/* .menu { width:400px; } */
+			}
+			@media only screen and (max-device-width: 580px) {
+				/* .menu { width:400px; } */
+				}
