@@ -1,6 +1,7 @@
 package modelo.entidade.historico;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -35,38 +36,35 @@ public class Historico implements Serializable {
 	@Column(name = "cintura_historico", nullable = false, unique = false)
 	private double cintura;
 
-	@Column(name = "imc_historico", nullable = false, unique = false)
-	private double imc;
+	@Column(name = "busto_historico", nullable = false, unique = false)
+	private double busto;
 
-	@Column(name = "densidade_historico", nullable = false, unique = false)
-	private double densidade;
-
-	//	ADICIONAR LOCALDATE 
+	@Column(name = "data_historico", nullable = false, unique = false)
+	LocalDate data;
 	
 	@OneToOne(fetch = FetchType.LAZY)
 	@MapsId
 	@JoinColumn(name = "id_paciente")
 	private Paciente paciente;
 
-	public Historico(double peso, double altura, double quadril, double cintura, double imc, double densidade) {
+	public Historico(double peso, double altura, double quadril, double cintura, double busto, LocalDate data) {
 
+		setBusto(busto);
+		setData(data);
 		setAltura(altura);
 		setCintura(cintura);
-		setDensidade(densidade);
-		setImc(imc);
 		setPeso(peso);
 		setQuadril(quadril);
 
 	}
 
-	public Historico(Long id, double peso, double altura, double quadril, double cintura, double imc,
-			double densidade) {
+	public Historico(Long id, double peso, double altura, double quadril,  double busto, double cintura, LocalDate data) {
 
+		setBusto(busto);
+		setData(data);
 		setId(id);
 		setAltura(altura);
 		setCintura(cintura);
-		setDensidade(densidade);
-		setImc(imc);
 		setPeso(peso);
 		setQuadril(quadril);
 
@@ -75,8 +73,6 @@ public class Historico implements Serializable {
 	public Historico(Long id) {
 
 		setId(id);
-		
-
 	}
 	
 	public double getPeso() {
@@ -101,6 +97,30 @@ public class Historico implements Serializable {
 		return quadril;
 	}
 
+	public double getBusto() {
+		return busto;
+	}
+
+	public Paciente getPaciente() {
+		return paciente;
+	}
+
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
+	}
+
+	public void setBusto(double busto) {
+		this.busto = busto;
+	}
+
+	public LocalDate getData() {
+		return data;
+	}
+
+	public void setData(LocalDate data) {
+		this.data = data;
+	}
+
 	public void setQuadril(double quadril) {
 		this.quadril = quadril;
 	}
@@ -111,25 +131,6 @@ public class Historico implements Serializable {
 
 	public void setCintura(double cintura) {
 		this.cintura = cintura;
-
-	}
-
-	public double getImc() {
-		return imc;
-	}
-
-	public void setImc(double imc) {
-
-		this.imc = imc;
-	}
-
-	public double getDensidade() {
-		return densidade;
-	}
-
-	public void setDensidade(double densidade) {
-
-		this.densidade = densidade;
 
 	}
 
