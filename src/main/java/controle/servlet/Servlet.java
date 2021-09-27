@@ -72,6 +72,9 @@ public class Servlet extends HttpServlet {
 
 			switch (action) {
 
+			case "/listarNutricionistas":
+				listarNutricionistas(request, response);
+			
 			case "/perfilPaciente":
 				mostrarPerfilPaciente(request, response);
 
@@ -164,6 +167,15 @@ public class Servlet extends HttpServlet {
 		SQLException sqlException) {
 			throw new ServletException();
 		}
+	}
+
+	private void listarNutricionistas(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException, ServletException {
+		
+		List<Nutricionista> nutricionistas = daoNutricionista.recuperarNutricionistas();
+		request.setAttribute("nutricionistas", nutricionistas);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("");
+		dispatcher.forward(request, response);
 	}
 
 	public void telainicial(HttpServletRequest request, HttpServletResponse response)

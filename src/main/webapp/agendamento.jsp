@@ -6,10 +6,10 @@
 <meta charset="UTF-8">
 <title>Agendamento de Consulta</title>
 
-
-
-   <link rel="stylesheet" href="<%=request.getContextPath()%>css/agendamento.css"/>
-	<style><%@include file="css/agendamento.css"%></style>
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>../css/agendamento.css" />
+<style><%@includefile="../css/agendamento.css"%>
+</style>
 
 
 <link
@@ -36,89 +36,118 @@
 
 	<script src="script.js"></script>
 	<form method="post" action="inserirConsulta">
-		<fieldset>
-			<h2 class="fs-title">CRIE SUA CONSULTA</h2>
-			<h3 class="fs-subtitle"></h3>
+		<form id="form-login">
+			<div class="container">
+				<div class="header">Agende sua consulta</div>
+				<div class="form-container">
+					<div class="subtitle">Informe sua informação de reserva.</div>
+					<form action="" onsubmit="return validadata(d)" method="post">
+						<div class="form-section">
+							<div class="form-label">
+								<label for="">Nome</label>
+							</div>
+							<div class="input-container">
+								<span class="input-icon"> <i class="far fa-user"></i>
+								</span> <input id="Nome" type="text"
+									value="<c:out value='${paciente.nome}'/>" name="nome"
+									class="form-input" placeholder="Entre com seu nome"
+									title="Indique seu nome sem números" required>
+							</div>
+						</div>
 
-			<div class="input-container">
-				<span class="input-icon"> <i class="far fa-user"></i>
-				</span> <label>Nome:</label><input type="text" required="required"
-					class="form-input" placeholder="Entre com seu nome"
-					pattern="^[a-zA-Z][a-zA-Z-_\.]{3,20}$"
-					title="Indique seu nome sem números"
-					value="<c:out value='${paciente.nome}'/>" name="nome" />
-			</div>
+						<div class="form-section">
+							<div class="form-label">
+								<label for="">Sobrenome</label>
+							</div>
+							<div class="input-container">
+								<span class="input-icon"> <i class="far fa-user"></i>
+								</span> <input id="Sobrenome" type="text"
+									value="<c:out value='${paciente.sobrenome}'/>" name="sobrenome"
+									class="form-input" placeholder="Entre com seu Sobrenome"
+									
+									title="Indique seu sobrenome completo sem números" required>
+							</div>
+						</div>
+						<form action="" onsubmit="return validardata(d)" method="post">
+							<div class="form-section">
+								<div class="form-label">
+									<label for="">Data</label>
+								</div>
+								<div class="input-container">
+									<span class="input-icon"> <i class="far fa-calendar-alt"></i>
+									</span> <input type="date" value="<c:out value='${consulta.data}'/>"
+										name="data" id="txtDat" class="form-input"
+										onchange="validardata(this)" required
+										title="Entre com uma data válida">
 
-			<div class="input-container">
-				<span class="input-icon"> <i class="far fa-user"></i>
-				</span> <label>Sobrenome:</label><input type="text" required="required"
-					class="form-input" placeholder="Entre com seu Sobrenome"
-					title="Indique seu sobrenome completo sem números"
-					value="<c:out value='${paciente.sobrenome}'/>" name="sobrenome" />
-			</div>
+								</div>
+							</div>
 
-			<div class="input-container">
-				<span class="input-icon"> <i class="far fa-calendar-alt"></i>
-				</span> <label>Data:</label><input type="date" required="required"
-					id="txtDat" class="form-input" onchange="validardata(this)"
-					title="Entre com uma data válida"
-					value="<c:out value='${consulta.data}'/>" name="data" />
-			</div>
+							<div class="form-section">
+								<div class="form-label">
+									<label for="">Hora</label>
+								</div>
+								<div class="input-container">
+									<span class="input-icon"> <i class="far fa-clock"></i>
+									</span> <input id="time" type="time"
+										value="<c:out value='${consulta.hora}'/>" name="hora"
+										class="form-input" min="07:00" max="18:00" required>
+								</div>
+							</div>
 
-			<div class="input-container">
-				<span class="input-icon"> <i class="far fa-clock"></i>
-				</span> <label>Hora:</label><input type="time"
-					class="form-input" min="07:00" max="18:00" required
-					pattern="([01][0-9]|2[0-3]):[0-5][0-9]"
-					value="<c:out value='${consulta.hora}'/>" name="hora" />
-			</div>
 
-			<div class="form-section">
-				<div class="form-label">
-					<label for="">Nutricionista</label>
-				</div>
-				<div class="input-container">
-					<span class="input-icon">
-						<i class="fas fa-asterisk"></i>
-					</span>
-					<c:forEach var="nutricionista" items="${nutricionistas}">
-					<select id="service" class="form-select" required>
-						<option value="" selected disabled>Selecione um nutricionista de sua preferencia</option>
-						<option value="Option 1">Nutricionista 1 </option>
-						<option value="Option 2">Nutricionista 2</option>
-						<option value="Option 3">Nutricionista 3</option>
-					</c:forEach>
-					</select>
-				</div>
-			</div>
-			<!-- Button trigger modal -->
-<button type="button" id="botao" class="button" data-toggle="modal" data-target="#exampleModal">
-Agendar
-  </button>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-	  <div class="modal-content">
-		<div class="modal-header">
-		  <h5 class="modal-title" id="exampleModalLabel">Confirmação de agendamento</h5>
-		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		  </button>
-		</div>
-		<div class="modal-body">
-		 Seu agendamento está prestes a ser concluido. Suas informações estão certas?
-		</div>
-		<div class="modal-footer">
-		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-		  <button type="submit" class="btn btn-primary">Salvar informações </button >
-		</div>
-	  </div>
-	</div>
-  </div>
-		</fieldset>
-	</form>
+			
+	        <c:forEach var="consulta" items="${consultas}">
+	        	<p><a href="listarNutricionistas?idNutricionista=<c:out value='${nutricionista.id}'/>"><c:out value="${nutriconista.nome}"/></a></p>	        	        	
+			</c:forEach>		
+	       							 	
+								<div class="input-container">
+									<span class="input-icon"> <i class="fas fa-asterisk"></i>
+									</span> <select id="service" class="form-select" required>
+										<option value="" selected disabled <a href="<%=request.getContextPath()%>/listarNutricionistas">
+										</a>>Selecione um
+											nutricionista de sua preferencia</option>
+										<option value="">Nutricionista 1</option>
+										<option value="">Nutricionista 2</option>
+										<option value="">Nutricionista 3</option>
 
+									</select>
+								</div>
+							</div>
+
+							<!-- Button trigger modal -->
+							<button type="button" id="botao" class="button"
+								data-toggle="modal" data-target="#exampleModal">
+								Agendar</button>
+
+							<!-- Modal -->
+							<div class="modal fade" id="exampleModal" tabindex="-1"
+								role="dialog" aria-labelledby="exampleModalLabel"
+								aria-hidden="true">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="exampleModalLabel">Confirmação
+												de agendamento</h5>
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body">Seu agendamento está prestes a
+											ser concluido. Suas informações estão certas?</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary"
+												data-dismiss="modal">Fechar</button>
+											<button type="submit" class="btn btn-primary">Salvar
+												informações</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+					</form>
+				
 
 
 </body>
