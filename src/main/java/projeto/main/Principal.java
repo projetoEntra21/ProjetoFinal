@@ -1,8 +1,7 @@
 package projeto.main;
 
-import modelo.dao.nutricionista.NutricionistaDAO;
-import modelo.dao.nutricionista.NutricionistaDAOimpl;
-import modelo.entidade.nutricionista.Nutricionista;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 public class Principal {
 
@@ -28,7 +27,7 @@ public class Principal {
 //		PacienteDAO pacienteDAO = new PacienteDAOimpl();
 //		ContatoDAO contatoDAO = new ContatoDAOimpl();
 //		HistoricoDAO historicoDAO = new HistoricoDAOImpl();
-		NutricionistaDAO nutricionistaDAO = new NutricionistaDAOimpl();
+//		NutricionistaDAO nutricionistaDAO = new NutricionistaDAOimpl();
 //		ConsultaDAO consultaDAO = new ConsultaDAOimpl();
 //
 //		String nome = "Pedro";
@@ -87,8 +86,6 @@ public class Principal {
 		
 		
 //		nutricionistaDAO.inserirNutricionista(new Nutricionista("Gabriel", "Santos", "66.192.798/0001-29", "testesenha"));
-		
-		
 
 	}
 

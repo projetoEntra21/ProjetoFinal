@@ -1,17 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="<%=request.getContextPath()%>css/cadastronutricionista.css"/>
+	<style><%@include file="css/cadastronutricionista.css"%></style>
+
 <title>Cadastro Nutricionista</title>
-
-<link rel = "stylesheet" href ="<%request.getContextPath()%>resources/css/cadastronutricionista.css"/>
+  		
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" />
-
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
 </head>
 <body>
 
@@ -25,45 +29,35 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 	<script src="script.js"></script>
 
-	<form method="post" action="inserirNutricionista">
+	<form  id="msform" method="post" action="inserirNutricionista">
 		<fieldset>
 			<h2 class="fs-title">CRIE SUA CONTA</h2>
-			<h3 class="fs-subtitle"></h3>
-
-
-
-			<p>
-				<label for="nome"> Nome:</label> <input type="text" name="nome"
+			<h3 class="fs-subtitle"></h3>	
+					 <input type="text" name="nome"
 					id="nome" placeholder="Insira seu nome "
 					pattern="^[a-zA-Z][a-zA-Z-_\.]{3,20}$"
 					title="Indique seu nome sem números" required="required"
 					value="<c:out value='${nutricionista.nome}'/>" name="nome" />
-			</p>
-			<p>
-				<label for="sobrenome">Sobrenome:</label><input type="text"
+					
+				<input type="text"
 					name="sobrenome" id="sobrenome" placeholder="Insira seu sobrenome"
 					required="required"
-					value="<c:out value='${nutricionista.sobrenome}'/>"
-					name="sobrenome" />
-			</p>
-			<p>
-				<label for="cnpj">Cnpj:</label><input type="text" id="cnpj"
+					value="<c:out value='${nutricionista.sobrenome}'/>" name="sobrenome" />
+		
+			<input type="text" id="cnpj"
 					placeholder="Cnpj" title="Siga o formato  XX. XXX. XXX/XXXX-XX."
-					required="required" value="<c:out value='${nutricionista.cnpj}'/>"
-					name="cnpj" />
-			</p>
-			<p>
-				<label for="senha">Senha:</label><input type="password"
+					required="required" value="<c:out value='${nutricionista.cnpj}'/>" name="cnpj" />
+		
+				<input type="password"
 					placeholder="Senha" id="password" required
 					pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
 					title="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres"
 					required>
-			</p>
-			<p>
-				<label for="senha">Confirmar Senha:</label><input type="password"
+
+				<input type="password"
 					placeholder="senha" id="confirm_password" required="required"
 					value="<c:out value='${nutricionista.senha}'/>" name="senha" />
-			</p>
+	
 			<button type="button" id="botao" class="button" data-toggle="modal"
 				data-target="#exampleModal">Cadastrar</button>
 
