@@ -345,3 +345,41 @@ input, select, textarea {
 }
 
 
+@media only screen and (max-device-width: 900px) {
+	/* .menu { width:100%; } */
+	}
+	@media only screen and (max-device-width: 900px) {
+		/* .menu { width:600px; } */
+		}
+		@media only screen and (max-device-width: 700px) {
+			/* .menu { width:400px; } */
+			}
+			@media only screen and (max-device-width: 580px) {
+				/* .menu { width:400px; } */
+				}
+				@media only screen and (max-width: 545px) {
+					#sttngs{
+						width: calc(100% - 50px);
+					}
+					.tr{
+						margin-bottom: 0.5em;
+						display: flex;
+						flex-direction: column;
+					}
+					.tr {
+						width: 100%;
+						margin-bottom: 0.5em;
+						margin-right: 0;
+						font-size: 0.8em;
+						font-weight: 600;
+						text-align: left;
+					}
+				}
+				@media only screen and (max-width: 300px) {
+					#sttngs {
+						width: calc(100%);
+					}
+					.form-container {
+						border-radius: 0;
+					}
+				}
