@@ -13,12 +13,10 @@ public interface PacienteDAO {
 	public void atualizarPaciente(Paciente paciente);
 
 	Paciente recuperarPaciente(Paciente paciente);
-	
-	Paciente recuperarPacientePeloNome(Paciente paciente);
-	
-	Paciente recuperarPacientePeloSobrenome(Paciente paciente);
-	
-	List<Paciente> recuperarPacientes();
-	
 
+	Paciente recuperarPacientePeloNome(Paciente paciente);
+
+	Paciente recuperarPacientePeloSobrenome(Paciente paciente);
+
+	List<Paciente> recuperarPacientes();
 }

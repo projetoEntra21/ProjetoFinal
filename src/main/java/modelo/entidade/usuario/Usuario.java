@@ -5,9 +5,14 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
+import modelo.entidade.contato.Contato;
+
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "usuario")
 public class Usuario implements Serializable {
 
@@ -23,9 +28,10 @@ public class Usuario implements Serializable {
 	@Column(name = "senha_usuario", length = 45, nullable = false, unique = false)
 	private String senha;
 
-	public Usuario() {
+	@Column
+	private Contato contato;
 
-	}
+	public Usuario() {}
 
 	public Usuario(String login, String senha) {
 

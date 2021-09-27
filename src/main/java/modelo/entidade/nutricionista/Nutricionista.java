@@ -13,10 +13,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import modelo.entidade.consulta.Consulta;
+import modelo.entidade.usuario.Usuario;
 
 @Entity
 @Table(name = "nutricionista")
-public class Nutricionista implements Serializable {
+public class Nutricionista extends Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 

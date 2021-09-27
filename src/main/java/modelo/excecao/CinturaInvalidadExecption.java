@@ -1,4 +1,4 @@
-package controle.execptions;
+package modelo.excecao;
 
 public class CinturaInvalidadExecption extends Exception {
 

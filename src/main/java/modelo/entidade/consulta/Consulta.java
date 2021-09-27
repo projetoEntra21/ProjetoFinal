@@ -23,7 +23,7 @@ public class Consulta {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_consulta")
-	Long Id;
+	Long id;
 
 	@Column(name = "horario_consulta", nullable = false, unique = false)
 	LocalTime hora;
@@ -66,11 +66,11 @@ public class Consulta {
 	}
 
 	public Long getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(Long id) {
-		Id = id;
+		id = id;
 	}
 
 	public LocalTime getHora() {
