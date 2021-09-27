@@ -14,10 +14,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import modelo.entidade.consulta.Consulta;
+import modelo.entidade.endereco.Endereco;
+import modelo.entidade.usuario.Usuario;
 
 @Entity
 @Table(name = "paciente")
-public class Paciente implements Serializable {
+public class Paciente extends Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -47,6 +49,8 @@ public class Paciente implements Serializable {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "paciente")
 	private List<Consulta> consultas;
 
+	private Endereco endereco;
+	
 	public Paciente() {
 	}
 
