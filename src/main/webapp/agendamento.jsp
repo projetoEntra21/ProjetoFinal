@@ -6,6 +6,12 @@
 <meta charset="UTF-8">
 <title>Agendamento de Consulta</title>
 
+
+
+   <link rel="stylesheet" href="<%=request.getContextPath()%>css/agendamento.css"/>
+	<style><%@include file="css/agendamento.css"%></style>
+
+
 <link
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
 	rel="stylesheet" />
@@ -75,7 +81,7 @@
 					<span class="input-icon">
 						<i class="fas fa-asterisk"></i>
 					</span>
-					<c:forEach var="nutricionista" items="${nitricionistas}">
+					<c:forEach var="nutricionista" items="${nutricionistas}">
 					<select id="service" class="form-select" required>
 						<option value="" selected disabled>Selecione um nutricionista de sua preferencia</option>
 						<option value="Option 1">Nutricionista 1 </option>
