@@ -14,9 +14,9 @@
 	integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
 	crossorigin="anonymous">
 
-	<link rel="stylesheet" href="<%=request.getContextPath()%>css/cadastronutricionista.css"/>
-	<style><%@include file="css/cadastropaciente.css"%></style>
-	
+	<link rel="stylesheet" href="<%=request.getContextPath()%>resources/css/cadastropaciente.css"/>
+	<style><%@include file="resources/css/cadastropaciente.css"%></style>
+		<script><%@include file="/resources/js/cadastropaciente.js"%></script>		
 
 </style>
 </head>

@@ -18,6 +18,8 @@ import modelo.dao.consulta.ConsultaDAO;
 import modelo.dao.consulta.ConsultaDAOimpl;
 import modelo.dao.contato.ContatoDAO;
 import modelo.dao.contato.ContatoDAOimpl;
+import modelo.dao.endereco.EnderecoDAOimpl;
+import modelo.dao.endereco.EndereçoDAO;
 //import modelo.dao.endereco.EnderecoDAOimpl;
 //import modelo.dao.endereco.EndereçoDAO;
 import modelo.dao.historico.HistoricoDAO;
@@ -28,6 +30,7 @@ import modelo.dao.paciente.PacienteDAO;
 import modelo.dao.paciente.PacienteDAOimpl;
 import modelo.entidade.consulta.Consulta;
 import modelo.entidade.contato.Contato;
+import modelo.entidade.endereco.Endereço;
 import modelo.entidade.historico.Historico;
 import modelo.entidade.nutricionista.Nutricionista;
 import modelo.entidade.paciente.Paciente;
@@ -39,7 +42,7 @@ public class Servlet extends HttpServlet {
 
 	private PacienteDAO daoPaciente;
 	private NutricionistaDAO daoNutricionista;
-//	private EndereçoDAO daoEndereço;
+	private EndereçoDAO daoEndereço;
 	private ConsultaDAO daoConsulta;
 	private HistoricoDAO daoHistorico;
 	private ContatoDAO daoContato;
@@ -48,7 +51,7 @@ public class Servlet extends HttpServlet {
 		
 		daoPaciente = new PacienteDAOimpl();
 		daoNutricionista = new NutricionistaDAOimpl();
-//		daoEndereço = new EnderecoDAOimpl();
+		daoEndereço = new EnderecoDAOimpl();
 		daoConsulta =  new ConsultaDAOimpl();
 		daoHistorico = new HistoricoDAOImpl();
 		daoContato = new ContatoDAOimpl();
@@ -91,15 +94,15 @@ public class Servlet extends HttpServlet {
 				atualizarContato(request, response);
 				break;
 
-			case "/inserirHistorico":
+			case "/inserirMedidas":
 				inserirHistorico(request, response);
 				break;
 
-			case "/deletarHistorico":
+			case "/deletarMedidas":
 				deletarHistorico(request, response);
 				break;
 
-			case "/atualizarHistorico":
+			case "/atualizarMedidas":
 				atualizarHistorico(request, response);
 				break;
 
@@ -154,6 +157,15 @@ public class Servlet extends HttpServlet {
 			case "/telainicial":
 				telainicial(request, response);
 
+			case "/inserirEndereço":
+				inserirEndereço(request, response);
+				
+			case "/atualizarEndereço":
+				atualizarEndereço(request, response);
+				
+			case "/deletarEndereço":
+				deletarEndereço(request, response);	
+				
 			default:
 				mostrarHome(request, response);
 				break;
@@ -244,15 +256,21 @@ public class Servlet extends HttpServlet {
 	}
 
 	private void inserirHistorico(HttpServletRequest request, HttpServletResponse response)
-			throws SQLException, IOException {
+			throws SQLException, IOException, ServletException {
 
-		double peso = Double.parseDouble(request.getParameter("peso_historico"));
-		double altura = Double.parseDouble(request.getParameter("altura_historico"));
-		double quadril = Double.parseDouble(request.getParameter("quadril_historico"));
-		double cintura = Double.parseDouble(request.getParameter("cintura_historico"));
-		double imc = Double.parseDouble(request.getParameter("imc_historico"));
-		double densidade = Double.parseDouble(request.getParameter("densidade_historico"));
-		daoHistorico.inserirHistorico(new Historico(peso, altura, quadril, cintura, imc, densidade));
+	
+		double peso = Double.parseDouble(request.getParameter("peso"));
+		double altura = Double.parseDouble(request.getParameter("altura"));
+		double quadril = Double.parseDouble(request.getParameter("quadril"));
+		double cintura = Double.parseDouble(request.getParameter("cintura"));
+		double busto = Double.parseDouble(request.getParameter("busto"));
+		LocalDate date = LocalDate.parse(request.getParameter("data"));
+
+		
+		daoHistorico.inserirHistorico(new Historico(peso, altura, quadril, cintura, busto, date));
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("perfilpaciente.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	private void deletarHistorico(HttpServletRequest request, HttpServletResponse response)
@@ -261,6 +279,9 @@ public class Servlet extends HttpServlet {
 		long id = Long.parseLong(request.getParameter("id_paciente"));
 		Historico historico = daoHistorico.recuperarHistorico(new Historico(id));
 		daoHistorico.deletarHistorico(historico);
+		
+		
+		
 	}
 
 	private void atualizarHistorico(HttpServletRequest request, HttpServletResponse response)
@@ -271,9 +292,9 @@ public class Servlet extends HttpServlet {
 		double altura = Double.parseDouble(request.getParameter("altura"));
 		double quadril = Double.parseDouble(request.getParameter("quadril"));
 		double cintura = Double.parseDouble(request.getParameter("cintura"));
-		double imc = Double.parseDouble(request.getParameter("imc"));
-		double densidade = Double.parseDouble(request.getParameter("densidade"));
-		daoHistorico.atualizarHistorico(new Historico(id, peso, altura, quadril, cintura, imc, densidade));
+		double busto = Double.parseDouble(request.getParameter("busto"));
+		LocalDate date = LocalDate.parse(request.getParameter("dia"));
+		daoHistorico.atualizarHistorico(new Historico(id, peso, altura, quadril, cintura, busto, date));
 
 	}
 
@@ -324,33 +345,33 @@ public class Servlet extends HttpServlet {
 
 	}
 
-//	private void inserirEndereço(HttpServletRequest request, HttpServletResponse response)
-//			throws SQLException, IOException {
-//
-//		String cep = request.getParameter("cep_endereço");
-//		long numero = Long.parseLong(request.getParameter("numero_endereço"));
-//		String complemento = request.getParameter("complemento_endereço");
-//		daoEndereço.inserirEndereço(new Endereço(cep, numero, complemento));
-//	}
-//
-//	private void deletarEndereço(HttpServletRequest request, HttpServletResponse response)
-//			throws SQLException, IOException {
-//
-//		long id = Long.parseLong(request.getParameter("id_paciente"));
-//		Endereço endereço = daoEndereço.recuperarEndereço(new Endereço(id));
-//		daoEndereço.deletarEndereço(endereço);
-//
-//	}
-//
-//	private void atualizarEndereço(HttpServletRequest request, HttpServletResponse response)
-//			throws SQLException, IOException {
-//
-//		long id = Long.parseLong(request.getParameter("id_paciente"));
-//		String cep = request.getParameter("cep_endereço");
-//		long numero = Long.parseLong(request.getParameter("numero_endereço"));
-//		String complemento = request.getParameter("complemento_endereço");
-//		daoEndereço.atualizarEndereço(new Endereço(id, cep, numero, complemento));
-//	}
+	private void inserirEndereço(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException {
+
+		String cep = request.getParameter("cep_endereço");
+		long numero = Long.parseLong(request.getParameter("numero_endereço"));
+		String complemento = request.getParameter("complemento_endereço");
+		daoEndereço.inserirEndereço(new Endereço(cep, numero, complemento));
+	}
+
+	private void deletarEndereço(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException {
+
+		long id = Long.parseLong(request.getParameter("id_paciente"));
+		Endereço endereço = daoEndereço.recuperarEndereço(new Endereço(id));
+		daoEndereço.deletarEndereço(endereço);
+
+	}
+
+	private void atualizarEndereço(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException {
+
+		long id = Long.parseLong(request.getParameter("id_paciente"));
+		String cep = request.getParameter("cep_endereço");
+		long numero = Long.parseLong(request.getParameter("numero_endereço"));
+		String complemento = request.getParameter("complemento_endereço");
+		daoEndereço.atualizarEndereço(new Endereço(id, cep, numero, complemento));
+	}
 
 	public void listarPacientes(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
@@ -415,7 +436,7 @@ public class Servlet extends HttpServlet {
 
 		daoNutricionista.inserirNutricionista(new Nutricionista(nome, sobrenome, cnpj, senha));
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("perfilpaciente.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("perfilnutricionista.jsp");
 		dispatcher.forward(request, response);
 
 	}

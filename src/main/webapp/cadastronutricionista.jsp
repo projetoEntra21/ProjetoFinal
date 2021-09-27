@@ -8,9 +8,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<link rel="stylesheet" href="<%=request.getContextPath()%>css/cadastronutricionista.css"/>
-	<style><%@include file="css/cadastronutricionista.css"%></style>
-
+	<link rel="stylesheet" href="<%=request.getContextPath()%>resources/css/cadastronutricionista.css"/>
+	<style><%@include file="resources/css/cadastronutricionista.css"%></style>
+	<script><%@include file="/resources/js/cadastronutricionista.js"%></script>		
 <title>Cadastro Nutricionista</title>
   		
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" />

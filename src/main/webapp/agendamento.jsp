@@ -8,9 +8,9 @@
 
 
 
-   <link rel="stylesheet" href="<%=request.getContextPath()%>css/agendamento.css"/>
-	<style><%@include file="css/agendamento.css"%></style>
-
+   <link rel="stylesheet" href="<%=request.getContextPath()%>resources/css/agendamento.css"/>
+	<style><%@include file="resources/css/agendamento.css"%></style>
+	<script><%@include file="/resources/js/agendamento.js"%></script>		
 
 <link
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
@@ -21,7 +21,7 @@
 	rel="stylesheet"
 	integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="./cadastronutricionista.css">
+
 
 </head>
 </head>
