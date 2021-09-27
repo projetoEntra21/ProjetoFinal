@@ -7,8 +7,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" />
   
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-   	<link rel="stylesheet" href="<%=request.getContextPath()%>css/cadastronutricionista.css"/>
-	<style><%@include file="css/cadastronutricionista.css"%></style>
+    <link rel="stylesheet" href="./cadastronutricionista.css">
 
 </head>
 <body>
@@ -30,8 +29,8 @@
   <fieldset>
     <h2 class="fs-title">CRIE SUA CONTA</h2>
     <h3 class="fs-subtitle"></h3>
-    <input type="text" name="nome" id="nome" placeholder="Insira seu nome " pattern="^[a-zA-Z][a-zA-Z-_\.]{3,20}$" title="Indique seu nome sem números" required> value="<c:out value='${nutricionista.nome}'/>" name="nome" />
-    <input type="text" name="sobrenome" id="sobrenome" placeholder="Insira seu sobrenome" pattern="^([AZ] {1} [az] {1,30} [-] {0,1} | [AZ] {1} [- \ '] { 1} [AZ] {0,1} [az] {1,30} [-] {0,1} | [az] {1,2} [- \ '] {1} [AZ] {1} [ az] {1,30}) {2,5} {3,20}$  "title="Indique seu sobrenome completo sem números" required> value="<c:out value='${nutricionista.sobrenome}'/>" name="sobrenome" />
+    <input type="text" name="nome" id="nome" placeholder="Insira seu nome " pattern="^[a-zA-Z][a-zA-Z-_\.]{3,20}$" title="Indique seu nome sem números" required>
+    <input type="text" name="sobrenome" id="sobrenome" placeholder="Insira seu sobrenome" pattern="^([AZ] {1} [az] {1,30} [-] {0,1} | [AZ] {1} [- \ '] { 1} [AZ] {0,1} [az] {1,30} [-] {0,1} | [az] {1,2} [- \ '] {1} [AZ] {1} [ az] {1,30}) {2,5} {3,20}$  "title="Indique seu sobrenome completo sem números" required>
     <input type="text" value="" id="cnpj" placeholder="cnpj" title="Siga o formato  XX. XXX. XXX/XXXX-XX." maxlength="18" required >
     <input type="password" name="password" id="myPassword" size="30" required placeholder="Senha" />
     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABDUlEQVQ4jd2SvW3DMBBGbwQVKlyo4BGC4FKFS4+TATKCNxAggkeoSpHSRQbwAB7AA7hQoUKFLH6E2qQQHfgHdpo0yQHX8T3exyPR/ytlQ8kOhgV7FvSx9+xglA3lM3DBgh0LPn/onbJhcQ0bv2SHlgVgQa/suFHVkCg7bm5gzB2OyvjlDFdDcoa19etZMN8Qp7oUDPEM2KFV1ZAQO2zPMBERO7Ra4JQNpRa4K4FDS0R0IdneCbQLb4/zh/c7QdH4NL40tPXrovFpjHQr6PJ6yr5hQV80PiUiIm1OKxZ0LICS8TWvpyyOf2DBQQtcXk8Zi3+JcKfNafVsjZ0WfGgJlZZQxZjdwzX+ykf6u/UF0Fwo5Apfcq8AAAAASUVORK5CYII=" onclick="mouseoverPass();" onmouseout="mouseoutPass();"  id="olho" class="olho" required/>
