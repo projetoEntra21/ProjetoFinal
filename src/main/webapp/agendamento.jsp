@@ -72,13 +72,16 @@
 					<label for="">Nutricionista</label>
 				</div>
 				<div class="input-container">
-					<span class="input-icon"> <i class="fas fa-asterisk"></i>
-					</span> <select id="service" class="form-select" required="required">
+					<span class="input-icon">
+						<i class="fas fa-asterisk"></i>
+					</span>
+					<c:forEach var="nutricionista" items="${nitricionistas}">
+					<select id="service" class="form-select" required>
 						<option value="" selected disabled>Selecione um nutricionista de sua preferencia</option>
-						<option value="Option 1" value="<c:out value='${nutricionista.id}'/>">Nutricionista 1 
-</option>
+						<option value="Option 1">Nutricionista 1 </option>
 						<option value="Option 2">Nutricionista 2</option>
 						<option value="Option 3">Nutricionista 3</option>
+					</c:forEach>
 					</select>
 				</div>
 			</div>
