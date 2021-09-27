@@ -12,6 +12,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"></script>
 <script src="script.js"></script>
 <!-- partial:index.partial.html -->
 <div class="sttngs">
@@ -103,18 +106,28 @@
 	<input class="input e" id="phone" name="phone" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);" maxlength="14" required/>
 
   <label class="label" for="input">Telefone Celular</label>	
-	<input class="input e" id="phone" name="phone" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);" maxlength="14" required/>
+	<input class="input e" id="phone" name="phone" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);" maxlength="15" required/>
 
-	<label class="label" for="input">CEP</label>	
-	<input class="input e" input name="cep" id="cep" value="" type="text" required  title="Digite um CEP  no formato 00000-000" maxlength="8">
+  <label class="label" for="input"> Cep</label>
+    <input class= "input e" name="cep" type="text" id="cep" class="mascCEP" value="" size="10" maxlength="9" onblur="pesquisacep(this.value);" required /></label>
 
-  <label class="label" for="input">Número</label>	
-	<input class="input e" type="number" id="input" required  pattern="[0-9]+$" title="Informe um número sem letras">
+    <label class="label" for="input"> Rua</label>
+    <input class="input e" name="rua" type="text" id="rua" size="60" required /></label>
 
-  <label class="label" for="input">Complemento</label>	
-	<input class="input e" type="text" id="input" required pattern="[a-z\s]+$" title="Informe um complemento sem números">
+    <label class="label" for="input"> Numero</label>
+    <input class="input e" name="numero" type="number" id="numero" required>
 
-  <!-- Button trigger modal -->
+    <label class="label" for="input"> Bairro</label>
+    <input class= "input e" name="bairro" type="text" id="bairro" size="40" required /></label>
+
+    <label class="label" for="input"> Cidade</label>
+    <input class="input e" name="cidade" type="text" id="cidade" size="40" required/></label>
+
+    <label class="label" for="input"> Estado</label>
+    <input class="input e" name="uf" type="text" id="uf" size="2" required /></label><br />
+
+ 
+ 		<!-- Button trigger modal -->
 <button type="button" id="botao" class="button" data-toggle="modal" data-target="#exampleModal">
   Salvar
      </button>
@@ -130,7 +143,7 @@
          </button>
        </div>
        <div class="modal-body">
-        Sua atualização está prestes a ser concluid. Suas informações estão certas?
+        Sua atualização está prestes a ser concluida. Suas informações estão certas?
        </div>
        <div class="modal-footer">
          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
@@ -143,7 +156,7 @@
        
        </div>
      </form>
-       
+     </form>
      </article>
    </section>
 
