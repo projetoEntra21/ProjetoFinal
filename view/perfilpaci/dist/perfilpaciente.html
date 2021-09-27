@@ -12,7 +12,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-  <script src="script.js"></script>
+<script src="script.js"></script>
 <!-- partial:index.partial.html -->
 <div class="sttngs">
     <h2>Seu perfil</h2>
@@ -41,16 +41,17 @@
  
 <div class="tr">
 <form action="">
+  <form id="msform">
 
+    
 	<label class="label" for="input">Nome de usuário </label>
-	<input class="input" type="text" id="input" required pattern="^[a-zA-Z]{3,25}$" title="Indique seu nome completo sem números e sem espaços"> 
+	<input class="input" type="text" id="input" name="usuario" required pattern="^[a-zA-Z]{3,25}$" title="Indique seu nome completo sem números e sem espaços"> 
 
   <label class="label" for="input">Email</label>
-	<input class="input" type="email" id="input"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="O email teve conter um @" required>
+	<input class="input" type="email" id="input" name="email"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="O email teve conter um @" required>
 	
   <label class="label" for="input">Senha</label>
-	<input class="input" type="password" id="myPassword"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres" required>
-  
+<input class="input"  onsubmit="validatemyPassword()" type="password" id="myPassword" name="password"  title="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres" required>
 
   <label class="label" for="input">Confirmação da senha</label>
 	<input class="input" type="password" id="confirm_password" required>
@@ -85,7 +86,7 @@
       
       </div>
     </form>
-      
+    </form>
     </article>
   </section>
  
@@ -99,13 +100,13 @@
         <div class="tr wwq">
   
   <label class="label" for="input">Telefone Residencial</label>	
-	<input class="input e" type="tel" id="input"  pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$" title="Digite um telefone no formato (00) 00000-0000 " required>
+	<input class="input e" id="phone" name="phone" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);" maxlength="14" required/>
 
   <label class="label" for="input">Telefone Celular</label>	
-	<input class="input e" type="tel" id="input"  pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$" title="Digite um telefone no formato (00) 00000-0000 " required>
+	<input class="input e" id="phone" name="phone" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);" maxlength="14" required/>
 
 	<label class="label" for="input">CEP</label>	
-	<input class="input e" type="text" id="input" required pattern="\d{5}-?\d{3}" title="Digite um CEP  no formato 00000-000">
+	<input class="input e" input name="cep" id="cep" value="" type="text" required  title="Digite um CEP  no formato 00000-000" maxlength="8">
 
   <label class="label" for="input">Número</label>	
 	<input class="input e" type="number" id="input" required  pattern="[0-9]+$" title="Informe um número sem letras">
@@ -192,20 +193,6 @@ agendar minha consulta
   
   </div>
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <!-- partial -->
 

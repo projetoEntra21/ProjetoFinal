@@ -19,46 +19,30 @@ confirm_password.onkeyup = validatemyPassword;
   password.onchange = validatePassword;  
  confirm_password.onkeyup = validatePassword;
 
- 
- //valida telefone
-function ValidaTelefone(tel){
-  exp = /\(\d{2}\)\ \d{4}\-\d{4}/
-  if(!exp.test(tel.value))
-          alert('Numero de Telefone Invalido!');
+ function mask(o, f) {
+  setTimeout(function() {
+    var v = mphone(o.value);
+    if (v != o.value) {
+      o.value = v;
+    }
+  }, 1);
 }
 
-//valida CEP
-function ValidaCep(cep){
-  exp = /\d{2}\.\d{3}\-\d{3}/
-  if(!exp.test(cep.value))
-          alert('Numero de Cep Invalido!');               
+function mphone(v) {
+  var r = v.replace(/\D/g, "");
+  r = r.replace(/^0/, "");
+  if (r.length > 10) {
+    r = r.replace(/^(\d\d)(\d{5})(\d{4}).*/, "($1) $2-$3");
+  } else if (r.length > 5) {
+    r = r.replace(/^(\d\d)(\d{4})(\d{0,4}).*/, "($1) $2-$3");
+  } else if (r.length > 2) {
+    r = r.replace(/^(\d\d)(\d{0,5})/, "($1) $2");
+  } else {
+    r = r.replace(/^(\d*)/, "($1");
+  }
+  return r;
 }
-
-//valida data
-function ValidaData(data){
-  exp = /\d{2}\/\d{2}\/\d{4}/
-  if(!exp.test(data.value))
-          alert('Data Invalida!');                        
-}
-
-//valida o CPF digitado
-function ValidarCPF(Objcpf){
-  var cpf = Objcpf.value;
-  exp = /\.|\-/g
-  cpf = cpf.toString().replace( exp, "" ); 
-  var digitoDigitado = eval(cpf.charAt(9)+cpf.charAt(10));
-  var soma1=0, soma2=0;
-  var vlr =11;
-
-  for(i=0;i<9;i++){
-          soma1+=eval(cpf.charAt(i)*(vlr-1));
-          soma2+=eval(cpf.charAt(i)*vlr);
-          vlr--;
-  }       
-  soma1 = (((soma1*10)%11)==10 ? 0:((soma1*10)%11));
-  soma2=(((soma2+(2*soma1))*10)%11);
-
-  var digitoGerado=(soma1*10)+soma2;
-  if(digitoGerado!=digitoDigitado)        
-          alert('CPF Invalido!');         
-}
+document.getElementById('cep').addEventListener('input', function (e) {
+  var x = e.target.value.replace(/\D/g, '').match(/(\d{5})(\d{3}))/);
+  e.target.value =  (x[5] ? '-' + x[3] : '');
+});
