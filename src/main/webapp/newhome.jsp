@@ -15,7 +15,8 @@
    
    <link rel="stylesheet" href="<%=request.getContextPath()%>resources/css/newhome.css"/>
 	<style><%@include file="resources/css/newhome.css"%></style>
-	<script><%@include file="/resources/js/newhome.js"%></script>		
+	<script><%@include file="resources/js/newhome.js"%></script>	
+		
 </head>
 <body>
 

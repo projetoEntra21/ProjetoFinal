@@ -10,7 +10,7 @@
 
 	<link rel="stylesheet" href="<%=request.getContextPath()%>resources/css/cadastronutricionista.css"/>
 	<style><%@include file="resources/css/cadastronutricionista.css"%></style>
-	<script><%@include file="/resources/js/cadastronutricionista.js"%></script>		
+	<script><%@include file="resources/js/cadastronutricionista.js"%></script>		
 <title>Cadastro Nutricionista</title>
   		
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" />

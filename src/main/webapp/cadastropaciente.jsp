@@ -16,7 +16,7 @@
 
 	<link rel="stylesheet" href="<%=request.getContextPath()%>resources/css/cadastropaciente.css"/>
 	<style><%@include file="resources/css/cadastropaciente.css"%></style>
-		<script><%@include file="/resources/js/cadastropaciente.js"%></script>		
+		<script><%@include file="resources/js/cadastropaciente.js"%></script>		
 
 </style>
 </head>

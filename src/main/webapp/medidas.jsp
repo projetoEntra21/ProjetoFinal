@@ -12,7 +12,7 @@
 
 		<link rel="stylesheet" href="<%=request.getContextPath()%>resources/css/medidas.css"/>
 		<style><%@include file="resources/css/medidas.css"%></style>
-		<script><%@include file="/resources/js/medidas.js"%></script>		
+		<script><%@include file="resources/js/medidas.js"%></script>		
 
 </head>
 <body>

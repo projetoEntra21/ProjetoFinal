@@ -10,7 +10,7 @@
 
    <link rel="stylesheet" href="<%=request.getContextPath()%>resources/css/agendamento.css"/>
 	<style><%@include file="resources/css/agendamento.css"%></style>
-	<script><%@include file="/resources/js/agendamento.js"%></script>		
+	<script><%@include file="resources/js/agendamento.js"%></script>		
 
 <link
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
