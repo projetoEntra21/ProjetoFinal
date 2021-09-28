@@ -20,8 +20,6 @@ import modelo.dao.contato.ContatoDAO;
 import modelo.dao.contato.ContatoDAOimpl;
 import modelo.dao.endereco.EnderecoDAOimpl;
 import modelo.dao.endereco.EnderecoDAO;
-//import modelo.dao.endereco.EnderecoDAOimpl;
-//import modelo.dao.endereco.EndereçoDAO;
 import modelo.dao.historico.HistoricoDAO;
 import modelo.dao.historico.HistoricoDAOImpl;
 import modelo.dao.nutricionista.NutricionistaDAO;

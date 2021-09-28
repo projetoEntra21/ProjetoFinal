@@ -20,7 +20,7 @@ public class Contato implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "id_consulta")
+	@Column(name = "id_contatos")
 	private Long Id;
 
 	@Column(name = "email_contatos", length = 40, nullable = false, unique = true)

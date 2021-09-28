@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -34,9 +35,6 @@ public class Paciente extends Usuario implements Serializable {
 	@Column(name = "nome_paciente", length = 25, nullable = false, unique = false)
 	private String nome;
 
-	@Column(name = "email_paciente", length = 25, nullable = false, unique = true)
-	private String email;
-
 	@Column(name = "sobrenome_paciente", length = 25, nullable = false, unique = false)
 	private String sobrenome;
 
@@ -49,7 +47,8 @@ public class Paciente extends Usuario implements Serializable {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "paciente")
 	private List<Consulta> consultas;
 
-	private Endereco endereco;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "endereco")
+	private List<Endereco> endereco;
 	
 	public Paciente() {
 	}
@@ -66,9 +65,9 @@ public class Paciente extends Usuario implements Serializable {
 
 	}
 
-	public Paciente(String email, String cpf, String nome, String sobrenome, long idade, String senha) {
+	public Paciente(String cpf, String nome, String sobrenome, long idade, String senha) {
 
-		setEmail(email);
+	
 		setCpf(cpf);
 		setIdade(idade);
 		setNome(nome);
@@ -102,14 +101,6 @@ public class Paciente extends Usuario implements Serializable {
 
 	}
 
-	public void setId(long id) {
-		this.Id = id;
-
-	}
-
-	public long getId() {
-		return Id;
-	}
 
 	public String getCpf() {
 		return cpf;
@@ -152,12 +143,12 @@ public class Paciente extends Usuario implements Serializable {
 		this.consultas = consultas;
 	}
 
-	public String getEmail() {
-		return email;
+	public List<Endereco> getEndereco() {
+		return endereco;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setEndereco(List<Endereco> endereco) {
+		this.endereco = endereco;
 	}
 
 	public String getSenha() {

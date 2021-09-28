@@ -19,8 +19,20 @@ public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "id_paciente")
+	@Column(name = "id_usuario")
 	private Long id;
+	
+	@Column(name = "nome_usuario", length = 45, nullable = false, unique = false)
+	private String nome;
+	
+	@Column(name = "sobrenome_usuario", length = 45, nullable = false, unique = false)
+	private String sobrenome;
+	
+	@Column(name = "cpf_usuario", length = 14, nullable = false, unique = true)
+	private String cpf;
+	
+	@Column(name = "idade_usuario", nullable = false, unique = false)
+	private int idade;
 
 	@Column(name = "login_usuario", length = 45, nullable = false, unique = true)
 	private String login;
@@ -28,7 +40,7 @@ public class Usuario implements Serializable {
 	@Column(name = "senha_usuario", length = 45, nullable = false, unique = false)
 	private String senha;
 
-	@Column
+	@Column(name = "contato_usuario", nullable = false, unique = true)
 	private Contato contato;
 
 	public Usuario() {}
