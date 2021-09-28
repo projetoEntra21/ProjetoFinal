@@ -354,7 +354,11 @@ public class Servlet extends HttpServlet {
 		String cep = request.getParameter("cep_endereço");
 		long numero = Long.parseLong(request.getParameter("numero_endereço"));
 		String complemento = request.getParameter("complemento_endereço");
-		daoEndereço.inserirEndereco(new Endereco(cep, numero, complemento));
+		String rua = request.getParameter("rua_endereço");
+		String bairro = request.getParameter("bairro_endereço");
+		String cidade = request.getParameter("cidade_endereço");
+		String estado = request.getParameter("estado_endereço");
+		daoEndereço.inserirEndereco(new Endereco(rua, bairro, cidade, estado, cep, numero, complemento));
 	}
 
 	private void deletarEndereço(HttpServletRequest request, HttpServletResponse response)
