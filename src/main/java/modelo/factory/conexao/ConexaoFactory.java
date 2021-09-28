@@ -11,11 +11,11 @@ public class ConexaoFactory {
 
 		Configuration configuracao = new Configuration();
 
-		configuracao.addAnnotatedClass(controle.execptions.IdadeINvalidaExecption.class);
-		configuracao.addAnnotatedClass(controle.execptions.CinturaInvalidadExecption.class);
-		configuracao.addAnnotatedClass(controle.execptions.AlturaInvalidaExecption.class);
-		configuracao.addAnnotatedClass(controle.execptions.PesoInvalidoExecption.class);
-		configuracao.addAnnotatedClass(controle.execptions.QuadrilInvalidoException.class);
+		configuracao.addAnnotatedClass(modelo.excecao.IdadeINvalidaExecption.class);
+		configuracao.addAnnotatedClass(modelo.excecao.CinturaInvalidadExecption.class);
+		configuracao.addAnnotatedClass(modelo.excecao.AlturaInvalidaExecption.class);
+		configuracao.addAnnotatedClass(modelo.excecao.PesoInvalidoExecption.class);
+		configuracao.addAnnotatedClass(modelo.excecao.QuadrilInvalidoException.class);
 		configuracao.addAnnotatedClass(modelo.entidade.historico.Historico.class);
 		configuracao.addAnnotatedClass(modelo.entidade.paciente.Paciente.class);
 		configuracao.addAnnotatedClass(modelo.entidade.nutricionista.Nutricionista.class);
@@ -24,9 +24,7 @@ public class ConexaoFactory {
 	
 		configuracao.configure("hibernate.cfg.xml");
 
-		ServiceRegistry servico = new StandardServiceRegistryBuilder().applySettings(configuracao.getProperties())
-				.build();
-
+		ServiceRegistry servico = new StandardServiceRegistryBuilder().applySettings(configuracao.getProperties()).build();
 		SessionFactory fabricaSessao = configuracao.buildSessionFactory(servico);
 
 		return fabricaSessao;

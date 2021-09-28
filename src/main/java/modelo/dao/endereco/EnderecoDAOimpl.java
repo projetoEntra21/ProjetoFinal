@@ -9,10 +9,10 @@ import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 
-import modelo.entidade.endereco.Endereço;
+import modelo.entidade.endereco.Endereco;
 import modelo.factory.conexao.ConexaoFactory;
 
-public class EnderecoDAOimpl implements EndereçoDAO {
+public class EnderecoDAOimpl implements EnderecoDAO {
 
 	private ConexaoFactory fabrica;
 
@@ -20,7 +20,7 @@ public class EnderecoDAOimpl implements EndereçoDAO {
 		fabrica = new ConexaoFactory();
 	}
 
-	public void inserirEndereço(Endereço endereço) {
+	public void inserirEndereco(Endereco endereco) {
 
 		Session sessao = null;
 
@@ -29,7 +29,7 @@ public class EnderecoDAOimpl implements EndereçoDAO {
 			sessao = fabrica.getConexao().openSession();
 			sessao.beginTransaction();
 
-			sessao.save(endereço);
+			sessao.save(endereco);
 
 			sessao.getTransaction().commit();
 
@@ -49,7 +49,7 @@ public class EnderecoDAOimpl implements EndereçoDAO {
 		}
 	}
 
-	public void deletarEndereço(Endereço endereço) {
+	public void deletarEndereco(Endereco endereco) {
 
 		Session sessao = null;
 
@@ -58,7 +58,7 @@ public class EnderecoDAOimpl implements EndereçoDAO {
 			sessao = fabrica.getConexao().openSession();
 			sessao.beginTransaction();
 
-			sessao.delete(endereço);
+			sessao.delete(endereco);
 
 			sessao.getTransaction().commit();
 
@@ -78,7 +78,7 @@ public class EnderecoDAOimpl implements EndereçoDAO {
 		}
 	}
 
-	public void atualizarEndereço(Endereço endereço) {
+	public void atualizarEndereco(Endereco endereco) {
 
 		Session sessao = null;
 
@@ -87,7 +87,7 @@ public class EnderecoDAOimpl implements EndereçoDAO {
 			sessao = fabrica.getConexao().openSession();
 			sessao.beginTransaction();
 
-			sessao.update(endereço);
+			sessao.update(endereco);
 
 			sessao.getTransaction().commit();
 
@@ -107,10 +107,10 @@ public class EnderecoDAOimpl implements EndereçoDAO {
 		}
 	}
 
-	public Endereço recuperarEndereço(Endereço endereço) {
+	public Endereco recuperarEndereco(Endereco endereco) {
 
 		Session sessao = null;
-		Endereço endereçoRecuperado = null;
+		Endereco enderecoRecuperado = null;
 
 		try {
 
@@ -119,15 +119,15 @@ public class EnderecoDAOimpl implements EndereçoDAO {
 
 			CriteriaBuilder construtor = sessao.getCriteriaBuilder();
 
-			CriteriaQuery<Endereço> criteria = construtor.createQuery(Endereço.class);
-			Root<Endereço> raizEndereço = criteria.from(Endereço.class);
+			CriteriaQuery<Endereco> criteria = construtor.createQuery(Endereco.class);
+			Root<Endereco> raizEndereco = criteria.from(Endereco.class);
 
-			criteria.select(raizEndereço);
+			criteria.select(raizEndereco);
 
-			ParameterExpression<Long> idEndereço = construtor.parameter(Long.class);
-			criteria.where(construtor.equal(raizEndereço.get("id"), idEndereço));
+			ParameterExpression<Long> idEndereco = construtor.parameter(Long.class);
+			criteria.where(construtor.equal(raizEndereco.get("id"), idEndereco));
 
-			endereçoRecuperado = sessao.createQuery(criteria).setParameter(idEndereço, endereço.getId())
+			enderecoRecuperado = sessao.createQuery(criteria).setParameter(idEndereco, endereco.getId())
 					.getSingleResult();
 
 			sessao.getTransaction().commit();
@@ -147,13 +147,13 @@ public class EnderecoDAOimpl implements EndereçoDAO {
 			}
 		}
 
-		return endereçoRecuperado;
+		return enderecoRecuperado;
 	}
 
-	public List<Endereço> recuperarEndereços() {
+	public List<Endereco> recuperarEnderecos() {
 
 		Session sessao = null;
-		List<Endereço> enderecos = null;
+		List<Endereco> enderecos = null;
 
 		try {
 
@@ -162,10 +162,10 @@ public class EnderecoDAOimpl implements EndereçoDAO {
 
 			CriteriaBuilder construtor = sessao.getCriteriaBuilder();
 
-			CriteriaQuery<Endereço> criteria = construtor.createQuery(Endereço.class);
-			Root<Endereço> raizEndereço = criteria.from(Endereço.class);
+			CriteriaQuery<Endereco> criteria = construtor.createQuery(Endereco.class);
+			Root<Endereco> raizEndereco = criteria.from(Endereco.class);
 
-			criteria.select(raizEndereço);
+			criteria.select(raizEndereco);
 
 			enderecos = sessao.createQuery(criteria).getResultList();
 

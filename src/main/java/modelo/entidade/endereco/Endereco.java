@@ -8,19 +8,22 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import modelo.entidade.paciente.Paciente;
+import modelo.entidade.usuario.Usuario;
 
 @Entity
 @Table(name = "endereco")
-public class Endereço implements Serializable {
+public class Endereco implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "id_paciente")
+	@Column(name = "id_endereco")
 	private Long Id;
 
 	@Column(name = "cep_endereco", nullable = false, unique = false)
@@ -32,28 +35,26 @@ public class Endereço implements Serializable {
 	@Column(name = "complemento_endereco", length = 30, nullable = false, unique = false)
 	private String complemento;
 
-	@OneToOne(fetch = FetchType.LAZY)
-	@MapsId
-	@JoinColumn(name = "id_paciente")
-	private Paciente paciente;
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_usuario")
+	private Usuario usuario;
 
-	public Endereço() {
-	}
+	public Endereco() {}
 
-	public Endereço(Long id) {
+	public Endereco(Long id) {
 
 		setId(Id);
 
 	}
 
-	public Endereço(String cep, Long numero, String complemento) {
+	public Endereco(String cep, Long numero, String complemento) {
 
 		setCep(cep);
 		setComplemento(complemento);
 		setNumero(numero);
 	}
 
-	public Endereço(Long id, String cep, Long numero, String complemento) {
+	public Endereco(Long id, String cep, Long numero, String complemento) {
 
 		setId(id);
 		setCep(cep);
