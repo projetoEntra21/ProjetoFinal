@@ -131,6 +131,14 @@ public class Endereco implements Serializable {
 		this.cidade = cidade;
 	}
 
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
 	public String getEstado() {
 		return estado;
 	}
@@ -139,12 +147,6 @@ public class Endereco implements Serializable {
 		this.estado = estado;
 	}
 
-	public Paciente getPaciente() {
-		return paciente;
-	}
-
-	public void setPaciente(Paciente paciente) {
-		this.paciente = paciente;
-	}
+	
 
 }

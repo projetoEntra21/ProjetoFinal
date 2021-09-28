@@ -209,7 +209,7 @@ public class PacienteDAOimpl implements PacienteDAO {
 			criteria.where(construtor.equal(raizPaciente.get("sobrenome_paciente"),nomePaciente));
 
 			pacienteRecuperado = sessao.createQuery(criteria).setParameter(nomePaciente, paciente.getNome())
-					.getSingleResult();
+ 					.getSingleResult();
 
 			sessao.getTransaction().commit();
 
