@@ -23,7 +23,6 @@ import modelo.entidade.endereco.Endereco;
 import modelo.entidade.usuario.Usuario;
 
 @Entity
-@PrimaryKeyJoinColumn(name = "usuario")
 @Table(name = "paciente")
 public class Paciente extends Usuario implements Serializable {
 
@@ -36,9 +35,30 @@ public class Paciente extends Usuario implements Serializable {
 	}
 
 	public Paciente(String nome, String sobrenome, String cpf, int idade, String login, String senha, Contato contato,
-		 List<Consulta> consultas, Endereco endereco) {
+			List<Consulta> consultas, Endereco endereco) {
 
-		super(nome, sobrenome, cpf, idade, login, senha, contato, endereco );
+		super(nome, sobrenome, cpf, idade, login, senha, contato, endereco);
+		setConsultas(consultas);
+
+	}
+
+	public Paciente(String nome, String sobrenome, String cpf, long idade, String login, String senha) {
+
+		super(nome, sobrenome, cpf, idade, login, senha);
+		setConsultas(consultas);
+
+	}
+
+	public Paciente(String nome, String sobrenome) {
+
+		super(nome, sobrenome);
+		setConsultas(consultas);
+
+	}
+	
+	public Paciente(String nome, String sobrenome, List<Consulta> consultas) {
+
+		super(nome, sobrenome);
 		setConsultas(consultas);
 
 	}

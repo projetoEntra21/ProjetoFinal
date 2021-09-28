@@ -19,7 +19,6 @@ import modelo.entidade.endereco.Endereco;
 import modelo.entidade.usuario.Usuario;
 
 @Entity
-@PrimaryKeyJoinColumn(name = "usuario")
 @Table(name = "nutricionista")
 public class Nutricionista extends Usuario implements Serializable {
 
@@ -27,7 +26,7 @@ public class Nutricionista extends Usuario implements Serializable {
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "nutricionista")
 	private List<Consulta> consultas;
-	
+
 	public Nutricionista() {
 	}
 
@@ -36,13 +35,24 @@ public class Nutricionista extends Usuario implements Serializable {
 
 	}
 
-	public Nutricionista(String nome, String sobrenome, String cpf, int idade, String login, String senha, Contato contato,
-			 List<Consulta> consultas, Endereco endereco) {
+	public Nutricionista(String nome, String sobrenome, String cpf, int idade, String login, String senha,
+			Contato contato, List<Consulta> consultas, Endereco endereco) {
 
-			super(nome, sobrenome, cpf, idade, login, senha, contato, endereco);
-			setConsultas(consultas);
+		super(nome, sobrenome, cpf, idade, login, senha, contato, endereco);
+		setConsultas(consultas);
 
-		}
+	}
+
+	public Nutricionista(String nome, List<Consulta> consultas) {
+
+		super(nome);
+		setConsultas(consultas);
+
+	}
+
+	public Nutricionista(String nome) {
+		super(nome);
+	}
 
 	public List<Consulta> getConsultas() {
 		return consultas;

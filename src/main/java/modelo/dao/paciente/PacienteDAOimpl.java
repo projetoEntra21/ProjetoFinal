@@ -10,6 +10,7 @@ import javax.persistence.criteria.Root;
 import org.hibernate.Session;
 
 import modelo.entidade.paciente.Paciente;
+import modelo.entidade.usuario.Usuario;
 import modelo.factory.conexao.ConexaoFactory;
 
 public class PacienteDAOimpl implements PacienteDAO {
@@ -250,8 +251,8 @@ public class PacienteDAOimpl implements PacienteDAO {
 
 			ParameterExpression<String> sobrenomePaciente = construtor.parameter(String.class);
 			criteria.where(construtor.equal(raizPaciente.get("sobrenome_paciente"), sobrenomePaciente));
-
-			pacienteRecuperado = sessao.createQuery(criteria).setParameter(sobrenomePaciente, paciente.getSobrenome())
+				
+			pacienteRecuperado = sessao.createQuery(criteria).setParameter(sobrenomePaciente, paciente.getSobrenome() )
 					.getSingleResult();
 
 			sessao.getTransaction().commit();

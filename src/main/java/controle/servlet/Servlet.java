@@ -197,28 +197,28 @@ public class Servlet extends HttpServlet {
 	public void mostrarMedidas(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("medidas.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("cadastro-medidas.jsp");
 		dispatcher.forward(request, response);
 	}
 
 	public void mostrarCadastroNutricionista(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("cadastronutricionista.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("cadastro-nutricionista.jsp");
 		dispatcher.forward(request, response);
 	}
 
 	public void mostrarCadastroPaciente(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("cadastropaciente.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("cadastro-paciente.jsp");
 		dispatcher.forward(request, response);
 	}
 
 	public void mostrarHome(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("newhome.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 		dispatcher.forward(request, response);
 
 	}
@@ -226,14 +226,14 @@ public class Servlet extends HttpServlet {
 	public void mostrarPerfilPaciente(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, SQLException, ServletException {
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("perfilpaciente.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("perfil-paciente.jsp");
 		dispatcher.forward(request, response);
 
 	}
 
 	public void mostrarAgendamento(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("agendamento.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("cadastro-consulta.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -310,15 +310,15 @@ public class Servlet extends HttpServlet {
 
 		String nome = request.getParameter("nome");
 		String sobrenome = request.getParameter("sobrenome");
-		long idnutri = Long.parseLong(request.getParameter("id"));
+		String nomenutri = request.getParameter("nome");
 		LocalDate date = LocalDate.parse(request.getParameter("dia"));
 		LocalTime hora = LocalTime.parse(request.getParameter("hora"));
 		Paciente paciente = daoPaciente.recuperarPaciente(new Paciente(nome, sobrenome));
-		Nutricionista nutricionista = daoNutricionista.recuperarNutricionista(new Nutricionista(idnutri));
+		Nutricionista nutricionista = daoNutricionista.recuperarNutricionista(new Nutricionista(nomenutri));
 		Consulta consulta = daoConsulta.inserirConsulta(new Consulta(hora, date, nutricionista, paciente));
 		consultas.add(consulta);
 		daoPaciente.atualizarPaciente(new Paciente(nome, sobrenome, consultas));
-		daoNutricionista.atualizarNutriocionista(new Nutricionista(idnutri, consultas));
+		daoNutricionista.atualizarNutriocionista(new Nutricionista(nomenutri, consultas));
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("perfilpaciente.jsp");
 		dispatcher.forward(request, response);
@@ -391,12 +391,12 @@ public class Servlet extends HttpServlet {
 
 		String nome = request.getParameter("nome");
 		String cpf = request.getParameter("cpf");
-		String email = request.getParameter("email");
 		String sobrenome = request.getParameter("sobrenome");
+		String login = request.getParameter("login");
 		String senha = request.getParameter("senha");
 		long idade = Long.parseLong(request.getParameter("idade"));
 
-		daoPaciente.inserirPaciente(new Paciente(email, nome, cpf, sobrenome, idade, senha));
+		daoPaciente.inserirPaciente(new Paciente(nome, sobrenome, cpf, idade, login, senha));
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("perfilpaciente.jsp");
 		dispatcher.forward(request, response);

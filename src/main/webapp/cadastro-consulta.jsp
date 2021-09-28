@@ -34,7 +34,7 @@
 		<div class="subtitle">
 			Informe sua informação de reserva.
 		</div>
-		<form action="" onsubmit="return validadata(d)" method="post">
+		<form action="inserirConsulta" onsubmit="return validadata(d)" method="post">
 			<div class="form-section">
 				<div class="form-label">
 					<label for="">Nome</label>
@@ -86,21 +86,14 @@
 			</div>
 
 
-			<div class="form-section">
 				<div class="form-label">
-					<label for="">Nutricionista</label>
+					<label for="">Nome nutricionista</label>
 				</div>
 				<div class="input-container">
 					<span class="input-icon">
-						<i class="fas fa-asterisk"></i>
+						<i class="far fa-user"></i>
 					</span>
-					<select id="service" class="form-select" required>
-						<option value="" selected disabled>Selecione um nutricionista de sua preferencia</option>
-						<option value="Option 1">Nutricionista 1 </option>
-						<option value="Option 2">Nutricionista 2</option>
-						<option value="Option 3">Nutricionista 3</option>
-			
-					</select>
+					<input id="Nome" type="text" class="form-input"  placeholder="Entre com seu nome" pattern="^[a-zA-Z][a-zA-Z-_\.]{3,20}$" title="Indique seu nome sem números" required>
 				</div>
 			</div>
 		

@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -21,6 +23,7 @@ public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_usuario")
 	protected Long id;
 	
@@ -34,7 +37,7 @@ public class Usuario implements Serializable {
 	protected String cpf;
 	
 	@Column(name = "idade_usuario", nullable = false, unique = false)
-	protected int idade;
+	protected long idade;
 
 	@Column(name = "login_usuario", length = 45, nullable = false, unique = true)
 	protected String login;
@@ -50,19 +53,13 @@ public class Usuario implements Serializable {
 	
 	public Usuario() {}
 
-	public Usuario(String login, String senha) {
-
-		this.login = login;
-		this.senha = senha;
-	}
-
 	public Usuario(Long id) {
 
 		this.id = id;
 
 	}
 	
-	public Usuario(String nome, String sobrenome, String cpf, int idade, String login, String senha, Contato contato, Endereco endereco) {
+	public Usuario(String nome, String sobrenome, String cpf, long idade, String login, String senha, Contato contato, Endereco endereco) {
 		super();
 		
 		this.nome = nome;
@@ -74,6 +71,34 @@ public class Usuario implements Serializable {
 		this.contato = contato;
 		this.endereco = endereco;
 	}
+	
+	public Usuario(String nome, String sobrenome, String cpf, long idade, String login, String senha) {
+		super();
+		
+		this.nome = nome;
+		this.sobrenome = sobrenome;
+		this.cpf = cpf;
+		this.idade = idade;
+		this.login = login;
+		this.senha = senha;
+	
+	}
+	
+	public Usuario(String nome, String sobrenome) {
+		super();
+		
+		this.nome = nome;
+		this.sobrenome = sobrenome;
+	
+	}
+	
+	public Usuario(String nome) {
+		super();
+		
+		this.nome = nome;
+	
+	}
+	
 
 	public Long getId() {
 		return id;
@@ -85,6 +110,54 @@ public class Usuario implements Serializable {
 
 	public String getLogin() {
 		return login;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getSobrenome() {
+		return sobrenome;
+	}
+
+	public void setSobrenome(String sobrenome) {
+		this.sobrenome = sobrenome;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public long getIdade() {
+		return idade;
+	}
+
+	public void setIdade(long idade) {
+		this.idade = idade;
+	}
+
+	public Contato getContato() {
+		return contato;
+	}
+
+	public void setContato(Contato contato) {
+		this.contato = contato;
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 
 	public void setLogin(String login) {

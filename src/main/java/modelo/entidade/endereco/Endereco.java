@@ -86,6 +86,14 @@ public class Endereco implements Serializable {
 		this.numero = numero;
 	}
 
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
 	public String getComplemento() {
 		return complemento;
 	}
@@ -94,12 +102,6 @@ public class Endereco implements Serializable {
 		this.complemento = complemento;
 	}
 
-	public Paciente getPaciente() {
-		return paciente;
-	}
 
-	public void setPaciente(Paciente paciente) {
-		this.paciente = paciente;
-	}
 
 }

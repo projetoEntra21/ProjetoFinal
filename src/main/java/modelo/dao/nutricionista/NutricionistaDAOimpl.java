@@ -10,6 +10,7 @@ import javax.persistence.criteria.Root;
 import org.hibernate.Session;
 
 import modelo.entidade.nutricionista.Nutricionista;
+import modelo.entidade.paciente.Paciente;
 import modelo.factory.conexao.ConexaoFactory;
 
 public class NutricionistaDAOimpl implements NutricionistaDAO {
@@ -105,6 +106,49 @@ public class NutricionistaDAOimpl implements NutricionistaDAO {
 				sessao.close();
 			}
 		}
+	}
+	
+	public Nutricionista recuperarNutricionistaPeloNome(Nutricionista nutricionista) {
+
+		Session sessao = null;
+		Nutricionista nutricionistaRecuperado = null;
+
+		try {
+
+			sessao = fabrica.getConexao().openSession();
+			sessao.beginTransaction();
+
+			CriteriaBuilder construtor = sessao.getCriteriaBuilder();
+
+			CriteriaQuery<Nutricionista> criteria = construtor.createQuery(Nutricionista.class);
+			Root<Nutricionista> raizNutricionista = criteria.from(Nutricionista.class);
+
+			criteria.select(raizNutricionista);
+
+			ParameterExpression<String> nomeNutricionista = construtor.parameter(String.class);
+			criteria.where(construtor.equal(raizNutricionista.get("sobrenome_nutricionista"),nomeNutricionista));
+
+			nutricionistaRecuperado = sessao.createQuery(criteria).setParameter(nomeNutricionista, nutricionista.getNome())
+					.getSingleResult();
+
+			sessao.getTransaction().commit();
+
+		} catch (Exception sqlException) {
+
+			sqlException.printStackTrace();
+
+			if (sessao.getTransaction() != null) {
+				sessao.getTransaction().rollback();
+			}
+
+		} finally {
+
+			if (sessao != null) {
+				sessao.close();
+			}
+		}
+
+		return nutricionistaRecuperado;
 	}
 
 	public Nutricionista recuperarNutricionista(Nutricionista nutricionista) {

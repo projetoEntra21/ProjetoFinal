@@ -57,10 +57,10 @@
 					placeholder="Insira seu CPF" required="required"
 					value="<c:out value='${paciente.cpf}'/>" name="cpf" />
 		
-			<input type="text" name="email"
-					id="email" placeholder="Email" title="Precisa ter um @ e um ."
-					required="required" value="<c:out value='${paciente.email}'/>"
-					name="email" />
+			<input type="text" name="login"
+					id="login" placeholder="User:" title="Precisa ter um 8 caracteres."
+					required="required" value="<c:out value='${paciente.login}'/>"
+					name="login" />
 			
 			<input type="password"
 					placeholder="Senha" id="password" required
