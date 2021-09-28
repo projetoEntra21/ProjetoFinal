@@ -10,9 +10,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import modelo.entidade.paciente.Paciente;
+import modelo.entidade.usuario.Usuario;
 
 @Entity
 @Table(name = "endereco")
@@ -21,7 +23,7 @@ public class Endereco implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "id_paciente")
+	@Column(name = "id_endereco")
 	private Long Id;
 
 	@Column(name = "cep_endereco", nullable = false, unique = false)
@@ -34,8 +36,8 @@ public class Endereco implements Serializable {
 	private String complemento;
 
 	@OneToMany(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_paciente")
-	private Paciente paciente;
+	@JoinColumn(name = "id_usuario")
+	private Usuario usuario;
 
 	public Endereco() {}
 
