@@ -6,9 +6,10 @@
 <meta charset="UTF-8">
 <title>Agendamento de Consulta</title>
 
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>../css/agendamento.css" />
-<style><%@includefile="../css/agendamento.css"%>
+<link rel="stylesheet" href="<%=request.getContextPath()%>resources/css/agendamento.css"/>
+<style><%@include file="resources/css/agendamento.css"%></style>
+<script><%@include file="resources/js/agendamento.js"%></script>	
+
 </style>
 
 
@@ -21,7 +22,7 @@
 	rel="stylesheet"
 	integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="./cadastronutricionista.css">
+
 
 </head>
 </head>
@@ -40,7 +41,7 @@
 			<div class="container">
 				<div class="header">Agende sua consulta</div>
 				<div class="form-container">
-					<div class="subtitle">Informe sua informação de reserva.</div>
+					<div class="subtitle">Informe sua informaï¿½ï¿½o de reserva.</div>
 					<form action="" onsubmit="return validadata(d)" method="post">
 						<div class="form-section">
 							<div class="form-label">
@@ -51,7 +52,7 @@
 								</span> <input id="Nome" type="text"
 									value="<c:out value='${paciente.nome}'/>" name="nome"
 									class="form-input" placeholder="Entre com seu nome"
-									title="Indique seu nome sem números" required>
+									title="Indique seu nome sem nï¿½meros" required>
 							</div>
 						</div>
 
@@ -65,7 +66,7 @@
 									value="<c:out value='${paciente.sobrenome}'/>" name="sobrenome"
 									class="form-input" placeholder="Entre com seu Sobrenome"
 									
-									title="Indique seu sobrenome completo sem números" required>
+									title="Indique seu sobrenome completo sem nï¿½meros" required>
 							</div>
 						</div>
 						<form action="" onsubmit="return validardata(d)" method="post">
@@ -78,7 +79,7 @@
 									</span> <input type="date" value="<c:out value='${consulta.data}'/>"
 										name="data" id="txtDat" class="form-input"
 										onchange="validardata(this)" required
-										title="Entre com uma data válida">
+										title="Entre com uma data vï¿½lida">
 
 								</div>
 							</div>
@@ -127,20 +128,20 @@
 								<div class="modal-dialog" role="document">
 									<div class="modal-content">
 										<div class="modal-header">
-											<h5 class="modal-title" id="exampleModalLabel">Confirmação
+											<h5 class="modal-title" id="exampleModalLabel">Confirmaï¿½ï¿½o
 												de agendamento</h5>
 											<button type="button" class="close" data-dismiss="modal"
 												aria-label="Close">
 												<span aria-hidden="true">&times;</span>
 											</button>
 										</div>
-										<div class="modal-body">Seu agendamento está prestes a
-											ser concluido. Suas informações estão certas?</div>
+										<div class="modal-body">Seu agendamento estï¿½ prestes a
+											ser concluido. Suas informaï¿½ï¿½es estï¿½o certas?</div>
 										<div class="modal-footer">
 											<button type="button" class="btn btn-secondary"
 												data-dismiss="modal">Fechar</button>
 											<button type="submit" class="btn btn-primary">Salvar
-												informações</button>
+												informaï¿½ï¿½es</button>
 										</div>
 									</div>
 								</div>
