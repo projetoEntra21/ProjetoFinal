@@ -395,13 +395,10 @@ public class Servlet extends HttpServlet {
 
 		String nome = request.getParameter("nome");
 		String cpf = request.getParameter("cpf");
-		String email = request.getParameter("email");
 		String sobrenome = request.getParameter("sobrenome");
 		String senha = request.getParameter("senha");
 		long idade = Long.parseLong(request.getParameter("idade"));
-
-		daoPaciente.inserirPaciente(new Paciente(email, nome, cpf, sobrenome, idade, senha));
-
+		daoPaciente.inserirPaciente(new Paciente(nome, cpf, sobrenome, idade, senha));
 		RequestDispatcher dispatcher = request.getRequestDispatcher("perfilpaciente.jsp");
 		dispatcher.forward(request, response);
 
