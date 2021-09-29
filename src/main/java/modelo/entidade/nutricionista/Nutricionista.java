@@ -46,7 +46,7 @@ public class Nutricionista extends Usuario implements Serializable {
 	public Nutricionista(String nome, String sobrenome, String cpf, int idade, String login, String senha,
 			Contato contato, List<Consulta> consultas, Endereco endereco) {
 
-		super(nome, sobrenome, cpf, idade, login, senha, contato, endereco);
+		super(nome, sobrenome, cpf, idade, login, senha, contato);
 		setConsultas(consultas);
 
 	}

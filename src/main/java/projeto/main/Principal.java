@@ -3,6 +3,10 @@ package projeto.main;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import modelo.dao.nutricionista.NutricionistaDAO;
+import modelo.dao.nutricionista.NutricionistaDAOimpl;
+import modelo.entidade.nutricionista.Nutricionista;
+
 public class Principal {
 
 	public static void main(String[] args) {
@@ -27,7 +31,7 @@ public class Principal {
 //		PacienteDAO pacienteDAO = new PacienteDAOimpl();
 //		ContatoDAO contatoDAO = new ContatoDAOimpl();
 //		HistoricoDAO historicoDAO = new HistoricoDAOImpl();
-//		NutricionistaDAO nutricionistaDAO = new NutricionistaDAOimpl();
+		NutricionistaDAO nutricionistaDAO = new NutricionistaDAOimpl();
 //		ConsultaDAO consultaDAO = new ConsultaDAOimpl();
 //
 //		String nome = "Pedro";
@@ -80,12 +84,12 @@ public class Principal {
 //
 ////		pacienteDAO.inserirPaciente(paciente);
 //		consultaDAO.inserirConsulta(consulta);
-////		nutricionistaDAO.cadastrarNutricionista(nutricionista);
+
 		
 		
 		
 		
-//		nutricionistaDAO.inserirNutricionista(new Nutricionista("Gabriel", "Santos", "66.192.798/0001-29", "testesenha"));
+		nutricionistaDAO.inserirNutricionista(new Nutricionista("Lucas", "Bento", "44597829952", 78, "bentodeoliceiuas@gmail.com", "luqiunhas0508"));
 
 	}
 

@@ -183,7 +183,7 @@ public class Servlet extends HttpServlet {
 
 		List<Nutricionista> nutricionistas = daoNutricionista.recuperarNutricionistas();
 		request.setAttribute("nutricionistas", nutricionistas);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("cadastro-consulta.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -400,8 +400,7 @@ public class Servlet extends HttpServlet {
 		String senha = request.getParameter("senha");
 		long idade = Long.parseLong(request.getParameter("idade"));
 		
-		
-		daoPaciente.inserirPaciente(new Paciente(nome, sobrenome, cpf, idade, login, senha));
+		daoPaciente.inserirPaciente(new Paciente(idade, nome, sobrenome, cpf, idade, login, senha));
 		
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("perfilpaciente.jsp");

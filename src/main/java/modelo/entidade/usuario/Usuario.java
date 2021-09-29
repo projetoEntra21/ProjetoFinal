@@ -45,9 +45,9 @@ public class Usuario implements Serializable {
 	@Column(name = "senha_usuario", length = 45, nullable = false, unique = false)
 	protected String senha;
 
-//	@Column(name = "contato_usuario", nullable = true, unique = true)
-//	protected Contato contato;
-//
+	@Column(name = "contato_usuario", nullable = true, unique = true)
+	protected Contato contato;
+
 	@Column(name = "endereco_usuario", nullable = true, unique = false)
 	protected Endereco endereco;
 	
@@ -59,7 +59,7 @@ public class Usuario implements Serializable {
 
 	}
 	
-	public Usuario(String nome, String sobrenome, String cpf, long idade, String login, String senha, Endereco endereco) {
+	public Usuario(String nome, String sobrenome, String cpf, long idade, String login, String senha, Contato contato) {
 		super();
 		
 		this.nome = nome;
@@ -68,7 +68,7 @@ public class Usuario implements Serializable {
 		this.idade = idade;
 		this.login = login;
 		this.senha = senha;
-//		this.contato = contato;
+		this.contato = contato;
 		this.endereco = endereco;
 	}
 	
