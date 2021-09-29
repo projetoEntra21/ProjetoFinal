@@ -12,7 +12,9 @@ public interface UsuarioDAO {
 
 	public void atualizarUsuario(Usuario usuario);
 
-	Usuario recuperarUsuario(Usuario usuario);
+	Usuario recuperarUsuarioPeloNome(Usuario usuario);
 
+	Usuario recuperarUsuarioPeloSobrenome(Usuario usuario);
+	
 	List<Usuario> recuperarUsuarios();
 }

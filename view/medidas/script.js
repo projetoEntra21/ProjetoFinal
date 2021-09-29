@@ -1,33 +1,40 @@
-var peso = document.querySelector("#peso");
+function id(el){
+    return document.getElementById(el);
+}
+window.onload = function(){
+	id('peso').onkeyup = function(){
+		var v = this.value,
+			integer = v.split(',')[0];
 
-peso.addEventListener("keyup", () => {
-  let value = peso.value.replace(/[^0-9]/g, "").replace(/^(\d{1,})(\d{3})$/, "$1.$2");
+
+		v = v.replace(/\D/, "");
+		v = v.replace(/^[0]+/, "");
+
+		if(v.length <= 2 || !integer)
+		{
+
+
+			if(v.length === 1) v = '0,0' + v;
+			if(v.length === 2) v = '0,' + v;
+		} else {
+			v = v.replace(/^(\d{1,})(\d{2})$/, "$1,$2");
+		}
+
+		this.value = v;
+	}
+};
+
+$('.virgula').mask('#####0,00', {reverse: true});
+
+$('.virgula').on('keyup', function() {
+  if( $(this).val().length > 3 ) {
+      mascara = '####00,00';
+  } else {
+    mascara = '####0,0';
+  }
   
-  peso.value = value;
+  $('.virgula').mask( mascara, { reverse: true});
 });
-    
-
-    
-
-var altura = document.getElementbyId("altura");
-    if(altura > 0 && altura <= 3.0) 
-    console.log("A sua altura está incorreta");
- 
-
-var cintura = document.getElementbyId("cintura");
-    if (cintura >= 0 && cintura <= 102)
-    console.log("A sua cintura está incorreta");
-
-    
-var quadril = document.getElementbyId("quadril");
-    if (quadril >= 0 && quadril <= 1)
-    console.log("O seu quadril está incorreto");
-
-
-var busto = document.getElementbyId("busto");
-    if (busto >= 0 && busto <= 200)
-    console.log("O seu busto está incorreto");
-
     function validadata(d){
 
         var data = d.value; // pega o valor do input
@@ -74,3 +81,12 @@ var busto = document.getElementbyId("busto");
       $('#myModal').on('shown.bs.modal', function () {
         $('#meuInput').trigger('focus')
       })
+
+
+ var cpf = document.querySelector("#cpf");
+
+cpf.addEventListener("keyup", () => {
+  let value = cpf.value.replace(/[^0-9]/g, "").replace(/^([\d]{3})([\d]{3})?([\d]{3})?([\d]{2})?/, "$1.$2.$3-$4");
+  
+  cpf.value = value;
+});

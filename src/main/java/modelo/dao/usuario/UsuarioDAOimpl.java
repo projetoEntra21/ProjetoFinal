@@ -104,7 +104,7 @@ public class UsuarioDAOimpl implements UsuarioDAO {
 		}
 	}
 
-	public Usuario recuperarUsuario(Usuario usuario) {
+	public Usuario recuperarUsuarioPeloNome(Usuario usuario) {
 		Session sessao = null;
 		Usuario usuarioRecuperado = null;
 
@@ -120,10 +120,11 @@ public class UsuarioDAOimpl implements UsuarioDAO {
 
 			criteria.select(raizUsuario);
 
-			ParameterExpression<Long> idUsuario = construtor.parameter(Long.class);
-			criteria.where(construtor.equal(raizUsuario.get("id"), idUsuario));
+			ParameterExpression<String> nomeUsuario = construtor.parameter(String.class);
+			criteria.where(construtor.equal(raizUsuario.get("nome_usuario"), nomeUsuario));
 
-			usuarioRecuperado = sessao.createQuery(criteria).setParameter(idUsuario, usuario.getId()).getSingleResult();
+			usuarioRecuperado = sessao.createQuery(criteria).setParameter(nomeUsuario, usuario.getNome())
+					.getSingleResult();
 
 			sessao.getTransaction().commit();
 
@@ -181,5 +182,47 @@ public class UsuarioDAOimpl implements UsuarioDAO {
 		}
 
 		return usuarios;
+	}
+
+	public Usuario recuperarUsuarioPeloSobrenome(Usuario usuario) {
+		Session sessao = null;
+		Usuario usuarioRecuperado = null;
+
+		try {
+
+			sessao = fabrica.getConexao().openSession();
+			sessao.beginTransaction();
+
+			CriteriaBuilder construtor = sessao.getCriteriaBuilder();
+
+			CriteriaQuery<Usuario> criteria = construtor.createQuery(Usuario.class);
+			Root<Usuario> raizUsuario = criteria.from(Usuario.class);
+
+			criteria.select(raizUsuario);
+
+			ParameterExpression<String> sobrenomeUsuario = construtor.parameter(String.class);
+			criteria.where(construtor.equal(raizUsuario.get("sobrenome_usuario"), sobrenomeUsuario));
+
+			usuarioRecuperado = sessao.createQuery(criteria).setParameter(sobrenomeUsuario, usuario.getSobrenome())
+					.getSingleResult();
+
+			sessao.getTransaction().commit();
+
+		} catch (Exception sqlException) {
+
+			sqlException.printStackTrace();
+
+			if (sessao.getTransaction() != null) {
+				sessao.getTransaction().rollback();
+			}
+
+		} finally {
+
+			if (sessao != null) {
+				sessao.close();
+			}
+		}
+
+		return usuarioRecuperado;
 	}
 }

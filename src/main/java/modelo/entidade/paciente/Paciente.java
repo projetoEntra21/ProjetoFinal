@@ -3,20 +3,12 @@ package modelo.entidade.paciente;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
-import javax.security.auth.login.LoginContext;
 
-import modelo.dao.contato.ContatoDAOimpl;
 import modelo.entidade.consulta.Consulta;
 import modelo.entidade.contato.Contato;
 import modelo.entidade.endereco.Endereco;
