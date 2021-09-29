@@ -399,8 +399,10 @@ public class Servlet extends HttpServlet {
 		String login = request.getParameter("login");
 		String senha = request.getParameter("senha");
 		long idade = Long.parseLong(request.getParameter("idade"));
-
+		
+		
 		daoPaciente.inserirPaciente(new Paciente(nome, sobrenome, cpf, idade, login, senha));
+		
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("perfilpaciente.jsp");
 		dispatcher.forward(request, response);
@@ -425,7 +427,9 @@ public class Servlet extends HttpServlet {
 		String cpf = request.getParameter("cpf_paciente");
 		String sobrenome = request.getParameter("sobrenome_paciente");
 		int idade = Integer.parseInt(request.getParameter("idade_paciente"));
-		daoPaciente.atualizarPaciente(new Paciente(id, nome, cpf, sobrenome, idade));
+		String login = request.getParameter("login");
+		String senha = request.getParameter("senha");
+		daoPaciente.atualizarPaciente(new Paciente(id, nome, sobrenome, cpf, idade, login, senha));
 
 	}
 
@@ -434,10 +438,13 @@ public class Servlet extends HttpServlet {
 
 		String nome = request.getParameter("nome");
 		String sobrenome = request.getParameter("sobrenome");
-		String cnpj = request.getParameter("cnpj");
+		String cpf = request.getParameter("cnpj");
 		String senha = request.getParameter("senha");
-
-		daoNutricionista.inserirNutricionista(new Nutricionista(nome, sobrenome, cnpj, senha));
+		Long idade = Long.parseLong(request.getParameter("idade"));
+		String login = request.getParameter("login");
+		
+		
+		daoNutricionista.inserirNutricionista(new Nutricionista(nome, sobrenome, cpf, idade, login, senha));
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("perfilnutricionista.jsp");
 		dispatcher.forward(request, response);
@@ -457,11 +464,13 @@ public class Servlet extends HttpServlet {
 			throws SQLException, IOException {
 
 		Long id = Long.parseLong(request.getParameter("id_nutricionista"));
-		String nome = request.getParameter("nome_nutricionista");
-		String sobrenome = request.getParameter("sobrenome_nutricionista");
-		String cnpj = request.getParameter("cnpj_nutricionista");
-		String senha = request.getParameter("senha_nutricionista");
-		daoNutricionista.atualizarNutriocionista(new Nutricionista(id, nome, sobrenome, cnpj, senha));
+		String nome = request.getParameter("nome");
+		String sobrenome = request.getParameter("sobrenome");
+		String senha = request.getParameter("senha");
+		String cpf = request.getParameter("cnpj");
+		Long idade = Long.parseLong(request.getParameter("idade"));
+		String login = request.getParameter("login");
+		daoNutricionista.atualizarNutriocionista(new Nutricionista(id, nome, sobrenome, cpf, idade, login, senha));
 
 	}
 

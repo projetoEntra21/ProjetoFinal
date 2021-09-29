@@ -6,7 +6,7 @@ import modelo.entidade.contato.Contato;
 
 public interface ContatoDAO {
 
-	public void inserirContato(Contato contato);
+	public Contato inserirContato(Contato contato);
 
 	public void deletarContato(Contato contato);
 

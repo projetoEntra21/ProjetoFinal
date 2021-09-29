@@ -6,7 +6,6 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import modelo.entidade.consulta.Consulta;
@@ -26,20 +25,28 @@ public class Paciente extends Usuario implements Serializable {
 	public Paciente() {
 	}
 
-	public Paciente(String nome, String sobrenome, String cpf, int idade, String login, String senha, Contato contato,
-			List<Consulta> consultas, Endereco endereco) {
+	public Paciente(long id) {
 
-		super(nome, sobrenome, cpf, idade, login, senha, contato, endereco);
-		setConsultas(consultas);
+		
 
 	}
+	
 
-	public Paciente(String nome, String sobrenome, String cpf, long idade, String login, String senha) {
+	public Paciente(long id, String nome, String sobrenome, String cpf, long idade, String login, String senha) {
 
 		super(nome, sobrenome, cpf, idade, login, senha);
-		setConsultas(consultas);
 
 	}
+	
+	
+	public Paciente(String nome, String sobrenome, String cpf, long idade, String login, String senha, Contato contato) {
+
+		super(nome, sobrenome, cpf, idade, login, senha, contato);
+	
+
+	}
+
+	
 
 	public Paciente(String nome, String sobrenome) {
 
