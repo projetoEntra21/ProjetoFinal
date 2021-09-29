@@ -6,7 +6,7 @@ import modelo.entidade.endereco.Endereco;
 
 public interface EnderecoDAO {
 
-	public void inserirEndereco(Endereco endereco);
+	public Endereco inserirEndereco(Endereco endereco);
 
 	public void deletarEndereco(Endereco endereco);
 

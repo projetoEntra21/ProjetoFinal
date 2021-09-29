@@ -1,7 +1,17 @@
 package projeto.main;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.List;
+
+import modelo.dao.contato.ContatoDAO;
+import modelo.dao.contato.ContatoDAOimpl;
+import modelo.dao.endereco.EnderecoDAO;
+import modelo.dao.endereco.EnderecoDAOimpl;
+import modelo.dao.nutricionista.NutricionistaDAO;
+import modelo.dao.nutricionista.NutricionistaDAOimpl;
+import modelo.entidade.contato.Contato;
+import modelo.entidade.endereco.Endereco;
+import modelo.entidade.nutricionista.Nutricionista;
 
 public class Principal {
 
@@ -23,11 +33,11 @@ public class Principal {
 //
 //		System.out.println(lucas);
 
-//		EndereçoDAO endereçoDAO = new EndereçoDAOimpl();
+		EnderecoDAO endereçoDAO = new EnderecoDAOimpl();
 //		PacienteDAO pacienteDAO = new PacienteDAOimpl();
-//		ContatoDAO contatoDAO = new ContatoDAOimpl();
+		ContatoDAO contatoDAO = new ContatoDAOimpl();
 //		HistoricoDAO historicoDAO = new HistoricoDAOImpl();
-//		NutricionistaDAO nutricionistaDAO = new NutricionistaDAOimpl();
+		NutricionistaDAO nutricionistaDAO = new NutricionistaDAOimpl();
 //		ConsultaDAO consultaDAO = new ConsultaDAOimpl();
 //
 //		String nome = "Pedro";
@@ -83,9 +93,14 @@ public class Principal {
 ////		nutricionistaDAO.cadastrarNutricionista(nutricionista);
 		
 		
-		
-		
-//		nutricionistaDAO.inserirNutricionista(new Nutricionista("Gabriel", "Santos", "66.192.798/0001-29", "testesenha"));
+		contatoDAO.inserirContato(new Contato("gadfaygda@gmail.com", "33333333", "47988030802"));
+		 Endereco endereco = endereçoDAO.inserirEndereco(new Endereco("rua duahduah", "itouipava", "blumenau", "sc", "898989-89",  65L, "casa"));
+	
+		 List<Endereco> enderecos =  new ArrayList<Endereco>();
+		 
+		 enderecos.add(endereco);
+		 
+		nutricionistaDAO.inserirNutricionista(new Nutricionista("Gabriel", "Santos", "66.192.798/0001-29", 67, "testesenha", null, enderecos));
 
 	}
 

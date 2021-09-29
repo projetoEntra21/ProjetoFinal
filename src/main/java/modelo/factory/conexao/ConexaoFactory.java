@@ -21,6 +21,7 @@ public class ConexaoFactory {
 		configuracao.addAnnotatedClass(modelo.entidade.nutricionista.Nutricionista.class);
 		configuracao.addAnnotatedClass(modelo.entidade.consulta.Consulta.class);
 		configuracao.addAnnotatedClass(modelo.entidade.contato.Contato.class);
+		configuracao.addAnnotatedClass(modelo.entidade.endereco.Endereco.class);
 	
 		configuracao.configure("hibernate.cfg.xml");
 
