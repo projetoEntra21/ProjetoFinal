@@ -21,7 +21,7 @@ public class Historico implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "id_paciente")
+	@Column(name = "id_historico")
 	private Long Id;
 
 	@Column(name = "peso_historico", nullable = false, unique = false)

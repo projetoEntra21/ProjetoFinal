@@ -45,10 +45,10 @@ public class Usuario implements Serializable {
 	@Column(name = "senha_usuario", length = 45, nullable = false, unique = false)
 	protected String senha;
 
-	@Column(name = "contato_usuario", nullable = false, unique = true)
-	protected Contato contato;
-
-	@Column(name = "endereco_usuario", nullable = false, unique = false)
+//	@Column(name = "contato_usuario", nullable = true, unique = true)
+//	protected Contato contato;
+//
+	@Column(name = "endereco_usuario", nullable = true, unique = false)
 	protected Endereco endereco;
 	
 	public Usuario() {}
@@ -59,7 +59,7 @@ public class Usuario implements Serializable {
 
 	}
 	
-	public Usuario(String nome, String sobrenome, String cpf, long idade, String login, String senha, Contato contato, Endereco endereco) {
+	public Usuario(String nome, String sobrenome, String cpf, long idade, String login, String senha, Endereco endereco) {
 		super();
 		
 		this.nome = nome;
@@ -68,7 +68,7 @@ public class Usuario implements Serializable {
 		this.idade = idade;
 		this.login = login;
 		this.senha = senha;
-		this.contato = contato;
+//		this.contato = contato;
 		this.endereco = endereco;
 	}
 	
@@ -81,7 +81,7 @@ public class Usuario implements Serializable {
 		this.idade = idade;
 		this.login = login;
 		this.senha = senha;
-	
+		
 	}
 	
 	public Usuario(String nome, String sobrenome) {
@@ -112,22 +112,6 @@ public class Usuario implements Serializable {
 		return login;
 	}
 
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getSobrenome() {
-		return sobrenome;
-	}
-
-	public void setSobrenome(String sobrenome) {
-		this.sobrenome = sobrenome;
-	}
-
 	public String getCpf() {
 		return cpf;
 	}
@@ -144,13 +128,13 @@ public class Usuario implements Serializable {
 		this.idade = idade;
 	}
 
-	public Contato getContato() {
-		return contato;
-	}
-
-	public void setContato(Contato contato) {
-		this.contato = contato;
-	}
+//	public Contato getContato() {
+//		return contato;
+//	}
+//
+//	public void setContato(Contato contato) {
+//		this.contato = contato;
+//	}
 
 	public Endereco getEndereco() {
 		return endereco;
