@@ -2,7 +2,6 @@ package modelo.entidade.contato;
 
 import java.io.Serializable;
 
-import javax.annotation.processing.Generated;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,6 +14,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import modelo.entidade.paciente.Paciente;
+import modelo.entidade.usuario.Usuario;
 
 @Entity
 @Table(name = "contatos")
@@ -37,8 +37,7 @@ public class Contato implements Serializable {
 	private String celular;
 
 	@OneToOne(fetch = FetchType.LAZY)
-	@MapsId
-	@JoinColumn(name = "id_usuario")
+	@JoinColumn(name = "id_paciente")
 	private Paciente paciente;
 
 	public Contato() {
@@ -51,7 +50,6 @@ public class Contato implements Serializable {
 		setEmail(email);
 		setTelefone(telefone);
 		setPaciente(paciente);
-		
 	}
 
 	public Contato(Long id) {
@@ -88,6 +86,14 @@ public class Contato implements Serializable {
 		return telefone;
 	}
 
+	public Paciente getPaciente() {
+		return paciente;
+	}
+
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
+	}
+
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
@@ -100,12 +106,6 @@ public class Contato implements Serializable {
 		this.celular = celular;
 	}
 
-	public Paciente getPaciente() {
-		return paciente;
-	}
 
-	public void setPaciente(Paciente paciente) {
-		this.paciente = paciente;
-	}
 
 }

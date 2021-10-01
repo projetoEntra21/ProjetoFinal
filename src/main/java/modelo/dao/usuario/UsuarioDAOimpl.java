@@ -200,10 +200,10 @@ public class UsuarioDAOimpl implements UsuarioDAO {
 
 			criteria.select(raizUsuario);
 
-			ParameterExpression<String> sobrenomeUsuario = construtor.parameter(String.class);
-			criteria.where(construtor.equal(raizUsuario.get("sobrenome_usuario"), sobrenomeUsuario));
+			ParameterExpression<String> id = construtor.parameter(String.class);
+			criteria.where(construtor.equal(raizUsuario.get("id_usuario"), id));
 
-			usuarioRecuperado = sessao.createQuery(criteria).setParameter(sobrenomeUsuario, usuario.getSobrenome())
+			usuarioRecuperado = sessao.createQuery(criteria).setParameter(id, usuario.getSobrenome())
 					.getSingleResult();
 
 			sessao.getTransaction().commit();

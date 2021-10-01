@@ -39,9 +39,9 @@
                                     <h2 class="fs-title">Informações da conta:</h2>
                                 </div>
                                 
-                            </div> <label class="fieldlabels">Nome de usuario</label> <input type="text" name="nome" placeholder="Insira um nome de usuario" value="<c:out value='${paciente.nome}'/>" name="nome" />
+                            </div> <label class="fieldlabels">Nome de usuario</label> <input type="text" name="login" placeholder="Insira um nome de usuario" value="<c:out value='${usuario.nome}'/>" name="senha" />
                              <label class="fieldlabels">Senha</label> <input type="password" name="senha" placeholder="Insira uma senha"/> 
-                             <label class="fieldlabels">Confirme sua senha</label> <input type="password" name="senha" placeholder="Confirme sua senha" value="<c:out value='${paciente.senha}'/>" name="senha" />
+                             <label class="fieldlabels">Confirme sua senha</label> <input type="password" name="senha" placeholder="Confirme sua senha" value="<c:out value='${usuario.senha}'/>" name="senha" />
                         </div> <input type="button" name="próximo" class="next action-button" value="Próximo" />
                     </fieldset>
                     <fieldset>
@@ -65,11 +65,12 @@
                                 </div>
                             
                                 <label class="fieldlabels">Primeiro Nome</label> <input type="text" name="nome" placeholder="Insira seu Primeiro nome." value="<c:out value='${usuario.nome}'/>" name="nome"  /> 
-                                <label class="fieldlabels">Sobrenome</label> <input type="text" name="Sobrenome" placeholder="Insira seu Sobrenome" value="<c:out value='${usuario.sobrenome}'/>" name="sobrenome" /> 
+                                <label class="fieldlabels">Sobrenome</label> <input type="text" name="sobrenome" placeholder="Insira seu Sobrenome" value="<c:out value='${usuario.sobrenome}'/>" name="sobrenome" /> 
                                 <label class="fieldlabels">Idade</label> <input type="number" name="idade" placeholder="Insira sua idade." value="<c:out value='${usuario.idade}'/>" name="idade" /> 
                                 <label class="fieldlabels">CPF</label> <input type="text" name="cpf" placeholder="Insira seu cpf" value=" <c:out value='${usuario.cpf}'/>" name="cpf" /> 
                                 <label class="fieldlabels">CEP</label> <input type="text" name="cep" placeholder="Insira seu cep" value=" <c:out value='${endereco.cep}'/>" name="cep" /> 
                                 <label class="fieldlabels">Rua</label> <input type="text" name="rua" placeholder="Insira sua rua" value="<c:out value='${endereco.rua}'/>" name="rua" /> 
+                                <label class="fieldlabels">Complemento</label> <input type="text" name="complemento" placeholder="Digite o complemento" value="<c:out value='${endereco.complemento}'/>" name="complemento" /> 
                                 <label class="fieldlabels">Numero</label> <input type="number" name="numero" placeholder="Insira o numero." value=" <c:out value='${endereco.numero}'/>" name="numero" /> 
                                 <label class="fieldlabels">Bairro</label> <input type="text" name="bairro" placeholder="Insira o seu bairro."value=" <c:out value='${endereco.bairro}'/>" name="bairro" />
                                 <label class="fieldlabels">Cidade</label> <input type="text" name="cidade" placeholder="Insira sua cidade." value=" <c:out value='${endereco.cidade}'/>" name="cidade" />
