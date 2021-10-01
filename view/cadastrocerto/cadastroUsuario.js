@@ -182,10 +182,12 @@ function mphone(v) {
   $("#submit").on("click", function() {
     if ($("#form-login").valid()) { //Verifica se o formulário está válido.
       $('#myModal').modal('show'); //Se for válido, exibe o modal.
+      $("#myModal").css("z-index", "1500");
     }
   });
   $('#myModal').on('shown.bs.modal', function () {
     $('#meuInput').trigger('focus')
+    $(".modal-backdrop").css("display","none"); 
   })
   function mouseoverPass(obj) {
     var obj = document.getElementById('myPassword');
@@ -195,3 +197,4 @@ function mphone(v) {
     var obj = document.getElementById('myPassword');
     obj.type = "password";
   }
+  
