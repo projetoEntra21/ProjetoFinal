@@ -90,9 +90,9 @@ public class Servlet extends HttpServlet {
 				deletarContato(request, response);
 				break;
 
-			case "/atualizar":
-				atualizarContato(request, response);
-				break;
+//			case "/atualizar":
+//				atualizarContato(request, response);
+//				break;
 
 			case "/inserirMedidas":
 				inserirHistorico(request, response);
@@ -157,8 +157,8 @@ public class Servlet extends HttpServlet {
 			case "/telainicial":
 				telainicial(request, response);
 
-			case "/inserirEndereço":
-				inserirEndereço(request, response);
+//			case "/inserirEndereço":
+//				inserirEndereço(request, response);
 
 			case "/atualizarEndereço":
 				atualizarEndereco(request, response);
@@ -246,15 +246,15 @@ public class Servlet extends HttpServlet {
 		daoContato.inserirContato(new Contato(telefone, email, celular));
 	}
 
-	private void atualizarContato(HttpServletRequest request, HttpServletResponse response)
-			throws SQLException, IOException {
-
-		long id = Long.parseLong(request.getParameter("id"));
-		String telefone = request.getParameter("telefone");
-		String email = request.getParameter("email");
-		String celular = request.getParameter("celular");
-		daoContato.atualizarContato(new Contato(id, telefone, email, celular));
-	}
+//	private void atualizarContato(HttpServletRequest request, HttpServletResponse response)
+//			throws SQLException, IOException {
+//
+//		long id = Long.parseLong(request.getParameter("id"));
+//		String telefone = request.getParameter("telefone");
+//		String email = request.getParameter("email");
+//		String celular = request.getParameter("celular");
+//		daoContato.atualizarContato(new Contato(id, telefone, email, celular));
+//	}
 
 	private void deletarContato(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException {
@@ -347,19 +347,19 @@ public class Servlet extends HttpServlet {
 		daoConsulta.atualizarConsulta(new Consulta(idconsulta, hora, date, nutricionista, paciente));
 
 	}
-
-	private void inserirEndereço(HttpServletRequest request, HttpServletResponse response)
-			throws SQLException, IOException {
-
-		String cep = request.getParameter("cep_endereço");
-		long numero = Long.parseLong(request.getParameter("numero_endereço"));
-		String complemento = request.getParameter("complemento_endereço");
-		String rua = request.getParameter("rua_endereço");
-		String bairro = request.getParameter("bairro_endereço");
-		String cidade = request.getParameter("cidade_endereço");
-		String estado = request.getParameter("estado_endereço");
-		daoEndereço.inserirEndereco(new Endereco(rua, bairro, cidade, estado, cep, numero, complemento));
-	}
+//
+//	private void inserirEndereço(HttpServletRequest request, HttpServletResponse response)
+//			throws SQLException, IOException {
+//
+//		String cep = request.getParameter("cep_endereço");
+//		long numero = Long.parseLong(request.getParameter("numero_endereço"));
+//		String complemento = request.getParameter("complemento_endereço");
+//		String rua = request.getParameter("rua_endereço");
+//		String bairro = request.getParameter("bairro_endereço");
+//		String cidade = request.getParameter("cidade_endereço");
+//		String estado = request.getParameter("estado_endereço");
+//		daoEndereço.inserirEndereco(new Endereco(rua, bairro, cidade, estado, cep, numero, complemento));
+//	}
 
 	private void deletarEndereço(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException {
@@ -398,13 +398,27 @@ public class Servlet extends HttpServlet {
 		String sobrenome = request.getParameter("sobrenome");
 		String login = request.getParameter("login");
 		String senha = request.getParameter("senha");
+		String email = request.getParameter("email");
+		String telefone = request.getParameter("telefone");
+		String celular = request.getParameter("celular");
 		long idade = Long.parseLong(request.getParameter("idade"));
+		String rua = request.getParameter("rua");
+		String bairro = request.getParameter("bairro");
+		String cidade = request.getParameter("cidade");
+		String estado = request.getParameter("estado");
+		String cep = request.getParameter("cep");
+		Long numero = Long.parseLong(request.getParameter("numero"));
+		String complemento = request.getParameter("complemento");
 		
+		Paciente paciente = new Paciente(nome, sobrenome, cpf, idade, login, senha);
+		Endereco endereco = new Endereco(rua, bairro, cidade, estado, cep, numero, complemento, paciente);
+		Contato contato = new Contato(numero, email, telefone, celular, paciente);
 		
-		daoPaciente.inserirPaciente(new Paciente(nome, sobrenome, cpf, idade, login, senha));
-		
+		daoPaciente.inserirPaciente(paciente);
+		daoEndereço.inserirEndereco(endereco);
+		daoContato.inserirContato(contato);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("perfilpaciente.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("perfil-paciente.jsp");
 		dispatcher.forward(request, response);
 
 	}

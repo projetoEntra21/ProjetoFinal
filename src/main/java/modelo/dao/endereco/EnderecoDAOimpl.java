@@ -20,7 +20,7 @@ public class EnderecoDAOimpl implements EnderecoDAO {
 		fabrica = new ConexaoFactory();
 	}
 
-	public void inserirEndereco(Endereco endereco) {
+	public Endereco inserirEndereco(Endereco endereco) {
 
 		Session sessao = null;
 
@@ -47,6 +47,7 @@ public class EnderecoDAOimpl implements EnderecoDAO {
 				sessao.close();
 			}
 		}
+		return endereco;
 	}
 
 	public void deletarEndereco(Endereco endereco) {

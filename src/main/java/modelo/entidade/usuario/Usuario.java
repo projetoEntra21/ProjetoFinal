@@ -1,22 +1,25 @@
 package modelo.entidade.usuario;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import modelo.dao.endereco.EnderecoDAOimpl;
+import modelo.entidade.consulta.Consulta;
 import modelo.entidade.contato.Contato;
 import modelo.entidade.endereco.Endereco;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "usuario")
 public class Usuario implements Serializable {
 
@@ -45,11 +48,8 @@ public class Usuario implements Serializable {
 	@Column(name = "senha_usuario", length = 45, nullable = false, unique = false)
 	protected String senha;
 
-//	@Column(name = "contato_usuario", nullable = true, unique = true)
-//	protected Contato contato;
-//
-	@Column(name = "endereco_usuario", nullable = true, unique = false)
-	protected Endereco endereco;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "endereco")
+	protected List<Endereco> enderecos;
 	
 	public Usuario() {}
 
@@ -59,7 +59,7 @@ public class Usuario implements Serializable {
 
 	}
 	
-	public Usuario(String nome, String sobrenome, String cpf, long idade, String login, String senha, Endereco endereco) {
+	public Usuario(String nome, String sobrenome, String cpf, long idade, String login, String senha, List<Endereco> enderecos) {
 		super();
 		
 		this.nome = nome;
@@ -68,8 +68,8 @@ public class Usuario implements Serializable {
 		this.idade = idade;
 		this.login = login;
 		this.senha = senha;
-//		this.contato = contato;
-		this.endereco = endereco;
+		
+	
 	}
 	
 	public Usuario(String nome, String sobrenome, String cpf, long idade, String login, String senha) {
@@ -120,6 +120,14 @@ public class Usuario implements Serializable {
 		this.cpf = cpf;
 	}
 
+	public List<Endereco> getEnderecos() {
+		return enderecos;
+	}
+
+	public void setEnderecos(List<Endereco> enderecos) {
+		this.enderecos = enderecos;
+	}
+
 	public long getIdade() {
 		return idade;
 	}
@@ -128,21 +136,6 @@ public class Usuario implements Serializable {
 		this.idade = idade;
 	}
 
-//	public Contato getContato() {
-//		return contato;
-//	}
-//
-//	public void setContato(Contato contato) {
-//		this.contato = contato;
-//	}
-
-	public Endereco getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
-	}
 
 	public void setLogin(String login) {
 		this.login = login;

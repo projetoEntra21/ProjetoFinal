@@ -20,7 +20,7 @@ public class ContatoDAOimpl implements ContatoDAO {
 		fabrica = new ConexaoFactory();
 	}
 
-	public void inserirContato(Contato contato) {
+	public Contato inserirContato(Contato contato) {
 
 		Session sessao = null;
 
@@ -47,6 +47,7 @@ public class ContatoDAOimpl implements ContatoDAO {
 				sessao.close();
 			}
 		}
+		return contato;
 	}
 
 	public void deletarContato(Contato contato) {

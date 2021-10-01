@@ -1,12 +1,16 @@
 package modelo.entidade.endereco;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -20,6 +24,7 @@ public class Endereco implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_endereco")
 	private Long Id;
 
@@ -44,9 +49,9 @@ public class Endereco implements Serializable {
 	@Column(name = "complemento_endereco", length = 30, nullable = false, unique = false)
 	private String complemento;
 
-	@OneToMany(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_usuario")
-	private Usuario usuario;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "usuario")
+	private Paciente paciente;
 
 	public Endereco() {}
 
@@ -56,6 +61,18 @@ public class Endereco implements Serializable {
 
 	}
 
+	public Endereco(String rua, String bairro, String cidade, String estado, String cep, Long numero, String complemento, Paciente paciente) {
+
+		
+		setRua(rua);
+		setBairro(bairro);
+		setCidade(cidade);
+		setEstado(estado);
+		setCep(cep);
+		setComplemento(complemento);
+		setNumero(numero);
+	}
+	
 	public Endereco(String rua, String bairro, String cidade, String estado, String cep, Long numero, String complemento) {
 
 		setRua(rua);
@@ -106,6 +123,16 @@ public class Endereco implements Serializable {
 	public void setComplemento(String complemento) {
 		this.complemento = complemento;
 	}
+	
+	public Paciente getPaciente() {
+		return paciente;
+	}
+
+	
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
+	}
+
 	public String getRua() {
 		return rua;
 	}
@@ -128,14 +155,6 @@ public class Endereco implements Serializable {
 
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
-	}
-
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
 	}
 
 	public String getEstado() {

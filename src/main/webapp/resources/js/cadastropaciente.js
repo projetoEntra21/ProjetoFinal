@@ -1,84 +1,76 @@
-function validateEmail(email) {
-  var re = /\S+@\S+\.\S+/;
-  return re.test(email);
-}
-    
-console.log(validateEmail('texto@texto.com')); // true
-console.log(validateEmail('texto@texto')); // false
-console.log(validateEmail('texto.com')); // false
-console.log(validateEmail('texto')); // false
+$(document).ready(function(){
 
+var current_fs, next_fs, previous_fs; //fieldsets
+var opacity;
+var current = 1;
+var steps = $("fieldset").length;
 
-   var myPassword = document.getElementById("myPassword")
-   , confirm_password = document.getElementById("confirm_password");
- 
- function validatemyPassword(){
-   if(myPassword.value != confirm_password.value) {
-     confirm_password.setCustomValidity("Senhas diferentes!");
-   } else {
-     confirm_password.setCustomValidity('');
-   }
- }
- 
- myPassword.onchange = validatemyPassword;
- confirm_password.onkeyup = validatemyPassword;
+setProgressBar(current);
 
+$(".next").click(function(){
 
- $("#submit").on("click", function() {
-  if ($("#form-login").valid()) { //Verifica se o formulário está válido.
-    $('#myModal').modal('show'); //Se for válido, exibe o modal.
-  }
+current_fs = $(this).parent();
+next_fs = $(this).parent().next();
+
+//Add Class Active
+$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+//show the next fieldset
+next_fs.show();
+//hide the current fieldset with style
+current_fs.animate({opacity: 0}, {
+step: function(now) {
+// for making fielset appear animation
+opacity = 1 - now;
+
+current_fs.css({
+'display': 'none',
+'position': 'relative'
 });
-$('#myModal').on('shown.bs.modal', function () {
-  $('#meuInput').trigger('focus')
+next_fs.css({'opacity': opacity});
+},
+duration: 500
+});
+setProgressBar(++current);
+});
+
+$(".previous").click(function(){
+
+current_fs = $(this).parent();
+previous_fs = $(this).parent().prev();
+
+//Remove class active
+$("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+
+//show the previous fieldset
+previous_fs.show();
+
+//hide the current fieldset with style
+current_fs.animate({opacity: 0}, {
+step: function(now) {
+// for making fielset appear animation
+opacity = 1 - now;
+
+current_fs.css({
+'display': 'none',
+'position': 'relative'
+});
+previous_fs.css({'opacity': opacity});
+},
+duration: 500
+});
+setProgressBar(--current);
+});
+
+function setProgressBar(curStep){
+var percent = parseFloat(100 / steps) * curStep;
+percent = percent.toFixed();
+$(".progress-bar")
+.css("width",percent+"%")
+}
+
+$(".submit").click(function(){
+return false;
 })
 
-$('#myForm').on('submit', function(e) {
-  var email = $('#email');
- 
-
-  // Check if there is an entered value
-  if(!email.val()) {
-    // Add errors highlight
-    email.closest('.form-group').removeClass('has-success').addClass('has-error');
-
-    // Stop submission of the form
-    e.preventDefault();
-  } else {
-    // Remove the errors highlight
-    email.closest('.form-group').removeClass('has-error').addClass('has-success');
-  }
-});
-$('#myForm').on('submit', function(e) {
-  var password = $('#password');
- 
-
-  // Check if there is an entered value
-  if(!password.val()) {
-    // Add errors highlight
-    password.closest('.form-group').removeClass('has-success').addClass('has-error');
-
-    // Stop submission of the form
-    e.preventDefault();
-  } else {
-    // Remove the errors highlight
-    password.closest('.form-group').removeClass('has-error').addClass('has-success');
-  }
-});
-function mouseoverPass(obj) {
-  var obj = document.getElementById('myPassword');
-  obj.type = "text";
-}
-function mouseoutPass(obj) {
-  var obj = document.getElementById('myPassword');
-  obj.type = "password";
-}
-
-
-var cpf = document.querySelector("#cpf");
-
-cpf.addEventListener("keyup", () => {
-  let value = cpf.value.replace(/[^0-9]/g, "").replace(/^([\d]{3})([\d]{3})?([\d]{3})?([\d]{2})?/, "$1.$2.$3-$4");
-  
-  cpf.value = value;
 });
