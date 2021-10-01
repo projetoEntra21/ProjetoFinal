@@ -33,15 +33,19 @@ public class Paciente extends Usuario implements Serializable {
 	}
 
 	public Paciente(long id) {
-
 		
-
 	}
 	
 
-	public Paciente(long id, String nome, String sobrenome, String cpf, long idade, String login, String senha, List<Endereco> enderecos, Contato contato) {
+	public Paciente(long id, String nome, String sobrenome, String cpf, long idade, String login, String senha) {
 
-		super(nome, sobrenome, cpf, idade, login, senha, enderecos, contato);
+		super(nome, sobrenome, cpf, idade, login, senha);
+
+	}
+	
+	public Paciente(String nome, String sobrenome, String cpf, long idade, String login, String senha) {
+
+		super(nome, sobrenome, cpf, idade, login, senha);
 
 	}
 	

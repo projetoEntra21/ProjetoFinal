@@ -30,9 +30,9 @@ public class Nutricionista extends Usuario implements Serializable {
 	public Nutricionista() {
 	}
 
-	public Nutricionista(long id, String nome, String sobrenome, String cpf, long idade, String login, String senha) {
+	public Nutricionista(long id, String nome, String sobrenome, String cpf, long idade, String login, String senha, Contato contato) {
 
-		super(nome, sobrenome, cpf, idade, login, senha);
+		super(nome, sobrenome, cpf, idade, login, senha, contato);
 
 	}
 
@@ -41,23 +41,23 @@ public class Nutricionista extends Usuario implements Serializable {
 
 	}
 
-	public Nutricionista(String nome, String sobrenome, String cpf, int idade, String login, String senha, List<Consulta> consultas, List<Endereco> enderecos) {
+	public Nutricionista(String nome, String sobrenome, String cpf, int idade, String login, String senha, List<Consulta> consultas, Contato contato) {
 
-		super(nome, sobrenome, cpf, idade, login, senha, enderecos);
+		super(nome, sobrenome, cpf, idade, login, senha, contato);
 		setConsultas(consultas);
 
 	}
 
-	public Nutricionista(String nome, String sobrenome, String cpf, int idade, String login, String senha, List<Endereco> enderecos) {
+	public Nutricionista(String nome, String sobrenome, String cpf, int idade, String login, String senha, Contato contato) {
 
-		super(nome, sobrenome, cpf, idade, login, senha, enderecos);
+		super(nome, sobrenome, cpf, idade, login, senha, contato);
 		setConsultas(consultas);
 
 	}
 	
-	public Nutricionista(String nome, String sobrenome, String cpf, long idade, String login, String senha) {
+	public Nutricionista(String nome, String sobrenome, String cpf, long idade, String login, String senha,Contato contato) {
 
-		super(nome, sobrenome, cpf, idade, login, senha);
+		super(nome, sobrenome, cpf, idade, login, senha, contato);
 		setConsultas(consultas);
 
 	}

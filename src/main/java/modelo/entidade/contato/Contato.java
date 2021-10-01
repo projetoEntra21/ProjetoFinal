@@ -24,7 +24,7 @@ public class Contato implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_usuario")
+	@Column(name = "id_contato")
 	private Long Id;
 
 	@Column(name = "email_contatos", length = 40, nullable = false, unique = true)
@@ -37,7 +37,7 @@ public class Contato implements Serializable {
 	private String celular;
 
 	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_paciente")
+	@JoinColumn(name = "id_usuario")
 	private Paciente paciente;
 
 	public Contato() {
