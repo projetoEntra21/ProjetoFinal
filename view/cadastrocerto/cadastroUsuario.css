@@ -242,3 +242,15 @@ html {
 .send {
 	margin-left: 0.5em;
 }
+#myPassword {
+	width: 170px;
+	padding-right: 80px;
+  }
+  
+  .olho {
+	cursor: pointer;
+	left: 710px;
+	position: absolute;
+	width: 20px;
+	top: 190px;
+  }
