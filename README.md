@@ -2,6 +2,4 @@
 Este é o nosso projeto que está sendo desenvolvido por nós, Ana, Eshelley, Gabriel, Guilherme, Julia Mohr e Lucas. 
 Somos alunos do programa Entra21, pela Blusoft e ficamos felizes em compartilhar nosso aprendizado e progresso!
 
-O projeto que está sendo desenvolvido, visa facilitar todo o processo que envolve a área de nutrição, principalmente quando o assunto é "Geração de planos nutricionais".
-Queremos trazer uma experiência agradável, que facilita todo o processo desde agendamento de consulta, uma parte que liga diretamente o nutricionista e o paciente, e com toda certeza,
-fazer com que o cliente atinja seus objetivos.
+O sistema visa estreitar a ponte entre paciente e nutricionista. Ele é composto, principalmente, de um módulo de agendamento de consultas nutricionais. Desta forma, todo o processo, desde a consulta do nutricionista, até o agendamento, está na palma do paciente, não havendo a necessidade de profissionais intermediando o agendamento.
