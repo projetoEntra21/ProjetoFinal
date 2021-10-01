@@ -179,6 +179,19 @@ function mphone(v) {
     limpa_formulário_cep();
   }
   };
+  $("#submit").on("click", function() {
+    if ($("#form-login").valid()) { //Verifica se o formulário está válido.
+      $('#myModal').modal('show'); //Se for válido, exibe o modal.
+    }
+  });
   $('#myModal').on('shown.bs.modal', function () {
     $('#meuInput').trigger('focus')
   })
+  function mouseoverPass(obj) {
+    var obj = document.getElementById('myPassword');
+    obj.type = "text";
+  }
+  function mouseoutPass(obj) {
+    var obj = document.getElementById('myPassword');
+    obj.type = "password";
+  }
