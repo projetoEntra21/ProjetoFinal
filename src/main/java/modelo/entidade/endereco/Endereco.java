@@ -50,7 +50,7 @@ public class Endereco implements Serializable {
 	private String complemento;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "usuario")
+	@JoinColumn(name = "id_usuario")
 	private Paciente paciente;
 
 	public Endereco() {}
@@ -120,18 +120,21 @@ public class Endereco implements Serializable {
 		return complemento;
 	}
 
-	public void setComplemento(String complemento) {
-		this.complemento = complemento;
-	}
 	
+
 	public Paciente getPaciente() {
 		return paciente;
 	}
 
-	
 	public void setPaciente(Paciente paciente) {
 		this.paciente = paciente;
 	}
+
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
+	}
+	
+
 
 	public String getRua() {
 		return rua;

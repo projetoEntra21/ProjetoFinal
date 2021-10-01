@@ -3,9 +3,15 @@ package modelo.entidade.paciente;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
 import javax.persistence.OneToMany;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import modelo.entidade.consulta.Consulta;
@@ -18,6 +24,7 @@ import modelo.entidade.usuario.Usuario;
 public class Paciente extends Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "paciente")
 	private List<Consulta> consultas;
@@ -32,16 +39,16 @@ public class Paciente extends Usuario implements Serializable {
 	}
 	
 
-	public Paciente(long id, String nome, String sobrenome, String cpf, long idade, String login, String senha) {
+	public Paciente(long id, String nome, String sobrenome, String cpf, long idade, String login, String senha, List<Endereco> enderecos, Contato contato) {
 
-		super(nome, sobrenome, cpf, idade, login, senha);
+		super(nome, sobrenome, cpf, idade, login, senha, enderecos, contato);
 
 	}
 	
 	
-	public Paciente(String nome, String sobrenome, String cpf, long idade, String login, String senha) {
+	public Paciente(String nome, String sobrenome, String cpf, long idade, String login, String senha, Contato contato) {
 
-		super(nome, sobrenome, cpf, idade, login, senha);
+		super(nome, sobrenome, cpf, idade, login, senha, contato);
 	
 
 	}

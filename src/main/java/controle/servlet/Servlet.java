@@ -26,6 +26,8 @@ import modelo.dao.nutricionista.NutricionistaDAO;
 import modelo.dao.nutricionista.NutricionistaDAOimpl;
 import modelo.dao.paciente.PacienteDAO;
 import modelo.dao.paciente.PacienteDAOimpl;
+import modelo.dao.usuario.UsuarioDAO;
+import modelo.dao.usuario.UsuarioDAOimpl;
 import modelo.entidade.consulta.Consulta;
 import modelo.entidade.contato.Contato;
 import modelo.entidade.endereco.Endereco;
@@ -44,6 +46,7 @@ public class Servlet extends HttpServlet {
 	private ConsultaDAO daoConsulta;
 	private HistoricoDAO daoHistorico;
 	private ContatoDAO daoContato;
+	private UsuarioDAO daoUsuario;
 
 	public void init() {
 
@@ -53,7 +56,8 @@ public class Servlet extends HttpServlet {
 		daoConsulta = new ConsultaDAOimpl();
 		daoHistorico = new HistoricoDAOImpl();
 		daoContato = new ContatoDAOimpl();
-
+		daoUsuario = new UsuarioDAOimpl();
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -410,9 +414,33 @@ public class Servlet extends HttpServlet {
 		Long numero = Long.parseLong(request.getParameter("numero"));
 		String complemento = request.getParameter("complemento");
 		
-		Paciente paciente = new Paciente(nome, sobrenome, cpf, idade, login, senha);
-		Endereco endereco = new Endereco(rua, bairro, cidade, estado, cep, numero, complemento, paciente);
+		List<Endereco> enderecos =  new ArrayList<Endereco>();
+		
+		Paciente paciente = new Paciente();
+		
+		paciente.setNome(nome);
+		paciente.setLogin(login);
+		paciente.setSenha(senha);
+		paciente.setCpf(cpf);
+		paciente.setSobrenome(sobrenome);
+		paciente.setIdade(idade);
+		
+		Endereco endereco = new Endereco();
+	
+		endereco.setRua(rua);
+		endereco.setBairro(bairro);
+		endereco.setCidade(cidade);
+		endereco.setCep(cep);
+		endereco.setNumero(numero);
+		endereco.setComplemento(complemento);
+	
+		enderecos.add(endereco);
+		
 		Contato contato = new Contato(numero, email, telefone, celular, paciente);
+		
+		paciente.setEnderecos(enderecos);
+		paciente.setContato(contato);
+		endereco.setPaciente(paciente);
 		
 		daoPaciente.inserirPaciente(paciente);
 		daoEndereço.inserirEndereco(endereco);

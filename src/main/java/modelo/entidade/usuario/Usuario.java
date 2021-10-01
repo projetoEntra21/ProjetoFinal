@@ -11,8 +11,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import modelo.entidade.consulta.Consulta;
@@ -48,8 +51,13 @@ public class Usuario implements Serializable {
 	@Column(name = "senha_usuario", length = 45, nullable = false, unique = false)
 	protected String senha;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "endereco")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario")
 	protected List<Endereco> enderecos;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	@MapsId
+	@JoinColumn(name = "id_endereco")
+	protected Contato contato;
 	
 	public Usuario() {}
 
@@ -59,7 +67,7 @@ public class Usuario implements Serializable {
 
 	}
 	
-	public Usuario(String nome, String sobrenome, String cpf, long idade, String login, String senha, List<Endereco> enderecos) {
+	public Usuario(String nome, String sobrenome, String cpf, long idade, String login, String senha, List<Endereco> enderecos, Contato contato) {
 		super();
 		
 		this.nome = nome;
@@ -68,11 +76,12 @@ public class Usuario implements Serializable {
 		this.idade = idade;
 		this.login = login;
 		this.senha = senha;
-		
+		setContato(contato);
+		setEnderecos(enderecos);
 	
 	}
 	
-	public Usuario(String nome, String sobrenome, String cpf, long idade, String login, String senha) {
+	public Usuario(String nome, String sobrenome, String cpf, long idade, String login, String senha, Contato contato) {
 		super();
 		
 		this.nome = nome;
@@ -81,6 +90,8 @@ public class Usuario implements Serializable {
 		this.idade = idade;
 		this.login = login;
 		this.senha = senha;
+		this.contato = contato;
+		
 		
 	}
 	
@@ -143,6 +154,14 @@ public class Usuario implements Serializable {
 
 	public String getSenha() {
 		return senha;
+	}
+
+	public Contato getContato() {
+		return contato;
+	}
+
+	public void setContato(Contato contato) {
+		this.contato = contato;
 	}
 
 	public void setSenha(String senha) {
