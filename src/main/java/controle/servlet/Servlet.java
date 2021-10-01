@@ -414,37 +414,17 @@ public class Servlet extends HttpServlet {
 		Long numero = Long.parseLong(request.getParameter("numero"));
 		String complemento = request.getParameter("complemento");
 		
-		List<Endereco> enderecos =  new ArrayList<Endereco>();
+		List<Paciente> pacientes =  new ArrayList<Paciente>();
 		
-		Paciente paciente = new Paciente();
-		
-		paciente.setNome(nome);
-		paciente.setLogin(login);
-		paciente.setSenha(senha);
-		paciente.setCpf(cpf);
-		paciente.setSobrenome(sobrenome);
-		paciente.setIdade(idade);
-		
-		Endereco endereco = new Endereco();
-	
-		endereco.setRua(rua);
-		endereco.setBairro(bairro);
-		endereco.setCidade(cidade);
-		endereco.setCep(cep);
-		endereco.setNumero(numero);
-		endereco.setComplemento(complemento);
-	
-		enderecos.add(endereco);
-		
-		Contato contato = new Contato(numero, email, telefone, celular, paciente);
-		
-		paciente.setEnderecos(enderecos);
-		paciente.setContato(contato);
-		endereco.setPaciente(paciente);
+		Paciente paciente = new Paciente(nome, sobrenome, cpf, idade, login, senha);
 		
 		daoPaciente.inserirPaciente(paciente);
-		daoEndereço.inserirEndereco(endereco);
-		daoContato.inserirContato(contato);
+
+		Contato contato =  new Contato(email, telefone, celular);
+		
+		
+		daoPaciente.atualizarPaciente(paciente);
+		
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("perfil-paciente.jsp");
 		dispatcher.forward(request, response);
@@ -486,7 +466,7 @@ public class Servlet extends HttpServlet {
 		String login = request.getParameter("login");
 		
 		
-		daoNutricionista.inserirNutricionista(new Nutricionista(nome, sobrenome, cpf, idade, login, senha));
+		daoNutricionista.inserirNutricionista(new Nutricionista(nome, sobrenome, cpf, idade, login, senha, null));
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("perfilnutricionista.jsp");
 		dispatcher.forward(request, response);
@@ -512,7 +492,7 @@ public class Servlet extends HttpServlet {
 		String cpf = request.getParameter("cnpj");
 		Long idade = Long.parseLong(request.getParameter("idade"));
 		String login = request.getParameter("login");
-		daoNutricionista.atualizarNutriocionista(new Nutricionista(id, nome, sobrenome, cpf, idade, login, senha));
+		daoNutricionista.atualizarNutriocionista(new Nutricionista(id, nome, sobrenome, cpf, idade, login, senha, null));
 
 	}
 

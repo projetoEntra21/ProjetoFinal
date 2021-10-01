@@ -3,6 +3,7 @@ package modelo.entidade.usuario;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,6 +24,7 @@ import modelo.entidade.contato.Contato;
 import modelo.entidade.endereco.Endereco;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "usuario")
 public class Usuario implements Serializable {
 
@@ -32,16 +34,16 @@ public class Usuario implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_usuario")
 	protected Long id;
-	
+
 	@Column(name = "nome_usuario", length = 45, nullable = false, unique = false)
 	protected String nome;
-	
+
 	@Column(name = "sobrenome_usuario", length = 45, nullable = false, unique = false)
 	protected String sobrenome;
-	
+
 	@Column(name = "cpf_usuario", length = 14, nullable = false, unique = true)
 	protected String cpf;
-	
+
 	@Column(name = "idade_usuario", nullable = false, unique = false)
 	protected long idade;
 
@@ -51,25 +53,29 @@ public class Usuario implements Serializable {
 	@Column(name = "senha_usuario", length = 45, nullable = false, unique = false)
 	protected String senha;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario")
-	protected List<Endereco> enderecos;
-	
-	@OneToOne(fetch = FetchType.LAZY)
-	@MapsId
-	@JoinColumn(name = "id_endereco")
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+	@MapsId("contato")
+	@JoinColumn(name = "id_contato")
 	protected Contato contato;
-	
-	public Usuario() {}
+
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@MapsId("endereco")
+	@JoinColumn(name = "id_endereco")
+	protected Endereco endereco;
+
+	public Usuario() {
+	}
 
 	public Usuario(Long id) {
-
+		super();
+		
 		this.id = id;
 
 	}
-	
-	public Usuario(String nome, String sobrenome, String cpf, long idade, String login, String senha, List<Endereco> enderecos, Contato contato) {
+
+	public Usuario(String nome, String sobrenome, String cpf, long idade, String login, String senha, Contato contato) {
 		super();
-		
+
 		this.nome = nome;
 		this.sobrenome = sobrenome;
 		this.cpf = cpf;
@@ -77,39 +83,34 @@ public class Usuario implements Serializable {
 		this.login = login;
 		this.senha = senha;
 		setContato(contato);
-		setEnderecos(enderecos);
-	
+
 	}
-	
-	public Usuario(String nome, String sobrenome, String cpf, long idade, String login, String senha, Contato contato) {
+
+	public Usuario(String nome, String sobrenome, String cpf, long idade, String login, String senha) {
 		super();
-		
+
 		this.nome = nome;
 		this.sobrenome = sobrenome;
 		this.cpf = cpf;
 		this.idade = idade;
 		this.login = login;
 		this.senha = senha;
-		this.contato = contato;
-		
-		
 	}
-	
+
 	public Usuario(String nome, String sobrenome) {
 		super();
-		
+
 		this.nome = nome;
 		this.sobrenome = sobrenome;
-	
+
 	}
-	
+
 	public Usuario(String nome) {
 		super();
-		
+
 		this.nome = nome;
-	
+
 	}
-	
 
 	public Long getId() {
 		return id;
@@ -123,20 +124,20 @@ public class Usuario implements Serializable {
 		return login;
 	}
 
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
 	public String getCpf() {
 		return cpf;
 	}
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
-	}
-
-	public List<Endereco> getEnderecos() {
-		return enderecos;
-	}
-
-	public void setEnderecos(List<Endereco> enderecos) {
-		this.enderecos = enderecos;
 	}
 
 	public long getIdade() {
@@ -146,7 +147,6 @@ public class Usuario implements Serializable {
 	public void setIdade(long idade) {
 		this.idade = idade;
 	}
-
 
 	public void setLogin(String login) {
 		this.login = login;

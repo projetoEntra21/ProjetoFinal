@@ -3,6 +3,7 @@ package modelo.entidade.endereco;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import modelo.entidade.consulta.Consulta;
 import modelo.entidade.paciente.Paciente;
 import modelo.entidade.usuario.Usuario;
 
@@ -33,27 +35,27 @@ public class Endereco implements Serializable {
 
 	@Column(name = "rua_endereco", length = 25, nullable = true, unique = false)
 	private String rua;
-	
+
 	@Column(name = "bairro_endereco", length = 25, nullable = false, unique = false)
 	private String bairro;
-	
+
 	@Column(name = "cidade_endereco", length = 15, nullable = false, unique = false)
 	private String cidade;
-	
+
 	@Column(name = "estado_endereco", length = 15, nullable = false, unique = false)
 	private String estado;
-	
+
 	@Column(name = "numero_endereco", nullable = false, unique = true)
 	private Long numero;
 
 	@Column(name = "complemento_endereco", length = 30, nullable = false, unique = false)
 	private String complemento;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_usuario")
-	private Paciente paciente;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "endereco", cascade = CascadeType.ALL)
+	private List<Paciente> pacientes;
 
-	public Endereco() {}
+	public Endereco() {
+	}
 
 	public Endereco(Long id) {
 
@@ -61,9 +63,9 @@ public class Endereco implements Serializable {
 
 	}
 
-	public Endereco(String rua, String bairro, String cidade, String estado, String cep, Long numero, String complemento, Paciente paciente) {
+	public Endereco(String rua, String bairro, String cidade, String estado, String cep, Long numero,
+			String complemento, List<Paciente> pacientes) {
 
-		
 		setRua(rua);
 		setBairro(bairro);
 		setCidade(cidade);
@@ -71,9 +73,11 @@ public class Endereco implements Serializable {
 		setCep(cep);
 		setComplemento(complemento);
 		setNumero(numero);
+		setPacientes(pacientes);
 	}
-	
-	public Endereco(String rua, String bairro, String cidade, String estado, String cep, Long numero, String complemento) {
+
+	public Endereco(String rua, String bairro, String cidade, String estado, String cep, Long numero,
+			String complemento) {
 
 		setRua(rua);
 		setBairro(bairro);
@@ -120,21 +124,18 @@ public class Endereco implements Serializable {
 		return complemento;
 	}
 
-	
 
-	public Paciente getPaciente() {
-		return paciente;
+	public List<Paciente> getPacientes() {
+		return pacientes;
 	}
 
-	public void setPaciente(Paciente paciente) {
-		this.paciente = paciente;
+	public void setPacientes(List<Paciente> pacientes) {
+		this.pacientes = pacientes;
 	}
 
 	public void setComplemento(String complemento) {
 		this.complemento = complemento;
 	}
-	
-
 
 	public String getRua() {
 		return rua;
@@ -167,7 +168,5 @@ public class Endereco implements Serializable {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-
-	
 
 }

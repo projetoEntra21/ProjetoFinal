@@ -93,14 +93,14 @@ public class Principal {
 ////		nutricionistaDAO.cadastrarNutricionista(nutricionista);
 		
 		
-		contatoDAO.inserirContato(new Contato("gadfaygda@gmail.com", "33333333", "47988030802"));
-		 Endereco endereco = endereçoDAO.inserirEndereco(new Endereco("rua duahduah", "itouipava", "blumenau", "sc", "898989-89",  65L, "casa"));
-	
-		 List<Endereco> enderecos =  new ArrayList<Endereco>();
-		 
-		 enderecos.add(endereco);
-		 
-		nutricionistaDAO.inserirNutricionista(new Nutricionista("Gabriel", "Santos", "66.192.798/0001-29", 67, "testesenha", null, enderecos));
+//		contatoDAO.inserirContato(new Contato("gadfaygda@gmail.com", "33333333", "47988030802"));
+//		 Endereco endereco = endereçoDAO.inserirEndereco(new Endereco("rua duahduah", "itouipava", "blumenau", "sc", "898989-89",  65L, "casa"));
+//	
+//		 List<Endereco> enderecos =  new ArrayList<Endereco>();
+//		 
+//		 enderecos.add(endereco);
+//		 
+//		nutricionistaDAO.inserirNutricionista(new Nutricionista("Gabriel", "Santos", "66.192.798/0001-29", 67, "testesenha", null, enderecos));
 
 	}
 
