@@ -18,8 +18,8 @@ import modelo.dao.consulta.ConsultaDAO;
 import modelo.dao.consulta.ConsultaDAOimpl;
 import modelo.dao.contato.ContatoDAO;
 import modelo.dao.contato.ContatoDAOimpl;
-import modelo.dao.endereco.EnderecoDAOimpl;
 import modelo.dao.endereco.EnderecoDAO;
+import modelo.dao.endereco.EnderecoDAOimpl;
 import modelo.dao.historico.HistoricoDAO;
 import modelo.dao.historico.HistoricoDAOImpl;
 import modelo.dao.nutricionista.NutricionistaDAO;
@@ -237,6 +237,11 @@ public class Servlet extends HttpServlet {
 
 	public void mostrarAgendamento(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		List<Nutricionista> nutricionistas = daoNutricionista.recuperarNutricionistas();
+		request.setAttribute("nutricionistas", nutricionistas);		
+	
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("cadastro-consulta.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -323,6 +328,9 @@ public class Servlet extends HttpServlet {
 		consultas.add(consulta);
 		daoPaciente.atualizarPaciente(new Paciente(nome, sobrenome, consultas));
 		daoNutricionista.atualizarNutriocionista(new Nutricionista(nomenutri, consultas));
+		
+		List<Nutricionista> nutricionistas = daoNutricionista.recuperarNutricionistas();
+		request.setAttribute("nutricionistas", nutricionistas);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("perfilpaciente.jsp");
 		dispatcher.forward(request, response);
