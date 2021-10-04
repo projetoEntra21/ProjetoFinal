@@ -1,90 +1,99 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en" >
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Cadastro Nutricionista</title>
+ <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css'>
+  
+	<link rel="stylesheet" href="<%=request.getContextPath()%>resources/css/cadastropaciente.css"/>
+	<style><%@include file="resources/css/cadastropaciente.css"%></style>
+	<script><%@include file="resources/js/cadastropaciente.js"%></script>	
 
-	<link rel="stylesheet" href="<%=request.getContextPath()%>resources/css/cadastronutricionista.css"/>
-	<style><%@include file="resources/css/cadastronutricionista.css"%></style>
-	<script><%@include file="resources/js/cadastronutricionista.js"%></script>		
-<title>Cadastro Nutricionista</title>
-  		
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" />
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
 </head>
 <body>
+<!-- partial:index.partial.html -->
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-11 col-sm-10 col-md-10 col-lg-6 col-xl-5 text-center p-0 mt-3 mb-2">
+            <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                <h2 id="heading">Faça seu Cadastro</h2>
+            
+         <form id="msform" method="post" action="inserirNutricionista">
+                    <ul id="progressbar">
+                        <li class="active" id="account"><strong>Conta</strong></li>
+                        <li id="personal"><strong>Contato</strong></li>
+                        <li id="payment"><strong>Pessoal</strong></li>
+                        <li id="confirm"><strong>Finalizar</strong></li>
+                    </ul>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div> <br> <!-- fieldsets -->
+                    <fieldset>
+                        <div class="form-card">
+                            <div class="row">
+                                <div class="col-7">
+                                    <h2 class="fs-title">Informações da conta:</h2>
+                                </div>
+                                
+                            </div> <label class="fieldlabels">Nome de usuario</label> <input type="text" name="login" placeholder="Insira um nome de usuario" value="<c:out value='${usuario.login}'/>" name="login" />
+                             <label class="fieldlabels">Senha</label> <input type="password" name="senha" placeholder="Insira uma senha"/> 
+                             <label class="fieldlabels">Confirme sua senha</label> <input type="password" name="senha" placeholder="Confirme sua senha" value="<c:out value='${usuario.senha}'/>" name="senha" />
+                        </div> <input type="button" name="próximo" class="next action-button" value="Próximo" />
+                    </fieldset>
+                    <fieldset>
+                        <div class="form-card">
+                            <div class="row">
+                                <div class="col-7">
+                                    <h2 class="fs-title">Informações de contato</h2>
+                                </div>
+                                
+                            </div> <label class="fieldlabels">Email</label> <input type="email" name="email" placeholder="Insira seu email." value="<c:out value='${contato.email}'/>" name="email"/> 
+                            <label class="fieldlabels">Telefone Residencial</label> <input type="tel" name="telefone" placeholder="Insira um telefone." value="<c:out value='${contato.telefone}'/>" name="telefone"/> 
+                            <label class="fieldlabels">Telefone celular</label> <input type="tel" name="celular" placeholder="Insira um telefone celular" value="<c:out value='${contato.celular}'/>" name="celular"/> 
+                
+                        </div> <input type="button" name="next" class="next action-button" value="Próximo" /> <input type="button" name="Voltar" class="previous action-button-previous" value="Previous" />
+                    </fieldset>
+                    <fieldset>
+                        <div class="form-card">
+                            <div class="row">
+                                <div class="col-7">
+                                    <h2 class="fs-title">Informações Pessoais</h2>
+                                </div>
+                            
+                                <label class="fieldlabels">Primeiro Nome</label> <input type="text" name="nome" placeholder="Insira seu Primeiro nome." value="<c:out value='${usuario.nome}'/>" name="nome"  /> 
+                                <label class="fieldlabels">Sobrenome</label> <input type="text" name="sobrenome" placeholder="Insira seu Sobrenome" value="<c:out value='${usuario.sobrenome}'/>" name="sobrenome" /> 
+                                <label class="fieldlabels">Idade</label> <input type="number" name="idade" placeholder="Insira sua idade." value="<c:out value='${usuario.idade}'/>" name="idade" /> 
+                                <label class="fieldlabels">CPF</label> <input type="text" name="cpf" placeholder="Insira seu cpf" value=" <c:out value='${usuario.cpf}'/>" name="cpf" /> 
 
+                            </div> <label class="fieldlabels">Escolha sua foto de perfil:</label> <input type="file" name="pic" accept="image/*"> 
+                        </div> <input type="submit" name="next" class="next action-button" value="Enviar" /> <input type="button" name="previous" class="previous action-button-previous" value="Voltar" />
+                    </fieldset>
+                    <fieldset>
+                        <div class="form-card">
+                            <div class="row">
+                                
+            
+                            </div> <br><br>
+                            <h2 class="purple-text text-center"><strong>Enviado com sucesso!</strong></h2> <br>
+                            <div class="row justify-content-center">
+                                <div class="col-3"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Green_check.svg/2048px-Green_check.svg.png" class="fit-image"> </div>
+                            </div> <br><br>
+                            <div class="row justify-content-center">
+                            
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script><script><%@include file="resources/js/cadastropaciente.js"%></script>
 
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-	<script src="script.js"></script>
-
-	<form  id="msform" method="post" action="inserirNutricionista">
-		<fieldset>
-			<h2 class="fs-title">CRIE SUA CONTA</h2>
-			<h3 class="fs-subtitle"></h3>	
-					 <input type="text" name="nome"
-					id="nome" placeholder="Insira seu nome "
-					pattern="^[a-zA-Z][a-zA-Z-_\.]{3,20}$"
-					title="Indique seu nome sem números" required="required"
-					value="<c:out value='${nutricionista.nome}'/>" name="nome" />
-					
-				<input type="text"
-					name="sobrenome" id="sobrenome" placeholder="Insira seu sobrenome"
-					required="required"
-					value="<c:out value='${nutricionista.sobrenome}'/>" name="sobrenome" />
-		
-			<input type="text" id="cnpj"
-					placeholder="Cnpj" title="Siga o formato  XX. XXX. XXX/XXXX-XX."
-					required="required" value="<c:out value='${nutricionista.cnpj}'/>" name="cnpj" />
-		
-				<input type="password"
-					placeholder="Senha" id="password" required
-					pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-					title="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres"
-					required>
-
-				<input type="password"
-					placeholder="senha" id="confirm_password" required="required"
-					value="<c:out value='${nutricionista.senha}'/>" name="senha" />
-	
-			<button type="button" id="botao" class="button" data-toggle="modal"
-				data-target="#exampleModal">Cadastrar</button>
-
-			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-				aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLabel">Confirmação
-								de cadastro</h5>
-							<button type="button" class="close" data-dismiss="modal"
-								aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body">Seu cadastro está prestes a ser
-							concluido. Suas informações estão certas?</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary"
-								data-dismiss="modal">Fechar</button>
-							<button type="submit" class="btn btn-primary">Salvar
-								informações</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</fieldset>
-	</form>
 </body>
 </html>

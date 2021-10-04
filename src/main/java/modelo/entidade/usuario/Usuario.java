@@ -1,7 +1,6 @@
 package modelo.entidade.usuario;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,13 +12,11 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import modelo.entidade.consulta.Consulta;
 import modelo.entidade.contato.Contato;
 import modelo.entidade.endereco.Endereco;
 
@@ -53,13 +50,11 @@ public class Usuario implements Serializable {
 	@Column(name = "senha_usuario", length = 45, nullable = false, unique = false)
 	protected String senha;
 
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-	@MapsId("contato")
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_contato")
 	protected Contato contato;
 
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@MapsId("endereco")
 	@JoinColumn(name = "id_endereco")
 	protected Endereco endereco;
 
@@ -73,7 +68,7 @@ public class Usuario implements Serializable {
 
 	}
 
-	public Usuario(String nome, String sobrenome, String cpf, long idade, String login, String senha, Contato contato) {
+	public Usuario(String nome, String sobrenome, String cpf, long idade, String login, String senha, Contato contato, Endereco endereco) {
 		super();
 
 		this.nome = nome;
@@ -83,6 +78,7 @@ public class Usuario implements Serializable {
 		this.login = login;
 		this.senha = senha;
 		setContato(contato);
+		setEndereco(endereco);
 
 	}
 

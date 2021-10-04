@@ -10,14 +10,11 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import modelo.entidade.consulta.Consulta;
+import modelo.entidade.nutricionista.Nutricionista;
 import modelo.entidade.paciente.Paciente;
-import modelo.entidade.usuario.Usuario;
 
 @Entity
 @Table(name = "endereco")
@@ -53,6 +50,10 @@ public class Endereco implements Serializable {
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "endereco", cascade = CascadeType.ALL)
 	private List<Paciente> pacientes;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "endereco", cascade = CascadeType.ALL)
+	private List<Nutricionista> nutricionistas;
+	
 
 	public Endereco() {
 	}

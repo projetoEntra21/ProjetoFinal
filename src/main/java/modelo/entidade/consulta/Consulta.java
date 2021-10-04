@@ -70,7 +70,7 @@ public class Consulta {
 	}
 
 	public void setId(Long id) {
-		id = id;
+		this.id = id;
 	}
 
 	public LocalTime getHora() {

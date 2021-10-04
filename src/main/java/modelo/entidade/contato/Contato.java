@@ -9,10 +9,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import modelo.entidade.nutricionista.Nutricionista;
 import modelo.entidade.paciente.Paciente;
 import modelo.entidade.usuario.Usuario;
 
@@ -38,18 +38,26 @@ public class Contato implements Serializable {
 
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_usuario")
-	private Paciente paciente;
+	private Usuario usuario;
 
 	public Contato() {
 	}
 
-	public Contato(Long id, String email, String telefone, String celular, Paciente paciente) {
+	public Contato(Long id, String email, String telefone, String celular, Usuario usuario) {
 
 		setId(id);
 		setCelular(celular);
 		setEmail(email);
 		setTelefone(telefone);
-		setPaciente(paciente);
+	}
+
+	public Contato(String email, String telefone, String celular, Usuario usuario) {
+
+		setCelular(celular);
+		setEmail(email);
+		setTelefone(telefone);
+		setUsuario(usuario);
+		
 	}
 
 	public Contato(Long id) {
@@ -58,12 +66,18 @@ public class Contato implements Serializable {
 
 	}
 
+	public Contato(String email, String telefone, String celular, Paciente paciente) {
+
+		setCelular(celular);
+		setEmail(email);
+		setTelefone(telefone);
+	}
+
 	public Contato(String email, String telefone, String celular) {
 
 		setCelular(celular);
 		setEmail(email);
 		setTelefone(telefone);
-
 	}
 
 	public Long getId() {
@@ -82,17 +96,18 @@ public class Contato implements Serializable {
 		this.email = email;
 	}
 
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
 	public String getTelefone() {
 		return telefone;
 	}
 
-	public Paciente getPaciente() {
-		return paciente;
-	}
-
-	public void setPaciente(Paciente paciente) {
-		this.paciente = paciente;
-	}
 
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
@@ -105,7 +120,5 @@ public class Contato implements Serializable {
 	public void setCelular(String celular) {
 		this.celular = celular;
 	}
-
-
 
 }

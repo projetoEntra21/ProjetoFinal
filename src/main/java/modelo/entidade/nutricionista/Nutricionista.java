@@ -3,14 +3,9 @@ package modelo.entidade.nutricionista;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import modelo.entidade.consulta.Consulta;
@@ -30,9 +25,16 @@ public class Nutricionista extends Usuario implements Serializable {
 	public Nutricionista() {
 	}
 
-	public Nutricionista(long id, String nome, String sobrenome, String cpf, long idade, String login, String senha, Contato contato) {
+	public Nutricionista(long id, String nome, String sobrenome, String cpf, long idade, String login, String senha, Contato contato, Endereco endereco) {
 
-		super(nome, sobrenome, cpf, idade, login, senha, contato);
+		super(nome, sobrenome, cpf, idade, login, senha, contato, endereco);
+
+	}
+	
+	
+	public Nutricionista(String nome, String sobrenome, String cpf, long idade, String login, String senha) {
+
+		super(nome, sobrenome, cpf, idade, login, senha);
 
 	}
 
@@ -41,26 +43,13 @@ public class Nutricionista extends Usuario implements Serializable {
 
 	}
 
-	public Nutricionista(String nome, String sobrenome, String cpf, int idade, String login, String senha, List<Consulta> consultas, Contato contato) {
+	public Nutricionista(String nome, String sobrenome, String cpf, int idade, String login, String senha, List<Consulta> consultas, Contato contato, Endereco endereco) {
 
-		super(nome, sobrenome, cpf, idade, login, senha, contato);
+		super(nome, sobrenome, cpf, idade, login, senha, contato, endereco);
 		setConsultas(consultas);
 
 	}
 
-	public Nutricionista(String nome, String sobrenome, String cpf, int idade, String login, String senha, Contato contato) {
-
-		super(nome, sobrenome, cpf, idade, login, senha, contato);
-		setConsultas(consultas);
-
-	}
-	
-	public Nutricionista(String nome, String sobrenome, String cpf, long idade, String login, String senha,Contato contato) {
-
-		super(nome, sobrenome, cpf, idade, login, senha, contato);
-		setConsultas(consultas);
-
-	}
 
 	public Nutricionista(String nome, List<Consulta> consultas) {
 

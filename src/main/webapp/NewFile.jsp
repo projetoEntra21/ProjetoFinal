@@ -10,10 +10,6 @@
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="./cadastroUsuario.css">
 
-	<link rel="stylesheet" href="<%=request.getContextPath()%>resources/css/cadastropaciente.css"/>
-	<style><%@include file="resources/css/cadastropaciente.css"%></style>
-	<script><%@include file="resources/js/cadastropaciente.js"%></script>
-
 </head>
 <body>
 <!-- partial:index.partial.html -->
@@ -41,7 +37,7 @@
                                     <h2 class="fs-title">Informações da conta:</h2>
                                 </div>
                                 
-                            </div> <label class="fieldlabels">Nome de usuario</label> 	<input class="input" type="text" id="user" name="usuario" placeholder="Insira um nome de usuário" required pattern="^[a-zA-Z]{3,25}$" title="Indique seu nome completo sem números e sem espaços" > 
+                            </div> <label class="fieldlabels">Nome de usuario</label> 	<input class="input" type="text" id="user" name="usuario" placeholder="Insira um nome de usuário" required pattern="^[a-zA-Z]{3,25}$" title="Indique seu nome completo sem números e sem espaços"> 
                              <label class="fieldlabels">Senha</label> <input class="input"  onsubmit="validatemyPassword()" type="password" placeholder="Insira uma senha" id="myPassword" name="password"  title="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres" required>
  
                              <label class="fieldlabels">Confirme sua senha</label> 	<input class="input" type="password" id="confirm_password" placeholder="Confirme sua senha" required oninput="ValidarProximo ()">
@@ -160,7 +156,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
-  <script  src=<%@include file="resources/js/cadastropaciente.js"%>></script>
+  <script  src="./cadastroUsuario.js"></script>
 
 </body>
 </html>

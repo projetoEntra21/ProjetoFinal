@@ -18,8 +18,8 @@ import modelo.dao.consulta.ConsultaDAO;
 import modelo.dao.consulta.ConsultaDAOimpl;
 import modelo.dao.contato.ContatoDAO;
 import modelo.dao.contato.ContatoDAOimpl;
-import modelo.dao.endereco.EnderecoDAOimpl;
 import modelo.dao.endereco.EnderecoDAO;
+import modelo.dao.endereco.EnderecoDAOimpl;
 import modelo.dao.historico.HistoricoDAO;
 import modelo.dao.historico.HistoricoDAOImpl;
 import modelo.dao.nutricionista.NutricionistaDAO;
@@ -57,7 +57,7 @@ public class Servlet extends HttpServlet {
 		daoHistorico = new HistoricoDAOImpl();
 		daoContato = new ContatoDAOimpl();
 		daoUsuario = new UsuarioDAOimpl();
-		
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -139,9 +139,6 @@ public class Servlet extends HttpServlet {
 			case "/deletarNutricionista":
 				deletarNutricionista(request, response);
 				break;
-
-			case "/atualizarNutricionista":
-				atualizarNutricionista(request, response);
 
 			case "/mostrarAgendamento":
 				mostrarAgendamento(request, response);
@@ -317,7 +314,7 @@ public class Servlet extends HttpServlet {
 		String nomenutri = request.getParameter("nome");
 		LocalDate date = LocalDate.parse(request.getParameter("dia"));
 		LocalTime hora = LocalTime.parse(request.getParameter("hora"));
-		Paciente paciente = daoPaciente.recuperarPaciente(new Paciente(nome, sobrenome));
+		Paciente paciente = daoPaciente.recuperarPaciente(new Paciente(nome, sobrenome, consultas));
 		Nutricionista nutricionista = daoNutricionista.recuperarNutricionista(new Nutricionista(nomenutri));
 		Consulta consulta = daoConsulta.inserirConsulta(new Consulta(hora, date, nutricionista, paciente));
 		consultas.add(consulta);
@@ -413,18 +410,30 @@ public class Servlet extends HttpServlet {
 		String cep = request.getParameter("cep");
 		Long numero = Long.parseLong(request.getParameter("numero"));
 		String complemento = request.getParameter("complemento");
-		
-		List<Paciente> pacientes =  new ArrayList<Paciente>();
-		
-		Paciente paciente = new Paciente(nome, sobrenome, cpf, idade, login, senha);
-		
-		daoPaciente.inserirPaciente(paciente);
 
-		Contato contato =  new Contato(email, telefone, celular);
+		List<Paciente> pacientes = new ArrayList<Paciente>();
 		
-		
+		Contato contato = new Contato(email, telefone, celular);
+
+		daoContato.inserirContato(contato);
+
+		Endereco endereco = new Endereco(rua, bairro, cidade, estado, cep, numero, complemento);
+
+		daoEndereço.inserirEndereco(endereco);
+				
+		Paciente paciente = new Paciente(nome, sobrenome, cpf, idade, login, senha);
+
+		daoPaciente.inserirPaciente(paciente);
+	
+		paciente.setContato(contato);
+		contato.setUsuario(paciente);
+		paciente.setEndereco(endereco);
+		pacientes.add(paciente);
+		endereco.setPacientes(pacientes);
+
 		daoPaciente.atualizarPaciente(paciente);
-		
+		daoContato.atualizarContato(contato);
+		daoEndereço.atualizarEndereco(endereco);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("perfil-paciente.jsp");
 		dispatcher.forward(request, response);
@@ -455,24 +464,6 @@ public class Servlet extends HttpServlet {
 
 	}
 
-	private void inserirNutricionista(HttpServletRequest request, HttpServletResponse response)
-			throws SQLException, IOException, ServletException {
-
-		String nome = request.getParameter("nome");
-		String sobrenome = request.getParameter("sobrenome");
-		String cpf = request.getParameter("cnpj");
-		String senha = request.getParameter("senha");
-		Long idade = Long.parseLong(request.getParameter("idade"));
-		String login = request.getParameter("login");
-		
-		
-		daoNutricionista.inserirNutricionista(new Nutricionista(nome, sobrenome, cpf, idade, login, senha, null));
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher("perfilnutricionista.jsp");
-		dispatcher.forward(request, response);
-
-	}
-
 	private void deletarNutricionista(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException {
 
@@ -482,17 +473,35 @@ public class Servlet extends HttpServlet {
 
 	}
 
-	public void atualizarNutricionista(HttpServletRequest request, HttpServletResponse response)
-			throws SQLException, IOException {
+	public void inserirNutricionista(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException, ServletException {
 
-		Long id = Long.parseLong(request.getParameter("id_nutricionista"));
 		String nome = request.getParameter("nome");
+		String cpf = request.getParameter("cpf");
 		String sobrenome = request.getParameter("sobrenome");
-		String senha = request.getParameter("senha");
-		String cpf = request.getParameter("cnpj");
-		Long idade = Long.parseLong(request.getParameter("idade"));
 		String login = request.getParameter("login");
-		daoNutricionista.atualizarNutriocionista(new Nutricionista(id, nome, sobrenome, cpf, idade, login, senha, null));
+		String senha = request.getParameter("senha");
+		String email = request.getParameter("email");
+		String telefone = request.getParameter("telefone");
+		String celular = request.getParameter("celular");
+		long idade = Long.parseLong(request.getParameter("idade"));
+
+		Contato contato = new Contato(email, telefone, celular);
+
+		daoContato.inserirContato(contato);
+
+		Nutricionista nutricionista = new Nutricionista(nome, sobrenome, cpf, idade, login, senha);
+
+		daoNutricionista.inserirNutricionista(nutricionista);
+	
+		nutricionista.setContato(contato);
+		contato.setUsuario(nutricionista);
+
+		daoNutricionista.atualizarNutriocionista(nutricionista);
+		daoContato.atualizarContato(contato);
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("perfil-paciente.jsp");
+		dispatcher.forward(request, response);
 
 	}
 
