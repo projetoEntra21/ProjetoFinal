@@ -234,6 +234,11 @@ public class Servlet extends HttpServlet {
 
 	public void mostrarAgendamento(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		List<Nutricionista> nutricionistas = daoNutricionista.recuperarNutricionistas();
+		request.setAttribute("nutricionistas", nutricionistas);		
+	
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("cadastro-consulta.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -320,6 +325,9 @@ public class Servlet extends HttpServlet {
 		consultas.add(consulta);
 		daoPaciente.atualizarPaciente(new Paciente(nome, sobrenome, consultas));
 		daoNutricionista.atualizarNutriocionista(new Nutricionista(nomenutri, consultas));
+		
+		List<Nutricionista> nutricionistas = daoNutricionista.recuperarNutricionistas();
+		request.setAttribute("nutricionistas", nutricionistas);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("perfilpaciente.jsp");
 		dispatcher.forward(request, response);

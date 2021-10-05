@@ -65,7 +65,7 @@ html {
     outline-width: 0
 }
 
-  #msform .action-button {
+#msform .action-button {
     width: 100px;
     background: #97D5b1;
     font-weight: bold;
@@ -102,9 +102,9 @@ html {
 }
 
 .card {
-    z-index: 0;
+  
     border: none;
-    position: relative
+ 
 }
 
 .fs-title {
@@ -190,7 +190,7 @@ html {
     width: 100%;
     height: 2px;
     background: lightgray;
-    position: absolute;
+   
     left: 0;
     top: 25px;
     z-index: -1
@@ -213,32 +213,33 @@ html {
     width: 100%;
     object-fit: cover
 }
-#msform input, #msform textarea {
-	padding: 15px;
-	border: 1px solid #ccc;
-	border-radius: 3px;
-	margin-bottom: 10px;
-	width: 100%;
-	box-sizing: border-box;
-	font-family: montserrat;
-	color: #2C3E50;
-	font-size: 13px;
-}
-/*buttons*/
 .button {
-	margin-top: 1em;
-	padding: 1em;
-	width: 100%;
-	font-weight: 600;
-	background: #a7bfe8;
-	color: #fff;
-	border: 0;
-	border-radius: 0.3em;
-	cursor: pointer;
+	width: 100px;
+    background: #97D5b1;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 0px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 0px 10px 5px;
+    float: right
 }
 .button:hover {
-	background: #a7bfe8;
+	background: #b0e7c7;
 }
 .send {
 	margin-left: 0.5em;
 }
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+   
+    background-color: #000;
+  }
+  .erromsg{
+    color: #f30; /* cor do texto */
+ }
