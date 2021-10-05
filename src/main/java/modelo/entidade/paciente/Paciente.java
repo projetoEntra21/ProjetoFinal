@@ -51,12 +51,9 @@ public class Paciente extends Usuario implements Serializable {
 
 	}
 
-	
-
-	public Paciente(String nome) {
-
-		super(nome);
-		
+	public Paciente(Long Id, List<Consulta> consultas) {
+		super(Id);
+		setConsultas(consultas);
 
 	}
 	
