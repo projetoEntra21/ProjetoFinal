@@ -124,6 +124,7 @@ body {
 	width: 20px;
 	top: 380px;
   }
+  
   @media only screen and (max-device-width: 900px) {
 	/* .menu { width:100%; } */
 	}

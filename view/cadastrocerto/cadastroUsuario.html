@@ -6,6 +6,7 @@
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css'>
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+
 <link rel="stylesheet" href="./cadastroUsuario.css">
 
 </head>
@@ -35,14 +36,13 @@
                                     <h2 class="fs-title">Informações da conta:</h2>
                                 </div>
                                 
-                            </div> <label class="fieldlabels">Nome de usuario</label> 	<input class="input" type="text" id="user" name="usuario" placeholder="Insira um nome de usuário" required pattern="^[a-zA-Z]{3,25}$" title="Indique seu nome completo sem números e sem espaços"> 
-                             <label class="fieldlabels">Senha</label> <input class="input"  onsubmit="validatemyPassword()" type="password" placeholder="Insira uma senha" id="myPassword" name="password"  title="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres" required>
+                            </div> <label class="fieldlabels">Nome de usuario</label> 	<input class="text required" onsubmit="check_form()" type="text"  id="user" name="usuario" placeholder="Insira um nome de usuário" required pattern="^[a-zA-Z]{3,25}$" title="Indique seu nome completo sem números e sem espaços"> 
+                             <label class="fieldlabels">Senha</label> <input class="text required" onsubmit="validatemyPassword()" type="password" placeholder="Insira uma senha" id="myPassword" name="password"  title="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres" required>
  
-                             <label class="fieldlabels">Confirme sua senha</label> 	<input class="input" type="password" id="confirm_password" placeholder="Confirme sua senha" required oninput="ValidarProximo ()">
+                             <label class="fieldlabels">Confirme sua senha</label> 	<input class="text required" type="password" id="confirm_password" placeholder="Confirme sua senha" required oninput="ValidarProximo ()">
 
                         </div> 
-                        
-                        <button type="submit" name="submit" class="next action-button" id="proximo" value="Próximo"> Próximo</button> 
+                        <input type="submit"   value="Proximo"  >
                        
                     </fieldset>
                     <fieldset>
@@ -118,7 +118,7 @@
                  </div>
                  <div class="modal-footer">
                    <button type="button"name="Voltar" class="previous action-button-previous" value="Voltar" data-dismiss="modal">Voltar</button>
-                   <button type="submit"name="next" class="next action-button" value="Próximo" >Próximo </button >
+                   <button type="submit"name="next" class="next action-button" value="Próximo"  >Próximo </button >
                  </div>
                  </div>
                </div>
@@ -152,6 +152,8 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
   <script  src="./cadastroUsuario.js"></script>
