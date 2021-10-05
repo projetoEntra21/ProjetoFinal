@@ -22,15 +22,7 @@
 	
 	<form method="post" action="inserirConsulta">
 
-		<label>Nome:</label> <input type="text" required="required"
-			value="<c:out value='${paciente.nome}'/>" name="nome" /> 
-			
-			<br> 
-			
-			<label>Sobrenome:</label> <input type="text" required="required"
-			value="<c:out value='${paciente.sobrenome}'/>" name="sobrenome" />
-			
-			 <br>
+		
 
 		<label>Data:</label> <input type="date" required="required"
 			value="<c:out value='${consulta.data}'/>" name="data" /> 
@@ -42,10 +34,23 @@
 			
 			 <br> 
 
- 			  <select class="form-control" required = "required">
-                            <c:forEach var="nutricionistas" items="${nutricionistas}">
-                                <option value="${usuario.id}">
-                                    <c:out value="${nutricionista.nome}"/>/>
+
+			<label>Nutricionista:</label>
+ 			  <select class="form-control" required = "required" id = "idnutri" name = "idnutri">
+                            <c:forEach var="nutricionista" items="${nutricionistas}">
+                                <option value="${nutricionista.id}">
+                                    <c:out value="${nutricionista.nome}"/>
+                                </option>
+                            </c:forEach>
+                        </select>
+                        
+                        <br>
+                        
+                        <label>Paciente:</label>
+ 			  <select class="form-control" required = "required" id = "idpaciente" name = "idpaciente">
+                            <c:forEach var="paciente" items="${pacientes}">
+                                <option value="${paciente.id}">
+                                    <c:out value="${paciente.nome}"/>
                                 </option>
                             </c:forEach>
                         </select>

@@ -39,12 +39,11 @@ public class Consulta {
 	@JoinColumn(name = "id_usuario")
 	private Paciente paciente;
 
-	public Consulta() {
-	}
+	public Consulta() {}
 
-	public Consulta(LocalTime hora, LocalDate data, Nutricionista nutricionista, Paciente paciente) {
+	public Consulta(LocalTime hora, LocalDate date, Nutricionista nutricionista, Paciente paciente) {
 
-		setData(data);
+		setData(date);
 		setHora(hora);
 		setNutricionista(nutricionista);
 		setPaciente(paciente);
@@ -79,10 +78,6 @@ public class Consulta {
 
 	public void setHora(LocalTime time) {
 		this.hora = time;
-	}
-
-	public LocalDate getData() {
-		return data;
 	}
 
 	public void setData(LocalDate data) {

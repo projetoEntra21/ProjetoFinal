@@ -1,9 +1,11 @@
 package controle.servlet;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,6 +81,10 @@ public class Servlet extends HttpServlet {
 			case "/listarNutricionista":
 				listarNutricionista(request, response);
 
+			case "/listarPaciente":
+				listarPaciente(request, response);
+	
+				
 			case "/perfilPaciente":
 				mostrarPerfilPaciente(request, response);
 
@@ -187,6 +193,15 @@ public class Servlet extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("");
 		dispatcher.forward(request, response);
 	}
+	
+	private void listarPaciente(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		List<Paciente> pacientes = daoPaciente.recuperarPacientes();
+		request.setAttribute("pacientes", pacientes);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("");
+		dispatcher.forward(request, response);
+	}
 
 	public void telainicial(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -234,11 +249,10 @@ public class Servlet extends HttpServlet {
 
 	public void mostrarAgendamento(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		List<Nutricionista> nutricionistas = daoNutricionista.recuperarNutricionistas();
-		request.setAttribute("nutricionistas", nutricionistas);		
-	
-		
+		request.setAttribute("nutricionistas", nutricionistas);
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("cadastro-consulta.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -314,20 +328,30 @@ public class Servlet extends HttpServlet {
 
 		List<Consulta> consultas = new ArrayList<Consulta>();
 
-		String nome = request.getParameter("nome");
-		String sobrenome = request.getParameter("sobrenome");
-		String nomenutri = request.getParameter("nome");
-		LocalDate date = LocalDate.parse(request.getParameter("dia"));
-		LocalTime hora = LocalTime.parse(request.getParameter("hora"));
-		Paciente paciente = daoPaciente.recuperarPaciente(new Paciente(nome, sobrenome, consultas));
-		Nutricionista nutricionista = daoNutricionista.recuperarNutricionista(new Nutricionista(nomenutri));
-		Consulta consulta = daoConsulta.inserirConsulta(new Consulta(hora, date, nutricionista, paciente));
-		consultas.add(consulta);
-		daoPaciente.atualizarPaciente(new Paciente(nome, sobrenome, consultas));
-		daoNutricionista.atualizarNutriocionista(new Nutricionista(nomenutri, consultas));
+		long idpaciente = Long.parseLong(request.getParameter("idpaciente"));
+		long idnutri = Long.parseLong(request.getParameter("idnutri"));
+		String data = request.getParameter("data");
+		String hora = request.getParameter("hora");
+
+		DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		LocalDate dataFormatada = LocalDate.parse(data, formatador);
 		
+		LocalTime horaConvertida = LocalTime.parse(hora);
+
+		Paciente paciente = daoPaciente.recuperarPaciente(new Paciente(idpaciente));
+		Nutricionista nutricionista = daoNutricionista.recuperarNutricionista(new Nutricionista(idnutri));
+		
+		Consulta consulta = daoConsulta.inserirConsulta(new Consulta(horaConvertida, dataFormatada, nutricionista, paciente));
+		consultas.add(consulta);
+				
+		daoPaciente.atualizarPaciente(new Paciente(idpaciente, consultas));
+		daoNutricionista.atualizarNutriocionista(new Nutricionista(idnutri, consultas));
+
 		List<Nutricionista> nutricionistas = daoNutricionista.recuperarNutricionistas();
 		request.setAttribute("nutricionistas", nutricionistas);
+		
+		List<Paciente> pacientes = daoPaciente.recuperarPacientes();
+		request.setAttribute("pacientes", pacientes);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("perfilpaciente.jsp");
 		dispatcher.forward(request, response);
@@ -349,11 +373,10 @@ public class Servlet extends HttpServlet {
 		long idconsulta = Long.parseLong(request.getParameter("id_consulta"));
 		Long idnutri = Long.parseLong(request.getParameter("id_nutricionista"));
 		long idpaciente = Long.parseLong(request.getParameter("id_paciente"));
-		LocalDate date = LocalDate.parse(request.getParameter("data_consulta"));
 		LocalTime hora = LocalTime.parse(request.getParameter("horario_consulta"));
 		Paciente paciente = daoPaciente.recuperarPaciente(new Paciente(idpaciente));
 		Nutricionista nutricionista = daoNutricionista.recuperarNutricionista(new Nutricionista(idnutri));
-		daoConsulta.atualizarConsulta(new Consulta(idconsulta, hora, date, nutricionista, paciente));
+//		daoConsulta.atualizarConsulta(new Consulta(idconsulta, hora, date, nutricionista, paciente));
 
 	}
 //
@@ -420,7 +443,7 @@ public class Servlet extends HttpServlet {
 		String complemento = request.getParameter("complemento");
 
 		List<Paciente> pacientes = new ArrayList<Paciente>();
-		
+
 		Contato contato = new Contato(email, telefone, celular);
 
 		daoContato.inserirContato(contato);
@@ -428,11 +451,11 @@ public class Servlet extends HttpServlet {
 		Endereco endereco = new Endereco(rua, bairro, cidade, estado, cep, numero, complemento);
 
 		daoEndereço.inserirEndereco(endereco);
-				
+
 		Paciente paciente = new Paciente(nome, sobrenome, cpf, idade, login, senha);
 
 		daoPaciente.inserirPaciente(paciente);
-	
+
 		paciente.setContato(contato);
 		contato.setUsuario(paciente);
 		paciente.setEndereco(endereco);
@@ -501,7 +524,7 @@ public class Servlet extends HttpServlet {
 		Nutricionista nutricionista = new Nutricionista(nome, sobrenome, cpf, idade, login, senha);
 
 		daoNutricionista.inserirNutricionista(nutricionista);
-	
+
 		nutricionista.setContato(contato);
 		contato.setUsuario(nutricionista);
 
