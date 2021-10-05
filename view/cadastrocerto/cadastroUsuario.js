@@ -202,60 +202,6 @@ function mphone(v) {
   }
   
 
-  $("#proximo").click(function(){
-
-    // remove as mensagens de erro
-    $(".erromsg").remove();
- 
-    // verificar se os campos foram preenchidos
-    var user = $("#user");
-    var senha = $("myPassword");
-    var confirmação = $("#confirm_password");
-    
-    // Mensagem de erro padrão a ser inserida após o campo
-    var erromsg = '<div class="erromsg">Preencha o campo <span></span></div>';
-    
-    if(!user.val() || user.val().length < 5){
-      user.after(erromsg);
-       $(".erromsg span").text("user corretamente");
-       return;
-    }
- 
-    if(!senha.val()){
-       senha.after(erromsg);
-       $(".erromsg span").text("senha");
-       return;
-    }
- 
-    if(!confirmação.val()){
-       confirmação.after(erromsg);
-       $(".erromsg span").text("confirmação");
-       return;
-    }
-    
- 
-     var settings = {
-       // "async": true,
-       // "crossDomain": true,
-       "url": "script.php",
-       "method": "POST",
-       "headers": {
-         "Content-Type": "application/x-www-form-urlencoded",
-       },
-       "data": {
-         "user": $("#user").val(),
-         "myPassword": $("#myPassword").val(),
-         "confirm_password": $("#confirm_password").val()
-       }
-     };
- 
-     $.ajax(settings).done(function (response) {
- 
-       console.log(response); 
- 
-     });
- 
- });
 
  var cpf = document.querySelector("#cpf");
 
@@ -288,16 +234,18 @@ function mphone(v) {
   }
   return r;
 }
- 
- function ValidarProximo() {
 
-  var user = document.getElementById ("user").value;
-  var senha = document.getElementById("myPassword").value;
-  var confirmação = document.getElementById("confirm_password").value;
-  
-if (user.length >= 10  && senha.length >= 8 && confirmação.length >= 8 ){
-$("#proximo").disabled = false;
+function check_form(){
+	var inputs = document.getElementsByClassName('required');
+  var len = inputs.length;
+  var valid = true;
+  for(var i=0; i < len; i++){
+     if (!inputs[i].value){ valid = false; }
+  }
+  if (!valid){
+  	alert('Por favor preencha todos os campos.');
+    return false;
+  } else { return true; }
 
 }
 
- }
