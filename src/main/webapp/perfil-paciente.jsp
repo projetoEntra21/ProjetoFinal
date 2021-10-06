@@ -5,12 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>perfil</title>
-<link
-
-
-   <link rel="stylesheet" href="<%=request.getContextPath()%>resources/css/perfilpaciente.css"/>
-	<style><%@include file="resources/css/perfilpaciente.css"%></style>
-	<script><%@include file="resources/js/perfilpaciente.js"%></script>		
+<link	
 	
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" />
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
@@ -18,6 +13,10 @@
 	integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
 	crossorigin="anonymous">
 
+	<link rel="stylesheet" href="<%=request.getContextPath()%>resources/css/perfilpaciente.css"/>
+	<style><%@include file="resources/css/perfilpaciente.css"%></style>
+	<script><%@include file="resources/js/perfilpaciente.js"%></script>	
+	
 
 </head>
 <body>
@@ -219,6 +218,9 @@
 
 
 	</div>
+
+	  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script><script><%@include file="resources/js/perfilpaciente.js"%></script>
+	
 
 </body>
 </html>
