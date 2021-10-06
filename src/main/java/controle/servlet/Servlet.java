@@ -343,13 +343,17 @@ public class Servlet extends HttpServlet {
 		
 		Consulta consulta = daoConsulta.inserirConsulta(new Consulta(horaConvertida, dataFormatada, nutricionista, paciente));
 		consultas.add(consulta);
-				
-		daoPaciente.atualizarPaciente(new Paciente(idpaciente, consultas));
-		daoNutricionista.atualizarNutriocionista(new Nutricionista(idnutri, consultas));
-
-		List<Nutricionista> nutricionistas = daoNutricionista.recuperarNutricionistas();
-		request.setAttribute("nutricionistas", nutricionistas);
 		
+		paciente.setConsultas(consultas);
+		nutricionista.setConsultas(consultas);
+				
+		daoPaciente.atualizarPaciente(paciente);
+		daoNutricionista.atualizarNutriocionista(nutricionista);
+		
+		List<Nutricionista> nutricionistas = daoNutricionista.recuperarNutricionistas();
+		request.setAttribute("nutricionista", nutricionistas);
+				
+				
 		List<Paciente> pacientes = daoPaciente.recuperarPacientes();
 		request.setAttribute("pacientes", pacientes);
 
