@@ -42,7 +42,9 @@
                              <label class="fieldlabels">Confirme sua senha</label> 	<input class="text required" type="password" id="confirm_password" placeholder="Confirme sua senha" required oninput="ValidarProximo ()">
 
                         </div> 
-                        <input type="submit"   value="Proximo"  >
+                        <input type="button" name="next" class="next action-button" value="Próximo" />
+                        
+                              
                        
                     </fieldset>
                     <fieldset>
@@ -57,7 +59,14 @@
 
                             <label class="fieldlabels">Telefone celular</label> 	<input class="input e" id="phone" placeholder="Insira um telefone celular" name="phone" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);" maxlength="15" required/>
                 
-                        </div> <input type="button" name="next" class="next action-button" value="Próximo" /> <input type="button" name="Voltar" class="previous action-button-previous" value="Voltar" />
+                        </div> <input type="button" name="next" class="next action-button" value="Próximo" />
+                        <input type="button" name="Voltar" class="previous action-button-previous" value="Voltar" />
+                    
+                           
+                       
+                               
+                        
+                       
                     </fieldset>
                     <fieldset>
                         <div class="form-card">
@@ -93,36 +102,39 @@
                             
 
                             </div> <label class="fieldlabels">Escolha sua foto de perfil:</label> <input type="file" name="pic" accept="image/*"> 
-                        </div>
                         
+                        </div>
                      
-        <button type="button" id="botao" class="button" data-toggle="modal" data-target="#exampleModal">
-            Cadastrar
-               </button>
-               
-               <button type="button" name="Voltar" class="previous action-button-previous" value="Voltar"> Voltar</button> 
-               <!-- Modal -->
-               <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-               <div class="modal-dialog" role="document">
-                 <div class="modal-content">
-                 <div class="modal-header">
-                   <h5 class="modal-title" id="exampleModalLabel">Confirmação de cadastro
-                   </h5>
-                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                   <span aria-hidden="true">&times;</span>
-                   </button>
-                 </div>
-                 <div class="modal-body">
-                  Antes de prosseguir, veja se todas as suas informações foram completadas e preenchidas.
-                  
-                 </div>
-                 <div class="modal-footer">
-                   <button type="button"name="Voltar" class="previous action-button-previous" value="Voltar" data-dismiss="modal">Voltar</button>
-                   <button type="submit"name="next" class="next action-button" value="Próximo"  >Próximo </button >
-                 </div>
-                 </div>
-               </div>
-               </div>
+                            <input type="button" name="next" class="next action-button" value="Próximo" />
+                            <input type="button" name="Voltar" class="previous action-button-previous" value="Voltar" />
+                        
+                               
+                            <button type="button" id="botao" class="button" data-toggle="modal" data-target="#exampleModal3">
+                                Salvar
+                                   </button>
+                               
+                                   <!-- Modal -->
+                                   <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModal3Label" aria-hidden="true">
+                                   <div class="modal-dialog" role="document">
+                                     <div class="modal-content">
+                                     <div class="modal-header">
+                                       <h5 class="modal-title" id="exampleModal3Label">Confirmação de cadastro
+                                       </h5>
+                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                       <span aria-hidden="true">&times;</span>
+                                       </button>
+                                     </div>
+                                     <div class="modal-body">
+                                     Antes de ir para o próximo, verifique se suas informações foram completadas e estão corretas
+                                      
+                                     </div>
+                                     <div class="modal-footer">
+                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                       <button type="submit" class="btn btn-primary">Salvar informações </button >
+                                     </div>
+                                     </div>
+                                   </div>
+                                   </div>
             
                     
                     

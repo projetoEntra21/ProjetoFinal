@@ -10,7 +10,7 @@
   
 	<link rel="stylesheet" href="<%=request.getContextPath()%>resources/css/cadastropaciente.css"/>
 	<style><%@include file="resources/css/cadastropaciente.css"%></style>
-	<script><%@include file="resources/js/cadastronutricionista.js"%></script>	
+	<script><%@include file="resources/js/cadastropaciente.js"%></script>	
 
 
 </head>
@@ -100,7 +100,7 @@
     </div>
 </div>
 
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script><script><%@include file="resources/js/cadastronutricionista.js"%></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script><script><%@include file="resources/js/cadastropaciente.js"%></script>
 
 </body>
 </html>
