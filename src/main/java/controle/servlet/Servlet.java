@@ -347,11 +347,11 @@ public class Servlet extends HttpServlet {
 		daoPaciente.atualizarPaciente(new Paciente(idpaciente, consultas));
 		daoNutricionista.atualizarNutriocionista(new Nutricionista(idnutri, consultas));
 
-		List<Nutricionista> nutricionistas = daoNutricionista.recuperarNutricionistas();
-		request.setAttribute("nutricionistas", nutricionistas);
-		
 		List<Paciente> pacientes = daoPaciente.recuperarPacientes();
 		request.setAttribute("pacientes", pacientes);
+		
+		List<Nutricionista> nutricionistas = daoNutricionista.recuperarNutricionistas();
+		request.setAttribute("nutricionistas", nutricionistas);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("perfilpaciente.jsp");
 		dispatcher.forward(request, response);
