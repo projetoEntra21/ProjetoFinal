@@ -4,15 +4,14 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Cadastro usuario</title>
-  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+  <title>Cadastro Paciente</title>
+ <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css'>
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="./cadastroUsuario.css">
-
+  
 	<link rel="stylesheet" href="<%=request.getContextPath()%>resources/css/cadastropaciente.css"/>
 	<style><%@include file="resources/css/cadastropaciente.css"%></style>
-	<script><%@include file="resources/js/cadastropaciente.js"%></script>
+	<script><%@include file="resources/js/cadastronutricionista.js"%></script>	
+
 
 </head>
 <body>
@@ -23,8 +22,7 @@
             <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
                 <h2 id="heading">Faça seu Cadastro</h2>
             
-                <form id="msform">
-                    <!-- progressbar -->
+         <form id="msform" method="post" action="inserirPaciente">
                     <ul id="progressbar">
                         <li class="active" id="account"><strong>Conta</strong></li>
                         <li id="personal"><strong>Contato</strong></li>
@@ -41,15 +39,10 @@
                                     <h2 class="fs-title">Informações da conta:</h2>
                                 </div>
                                 
-                            </div> <label class="fieldlabels">Nome de usuario</label> 	<input class="input" type="text" id="user" name="usuario" placeholder="Insira um nome de usuário" required pattern="^[a-zA-Z]{3,25}$" title="Indique seu nome completo sem números e sem espaços" > 
-                             <label class="fieldlabels">Senha</label> <input class="input"  onsubmit="validatemyPassword()" type="password" placeholder="Insira uma senha" id="myPassword" name="password"  title="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres" required>
- 
-                             <label class="fieldlabels">Confirme sua senha</label> 	<input class="input" type="password" id="confirm_password" placeholder="Confirme sua senha" required oninput="ValidarProximo ()">
-
-                        </div> 
-                        
-                        <button type="submit" name="submit" class="next action-button" id="proximo" value="Próximo"> Próximo</button> 
-                       
+                            </div> <label class="fieldlabels">Nome de usuario</label> <input type="text" name="login" placeholder="Insira um nome de usuario" value="<c:out value='${usuario.login}'/>" name="login" />
+                             <label class="fieldlabels">Senha</label> <input type="password" name="senha" placeholder="Insira uma senha"/> 
+                             <label class="fieldlabels">Confirme sua senha</label> <input type="password" name="senha" placeholder="Confirme sua senha" value="<c:out value='${usuario.senha}'/>" name="senha" />
+                        </div> <input type="button" name="próximo" class="next action-button" value="Próximo" />
                     </fieldset>
                     <fieldset>
                         <div class="form-card">
@@ -58,80 +51,33 @@
                                     <h2 class="fs-title">Informações de contato</h2>
                                 </div>
                                 
-                            </div> <label class="fieldlabels">Email</label> <input class="input" type="email" id="input" name="email" placeholder="Insira um email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="O email teve conter um @" required> 
-                            <label class="fieldlabels">Telefone Residencial</label>	<input class="input e" id="phone" placeholder="Insira um telefone residencial" name="phone" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);" maxlength="14"/>
-
-                            <label class="fieldlabels">Telefone celular</label> 	<input class="input e" id="phone" placeholder="Insira um telefone celular" name="phone" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);" maxlength="15" required/>
+                            </div> <label class="fieldlabels">Email</label> <input type="email" name="email" placeholder="Insira seu email." value="<c:out value='${contato.email}'/>" name="email"/> 
+                            <label class="fieldlabels">Telefone Residencial</label> <input type="tel" name="telefone" placeholder="Insira um telefone." value="<c:out value='${contato.telefone}'/>" name="telefone"/> 
+                            <label class="fieldlabels">Telefone celular</label> <input typetel name="celular" placeholder="Insira um telefone celular" value="<c:out value='${contato.celular}'/>" name="celular"/> 
                 
-                        </div> <input type="button" name="next" class="next action-button" value="Próximo" /> <input type="button" name="Voltar" class="previous action-button-previous" value="Voltar" />
+                        </div> <input type="button" name="next" class="next action-button" value="Próximo" /> <input type="button" name="Voltar" class="previous action-button-previous" value="Previous" />
                     </fieldset>
                     <fieldset>
                         <div class="form-card">
                             <div class="row">
                                 <div class="col-7">
                                     <h2 class="fs-title">Informações Pessoais</h2>
-                             
-                                </div><label class="fieldlabels">Primeiro Nome</label>  <input type="text" name="nome" id="nome"placeholder="Entre com seu nome" pattern="^[a-zA-Z][a-zA-Z-_\.]{3,20}$" title="Indique seu nome sem números" required>
-                                
-                                <label class="fieldlabels">Sobrenome</label>     <input type="text" name="sobrenome" id="sobrenome" placeholder="Insira seu sobrenome" pattern="^([AZ] {1} [az] {1,30} [-] {0,1} | [AZ] {1} [- \ '] { 1} [AZ] {0,1} [az] {1,30} [-] {0,1} | [az] {1,2} [- \ '] {1} [AZ] {1} [ az] {1,30}) {2,5} {3,20}$  "title="Indique seu sobrenome completo sem números" required>
-
-                                <label class="fieldlabels">Idade</label>  <input type="number" name="idade" id="idade" placeholder="Insira sua idade" pattern="[0-9]+$ " title="Entre com uma idade sem letras" maxlength="2">
-                                 
-                               <label class="fieldlabels">CPF</label> <input type="text" value="" id="cpf" placeholder="Insira seu CPF"  maxlength="14" required >
-                               
-                               <label class="label" for="input"> Cep</label>
-                                <input class= "input e" name="cep" type="text" id="cep" placeholder="Insira seu CEP" class="mascCEP" value="" size="10" maxlength="9" onblur="pesquisacep(this.value);" required /></label>
+                                </div>
                             
-                                <label class="label" for="input"> Rua</label>
-                                <input class="input e" name="rua" type="text" id="rua" placeholder="Insira sua rua" size="60" required /></label>
-                            
-                                <label class="label" for="input"> Numero</label>
-                                <input class="input e" name="numero" type="number" id="numero" placeholder="Insira seu número" required>
-                            
-                                <label class="label" for="input"> Bairro</label>
-                                <input class= "input e" name="bairro" type="text" id="bairro" placeholder="Insira seu bairro" size="40" required /></label>
-                            
-                                <label class="label" for="input"> Cidade</label>
-                                <input class="input e" name="cidade" type="text" id="cidade" size="40" placeholder="Insira sua cidade" required/></label>
-                            
-                                <label class="label" for="input"> Estado</label>
-                                <input class="input e" name="uf" type="text" id="uf" size="2" required placeholder="Insira seu Estado" /></label><br />
-                            
+                                <label class="fieldlabels">Primeiro Nome</label> <input type="text" name="nome" placeholder="Insira seu Primeiro nome." value="<c:out value='${usuario.nome}'/>" name="nome"  /> 
+                                <label class="fieldlabels">Sobrenome</label> <input type="text" name="sobrenome" placeholder="Insira seu Sobrenome" value="<c:out value='${usuario.sobrenome}'/>" name="sobrenome" /> 
+                                <label class="fieldlabels">Idade</label> <input type="number" name="idade" placeholder="Insira sua idade." value="<c:out value='${usuario.idade}'/>" name="idade" /> 
+                                <label class="fieldlabels">CPF</label> <input type="text" name="cpf" placeholder="Insira seu cpf" value=" <c:out value='${usuario.cpf}'/>" name="cpf" /> 
+								<label class="fieldlabels">CEP</label> <input type="text" name="cep" placeholder="Insira seu cep" value=" <c:out value='${endereco.cep}'/>" name="cep" /> 
+                                <label class="fieldlabels">Rua</label> <input type="text" name="rua" placeholder="Insira sua rua" value="<c:out value='${endereco.rua}'/>" name="rua" /> 
+                                <label class="fieldlabels">Complemento</label> <input type="text" name="complemento" placeholder="Digite o complemento" value="<c:out value='${endereco.complemento}'/>" name="complemento" /> 
+                                <label class="fieldlabels">Numero</label> <input type="number" name="numero" placeholder="Insira o numero." value=" <c:out value='${endereco.numero}'/>" name="numero" /> 
+                                <label class="fieldlabels">Bairro</label> <input type="text" name="bairro" placeholder="Insira o seu bairro."value=" <c:out value='${endereco.bairro}'/>" name="bairro" />
+                                <label class="fieldlabels">Cidade</label> <input type="text" name="cidade" placeholder="Insira sua cidade." value=" <c:out value='${endereco.cidade}'/>" name="cidade" />
+                                <label class="fieldlabels">Estado</label> <input type="text" name="estado" placeholder="Insira seu estado." value=" <c:out value='${endereco.estado}'/>" name="estado" />   
 
                             </div> <label class="fieldlabels">Escolha sua foto de perfil:</label> <input type="file" name="pic" accept="image/*"> 
-                        </div>
-                        
-                     
-        <button type="button" id="botao" class="button" data-toggle="modal" data-target="#exampleModal">
-            Cadastrar
-               </button>
-               
-               <button type="button" name="Voltar" class="previous action-button-previous" value="Voltar"> Voltar</button> 
-               <!-- Modal -->
-               <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-               <div class="modal-dialog" role="document">
-                 <div class="modal-content">
-                 <div class="modal-header">
-                   <h5 class="modal-title" id="exampleModalLabel">Confirmação de cadastro
-                   </h5>
-                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                   <span aria-hidden="true">&times;</span>
-                   </button>
-                 </div>
-                 <div class="modal-body">
-                  Antes de prosseguir, veja se todas as suas informações foram completadas e preenchidas.
-                  
-                 </div>
-                 <div class="modal-footer">
-                   <button type="button"name="Voltar" class="previous action-button-previous" value="Voltar" data-dismiss="modal">Voltar</button>
-                   <button type="submit"name="next" class="next action-button" value="Próximo" >Próximo </button >
-                 </div>
-                 </div>
-               </div>
-               </div>
-            
-                    
-                    
+                        </div> <input type="submit" name="next" class="next action-button" value="Enviar" /> <input type="button" name="previous" class="previous action-button-previous" value="Voltar" />
                     </fieldset>
                     <fieldset>
                         <div class="form-card">
@@ -153,14 +99,8 @@
         </div>
     </div>
 </div>
-<!-- partial -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
-  <script  src=<%@include file="resources/js/cadastropaciente.js"%>></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script><script><%@include file="resources/js/cadastronutricionista.js"%></script>
 
 </body>
 </html>

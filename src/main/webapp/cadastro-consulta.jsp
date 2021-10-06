@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Agendamento de Consulta</title>
 
-<link rel="stylesheethref="<%=request.getContextPath()%>resources/css/agendamento.css" />
+<link rel="stylesheethref="<%=request.getContextPath()%>resources/css/agendamento.css"/>
 <style><%@include file="resources/css/agendamento.css"%></style>
 <script><%@include file="resources/js/agendamento.js"%></script>
 
@@ -22,7 +22,7 @@
 	
 	<form method="post" action="inserirConsulta">
 
-		
+		 <label class="fieldlabels">ID paciente:</label> <input type="text" name="idpaciente" placeholder="ID paciente: " value="<c:out value='${paciente.nome}'/>" name="idpaciente"  /> 
 
 		<label>Data:</label> <input type="date" required="required"
 			value="<c:out value='${consulta.data}'/>" name="data" /> 
@@ -46,15 +46,8 @@
                         
                         <br>
                         
-                        <label>Paciente:</label>
- 			  <select class="form-control" required = "required" id = "idpaciente" name = "idpaciente">
-                            <c:forEach var="paciente" items="${pacientes}">
-                                <option value="${paciente.id}">
-                                    <c:out value="${paciente.nome}"/>
-                                </option>
-                            </c:forEach>
-                        </select>
-		
+          
+                       		
 					<button type="submit">Agendar</button>
 	</form>
 

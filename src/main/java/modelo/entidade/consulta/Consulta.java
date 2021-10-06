@@ -36,7 +36,7 @@ public class Consulta {
 	private Nutricionista nutricionista;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_usuario")
+	@JoinColumn(name = "id_paciente")
 	private Paciente paciente;
 
 	public Consulta() {}
