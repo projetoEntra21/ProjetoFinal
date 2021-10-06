@@ -30,10 +30,10 @@ public class Contato implements Serializable {
 	@Column(name = "email_contatos", length = 40, nullable = false, unique = true)
 	private String email;
 
-	@Column(name = "telefone_contatos", length = 8, nullable = false, unique = true)
+	@Column(name = "telefone_contatos", length = 14, nullable = false, unique = true)
 	private String telefone;
 
-	@Column(name = "celular_contatos", length = 11, nullable = false, unique = true)
+	@Column(name = "celular_contatos", length = 15, nullable = false, unique = true)
 	private String celular;
 
 	@OneToOne(fetch = FetchType.LAZY)

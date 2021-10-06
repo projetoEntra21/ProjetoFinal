@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Agendamento de Consulta</title>
 
-<link rel="stylesheethref="<%=request.getContextPath()%>resources/css/agendamento.css"/>
+<link rel="stylesheet" href="<%=request.getContextPath()%>resources/css/agendamento.css"/>
 <style><%@include file="resources/css/agendamento.css"%></style>
 <script><%@include file="resources/js/agendamento.js"%></script>
 
@@ -21,8 +21,8 @@
 	<script src="script.js"></script>
 	
 	<form method="post" action="inserirConsulta">
-
-		 <label class="fieldlabels">ID paciente:</label> <input type="text" name="idpaciente" placeholder="ID paciente: " value="<c:out value='${paciente.nome}'/>" name="idpaciente"  /> 
+	
+		 <label class="fieldlabels">ID paciente:</label> <input type="text" placeholder="ID paciente: " value="<c:out value='${paciente.id}'/>" name="idpaciente"  /> 
 
 		<label>Data:</label> <input type="date" required="required"
 			value="<c:out value='${consulta.data}'/>" name="data" /> 

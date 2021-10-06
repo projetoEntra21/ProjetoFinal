@@ -18,7 +18,6 @@ import modelo.entidade.usuario.Usuario;
 public class Paciente extends Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "paciente")
 	private List<Consulta> consultas;
@@ -26,28 +25,30 @@ public class Paciente extends Usuario implements Serializable {
 	public Paciente() {
 	}
 
-	public Paciente(long id) {
-		
-	}
-	
+	public Paciente(long id) {super(id);}
 
 	public Paciente(long id, String nome, String sobrenome, String cpf, long idade, String login, String senha) {
 
 		super(nome, sobrenome, cpf, idade, login, senha);
 
 	}
-	
+
 	public Paciente(String nome, String sobrenome, String cpf, long idade, String login, String senha) {
 
 		super(nome, sobrenome, cpf, idade, login, senha);
 
 	}
+
+	public Paciente(String nome) {
+
+		super(nome);
+
+	}
 	
-	
-	public Paciente(String nome, String sobrenome, String cpf, long idade, String login, String senha, Contato contato, Endereco endereco) {
+	public Paciente(String nome, String sobrenome, String cpf, long idade, String login, String senha, Contato contato,
+			Endereco endereco) {
 
 		super(nome, sobrenome, cpf, idade, login, senha, contato, endereco);
-	
 
 	}
 
@@ -56,7 +57,7 @@ public class Paciente extends Usuario implements Serializable {
 		setConsultas(consultas);
 
 	}
-	
+
 	public Paciente(String nome, String sobrenome, List<Consulta> consultas) {
 
 		super(nome, sobrenome);
