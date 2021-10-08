@@ -5,6 +5,7 @@ modelo\excecao\QuadrilInvalidoException.class
 modelo\excecao\IdadeINvalidaExecption.class
 modelo\entidade\nutricionista\Nutricionista_.class
 modelo\entidade\historico\Historico.class
+Main.class
 modelo\dao\nutricionista\NutricionistaDAOimpl.class
 modelo\dao\historico\HistoricoDAO.class
 modelo\entidade\consulta\Consulta.class
