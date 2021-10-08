@@ -357,7 +357,7 @@ public class Servlet extends HttpServlet {
 		List<Paciente> pacientes = daoPaciente.recuperarPacientes();
 		request.setAttribute("pacientes", pacientes);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("perfilpaciente.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("perfil-paciente.jsp");
 		dispatcher.forward(request, response);
 
 	}
