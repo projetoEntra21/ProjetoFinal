@@ -7,10 +7,16 @@
   <title>perfil</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
- 
- <link rel="stylesheet" href="<%=request.getContextPath()%>resources/css/agendamento.css"/>
-<style><%@include file="resources/css/perfilpaciente.css"%></style>
-<script><%@include file="resources/js/perfilpaciente.js"%></script>
+
+
+	<link rel="stylesheet" href="<%=request.getContextPath()%>resources/css/perfilpaciente.css"/>
+	<style><%@include file="resources/css/perfilpaciente.css"%></style>
+	<script><%@include file="resources/js/perfilpaciente.js"%></script>	
+
+
+
+
+
 
 </head>
 <body>
@@ -20,7 +26,7 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
             crossorigin="anonymous"></script>
-<script src="resources/js/perfilpaciente.js"><%@include file="resources/js/perfilpaciente.js"%></script>
+<script src="script.js"></script>
 <!-- partial:index.partial.html -->
 <div class="sttngs">
     <h2>Seu perfil</h2>
@@ -198,13 +204,9 @@
  
     <input class="t" type="radio" name="sections" id="option5">
     <label for="option5" class="trr">Minhas Consultas</label>
-    <table class="table table-striped">
-	
-	</table>
-    
     <article>
 
-<a href="/agendamento/dist/agendamento.html"><button type="button" id="botao" class="button" data-toggle="modal" data-target="#exampleModal">
+<a href="<%=request.getContextPath()%>/mostrarAgendamento"><button type="button" id="botao" class="button" data-toggle="modal" data-target="#exampleModal">
 agendar minha consulta
      </button></a>
     

@@ -91,6 +91,10 @@ public class Servlet extends HttpServlet {
 			case "/home":
 				mostrarHome(request, response);
 				break;
+				
+			case "/login":
+				mostrarLogin(request, response);
+				break;	
 
 			case "/inserir":
 				inserirContato(request, response);
@@ -173,6 +177,10 @@ public class Servlet extends HttpServlet {
 			case "/deletarEndereço":
 				deletarEndereço(request, response);
 
+			case "/loginPaciente":
+				loginPaciente(request, response);
+	
+				
 			default:
 				mostrarHome(request, response);
 				break;
@@ -207,6 +215,13 @@ public class Servlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("primeiratela.jsp");
+		dispatcher.forward(request, response);
+	}
+	
+	public void mostrarLogin(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -264,6 +279,21 @@ public class Servlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String celular = request.getParameter("celular");
 		daoContato.inserirContato(new Contato(telefone, email, celular));
+	}
+	
+	private void loginPaciente(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException, ServletException {
+
+		String usuario = request.getParameter("usuario");
+		String senha = request.getParameter("senha");
+		
+		Paciente paciente = daoPaciente.recuperarPacientePeloSobrenome(senha);
+		
+		if(senha != null) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("perfil-paciente.jsp");
+			dispatcher.forward(request, response);
+		}
+		
 	}
 
 //	private void atualizarContato(HttpServletRequest request, HttpServletResponse response)

@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -51,8 +49,8 @@
 								placeholder="Entre com seu ID"
 								title="Indique seu sobrenome completo sem números" required value="<c:out value='${paciente.id}'/>" name="idpaciente" />
 						</div>
+						</div>
 					</div>
-					<div class="form-section">
 						<div class="form-label">
 							<label for="">Data</label>
 						</div>
