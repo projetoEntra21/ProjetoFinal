@@ -13,6 +13,8 @@ public interface ConsultaDAO {
 	public void atualizarConsulta(Consulta consulta);
 
 	Consulta recuperarConsulta(Consulta consulta);
+	
+	List<Consulta>recuperarConsultasPeloNutricionista();
 
 	List<Consulta> recuperarConsultas();
 

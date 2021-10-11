@@ -208,6 +208,8 @@ public class Servlet extends HttpServlet {
 		
 		List<Paciente> pacientes = daoPaciente.recuperarPacientes();
 		request.setAttribute("pacientes", pacientes);
+		List<Consulta> consultas = daoConsulta.recuperarConsultas();
+		request.setAttribute("consultas", consultas);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("perfil-nutricionista.jsp");
 		dispatcher.forward(request, response);
 		
@@ -218,6 +220,7 @@ public class Servlet extends HttpServlet {
 
 		List<Nutricionista> nutricionistas = daoNutricionista.recuperarNutricionistas();
 		request.setAttribute("nutricionistas", nutricionistas);
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("");
 		dispatcher.forward(request, response);
 	}
@@ -270,6 +273,10 @@ public class Servlet extends HttpServlet {
 	public void mostrarPerfilPaciente(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, SQLException, ServletException {
 
+		List<Nutricionista> nutricionistas = daoNutricionista.recuperarNutricionistas();
+		request.setAttribute("nutricionistas", nutricionistas);
+		List<Consulta> consultas = daoConsulta.recuperarConsultas();
+		request.setAttribute("consultas", consultas);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("perfil-paciente.jsp");
 		dispatcher.forward(request, response);
 
@@ -361,7 +368,7 @@ public class Servlet extends HttpServlet {
 		String data = request.getParameter("data");
 		String hora = request.getParameter("hora");
 
-		DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		DateTimeFormatter formatador = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		LocalDate dataFormatada = LocalDate.parse(data, formatador);
 		
 		LocalTime horaConvertida = LocalTime.parse(hora);
