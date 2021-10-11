@@ -81,6 +81,10 @@ public class Servlet extends HttpServlet {
 		try {
 
 			switch (action) {
+			
+			case"/listarConsulta":
+				listarConsulta(request, response);
+				
 
 			case "/listarNutricionista":
 				listarNutricionista(request, response, sessao);
@@ -157,6 +161,10 @@ public class Servlet extends HttpServlet {
 				mostrarAgendamento(request, response, sessao);
 				break;
 
+			case "/mostrarPerfilNutricionsita":
+				mostrarPerfilNutricionista(request, response);
+				break;
+				
 			case "/mostrarCadastroPaciente":
 				mostrarCadastroPaciente(request, response, sessao);
 				break;
@@ -200,6 +208,7 @@ public class Servlet extends HttpServlet {
 
 		List<Nutricionista> nutricionistas = daoNutricionista.recuperarNutricionistas();
 		request.setAttribute("nutricionistas", nutricionistas);
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("");
 		dispatcher.forward(request, response);
 	}
@@ -259,6 +268,10 @@ public class Servlet extends HttpServlet {
 	public void mostrarPerfilPaciente(HttpServletRequest request, HttpServletResponse response, HttpSession sessao)
 			throws IOException, SQLException, ServletException {
 
+		List<Nutricionista> nutricionistas = daoNutricionista.recuperarNutricionistas();
+		request.setAttribute("nutricionistas", nutricionistas);
+		List<Consulta> consultas = daoConsulta.recuperarConsultas();
+		request.setAttribute("consultas", consultas);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("perfil-paciente.jsp");
 		dispatcher.forward(request, response);
 

@@ -1,7 +1,10 @@
+<%@page import="modelo.entidade.consulta.Consulta"%>
+<%@page import="modelo.entidade.nutricionista.Nutricionista"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html lang="pt-br" >
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <title>perfil</title>
@@ -39,7 +42,7 @@
 <div class="tabordion">
   <section id="section1">
     <input class="t" type="radio" name="sections" id="option1" checked>
-    <label for="option1" class="trr"> Atualização conta</label>
+    <label for="option1" class="trr"> Atualizaï¿½ï¿½o conta</label>
     <article>
   
     <div class="frm">     
@@ -64,16 +67,16 @@
   <form id="msform">
 
     
-	<label class="label" for="input">Nome de usuário </label>
-	<input class="input" type="text" id="input" name="usuario" required pattern="^[a-zA-Z]{3,25}$" title="Indique seu nome completo sem números e sem espaços"> 
+	<label class="label" for="input">Nome de usuï¿½rio </label>
+	<input class="input" type="text" id="input" name="usuario" required pattern="^[a-zA-Z]{3,25}$" title="Indique seu nome completo sem nï¿½meros e sem espaï¿½os"> 
 
   <label class="label" for="input">Email</label>
 	<input class="input" type="email" id="input" name="email"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="O email teve conter um @" required>
 	
   <label class="label" for="input">Senha</label>
-<input class="input"  onsubmit="validatemyPassword()" type="password" id="myPassword" name="password"  title="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres" required>
+<input class="input"  onsubmit="validatemyPassword()" type="password" id="myPassword" name="password"  title="Deve conter pelo menos um nï¿½mero e uma letra maiï¿½scula e minï¿½scula e pelo menos 8 ou mais caracteres" required>
 
-  <label class="label" for="input">Confirmação da senha</label>
+  <label class="label" for="input">Confirmaï¿½ï¿½o da senha</label>
 	<input class="input" type="password" id="confirm_password" required>
 	
   
@@ -87,17 +90,17 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Confirmação de atualização da conta</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Confirmaï¿½ï¿½o de atualizaï¿½ï¿½o da conta</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-       Sua atualização está prestes a ser concluid. Suas informações estão certas?
+       Sua atualizaï¿½ï¿½o estï¿½ prestes a ser concluid. Suas informaï¿½ï¿½es estï¿½o certas?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button type="submit" class="btn btn-primary">Salvar informações </button >
+        <button type="submit" class="btn btn-primary">Salvar informaï¿½ï¿½es </button >
       </div>
       </div>
     </div>
@@ -114,7 +117,7 @@
     
     <input class="t" type="radio" name="sections" id="option2">
     
-    <label for="option2" class="trr"> Informações Pessoais</label>
+    <label for="option2" class="trr"> Informaï¿½ï¿½es Pessoais</label>
     <article>
      <form action="">
         <div class="tr wwq">
@@ -154,17 +157,17 @@
      <div class="modal-dialog" role="document">
        <div class="modal-content">
        <div class="modal-header">
-         <h5 class="modal-title" id="exampleModalLabel">Confirmação de atualização da conta</h5>
+         <h5 class="modal-title" id="exampleModalLabel">Confirmaï¿½ï¿½o de atualizaï¿½ï¿½o da conta</h5>
          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
          <span aria-hidden="true">&times;</span>
          </button>
        </div>
        <div class="modal-body">
-        Sua atualização está prestes a ser concluida. Suas informações estão certas?
+        Sua atualizaï¿½ï¿½o estï¿½ prestes a ser concluida. Suas informaï¿½ï¿½es estï¿½o certas?
        </div>
        <div class="modal-footer">
          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-         <button type="submit" class="btn btn-primary">Salvar informações </button >
+         <button type="submit" class="btn btn-primary">Salvar informaï¿½ï¿½es </button >
        </div>
        </div>
      </div>
