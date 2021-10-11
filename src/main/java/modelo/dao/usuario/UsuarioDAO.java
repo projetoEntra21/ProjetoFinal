@@ -16,5 +16,9 @@ public interface UsuarioDAO {
 
 	Usuario recuperarUsuarioPeloSobrenome(Usuario usuario);
 	
+	Usuario recuperarUsuarioLoginSenha(Usuario usuario);
+	
 	List<Usuario> recuperarUsuarios();
+
+	Usuario recuperarUsuario(Usuario user);
 }

@@ -1,7 +1,6 @@
 package controle.servlet;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -15,6 +14,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.mysql.cj.Session;
 
 import modelo.dao.consulta.ConsultaDAO;
 import modelo.dao.consulta.ConsultaDAOimpl;
@@ -36,6 +38,7 @@ import modelo.entidade.endereco.Endereco;
 import modelo.entidade.historico.Historico;
 import modelo.entidade.nutricionista.Nutricionista;
 import modelo.entidade.paciente.Paciente;
+import modelo.entidade.usuario.Usuario;
 
 @WebServlet("/")
 public class Servlet extends HttpServlet {
@@ -72,32 +75,40 @@ public class Servlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		HttpSession sessao = request.getSession();
 		String action = request.getServletPath();
 
 		try {
 
 			switch (action) {
+			
+			case"/listarConsulta":
+				listarConsulta(request, response);
+				
 
 			case "/listarNutricionista":
-				listarNutricionista(request, response);
+				listarNutricionista(request, response, sessao);
 
 			case "/listarPaciente":
-				listarPaciente(request, response);
-	
-				
+				listarPaciente(request, response, sessao);
+
 			case "/perfilPaciente":
-				mostrarPerfilPaciente(request, response);
+				mostrarPerfilPaciente(request, response, sessao);
 
 			case "/home":
 				mostrarHome(request, response);
 				break;
 
+			case "/login":
+				mostrarLogin(request, response, sessao);
+				break;
+
 			case "/inserir":
-				inserirContato(request, response);
+				inserirContato(request, response, sessao);
 				break;
 
 			case "/deletar":
-				deletarContato(request, response);
+				deletarContato(request, response, sessao);
 				break;
 
 //			case "/atualizar":
@@ -105,73 +116,80 @@ public class Servlet extends HttpServlet {
 //				break;
 
 			case "/inserirMedidas":
-				inserirHistorico(request, response);
+				inserirHistorico(request, response, sessao);
 				break;
 
 			case "/deletarMedidas":
-				deletarHistorico(request, response);
+				deletarHistorico(request, response, sessao);
 				break;
 
 			case "/atualizarMedidas":
-				atualizarHistorico(request, response);
+				atualizarHistorico(request, response, sessao);
 				break;
 
 			case "/inserirConsulta":
-				inserirConsulta(request, response);
+				inserirConsulta(request, response, sessao);
 				break;
 			case "/deletarConsulta":
-				deletarConsulta(request, response);
+				deletarConsulta(request, response, sessao);
 				break;
 			case "/atualizarConsulta":
-				atualizarConsulta(request, response);
+				atualizarConsulta(request, response, sessao);
 				break;
 
 			case "/inserirPaciente":
-				inserirPaciente(request, response);
+				inserirPaciente(request, response, sessao);
 				break;
 
 			case "/deletarPaciente":
-				deletarPaciente(request, response);
+				deletarPaciente(request, response, sessao);
 				break;
 
 			case "/atualizarPaciente":
-				atualizarPaciente(request, response);
+				atualizarPaciente(request, response, sessao);
 				break;
 
 			case "/inserirNutricionista":
-				inserirNutricionista(request, response);
+				inserirNutricionista(request, response, sessao);
 				break;
 
 			case "/deletarNutricionista":
-				deletarNutricionista(request, response);
+				deletarNutricionista(request, response, sessao);
 				break;
 
 			case "/mostrarAgendamento":
-				mostrarAgendamento(request, response);
+				mostrarAgendamento(request, response, sessao);
 				break;
 
+			case "/mostrarPerfilNutricionsita":
+				mostrarPerfilNutricionista(request, response);
+				break;
+				
 			case "/mostrarCadastroPaciente":
-				mostrarCadastroPaciente(request, response);
+				mostrarCadastroPaciente(request, response, sessao);
 				break;
 
 			case "/mostrarCadastroNutricionista":
-				mostrarCadastroNutricionista(request, response);
+				mostrarCadastroNutricionista(request, response, sessao);
 				break;
 
 			case "/mostrarMedidas":
-				mostrarMedidas(request, response);
+				mostrarMedidas(request, response, sessao);
 
 			case "/telainicial":
-				telainicial(request, response);
+				telainicial(request, response, sessao);
 
 //			case "/inserirEndereço":
 //				inserirEndereço(request, response);
 
 			case "/atualizarEndereço":
-				atualizarEndereco(request, response);
+				atualizarEndereco(request, response, sessao);
 
 			case "/deletarEndereço":
-				deletarEndereço(request, response);
+				deletarEndereço(request, response, sessao);
+
+			case "/loginPaciente":
+				logar(request, response, sessao, sessao);
 
 			default:
 				mostrarHome(request, response);
@@ -185,16 +203,17 @@ public class Servlet extends HttpServlet {
 		}
 	}
 
-	private void listarNutricionista(HttpServletRequest request, HttpServletResponse response)
+	private void listarNutricionista(HttpServletRequest request, HttpServletResponse response, HttpSession sessao)
 			throws ServletException, IOException {
 
 		List<Nutricionista> nutricionistas = daoNutricionista.recuperarNutricionistas();
 		request.setAttribute("nutricionistas", nutricionistas);
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("");
 		dispatcher.forward(request, response);
 	}
-	
-	private void listarPaciente(HttpServletRequest request, HttpServletResponse response)
+
+	private void listarPaciente(HttpServletRequest request, HttpServletResponse response, HttpSession sessao)
 			throws ServletException, IOException {
 
 		List<Paciente> pacientes = daoPaciente.recuperarPacientes();
@@ -203,28 +222,35 @@ public class Servlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
-	public void telainicial(HttpServletRequest request, HttpServletResponse response)
+	public void telainicial(HttpServletRequest request, HttpServletResponse response, HttpSession sessao)
 			throws ServletException, IOException {
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("primeiratela.jsp");
 		dispatcher.forward(request, response);
 	}
 
-	public void mostrarMedidas(HttpServletRequest request, HttpServletResponse response)
+	public void mostrarLogin(HttpServletRequest request, HttpServletResponse response, HttpSession sessao)
+			throws ServletException, IOException {
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("loginpaciente.jsp");
+		dispatcher.forward(request, response);
+	}
+
+	public void mostrarMedidas(HttpServletRequest request, HttpServletResponse response, HttpSession sessao)
 			throws ServletException, IOException {
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("cadastro-medidas.jsp");
 		dispatcher.forward(request, response);
 	}
 
-	public void mostrarCadastroNutricionista(HttpServletRequest request, HttpServletResponse response)
+	public void mostrarCadastroNutricionista(HttpServletRequest request, HttpServletResponse response, HttpSession sessao)
 			throws ServletException, IOException {
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("cadastro-nutricionista.jsp");
 		dispatcher.forward(request, response);
 	}
 
-	public void mostrarCadastroPaciente(HttpServletRequest request, HttpServletResponse response)
+	public void mostrarCadastroPaciente(HttpServletRequest request, HttpServletResponse response, HttpSession sessao)
 			throws ServletException, IOException {
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("cadastro-paciente.jsp");
@@ -239,15 +265,19 @@ public class Servlet extends HttpServlet {
 
 	}
 
-	public void mostrarPerfilPaciente(HttpServletRequest request, HttpServletResponse response)
+	public void mostrarPerfilPaciente(HttpServletRequest request, HttpServletResponse response, HttpSession sessao)
 			throws IOException, SQLException, ServletException {
 
+		List<Nutricionista> nutricionistas = daoNutricionista.recuperarNutricionistas();
+		request.setAttribute("nutricionistas", nutricionistas);
+		List<Consulta> consultas = daoConsulta.recuperarConsultas();
+		request.setAttribute("consultas", consultas);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("perfil-paciente.jsp");
 		dispatcher.forward(request, response);
 
 	}
 
-	public void mostrarAgendamento(HttpServletRequest request, HttpServletResponse response)
+	public void mostrarAgendamento(HttpServletRequest request, HttpServletResponse response, HttpSession sessao)
 			throws ServletException, IOException {
 
 		List<Nutricionista> nutricionistas = daoNutricionista.recuperarNutricionistas();
@@ -257,13 +287,36 @@ public class Servlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
-	private void inserirContato(HttpServletRequest request, HttpServletResponse response)
+	private void inserirContato(HttpServletRequest request, HttpServletResponse response, HttpSession sessao)
 			throws SQLException, IOException {
 
 		String telefone = request.getParameter("telefone");
 		String email = request.getParameter("email");
 		String celular = request.getParameter("celular");
 		daoContato.inserirContato(new Contato(telefone, email, celular));
+	}
+
+	private void logar(HttpServletRequest request, HttpServletResponse response, HttpSession sessao, HttpSession sessao2)
+			throws IOException, ServletException {
+		String login = request.getParameter("login");
+		String senha = request.getParameter("senha");
+		Usuario user = new Usuario();
+		user.setLogin(login);
+		Usuario usuario = daoUsuario.recuperarUsuarioLoginSenha(user); // Recupera um obj ou pf ou pj
+		if (usuario instanceof Paciente && senha.equals(usuario.getSenha())) {
+			sessao.setAttribute("usuario", usuario);
+
+			RequestDispatcher dispatcher = request.getRequestDispatcher("perfil-paciente.jsp");
+			dispatcher.forward(request, response);
+
+		} else if (usuario instanceof Nutricionista && senha.equals(usuario.getSenha())) {
+			sessao.setAttribute("usuario", usuario);
+
+			RequestDispatcher dispatcher = request.getRequestDispatcher("perfil-nutricionista.jsp");
+			dispatcher.forward(request, response);
+
+		} else
+			System.out.println("Senha incorreta :(");
 	}
 
 //	private void atualizarContato(HttpServletRequest request, HttpServletResponse response)
@@ -276,7 +329,7 @@ public class Servlet extends HttpServlet {
 //		daoContato.atualizarContato(new Contato(id, telefone, email, celular));
 //	}
 
-	private void deletarContato(HttpServletRequest request, HttpServletResponse response)
+	private void deletarContato(HttpServletRequest request, HttpServletResponse response, HttpSession sessao)
 			throws SQLException, IOException {
 
 		long id = Long.parseLong(request.getParameter("id"));
@@ -284,7 +337,7 @@ public class Servlet extends HttpServlet {
 		daoContato.deletarContato(contato);
 	}
 
-	private void inserirHistorico(HttpServletRequest request, HttpServletResponse response)
+	private void inserirHistorico(HttpServletRequest request, HttpServletResponse response, HttpSession sessao)
 			throws SQLException, IOException, ServletException {
 
 		double peso = Double.parseDouble(request.getParameter("peso"));
@@ -300,7 +353,7 @@ public class Servlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
-	private void deletarHistorico(HttpServletRequest request, HttpServletResponse response)
+	private void deletarHistorico(HttpServletRequest request, HttpServletResponse response, HttpSession sessao)
 			throws SQLException, IOException {
 
 		long id = Long.parseLong(request.getParameter("id_paciente"));
@@ -309,7 +362,7 @@ public class Servlet extends HttpServlet {
 
 	}
 
-	private void atualizarHistorico(HttpServletRequest request, HttpServletResponse response)
+	private void atualizarHistorico(HttpServletRequest request, HttpServletResponse response, HttpSession sessao)
 			throws SQLException, IOException {
 
 		long id = Long.parseLong(request.getParameter("id_paciente"));
@@ -323,7 +376,7 @@ public class Servlet extends HttpServlet {
 
 	}
 
-	private void inserirConsulta(HttpServletRequest request, HttpServletResponse response)
+	private void inserirConsulta(HttpServletRequest request, HttpServletResponse response, HttpSession session)
 			throws SQLException, IOException, ServletException {
 
 		List<Consulta> consultas = new ArrayList<Consulta>();
@@ -333,27 +386,27 @@ public class Servlet extends HttpServlet {
 		String data = request.getParameter("data");
 		String hora = request.getParameter("hora");
 
-		DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		DateTimeFormatter formatador = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		LocalDate dataFormatada = LocalDate.parse(data, formatador);
-		
-		LocalTime horaConvertida = LocalTime.parse(hora);
 
+		LocalTime horaConvertida = LocalTime.parse(hora);
+		
 		Paciente paciente = daoPaciente.recuperarPaciente(new Paciente(idpaciente));
 		Nutricionista nutricionista = daoNutricionista.recuperarNutricionista(new Nutricionista(idnutri));
-		
-		Consulta consulta = daoConsulta.inserirConsulta(new Consulta(horaConvertida, dataFormatada, nutricionista, paciente));
+
+		Consulta consulta = daoConsulta
+				.inserirConsulta(new Consulta(horaConvertida, dataFormatada, nutricionista, paciente));
 		consultas.add(consulta);
-		
+
 		paciente.setConsultas(consultas);
 		nutricionista.setConsultas(consultas);
-				
+
 		daoPaciente.atualizarPaciente(paciente);
 		daoNutricionista.atualizarNutriocionista(nutricionista);
-		
+
 		List<Nutricionista> nutricionistas = daoNutricionista.recuperarNutricionistas();
 		request.setAttribute("nutricionista", nutricionistas);
-				
-				
+
 		List<Paciente> pacientes = daoPaciente.recuperarPacientes();
 		request.setAttribute("pacientes", pacientes);
 
@@ -362,7 +415,7 @@ public class Servlet extends HttpServlet {
 
 	}
 
-	private void deletarConsulta(HttpServletRequest request, HttpServletResponse response)
+	private void deletarConsulta(HttpServletRequest request, HttpServletResponse response, HttpSession sessao)
 			throws IOException, SQLException {
 
 		long id = Long.parseLong(request.getParameter("id_consulta"));
@@ -371,7 +424,7 @@ public class Servlet extends HttpServlet {
 
 	}
 
-	private void atualizarConsulta(HttpServletRequest request, HttpServletResponse response)
+	private void atualizarConsulta(HttpServletRequest request, HttpServletResponse response, HttpSession sessao)
 			throws SQLException, IOException, ServletException {
 
 		long idconsulta = Long.parseLong(request.getParameter("id_consulta"));
@@ -397,7 +450,7 @@ public class Servlet extends HttpServlet {
 //		daoEndereço.inserirEndereco(new Endereco(rua, bairro, cidade, estado, cep, numero, complemento));
 //	}
 
-	private void deletarEndereço(HttpServletRequest request, HttpServletResponse response)
+	private void deletarEndereço(HttpServletRequest request, HttpServletResponse response, HttpSession sessao)
 			throws SQLException, IOException {
 
 		long id = Long.parseLong(request.getParameter("id_paciente"));
@@ -406,7 +459,7 @@ public class Servlet extends HttpServlet {
 
 	}
 
-	private void atualizarEndereco(HttpServletRequest request, HttpServletResponse response)
+	private void atualizarEndereco(HttpServletRequest request, HttpServletResponse response, HttpSession sessao)
 			throws SQLException, IOException {
 
 		long id = Long.parseLong(request.getParameter("id_paciente"));
@@ -426,7 +479,7 @@ public class Servlet extends HttpServlet {
 
 	}
 
-	public void inserirPaciente(HttpServletRequest request, HttpServletResponse response)
+	public void inserirPaciente(HttpServletRequest request, HttpServletResponse response, HttpSession sessao)
 			throws SQLException, IOException, ServletException {
 
 		String nome = request.getParameter("nome");
@@ -475,7 +528,7 @@ public class Servlet extends HttpServlet {
 
 	}
 
-	public void deletarPaciente(HttpServletRequest request, HttpServletResponse response)
+	public void deletarPaciente(HttpServletRequest request, HttpServletResponse response, HttpSession sessao)
 			throws SQLException, IOException {
 
 		long id = Long.parseLong(request.getParameter("id_paciente"));
@@ -485,7 +538,7 @@ public class Servlet extends HttpServlet {
 
 	}
 
-	public void atualizarPaciente(HttpServletRequest request, HttpServletResponse response)
+	public void atualizarPaciente(HttpServletRequest request, HttpServletResponse response, HttpSession sessao)
 			throws SQLException, IOException, NumberFormatException {
 
 		int id = Integer.parseInt(request.getParameter("id_paciente"));
@@ -499,7 +552,7 @@ public class Servlet extends HttpServlet {
 
 	}
 
-	private void deletarNutricionista(HttpServletRequest request, HttpServletResponse response)
+	private void deletarNutricionista(HttpServletRequest request, HttpServletResponse response, HttpSession sessao)
 			throws SQLException, IOException {
 
 		Long id = Long.parseLong(request.getParameter("id_nutricionista"));
@@ -508,7 +561,7 @@ public class Servlet extends HttpServlet {
 
 	}
 
-	public void inserirNutricionista(HttpServletRequest request, HttpServletResponse response)
+	public void inserirNutricionista(HttpServletRequest request, HttpServletResponse response, HttpSession sessao)
 			throws SQLException, IOException, ServletException {
 
 		String nome = request.getParameter("nome");

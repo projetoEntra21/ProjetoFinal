@@ -104,6 +104,13 @@ body {
 .send {
 	margin-left: 0.5em;
 }
+.olho {
+	cursor: pointer;
+	right: 780px;
+	position: absolute;
+	width: 20px;
+	top: 490px;
+  }
 
 @media only screen and (max-width: 545px) {
 	.container {

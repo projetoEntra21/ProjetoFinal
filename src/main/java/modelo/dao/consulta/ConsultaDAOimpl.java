@@ -190,4 +190,10 @@ public class ConsultaDAOimpl implements ConsultaDAO {
 		return contatos;
 	}
 
+	@Override
+	public List<Consulta> recuperarConsultasPeloNutricionista() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

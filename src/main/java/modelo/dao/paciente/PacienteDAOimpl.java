@@ -205,10 +205,10 @@ public class PacienteDAOimpl implements PacienteDAO {
 
 			criteria.select(raizPaciente);
 
-			ParameterExpression<String> nomePaciente = construtor.parameter(String.class);
-			criteria.where(construtor.equal(raizPaciente.get("sobrenome_paciente"),nomePaciente));
+			ParameterExpression<String>usuarioPaciente = construtor.parameter(String.class);
+			criteria.where(construtor.equal(raizPaciente.get("usuario"),usuarioPaciente));
 
-			pacienteRecuperado = sessao.createQuery(criteria).setParameter(nomePaciente, paciente.getNome())
+			pacienteRecuperado = sessao.createQuery(criteria).setParameter(usuarioPaciente, paciente.getSenha())
  					.getSingleResult();
 
 			sessao.getTransaction().commit();
@@ -248,10 +248,10 @@ public class PacienteDAOimpl implements PacienteDAO {
 
 			criteria.select(raizPaciente);
 
-			ParameterExpression<String> sobrenomePaciente = construtor.parameter(String.class);
-			criteria.where(construtor.equal(raizPaciente.get("sobrenome_paciente"), sobrenomePaciente));
+			ParameterExpression<String> senhaPaciente = construtor.parameter(String.class);
+			criteria.where(construtor.equal(raizPaciente.get("senha"), senhaPaciente));
 				
-			pacienteRecuperado = sessao.createQuery(criteria).setParameter(sobrenomePaciente, paciente.getSobrenome() )
+			pacienteRecuperado = sessao.createQuery(criteria).setParameter(senhaPaciente, paciente.getSenha() )
 					.getSingleResult();
 
 			sessao.getTransaction().commit();
@@ -272,6 +272,6 @@ public class PacienteDAOimpl implements PacienteDAO {
 		}
 
 		return pacienteRecuperado;
-	}
+	}	
 
 }

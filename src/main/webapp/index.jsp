@@ -13,7 +13,6 @@
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Handlee|Josefin+Sans:300,600&amp;display=swap'><link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
    
-   <link rel="stylesheet" href="<%=request.getContextPath()%>resources/css/newhome.css"/>
 	<style><%@include file="resources/css/newhome.css"%></style>
 	<script><%@include file="resources/js/newhome.js"%></script>	
 		
