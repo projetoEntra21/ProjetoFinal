@@ -22,56 +22,55 @@
     <h2>Seu perfil</h2>
   <div class="tabordion">
   <section id="section1">
-   <input class="t" type="radio" name="sections" id="option1" checked>
-   <label for="option1" class="trr"> Informações Pessoais</label>
-   <article>
-
-  <div class="frm">     
-  <div id='profile-upload'>
-  <div class="hvr-profile-img">
-    <input type="file" name="logo" id='getval'  class="upload"  id="imag">
-  <div class="icon">
-  <div class="camera4"><span></span></div>
+   
+    
+      <input class="t" type="radio" name="sections" id="option1">
+      
+      <label for="option1" class="trr"> Consultas</label>
+      <article>
+       <form action="">
+          <div class="tr wwq">
+  <table id="customers">
+    <tr>
+      
+      </tr> <br>
   
-  </div>
-  </div>
-  </div>
+      <div class="table-title">
+        <h3></h3>
+        </div>
+        <table class="table-fill">
+        <thead>
+        <tr>
+        <th class="text-left">Paciente</th>
+        <th class="text-left">CPF</th>
+        <th class="text-left">Data</th>
+        <th class="text-left">Hora</th>
+        </tr>
+        </thead>
+        <tbody class="table-hover">
+        <tr>
+        <td class="text-left">João</td>
+        <td class="text-left">675.077.970-07</td>
+        <td class="text-left">12/09/2021</td>
+        <td class="text-left">10:00</td>
+        </tr>
+        <tr>
+        <td class="text-left">Sheila</td>
+        <td class="text-left">677.985.320-80</td>
+        <td class="text-left">13/08/2021</td>
+        <td class="text-left">09:00</td>
+        </tr>
+        <tr>
+        <td class="text-left">Fernando</td>
+        <td class="text-left">512.161.870-02</td>
+        <td class="text-left">25/10/2021</td>
+        <td class="text-left">11:00</td>
+        </tr>
+        </tbody>
+        </table>
   
-  <div class="tr">
-    <form action="">
-      <form id="msform">
-
-  	<label class="label" for="input">Nome de usuário </label>
-	<input class="input" type="text" id="input" name="usuario" required pattern="^[a-zA-Z]{3,25}$" title="Indique seu nome completo sem números e sem espaços"> 
-
-  <label class="label" for="input">Descrição</label>	
-  <input class="input" type="text" id="input" name="Descrição" required maxlength="240"> 
      
-  				<!-- Button trigger modal -->
-<button type="button" id="botao" class="button" data-toggle="modal" data-target="#exampleModal">
-  Salvar
-     </button>
      
-     <!-- Modal -->
-     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-     <div class="modal-dialog" role="document">
-       <div class="modal-content">
-       <div class="modal-header">
-         <h5 class="modal-title" id="exampleModalLabel">Confirmação de atualização da conta</h5>
-         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-         <span aria-hidden="true">&times;</span>
-         </button>
-       </div>
-       <div class="modal-body">
-        Sua atualização está prestes a ser concluid. Suas informações estão certas?
-       </div>
-       <div class="modal-footer">
-         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-         <button type="submit" class="btn btn-primary">Salvar informações </button >
-       </div>
-       </div>
-     </div>
-     </div>
    
        
        </div>
@@ -102,6 +101,9 @@
     
       <label class="label" for="input">Confirmação da senha</label>
       <input class="input" type="password" id="confirm_password" required>
+      
+
+
       
       
           <!-- Button trigger modal -->
@@ -147,38 +149,57 @@
   
   <section id="section4">
   <input class="t" type="radio" name="sections" id="option4">
-  <label for="option4" class="trr">Consultas</label>
+  <label for="option4" class="trr">Informações Pessoais</label>
   <article> 
        
- <table id="customers">
-  <tr>
-    <div id="divBusca">
-      <input type="text" id="txtBusca" autocomplete="on" placeholder="Buscar..."/>
-      <button type="submit" id="btnBusca">buscar</button>
-</div>
-    </tr> <br>
+ 
+    <div class="frm">     
+      <div id='profile-upload'>
+      <div class="hvr-profile-img">
+        <input type="file" name="logo" id='getval'  class="upload"  id="imag">
+      <div class="icon">
+      <div class="camera4"><span></span></div>
+      
+      </div>
+      </div>
+      </div>
 
-    <tr></tr>
-     <th>Nome</th>
-     
-     <th>Data</th>
-     
-     <th> Hora</th>
-     
-     <th>Paciente</th>
+      <div class="tr">
+        <form action="">
+          <form id="msform">
     
-    </tr>
+        <label class="label" for="input">Nome de usuário </label>
+      <input class="input" type="text" id="input" name="usuario" required pattern="^[a-zA-Z]{3,25}$" title="Indique seu nome completo sem números e sem espaços"> 
+    
+      <label class="label" for="input">Descrição</label>	
+      <input class="input" type="text" id="input" name="Descrição" required maxlength="240"> 
+         
+            <!-- Button trigger modal -->
+    <button type="button" id="botao" class="button" data-toggle="modal" data-target="#exampleModal2">
+      Salvar
+         </button>
+         
+         <!-- Modal -->
+         <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModal2Label" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+           <div class="modal-content">
+           <div class="modal-header">
+             <h5 class="modal-title" id="exampleModal2Label">Confirmação de atualização da conta</h5>
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+             </button>
+           </div>
+           <div class="modal-body">
+            Sua atualização está prestes a ser concluid. Suas informações estão certas?
+           </div>
+           <div class="modal-footer">
+             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+             <button type="submit" class="btn btn-primary">Salvar informações </button >
+           </div>
+           </div>
+         </div>
+         </div>
 
-    <tr>
-     <td>Bernardo </td>
-     <td>10/1/21</td>
-     <td>10:30</td>
-    </tr>
-
-     <td>Fernando </td>
-     <td>10/1/21</td>
-     <td>11:00</td>
-    </table>
       
   </article>
   </section>
