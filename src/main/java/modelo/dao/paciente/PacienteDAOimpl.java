@@ -188,7 +188,7 @@ public class PacienteDAOimpl implements PacienteDAO {
 		return pacientes;
 	}
 
-	public Paciente recuperarPacientePeloNome(String paciente) {
+	public Paciente recuperarPacientePeloNome(Paciente paciente) {
 
 		Session sessao = null;
 		Paciente pacienteRecuperado = null;
@@ -231,7 +231,7 @@ public class PacienteDAOimpl implements PacienteDAO {
 		return pacienteRecuperado;
 	}
 
-	public Paciente recuperarPacientePeloSobrenome(String paciente) {
+	public Paciente recuperarPacientePeloSobrenome(Paciente paciente) {
 		
 		Session sessao = null;
 		Paciente pacienteRecuperado = null;
@@ -272,8 +272,6 @@ public class PacienteDAOimpl implements PacienteDAO {
 		}
 
 		return pacienteRecuperado;
-	}
-
-	
+	}	
 
 }

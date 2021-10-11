@@ -9,6 +9,7 @@ import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 
+import modelo.entidade.paciente.Paciente;
 import modelo.entidade.usuario.Usuario;
 import modelo.factory.conexao.ConexaoFactory;
 
@@ -46,7 +47,7 @@ public class UsuarioDAOimpl implements UsuarioDAO {
 				sessao.close();
 			}
 		}
-	}
+	}	
 
 	public void deletarUsuario(Usuario usuario) {
 		Session sessao = null;
@@ -145,6 +146,49 @@ public class UsuarioDAOimpl implements UsuarioDAO {
 
 		return usuarioRecuperado;
 	}
+	
+	public Usuario recuperarUsuario(Usuario usuario) {
+
+		Session sessao = null;
+		Usuario UsuarioRecuperado = null;
+
+		try {
+
+			sessao = fabrica.getConexao().openSession();
+			sessao.beginTransaction();
+
+			CriteriaBuilder construtor = sessao.getCriteriaBuilder();
+
+			CriteriaQuery<Usuario> criteria = construtor.createQuery(Usuario.class);
+			Root<Usuario> raizPaciente = criteria.from(Usuario.class);
+
+			criteria.select(raizPaciente);
+
+			ParameterExpression<Long> idUsuario = construtor.parameter(Long.class);
+			criteria.where(construtor.equal(raizPaciente.get("id"), idUsuario));
+
+			UsuarioRecuperado = sessao.createQuery(criteria).setParameter(idUsuario, usuario.getId())
+					.getSingleResult();
+
+			sessao.getTransaction().commit();
+
+		} catch (Exception sqlException) {
+
+			sqlException.printStackTrace();
+
+			if (sessao.getTransaction() != null) {
+				sessao.getTransaction().rollback();
+			}
+
+		} finally {
+
+			if (sessao != null) {
+				sessao.close();
+			}
+		}
+
+		return UsuarioRecuperado;
+	}
 
 	public List<Usuario> recuperarUsuarios() {
 		Session sessao = null;
@@ -225,4 +269,37 @@ public class UsuarioDAOimpl implements UsuarioDAO {
 
 		return usuarioRecuperado;
 	}
+
+	public Usuario recuperarUsuarioLoginSenha(Usuario usuario) {
+		
+		Session sessao = null;
+		Usuario usuarioRecuperado = null;
+		
+		        try {
+		    		sessao = fabrica.getConexao().openSession();
+		            sessao.beginTransaction();
+		            
+		            CriteriaBuilder construtor = sessao.getCriteriaBuilder();
+		            CriteriaQuery<Usuario> criteria = construtor.createQuery(Usuario.class);
+		            Root<Usuario> raizUsuario = criteria.from(Usuario.class);
+		            criteria.select(raizUsuario);
+
+		            ParameterExpression<String> loginUsuario = construtor.parameter(String.class);
+		            criteria.where(construtor.equal(raizUsuario.get("login"), loginUsuario));
+		            usuarioRecuperado = sessao.createQuery(criteria).setParameter(loginUsuario, usuario.getLogin()).getSingleResult();
+		            sessao.getTransaction().commit();
+		            
+		        } catch (Exception sqlException) {
+		            sqlException.printStackTrace();
+		            
+		            if (sessao.getTransaction() != null) {
+		                sessao.getTransaction().rollback();
+		            }
+		        } finally {
+		            if (sessao != null) {
+		                sessao.close();
+		            }
+		        }
+		        return usuarioRecuperado;
+		    }
 }

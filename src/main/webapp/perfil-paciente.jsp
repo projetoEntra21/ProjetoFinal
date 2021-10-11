@@ -29,6 +29,12 @@
 <script src="script.js"></script>
 <!-- partial:index.partial.html -->
 <div class="sttngs">
+	<div class = "header">
+					${sessionScope.usuario.nome}
+					<button>
+						<a href ="logout.jsp">sair</a>
+					</button>
+				</div>
     <h2>Seu perfil</h2>
 <div class="tabordion">
   <section id="section1">

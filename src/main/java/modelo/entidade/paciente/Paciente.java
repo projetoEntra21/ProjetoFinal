@@ -45,6 +45,12 @@ public class Paciente extends Usuario implements Serializable {
 
 	}
 	
+	public Paciente(String login, String senha) {
+
+		super(login, senha);
+		
+	}
+	
 	public Paciente(String nome, String sobrenome, String cpf, long idade, String login, String senha, Contato contato,
 			Endereco endereco) {
 

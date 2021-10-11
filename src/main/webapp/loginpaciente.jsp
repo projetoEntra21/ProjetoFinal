@@ -37,7 +37,7 @@
 					<span class="input-icon">
 						<i class="far fa-user"></i>
 					</span>
-					<input id="email" type="email" class="form-input"  placeholder="Entre com seu email" required>
+					<input id="login" type="text" class="form-input"  placeholder="Entre com seu login" required = "required"  value="<c:out value='${usuario.login}'/>" name="login"/> 
 				</div>
 			</div>
 			
@@ -49,7 +49,7 @@
 						<span class="input-icon">
 							<i class="far fa-user"></i>
 						</span>
-						<input id="senha" type="text" class="form-input"  placeholder="Entre com sua senha"  required>
+						<input id="senha" type="text" class="form-input"  placeholder="Entre com sua senha"  required = "required"  value="<c:out value='${usuario.senha}'/>" name="senha"/> 
 					</div>
 				</div>
                 <button type="submit" id="botao" class="button" data-toggle="modal" data-target="#exampleModal">

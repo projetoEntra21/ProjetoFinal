@@ -39,17 +39,6 @@
 			<div class="form-container">
 				<div class="subtitle">Informe sua informação de reserva.</div>
 				<form action="" onsubmit="return validadata(d)" method="post">
-					<div class="form-section">
-						<div class="form-label">
-							<label for="">Digite seu ID:</label>
-						</div>
-						<div class="input-container">
-							<span class="input-icon"> <i class="far fa-user"></i>
-							</span> <input id="idpaciente" type="number" class="form-input"
-								placeholder="Entre com seu ID"
-								title="Indique seu sobrenome completo sem números" required value="<c:out value='${paciente.id}'/>" name="idpaciente" />
-						</div>
-						</div>
 					</div>
 						<div class="form-label">
 							<label for="">Data</label>
