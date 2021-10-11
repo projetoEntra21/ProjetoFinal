@@ -80,6 +80,10 @@ public class Consulta {
 		this.hora = time;
 	}
 
+	public LocalDate getDia() {
+		return data;
+	}
+	
 	public void setData(LocalDate data) {
 		this.data = data;
 	}

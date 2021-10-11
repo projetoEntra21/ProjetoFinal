@@ -1,3 +1,6 @@
+<%@page import="modelo.entidade.consulta.Consulta"%>
+<%@page import="modelo.entidade.paciente.Paciente"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -101,21 +104,38 @@
 					<br>
 
 					<table>
-						<thead>
-							<tr>
-								<th>Nome</th>
-								<th>Cpf</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="paciente" items="${pacientes}">
-								<tr>
-									<td><c:out value="${usuario.nome}" /></td>
-									<td><c:out value="${usuario.cpf}" /></td>
-								</tr>
-							</c:forEach>
-						</tbody>
+					
+					<tr>
+						<td>Nome:</td>
+						<td>Cpf:</td>
+					</tr>
+					
+					<% List<Paciente> pacientes = (List<Paciente>)request.getAttribute("pacientes");
+						for (Paciente lista : pacientes) { %>
+						<tr>
+							<td><%=lista.getNome() %></td>
+							<td><%=lista.getCpf() %></td>
+							<%} %>
+						</tr>
 					</table>
+					
+					<table>	
+					<tr>
+						<td>Dia:</td>
+						<td>Hora:</td>
+						<td>Id da Consulta:</td>
+					</tr>
+					
+					<% List<Consulta> consultas = (List<Consulta>)request.getAttribute("consultas");
+						for(Consulta lista : consultas) { %>
+						<tr>
+							<td><%=lista.getDia() %></td>
+							<td><%=lista.getHora() %></td>
+							<td><%=lista.getId() %></td>
+							<%} %>
+						</tr>
+					</table>
+
 				</article>
 			</section>
 
