@@ -319,17 +319,16 @@ body.is-login{
 	font-size: 11px;
 	padding: 5px 22px 22px 22px;
   align-self: start;
-	background: #a7bfe8;
 	border-radius: 1rem;
   position: relative;
   top: 32em;
   right: -55em;
   width: 200%;
   text-indent: 3ch;}
-.mySlides {
-  display:none;
-  padding-top: 30em;
-  padding-left: 55em;}
+.mySlides {display:none; 
+padding-top: em;}
+.w3-left, .w3-right, .w3-badge {cursor:pointer;}
+.w3-badge {height:13px;width:13px; padding: 0}
 
 /* CONTATO*/
 .card6-img-top{

@@ -27,47 +27,31 @@
     <img src="logo.png" class="logo"alt="some text" 
     width=800 height=250>
  
-      <div class="card-text1">
-        <div class="background">
-          <div class="whole-menu">
-            <div class="items filled-items">
-                <h3>Você acredita que não consegue emagrecer porque não tem foco? <br></h3>
+    <div class="card-text1">       
+     <div class="items filled-items">
+      <div class="w3-container">
+        <h2>Slideshow Indicators</h2>
+        <p>An example of using buttons to indicate how many slides there are in the slideshow, and which slide the user is currently viewing.</p>
+      </div>
+      
+      <div class="w3-content w3-display-container" style="max-width: 100px">
+        <img class="mySlides" src="" style="width:100%">
+        <img class="mySlides" src="img_snow_wide.jpg" style="width:100%">
+        <img class="mySlides" src="img_mountains_wide.jpg" style="width:100%">
+        <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width:100%">
+          <div class="w3-left w3-hover-text-khaki" onclick="plusDivs(-1)">&#10094;</div>
+          <div class="w3-right w3-hover-text-khaki" onclick="plusDivs(1)">&#10095;</div>
+          <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span>
+          <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"></span>
+          <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(3)"></span>
+        </div>
+      </div>
+      
 
-    <div class="items filled-items1">
-        <h4> Nós da NutriTech, temos o objetivo de ajudar pessoas que buscam melhorar a sua saúde através de uma alimentação saudável.
-             Afinal o conceito de nutrição se baseia em uma alimentação completa e variada, de forma que atenda às necessidades do organismo. 
-        </h4>
-        <h4>Trabalhando também com os guias alimentares que são opções práticas quando pensamos numa alimentação com qualidade, 
-            uma vez que fornece um conjunto de informações, recomendações e orientações sobre escolhas, preparo e consumo de alimentos.</h4>
+
+
+
        
-</div>
-</div>
-</div>
-</div>
-</div> 
-
-
-  
-
-        <div class="w3-content w3-display-container">
-    
-          <img class="mySlides" src="receitaaçai.png" width= 100% height= 100%>
-          <img class="mySlides" src="receitacookie.png" width= 100% height= 100%>
-          <img class="mySlides" src="img_mountains.jpg" width=100%>
-         <img class="mySlides" src="img_forest.jpg" width=100%>
- 
- 
-        <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
-       <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
- 
-   </div>
-
-
-
-   
-        
-        
-     
 
 
   </article>
@@ -143,61 +127,17 @@
       <label for="option4" class="trr">Login</label>
       <article>
 
-     <div class="container">
-       <div class="card-wrap">
-         <div class="card border-0 shadow card--welcome is-show" id="welcome">
-           <div class="card-body">
-            <h2 class="card-title">Bem-vindo!</h2>
-            <p>Selecione a opção ideal para você</p> <br>
-       <div class="btn-wrap"><a class="btn btn-lg btn-register js-btn" data-target="register">CLÍNICA</a><a class="btn btn-lg btn-login js-btn" data-target="login">PACIENTE</a></div>
-    </div>
-    </div>
+  
+     
+      
 
-    <div class="card border-0 shadow card--register" id="register">
-       <div class="card-body"> <br>
-          <h2 class="card-title">CLÍNICA</h2> <br>
-            <p class="card-text">Para se manter conectado<br/>Faça seu login</p> <br>
-            
-    <form>
-      <div class="form-group">
-       <input class="form-control" type="text" value="" id="cnpj" placeholder="cnpj" title="Siga o formato  XX. XXX. XXX/XXXX-XX." maxlength="18" required/>
-    </div>
+     
+   
+   
 
-      <div class="form-group">
-        <input class="form-control" type="password" placeholder="Senha" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres" required="required"/>
-    </div>
-      <p> Não possui conta?
-      <a href='../cadastronutri/cadastronutricionista.html'>Cadastre-se </a> 
-      </p>    <br>
-    <button class="btn btn-lg">Entrar</button>
 
-    </form>
-    </div>
-      <button class="btn btn-back js-btn" data-target="welcome"><i class="fas fa-angle-left"></i></button>
-    </div>
-      <div class="card border-0 shadow card--login" id="login">
-       <div class="card-body">
-        <h2 class="card-title">PACIENTE</h2> <br>
-        <p>Para se manter conectado <br/>Faça seu login</p> <br>
-            
-    <form>
-      <div class="form-group">
-        <input class="form-control" type="Email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="O email teve conter um @" required="required"/>
-    </div>
-      <div class="form-group">
-        <input class="form-control" type="password" placeholder="Senha" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres"required="required"/>
-    </div>
-      <p> Não possui conta?
-        <a href='../cadastro2/cadastrocliente.html'>Cadastre-se </a> 
-      </p>   <br>
-         <a href='../homepaci/dist/index.html' ><button class="btn btn-lg"  >Entrar </button> </a>
-              
-    </form>
-    </div>
-      <button class="btn btn-back js-btn" data-target="welcome"><i class="fas fa-angle-left"></i></button>
-    </div>
-    </div>
-    </div>
+  
+  
 
 <!-- partial -->
       
