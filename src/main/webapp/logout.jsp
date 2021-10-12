@@ -4,6 +4,6 @@
   <%
   	
   session.invalidate();
-  response.sendRedirect("loginpaciente.jsp");
+  response.sendRedirect("login.jsp");
   
   %>  

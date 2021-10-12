@@ -20,7 +20,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
   <script src="script.js"></script>
-    <form id="medidas" method ="post" action= "inserirMedidas" >
+    <form id="medidas" method ="post" action= "inserir-medidas" >
         <fieldset>
             <h2 class="fs-titulo">Informe as medidas</h2>
             <h3 class="fs-subtitulo"></h3>
