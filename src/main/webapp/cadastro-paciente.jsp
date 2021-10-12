@@ -22,7 +22,7 @@
             <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
                 <h2 id="heading">Faça seu Cadastro</h2>
             
-         <form id="msform" method="post" action="inserirPaciente">
+         <form id="msform" method="post" action="inserir-paciente">
                     <ul id="progressbar">
                         <li class="active" id="account"><strong>Conta</strong></li>
                         <li id="personal"><strong>Contato</strong></li>

@@ -20,16 +20,15 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="script.js"></script>
 <!-- partial:index.partial.html -->
-<form id="form-login">
-<div class="container">
-	<div class="header">
-		Faça login
-	</div>
+	<form id="form-login" method = "post" action = "recuperar-login">
+	<div class="container">
+			<div class="header">
+				Faça login
+			</div>
 	<div class="form-container">
 		<div class="subtitle">
 			Informe sua informação de login.
 		</div>
-		<form action="">
 			<div class="form-section">
 				<div class="form-label">
 					<label for=""></label>
@@ -38,7 +37,7 @@
 					<span class="input-icon">
 						<i class="far fa-user"></i>
 					</span>
-					<input id="email" type="email" class="form-input"  placeholder="Entre com seu email" required>
+					<input id="login" type="text" class="form-input"  placeholder="Entre com seu login" required = "required" value='${usuario.login}' name="login"/> 
 				</div>
 			</div>
 			
@@ -48,13 +47,14 @@
 					</div>
 					<div class="input-container">
 						<span class="input-icon">
-							<i class="far fa-user"></i>
+							<i class="fa fa-key icon"></i>
 						</span>
-						<input id="senha" type="text" class="form-input"  placeholder="Entre com sua senha"  required>
+						<input id="senha" type="password" class="form-input"  placeholder="Entre com sua senha"  required = "required" value='${usuario.senha}' name="senha"/> 
 					</div>
 				</div>
                 <button type="submit" id="botao" class="button" data-toggle="modal" data-target="#exampleModal">
-                    Agendar
+                   LOGAR
                       </button>
+                      </form>
 </body>
 </html>

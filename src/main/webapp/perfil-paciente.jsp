@@ -1,10 +1,7 @@
-<%@page import="modelo.entidade.consulta.Consulta"%>
-<%@page import="modelo.entidade.nutricionista.Nutricionista"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" >
 <head>
   <meta charset="UTF-8">
   <title>perfil</title>
@@ -13,8 +10,6 @@
 
 
 	<link rel="stylesheet" href="<%=request.getContextPath()%>resources/css/perfilpaciente.css"/>
-	<style><%@include file="resources/css/perfilpaciente.css"%></style>
-	<script><%@include file="resources/js/perfilpaciente.js"%></script>	
 
 
 
@@ -31,18 +26,19 @@
             crossorigin="anonymous"></script>
 <script src="script.js"></script>
 <!-- partial:index.partial.html -->
-<div class="sttngs">
 	<div class = "header">
 					${sessionScope.usuario.nome}
 					<button>
 						<a href ="logout.jsp">sair</a>
 					</button>
 				</div>
+
+<div class="sttngs">
     <h2>Seu perfil</h2>
 <div class="tabordion">
   <section id="section1">
     <input class="t" type="radio" name="sections" id="option1" checked>
-    <label for="option1" class="trr"> Atualiza��o conta</label>
+    <label for="option1" class="trr"> Atualização conta</label>
     <article>
   
     <div class="frm">     
@@ -63,21 +59,21 @@
   
  
 <div class="tr">
-<form action="">
-  <form id="msform">
+  <form id="msform" method = "post" action = "atualizar-paciente">
+
+
 
     
-	<label class="label" for="input">Nome de usu�rio </label>
-	<input class="input" type="text" id="input" name="usuario" required pattern="^[a-zA-Z]{3,25}$" title="Indique seu nome completo sem n�meros e sem espa�os"> 
-
-  <label class="label" for="input">Email</label>
-	<input class="input" type="email" id="input" name="email"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="O email teve conter um @" required>
+    <input class="input" type="hidden" id="idusuario" name="usuario" title="Indique seu nome completo sem números e sem espaços" value='${sessionScope.usuario.id}' name="idusuario" />
+	<label class="label" for="input">Nome de usuário </label>
+	
+	<input class="input" type="text" id="input" name="usuario" required pattern="^[a-zA-Z]{3,25}$" title="Indique seu nome completo sem números e sem espaços" value='${sessionScope.usuario.nome}' name="nome" />
 	
   <label class="label" for="input">Senha</label>
-<input class="input"  onsubmit="validatemyPassword()" type="password" id="myPassword" name="password"  title="Deve conter pelo menos um n�mero e uma letra mai�scula e min�scula e pelo menos 8 ou mais caracteres" required>
+<input class="input"  onsubmit="validatemyPassword()" type="password" id="myPassword" name="password"  title="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres" required value='${paciente.senha}' name="senha" />
 
-  <label class="label" for="input">Confirma��o da senha</label>
-	<input class="input" type="password" id="confirm_password" required>
+  <label class="label" for="input">Confirmação da senha</label>
+	<input class="input" type="password" id="confirm_password" required value='${paciente.senha}' name="senha" />
 	
   
 			<!-- Button trigger modal -->
@@ -90,26 +86,25 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Confirma��o de atualiza��o da conta</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Confirmação de atualização da conta</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-       Sua atualiza��o est� prestes a ser concluid. Suas informa��es est�o certas?
+       Sua atualização está prestes a ser concluid. Suas informações estão certas?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button type="submit" class="btn btn-primary">Salvar informa��es </button >
+        <button type="submit" class="btn btn-primary">Salvar informações </button >
       </div>
       </div>
     </div>
     </div>
+    </form>
+   </div>
   
-      
-      </div>
-    </form>
-    </form>
+    
     </article>
   </section>
  
@@ -117,57 +112,57 @@
     
     <input class="t" type="radio" name="sections" id="option2">
     
-    <label for="option2" class="trr"> Informa��es Pessoais</label>
+    <label for="option2" class="trr"> Informações Pessoais</label>
     <article>
-     <form action="">
+      <form id="msform" method = "post" action = "atualizar-paciente">
         <div class="tr wwq">
   
-  <label class="label" for="input">Telefone Residencial</label>	
+  	<label class="label" for="input">Telefone Residencial</label>	
 	<input class="input e" id="phone" name="phone" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);" maxlength="14" required/>
-
-  <label class="label" for="input">Telefone Celular</label>	
+	
+ 	<label class="label" for="input">Telefone Celular</label>	
 	<input class="input e" id="phone" name="phone" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);" maxlength="15" required/>
 
-  <label class="label" for="input"> Cep</label>
-    <input class= "input e" name="cep" type="text" id="cep" class="mascCEP" value="" size="10" maxlength="9" onblur="pesquisacep(this.value);" required /></label>
+  	<label class="label" for="input"> Cep</label>
+    <input class= "input e" name="cep" type="text" id="cep" class="mascCEP" value="" size="10" maxlength="9" onblur="pesquisacep(this.value);" required/>
 
     <label class="label" for="input"> Rua</label>
-    <input class="input e" name="rua" type="text" id="rua" size="60" required /></label>
+    <input class="input e" name="rua" type="text" id="rua" size="60" required />
 
     <label class="label" for="input"> Numero</label>
     <input class="input e" name="numero" type="number" id="numero" required>
 
     <label class="label" for="input"> Bairro</label>
-    <input class= "input e" name="bairro" type="text" id="bairro" size="40" required /></label>
+    <input class= "input e" name="bairro" type="text" id="bairro" size="40" required />
 
     <label class="label" for="input"> Cidade</label>
-    <input class="input e" name="cidade" type="text" id="cidade" size="40" required/></label>
+    <input class="input e" name="cidade" type="text" id="cidade" size="40" required/>
 
     <label class="label" for="input"> Estado</label>
-    <input class="input e" name="uf" type="text" id="uf" size="2" required /></label><br />
+    <input class="input e" name="uf" type="text" id="uf" size="2" required /><br />
 
  
  		<!-- Button trigger modal -->
-<button type="button" id="botao" class="button" data-toggle="modal" data-target="#exampleModal">
-  Salvar
-     </button>
+	<button type="button" id="botao" class="button" data-toggle="modal" data-target="#exampleModal">
+ 	Salvar
+    </button>
      
      <!-- Modal -->
      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
      <div class="modal-dialog" role="document">
        <div class="modal-content">
        <div class="modal-header">
-         <h5 class="modal-title" id="exampleModalLabel">Confirma��o de atualiza��o da conta</h5>
+         <h5 class="modal-title" id="exampleModalLabel">Confirmação de atualização da conta</h5>
          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
          <span aria-hidden="true">&times;</span>
          </button>
        </div>
        <div class="modal-body">
-        Sua atualiza��o est� prestes a ser concluida. Suas informa��es est�o certas?
+        Sua atualização está prestes a ser concluida. Suas informações estão certas?
        </div>
        <div class="modal-footer">
          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-         <button type="submit" class="btn btn-primary">Salvar informa��es </button >
+         <button type="submit" class="btn btn-primary">Salvar informações </button >
        </div>
        </div>
      </div>
@@ -175,7 +170,6 @@
    
        
        </div>
-     </form>
      </form>
      </article>
    </section>
@@ -215,7 +209,7 @@
     <label for="option5" class="trr">Minhas Consultas</label>
     <article>
 
-<a href="<%=request.getContextPath()%>/mostrarAgendamento"><button type="button" id="botao" class="button" data-toggle="modal" data-target="#exampleModal">
+<a href="<%=request.getContextPath()%>/agendamento"><button type="button" id="botao" class="button" data-toggle="modal" data-target="#exampleModal">
 agendar minha consulta
      </button></a>
     

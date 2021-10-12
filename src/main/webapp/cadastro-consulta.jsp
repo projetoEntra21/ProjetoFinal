@@ -33,7 +33,7 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 	<script src="script.js"></script>
 	<!-- partial:index.partial.html -->
-	<form id="form-login" method ="post" action ="inserirConsulta">
+	<form id="form-login" method ="post" action ="inserir-consulta">
 		<div class="container">
 		
 			<div class="header">Agende sua consulta</div>
@@ -79,7 +79,7 @@
 							<label for="">Nutricionista</label>
 						</div>
 						<div class="input-container">
-							<span class="input-icon"> <i class="fas fa-asterisk"></i>
+							<span class="input-icon"> <i class="far fa-user"></i>
 							</span> <select id="service" class="form-select" required = "required" name = "idnutri">
 								  <c:forEach var="nutricionista" items="${nutricionistas}">
 								<option value="" selected disabled>Selecione um
