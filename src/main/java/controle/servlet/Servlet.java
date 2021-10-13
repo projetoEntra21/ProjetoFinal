@@ -96,6 +96,10 @@ public class Servlet extends HttpServlet {
 			case "/home":
 				mostrarHome(request, response, sessao);
 				break;
+				
+			case "/cadastre-se":
+				cadastro(request, response, sessao);
+				break;	
 
 			case "/login":
 				mostrarLogin(request, response, sessao);
@@ -184,6 +188,15 @@ public class Servlet extends HttpServlet {
 		SQLException sqlException) {
 			throw new ServletException();
 		}
+	}
+
+	private void cadastro(HttpServletRequest request, HttpServletResponse response, HttpSession sessao) throws ServletException, IOException {
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("cadastrese.jsp");
+		dispatcher.forward(request, response);
+		
+		
+		
 	}
 
 	private void mostrarPerfilNutricionista(HttpServletRequest request, HttpServletResponse response, HttpSession sessao) throws ServletException, IOException {
@@ -293,15 +306,12 @@ public class Servlet extends HttpServlet {
 		if (usuario instanceof Paciente && senha.equals(usuario.getSenha())) {
 			sessao.setAttribute("usuario", usuario);
 
-			RequestDispatcher dispatcher = request.getRequestDispatcher("perfil-paciente.jsp");
-			dispatcher.forward(request, response);
+			request.getRequestDispatcher("/perfil-paciente");
 			
 		} else if (usuario instanceof Nutricionista && senha.equals(usuario.getSenha())) {
 			sessao.setAttribute("usuario", usuario);
 
-
-			RequestDispatcher dispatcher = request.getRequestDispatcher("perfil-nutricionista.jsp");
-			dispatcher.forward(request, response);
+			request.getRequestDispatcher("/perfil-nutricionista");
 
 		} else
 			System.out.println("Senha incorreta :(");
@@ -366,7 +376,7 @@ public class Servlet extends HttpServlet {
 		String data = request.getParameter("data");
 		String hora = request.getParameter("hora");
 
-		DateTimeFormatter formatador = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+		DateTimeFormatter formatador = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		LocalDate dataFormatada = LocalDate.parse(data, formatador);
 
 		LocalTime horaConvertida = LocalTime.parse(hora);
@@ -494,7 +504,7 @@ public class Servlet extends HttpServlet {
 		daoContato.atualizarContato(contato);
 		daoEndereço.atualizarEndereco(endereco);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("perfil-paciente.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
 		dispatcher.forward(request, response);
 
 	}
@@ -562,7 +572,7 @@ public class Servlet extends HttpServlet {
 		daoNutricionista.atualizarNutriocionista(nutricionista);
 		daoContato.atualizarContato(contato);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("perfil-paciente.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
 		dispatcher.forward(request, response);
 
 	}

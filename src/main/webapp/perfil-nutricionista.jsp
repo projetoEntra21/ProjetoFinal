@@ -9,6 +9,12 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>resourcers/css/perfilnutricionista.css"/>
 	<style><%@include file="resources/css/perfilnutricionista.css"%></style>
 	
+	<div class = "header">
+					${sessionScope.usuario.nome}
+					<button>
+						<a href ="logout.jsp">sair</a>
+					</button>
+				</div>
     
     <title>Nutricionista</title>
 </head>
