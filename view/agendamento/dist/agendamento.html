@@ -25,7 +25,7 @@
 	</div>
 	<div class="form-container">
 		<div class="subtitle">
-			Informe sua informação de reserva.
+			Preencha os campos abaixo para agendar sua consulta.
 		</div>
 		<form action="" onsubmit="return validadata(d)" method="post">
 			<div class="form-section">
@@ -36,7 +36,7 @@
 					<span class="input-icon">
 						<i class="far fa-user"></i>
 					</span>
-					<input id="Nome" type="text" class="form-input"  placeholder="Entre com seu nome" pattern="^[a-zA-Z][a-zA-Z-_\.]{3,20}$" title="Indique seu nome sem números" required>
+					<input id="Nome" type="text" class="form-input"  placeholder="Digite seu nome" pattern="^[a-zA-Z][a-zA-Z-_\.]{3,20}$" title="Indique seu nome sem números" required>
 				</div>
 			</div>
 			
@@ -48,7 +48,7 @@
 						<span class="input-icon">
 							<i class="far fa-user"></i>
 						</span>
-						<input id="Sobrenome" type="text" class="form-input"  placeholder="Entre com seu Sobrenome" pattern="^([AZ] {1} [az] {1,30} [-] {0,1} | [AZ] {1} [- \ '] { 1} [AZ] {0,1} [az] {1,30} [-] {0,1} | [az] {1,2} [- \ '] {1} [AZ] {1} [ az] {1,30}) {2,5} {3,20}$  "title="Indique seu sobrenome completo sem números" required>
+						<input id="Sobrenome" type="text" class="form-input"  placeholder="Digite seu Sobrenome" pattern="^([AZ] {1} [az] {1,30} [-] {0,1} | [AZ] {1} [- \ '] { 1} [AZ] {0,1} [az] {1,30} [-] {0,1} | [az] {1,2} [- \ '] {1} [AZ] {1} [ az] {1,30}) {2,5} {3,20}$  "title="Indique seu sobrenome completo sem números" required>
 					</div>
 				</div>
 				<form action="" onsubmit="return validardata(d)" method="post">
@@ -88,7 +88,7 @@
 						<i class="fas fa-asterisk"></i>
 					</span>
 					<select id="service" class="form-select" required>
-						<option value="" selected disabled>Selecione um nutricionista de sua preferencia</option>
+					<option value="" selected disabled>Selecione o nutricionista de sua preferência</option>
 						<option value="Option 1">Nutricionista 1 </option>
 						<option value="Option 2">Nutricionista 2</option>
 						<option value="Option 3">Nutricionista 3</option>
@@ -113,7 +113,7 @@ Agendar
 		  </button>
 		</div>
 		<div class="modal-body">
-		 Seu agendamento está prestes a ser concluido. Suas informações estão certas?
+		 Seu agendamento está prestes a ser concluído. Suas informações estão corretas?
 		</div>
 		<div class="modal-footer">
 		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
