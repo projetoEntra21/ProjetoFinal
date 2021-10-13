@@ -4,12 +4,15 @@ import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Join;
 import javax.persistence.criteria.ParameterExpression;
 import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 
 import modelo.entidade.consulta.Consulta;
+import modelo.entidade.nutricionista.Nutricionista;
+import modelo.entidade.paciente.Paciente;
 import modelo.factory.conexao.ConexaoFactory;
 
 public class ConsultaDAOimpl implements ConsultaDAO {
@@ -190,10 +193,86 @@ public class ConsultaDAOimpl implements ConsultaDAO {
 		return contatos;
 	}
 
-	@Override
-	public List<Consulta> recuperarConsultasPeloNutricionista() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Consulta> recuperarConsultasPeloNutricionista(Nutricionista nutricionista) {
+	
+		Session sessao = null;
+		List<Consulta> consultas = null;
+
+		try {
+
+			sessao = fabrica.getConexao().openSession();
+			sessao.beginTransaction();
+
+			CriteriaBuilder construtor = sessao.getCriteriaBuilder();
+
+			CriteriaQuery<Consulta> criteria = construtor.createQuery(Consulta.class);
+			Root<Consulta> raizConsulta = criteria.from(Consulta.class);
+
+			Join<Consulta, Nutricionista> juncaoNutricionista = raizConsulta.join("nutricionista");
+			
+			ParameterExpression<Long> idNutricionista = construtor.parameter(Long.class);
+			criteria.where(construtor.equal(juncaoNutricionista.get("id"), idNutricionista));
+
+			consultas = sessao.createQuery(criteria).setParameter(idNutricionista, nutricionista.getId()).getResultList();
+
+			sessao.getTransaction().commit();
+
+		} catch (Exception sqlException) {
+
+			sqlException.printStackTrace();
+
+			if (sessao.getTransaction() != null) {
+				sessao.getTransaction().rollback();
+			}
+
+		} finally {
+
+			if (sessao != null) {
+				sessao.close();
+			}
+		}
+
+		return consultas;
 	}
 
+	public List<Consulta> recuperarConsultasPeloPaciente(Paciente paciente) {
+		Session sessao = null;
+		List<Consulta> consultas = null;
+
+		try {
+
+			sessao = fabrica.getConexao().openSession();
+			sessao.beginTransaction();
+
+			CriteriaBuilder construtor = sessao.getCriteriaBuilder();
+
+			CriteriaQuery<Consulta> criteria = construtor.createQuery(Consulta.class);
+			Root<Consulta> raizConsulta = criteria.from(Consulta.class);
+
+			Join<Consulta, Paciente> juncaoPaciente = raizConsulta.join("pacientes");
+			
+			ParameterExpression<Long> idPaciente = construtor.parameter(Long.class);
+			criteria.where(construtor.equal(juncaoPaciente.get("id"), idPaciente));
+
+			consultas = sessao.createQuery(criteria).setParameter(idPaciente, paciente.getId()).getResultList();
+
+			sessao.getTransaction().commit();
+
+		} catch (Exception sqlException) {
+
+			sqlException.printStackTrace();
+
+			if (sessao.getTransaction() != null) {
+				sessao.getTransaction().rollback();
+			}
+
+		} finally {
+
+			if (sessao != null) {
+				sessao.close();
+			}
+		}
+
+		return consultas;
+	}
 }

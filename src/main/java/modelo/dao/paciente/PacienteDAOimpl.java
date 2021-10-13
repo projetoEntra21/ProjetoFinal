@@ -4,11 +4,13 @@ import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Join;
 import javax.persistence.criteria.ParameterExpression;
 import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 
+import modelo.entidade.nutricionista.Nutricionista;
 import modelo.entidade.paciente.Paciente;
 import modelo.factory.conexao.ConexaoFactory;
 
@@ -205,11 +207,11 @@ public class PacienteDAOimpl implements PacienteDAO {
 
 			criteria.select(raizPaciente);
 
-			ParameterExpression<String>usuarioPaciente = construtor.parameter(String.class);
-			criteria.where(construtor.equal(raizPaciente.get("usuario"),usuarioPaciente));
+			ParameterExpression<String> usuarioPaciente = construtor.parameter(String.class);
+			criteria.where(construtor.equal(raizPaciente.get("usuario"), usuarioPaciente));
 
 			pacienteRecuperado = sessao.createQuery(criteria).setParameter(usuarioPaciente, paciente.getSenha())
- 					.getSingleResult();
+					.getSingleResult();
 
 			sessao.getTransaction().commit();
 
@@ -232,7 +234,7 @@ public class PacienteDAOimpl implements PacienteDAO {
 	}
 
 	public Paciente recuperarPacientePeloSobrenome(Paciente paciente) {
-		
+
 		Session sessao = null;
 		Paciente pacienteRecuperado = null;
 
@@ -250,8 +252,8 @@ public class PacienteDAOimpl implements PacienteDAO {
 
 			ParameterExpression<String> senhaPaciente = construtor.parameter(String.class);
 			criteria.where(construtor.equal(raizPaciente.get("senha"), senhaPaciente));
-				
-			pacienteRecuperado = sessao.createQuery(criteria).setParameter(senhaPaciente, paciente.getSenha() )
+
+			pacienteRecuperado = sessao.createQuery(criteria).setParameter(senhaPaciente, paciente.getSenha())
 					.getSingleResult();
 
 			sessao.getTransaction().commit();
@@ -272,6 +274,46 @@ public class PacienteDAOimpl implements PacienteDAO {
 		}
 
 		return pacienteRecuperado;
-	}	
+	}
 
+	public List<Paciente> recuperarPacientePelaConsulta(Nutricionista nutricionista) {
+		Session sessao = null;
+		List<Paciente> pacientes = null;
+
+		try {
+
+			sessao = fabrica.getConexao().openSession();
+			sessao.beginTransaction();
+
+			CriteriaBuilder construtor = sessao.getCriteriaBuilder();
+
+			CriteriaQuery<Paciente> criteria = construtor.createQuery(Paciente.class);
+			Root<Paciente> raizPaciente = criteria.from(Paciente.class);
+
+			Join<Paciente, Nutricionista> juncaoNutricionista = raizPaciente.join("nutricionista");
+			
+			ParameterExpression<Long> idNutricionista = construtor.parameter(Long.class);
+			criteria.where(construtor.equal(juncaoNutricionista.get("id"), idNutricionista));
+
+			pacientes = sessao.createQuery(criteria).setParameter(idNutricionista, nutricionista.getId()).getResultList();
+
+			sessao.getTransaction().commit();
+
+		} catch (Exception sqlException) {
+
+			sqlException.printStackTrace();
+
+			if (sessao.getTransaction() != null) {
+				sessao.getTransaction().rollback();
+			}
+
+		} finally {
+
+			if (sessao != null) {
+				sessao.close();
+			}
+		}
+
+		return pacientes;
+	}
 }

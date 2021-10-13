@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<%@page import="modelo.entidade.consulta.Consulta"%>
+<%@page import="java.util.List"%>
 <html lang="pt-br" >
 <head>
   <meta charset="UTF-8">
@@ -193,32 +195,19 @@
      <div class="table-title">
        <h3></h3>
        </div>
-       <table class="table-fill">
-       <thead>
-       <tr>
-       <th class="text-left">Nutricionista</th>
-       <th class="text-left">Data</th>
-       <th class="text-left">Hora</th>
-       </tr>
-       </thead>
-       <tbody class="table-hover">
-       <tr>
-       <td class="text-left">Gabriel</td>
-       <td class="text-left">12/09/2021</td>
-       <td class="text-left">10:00</td>
-       </tr>
-       <tr>
-       <td class="text-left">Henrique</td>
-       <td class="text-left">13/08/2021</td>
-       <td class="text-left">09:00</td>
-       </tr>
-       <tr>
-       <td class="text-left">Julia</td>
-       <td class="text-left">25/10/2021</td>
-       <td class="text-left">11:00</td>
-       </tr>
-       </tbody>
-       </table>
+       <table>
+       		<tr>
+       			<th>Dia:</th>	
+       			<th>Hora</th>
+       		</tr>
+       		<%List<Consulta> consultas = (List<Consulta>)request.getAttribute("consultas");
+       		for(Consulta lista : consultas) {%>
+       			<tr>
+       			<th><%=lista.getDia() %></th>
+       			<th><%=lista.getHora() %></th>
+				<%} %>
+       		</tr>
+      	</table>
 
        			<!-- Button trigger modal -->
 <a href="<%=request.getContextPath()%>/agendamento"><button type="button" id="botao" class="button" data-toggle="modal" data-target="#exampleModal">

@@ -1,3 +1,6 @@
+<%@page import="modelo.entidade.consulta.Consulta"%>
+<%@page import="modelo.entidade.paciente.Paciente"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -99,6 +102,30 @@
     <label for="option3" class="trr">Consultas</label>
     <article> 
        
+       <table>
+
+       		<tr>
+       			<th>Dia:</th>	
+       			<th>Hora</th>
+       		</tr>
+       		<%List<Consulta> consultas = (List<Consulta>)request.getAttribute("consultas");
+       		for(Consulta lista : consultas) {%>
+       			<tr>
+       			<th><%=lista.getDia() %></th>
+       			<th><%=lista.getHora() %></th>
+				<%} %>
+       		</tr>
+      		
+      		<tr>
+      			<th>Nome:</th>
+      		</tr>
+      		<%List<Paciente> pacientes = (List<Paciente>)request.getAttribute("pacientes");
+      		for(Paciente lista : pacientes) {%>
+      		<tr>
+      			<th><%=lista.getNome() %></th>
+      			<%} %>
+      		</tr>
+       </table>
 <table id="customers">
     <tr>
       <div id="divBusca">
@@ -108,36 +135,10 @@
     </tr>
     <br>
 
-    <tr></tr>
-      <th>Nome    </th>
-      <th>Data    </th>
-      <th> Hora</th>
-      <th>Paciente</th>
-
-    </tr>
-
-    <tr>
-      <td>Bernardo </td>
-      <td>10/1/21</td>
-      <td>10:30</td>
-    </tr>
-
-      <td>Berglunds </td>
-      <td>10/1/21</td>
-      <td>11:00</td>
-  </table>
-      
+    
   </article>
   </section>
     
-  <section id="section4">
-    <input class="t" type="radio" name="sections" id="option4">
-    <label for="option4" class="trr">Cardápio</label>
-    <article>
-
-     
-  </article>
-  </section>
   </div>
   </div>
 
