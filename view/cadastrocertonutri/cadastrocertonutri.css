@@ -243,3 +243,10 @@ html {
   .erromsg{
     color: #f30; /* cor do texto */
  }
+ .olho {
+	cursor: pointer;
+	left: 730px;
+	position: absolute;
+	width: 20px;
+	top: 190px;
+  }
