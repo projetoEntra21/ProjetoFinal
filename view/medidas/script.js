@@ -83,7 +83,6 @@ $('.virgula').on('keyup', function() {
       })
 
 
-
       var cpf = document.querySelector("#cpf");
 
       cpf.addEventListener("keyup", () => {

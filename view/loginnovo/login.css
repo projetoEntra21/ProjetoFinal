@@ -106,10 +106,10 @@ body {
 }
 .olho {
 	cursor: pointer;
-	right: 769px;
+	right: 820px;
 	position: absolute;
 	width: 20px;
-	top: 529px;
+	top: 519px;
   }
 
 @media only screen and (max-width: 545px) {
