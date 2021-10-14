@@ -446,7 +446,13 @@ td.text-right {
 }
 
 
-
+.olho {
+	cursor: pointer;
+	left: 990px;
+	position: absolute;
+	width: 20px;
+	top: 300px;
+  }
 
 
 
