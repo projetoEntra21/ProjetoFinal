@@ -194,7 +194,7 @@ public class ConsultaDAOimpl implements ConsultaDAO {
 	}
 
 	public List<Consulta> recuperarConsultasPeloNutricionista(Nutricionista nutricionista) {
-	
+
 		Session sessao = null;
 		List<Consulta> consultas = null;
 
@@ -209,7 +209,7 @@ public class ConsultaDAOimpl implements ConsultaDAO {
 			Root<Consulta> raizConsulta = criteria.from(Consulta.class);
 
 			Join<Consulta, Nutricionista> juncaoNutricionista = raizConsulta.join("nutricionista");
-			
+
 			ParameterExpression<Long> idNutricionista = construtor.parameter(Long.class);
 			criteria.where(construtor.equal(juncaoNutricionista.get("id"), idNutricionista));
 
@@ -233,9 +233,11 @@ public class ConsultaDAOimpl implements ConsultaDAO {
 		}
 
 		return consultas;
+	
 	}
 
 	public List<Consulta> recuperarConsultasPeloPaciente(Paciente paciente) {
+		
 		Session sessao = null;
 		List<Consulta> consultas = null;
 
@@ -249,8 +251,8 @@ public class ConsultaDAOimpl implements ConsultaDAO {
 			CriteriaQuery<Consulta> criteria = construtor.createQuery(Consulta.class);
 			Root<Consulta> raizConsulta = criteria.from(Consulta.class);
 
-			Join<Consulta, Paciente> juncaoPaciente = raizConsulta.join("pacientes");
-			
+			Join<Consulta, Paciente> juncaoPaciente = raizConsulta.join("paciente");
+
 			ParameterExpression<Long> idPaciente = construtor.parameter(Long.class);
 			criteria.where(construtor.equal(juncaoPaciente.get("id"), idPaciente));
 
