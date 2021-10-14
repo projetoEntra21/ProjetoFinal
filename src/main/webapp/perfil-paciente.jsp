@@ -182,7 +182,6 @@
  
     <input class="t" type="radio" name="sections" id="option5">
     <label for="option5" class="trr">Minhas Consultas</label>  
- 
 
     <article>
       <form action="">
@@ -195,7 +194,9 @@
      <div class="table-title">
        <h3></h3>
        </div>
-       <table>
+      
+			<table>
+
        		<tr>
        			<th>Dia:</th>	
        			<th>Hora</th>
@@ -207,9 +208,8 @@
        			<th><%=lista.getHora() %></th>
 				<%} %>
        		</tr>
-      	</table>
-
-       			<!-- Button trigger modal -->
+       </table>
+       </table>
 <a href="<%=request.getContextPath()%>/agendamento"><button type="button" id="botao" class="button" data-toggle="modal" data-target="#exampleModal">
 agendar minha consulta
      </button></a>

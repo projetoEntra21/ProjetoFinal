@@ -37,6 +37,7 @@ import modelo.entidade.historico.Historico;
 import modelo.entidade.nutricionista.Nutricionista;
 import modelo.entidade.paciente.Paciente;
 import modelo.entidade.usuario.Usuario;
+import okhttp3.Response;
 
 @WebServlet("/")
 public class Servlet extends HttpServlet {
@@ -123,7 +124,7 @@ public class Servlet extends HttpServlet {
 			case "/inserir-consulta":
 				inserirConsulta(request, response, sessao);
 				break;
-			case "/deeltar-consulta":
+			case "/deletar-consulta":
 				deletarConsulta(request, response, sessao);
 				break;
 			case "/atualizar-consulta":
@@ -200,8 +201,6 @@ public class Servlet extends HttpServlet {
 	private void mostrarPerfilNutricionista(HttpServletRequest request, HttpServletResponse response,
 			HttpSession sessao) throws ServletException, IOException {
 
-		List<Paciente> pacientes = daoPaciente.recuperarPacientes();
-		request.setAttribute("pacientes", pacientes);
 		Nutricionista nutricionista = (Nutricionista) sessao.getAttribute("usuario");
 		List<Consulta> consultas = daoConsulta.recuperarConsultasPeloNutricionista(nutricionista);
 		request.setAttribute("consultas", consultas);
@@ -287,10 +286,9 @@ public class Servlet extends HttpServlet {
 
 		Paciente paciente = (Paciente) sessao.getAttribute("usuario");
 		List<Consulta> consultas = daoConsulta.recuperarConsultasPeloPaciente(paciente);
-		request.setAttribute("consultas", consultas);	
-		RequestDispatcher dispatcher = request.getRequestDispatcher("");
+		request.setAttribute("consultas", consultas);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("perfil-paciente.jsp"); // listar
 		dispatcher.forward(request, response);
-
 	}
 
 	public void mostrarAgendamento(HttpServletRequest request, HttpServletResponse response, HttpSession sessao)
@@ -313,19 +311,18 @@ public class Servlet extends HttpServlet {
 		Usuario usuario = daoUsuario.recuperarUsuarioLoginSenha(user); // Recupera um obj ou pf ou pj
 
 		if (usuario instanceof Paciente && senha.equals(usuario.getSenha())) {
+
 			sessao.setAttribute("usuario", usuario);
+			response.sendRedirect("/perfil-paciente");
 
-			RequestDispatcher dispatcher = request.getRequestDispatcher("perfil-paciente.jsp");
-			dispatcher.forward(request, response);
+		}
 
-		} else if (usuario instanceof Nutricionista && senha.equals(usuario.getSenha())) {
+		if (usuario instanceof Nutricionista && senha.equals(usuario.getSenha())) {
+			
 			sessao.setAttribute("usuario", usuario);
+			response.sendRedirect("/perfil-nutricionista");
 
-			RequestDispatcher dispatcher = request.getRequestDispatcher("perfil-nutricionista.jsp");
-			dispatcher.forward(request, response);
-
-		} else
-			System.out.println("Senha incorreta :(");
+		}
 	}
 
 	private void atualizarContato(HttpServletRequest request, HttpServletResponse response, HttpSession sessao)
