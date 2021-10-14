@@ -89,8 +89,6 @@ if(myPassword.value != confirm_password.value) {
 myPassword.onchange = validatemyPassword;
 confirm_password.onkeyup = validatemyPassword;
 
-
-
 function mphone(v) {
     var r = v.replace(/\D/g, "");
     r = r.replace(/^0/, "");
