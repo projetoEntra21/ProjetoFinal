@@ -12,7 +12,7 @@
 
 	<link rel="stylesheet" href="<%=request.getContextPath()%>resourcers/css/cadastresse.css"/>
 	<style><%@include file="resources/css/cadastresse.css"%></style>
-
+	
 </head>
 
 <!-- partial:index.partial.html -->
@@ -29,7 +29,7 @@
     <div class="row">
       <div class="col-sm-6">
         <div class="card">
-          <img class="card-img-top" src="https://i.imgur.com/MPCxVfL.png" height= 420 >
+          <img class="card-img-top" src="https://i.imgur.com/MPCxVfL.png" height= 443 >
           <div class="card-body">
             <h3 class="card-title">Paciente</h3>
             <a href="<%=request.getContextPath()%>/cadastro-paciente" class="btn btn-outline-success">Cadastre-se</a>

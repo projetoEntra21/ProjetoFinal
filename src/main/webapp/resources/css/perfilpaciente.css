@@ -21,6 +21,11 @@ body{
 .sttngs.tabordion input[name="sections"] {display:none;}
 
 
+.t{
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
 
 .tabordion section label {
   border-right:1px solid #a7bfe8;
@@ -101,7 +106,7 @@ input, select, textarea {
 
 .input, .select, .textarea {
   padding: 8px;
-  width: 180%;
+  width: 80%;
   border:1px solid lightgray;
   background-color: white;color:black;letter-spacing:.7px;
 }

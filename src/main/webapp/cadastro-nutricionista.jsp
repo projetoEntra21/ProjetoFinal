@@ -70,7 +70,7 @@
                                 <label class="fieldlabels">Idade</label> <input type="number" name="idade" placeholder="Insira sua idade." value="<c:out value='${usuario.idade}'/>" name="idade" /> 
                                 <label class="fieldlabels">CPF</label> <input type="text" name="cpf" placeholder="Insira seu cpf" value=" <c:out value='${usuario.cpf}'/>" name="cpf" /> 
 
-                            </div> <label class="fieldlabels">Escolha sua foto de perfil:</label> <input type="file" name="pic" accept="image/*"> 
+                            </div> 
                         </div> <input type="submit" name="next" class="next action-button" value="Enviar" /> <input type="button" name="previous" class="previous action-button-previous" value="Voltar" />
                     </fieldset>
                     <fieldset>

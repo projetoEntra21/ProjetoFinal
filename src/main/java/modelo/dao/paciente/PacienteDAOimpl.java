@@ -11,6 +11,7 @@ import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 
+import modelo.entidade.consulta.Consulta;
 import modelo.entidade.nutricionista.Nutricionista;
 import modelo.entidade.paciente.Paciente;
 import modelo.factory.conexao.ConexaoFactory;
@@ -277,7 +278,7 @@ public class PacienteDAOimpl implements PacienteDAO {
 		return pacienteRecuperado;
 	}
 
-	public List<Paciente> recuperarPacientePelaConsulta(Nutricionista nutricionista) {
+	public List<Paciente> recuperarPacientePelaConsulta(Consulta consulta) {
 		Session sessao = null;
 		List<Paciente> pacientes = null;
 
@@ -291,12 +292,12 @@ public class PacienteDAOimpl implements PacienteDAO {
 			CriteriaQuery<Paciente> criteria = construtor.createQuery(Paciente.class);
 			Root<Paciente> raizPaciente = criteria.from(Paciente.class);
 
-			Join<Paciente, Nutricionista> juncaoNutricionista = raizPaciente.join("nutricionista");
+			Join<Paciente, Consulta> juncaoNutricionista = raizPaciente.join("consulta");
 			
 			ParameterExpression<Long> idNutricionista = construtor.parameter(Long.class);
 			criteria.where(construtor.equal(juncaoNutricionista.get("id"), idNutricionista));
 
-			pacientes = sessao.createQuery(criteria).setParameter(idNutricionista, nutricionista.getId()).getResultList();
+			pacientes = sessao.createQuery(criteria).setParameter(idNutricionista, consulta.getId()).getResultList();
 
 			sessao.getTransaction().commit();
 
