@@ -77,7 +77,7 @@
                                 <label class="fieldlabels">Cidade</label> <input type="text" name="cidade" placeholder="Insira sua cidade." value=" <c:out value='${endereco.cidade}'/>" name="cidade" />
                                 <label class="fieldlabels">Estado</label> <input type="text" name="estado" placeholder="Insira seu estado." value=" <c:out value='${endereco.estado}'/>" name="estado" />   
 
-                            </div> <label class="fieldlabels">Escolha sua foto de perfil:</label> <input type="file" name="pic" accept="image/*"> 
+                            </div> 
                         </div> <input type="submit" name="next" class="next action-button" value="Enviar" /> <input type="button" name="previous" class="previous action-button-previous" value="Voltar" />
                     </fieldset>
                     <fieldset>

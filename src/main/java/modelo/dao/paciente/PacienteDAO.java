@@ -2,6 +2,7 @@ package modelo.dao.paciente;
 
 import java.util.List;
 
+import modelo.entidade.consulta.Consulta;
 import modelo.entidade.nutricionista.Nutricionista;
 import modelo.entidade.paciente.Paciente;
 
@@ -17,7 +18,7 @@ public interface PacienteDAO {
 
 	Paciente recuperarPacientePeloNome(Paciente paciente);
 
-	List<Paciente> recuperarPacientePelaConsulta(Nutricionista nutricionista);
+	List<Paciente> recuperarPacientePelaConsulta(Consulta consulta);
 	
 	Paciente recuperarPacientePeloSobrenome(Paciente paciente);
 

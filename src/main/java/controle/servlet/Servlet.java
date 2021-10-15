@@ -218,10 +218,11 @@ public class Servlet extends HttpServlet {
 
 	private void mostrarPerfilNutricionista(HttpServletRequest request, HttpServletResponse response,
 			HttpSession sessao) throws ServletException, IOException {
-
+		
 		Nutricionista nutricionista = (Nutricionista) sessao.getAttribute("usuario");
 		List<Consulta> consultas = daoConsulta.recuperarConsultasPeloNutricionista(nutricionista);
 		request.setAttribute("consultas", consultas);
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("perfil-nutricionista.jsp"); // listar
 		dispatcher.forward(request, response);
 	}
@@ -396,7 +397,7 @@ public class Servlet extends HttpServlet {
 		String data = request.getParameter("data");
 		String hora = request.getParameter("hora");
 
-		DateTimeFormatter formatador = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		LocalDate dataFormatada = LocalDate.parse(data, formatador);
 
 		LocalTime horaConvertida = LocalTime.parse(hora);

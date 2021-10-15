@@ -66,7 +66,7 @@
   </article>
   </section>
 
-  <section id="section2">
+  <section >
 
     <input class="t" type="radio" name="sections" id="option2"> 
     <label for="option2" class="trr"> Atualização conta  </label>
@@ -75,7 +75,7 @@
     <div class="tr wwq">
         
       <label class="label" for="input">Nome de usuário</label>
-      <input class="input" type="text" id="input">
+      <input class="input" type="text" id="input" width = "70">
       
       <label class="label" for="input">Email</label>
       <input class="input" type="email" id="input">
@@ -90,10 +90,6 @@
       <button>Salvar</button>
     </article>
     </section>
-
-  <section id="section2">
-
-    <input class="t" type="radio" name="sections" id="option2">
     
   </article>
   </section>

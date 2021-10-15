@@ -11,5 +11,12 @@
 		<property name="show_sql">true</property>
 		<property name="hibernate.current_session_context_class">thread</property>
 		<mapping class="modelo.entidade.contato.Contato"/>
+		<mapping class="modelo.entidade.consulta.Consulta"/>
+		<mapping class="modelo.entidade.endereco.Endereco"/>
+		<mapping class="modelo.entidade.historico.Historico"/>
+		<mapping class="modelo.entidade.nutricionista.Nutricionista"/>
+		<mapping class="modelo.entidade.paciente.Paciente"/>
+		<mapping class="modelo.entidade.usuario.Usuario"/>
+		
 	</session-factory>
 </hibernate-configuration>

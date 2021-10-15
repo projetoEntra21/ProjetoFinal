@@ -12,8 +12,9 @@ body{
 .sttngs .tabordion {
   color: #a7bfe8;
   display: block;
-  mardgin: auto;
-  position: relative;height:670px;
+  margin: auto;
+  position: relative;
+  height:670px;
   width: 100%;
   backgrdound: #a7bfe8;
 }
@@ -101,7 +102,7 @@ input, select, textarea {
 
 .input, .select, .textarea {
   padding: 8px;
-  width: 180%;
+  width: 80%;
   border:1px solid lightgray;
   background-color: white;color:black;letter-spacing:.7px;
 }
@@ -143,14 +144,13 @@ input, select, textarea {
 
 
 
-
-.input, .checkbox-label:before, .radio-label:before, .checkbox-label:after, .radio-label:after, .select, .textarea, .checkbox-label, .radio-label {
-  margin-bottom: 1em;
-}
-
 .r{height:250px;width:250px;background:red;border-radius:50%;float:left;margin-right:30px;}
 
-
+.t{
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
 
 
 
