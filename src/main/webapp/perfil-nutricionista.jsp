@@ -14,9 +14,9 @@
 	
 	<div class = "header">
 					${sessionScope.usuario.nome}
-					<button>
-						<a href ="logout.jsp">sair</a>
-					</button>
+			
+					<a href="logout.jsp">sair</a>
+				
 				</div>
     
     <title>Nutricionista</title>

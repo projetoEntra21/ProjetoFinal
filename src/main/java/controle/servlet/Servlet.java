@@ -170,6 +170,9 @@ public class Servlet extends HttpServlet {
 			case "/medidas":
 				mostrarMedidas(request, response, sessao);
 
+			case "/logout":
+				logout(request, response, sessao);
+
 			case "/atualizar-endereco":
 				atualizarEndereco(request, response, sessao);
 
@@ -188,6 +191,14 @@ public class Servlet extends HttpServlet {
 		SQLException sqlException) {
 			throw new ServletException();
 		}
+	}
+
+	private void logout(HttpServletRequest request, HttpServletResponse response, HttpSession sessao)
+			throws IOException {
+
+		sessao.invalidate();
+		response.sendRedirect("login.jsp");
+
 	}
 
 	private void cadastro(HttpServletRequest request, HttpServletResponse response, HttpSession sessao)
@@ -313,14 +324,16 @@ public class Servlet extends HttpServlet {
 		if (usuario instanceof Paciente && senha.equals(usuario.getSenha())) {
 
 			sessao.setAttribute("usuario", usuario);
-			response.sendRedirect("/perfil-paciente");
+
+			response.sendRedirect("perfil-paciente");
 
 		}
 
 		if (usuario instanceof Nutricionista && senha.equals(usuario.getSenha())) {
-			
+
 			sessao.setAttribute("usuario", usuario);
-			response.sendRedirect("/perfil-nutricionista");
+
+			response.sendRedirect("perfil-nutricionista");
 
 		}
 	}
