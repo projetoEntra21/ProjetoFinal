@@ -29,7 +29,7 @@
 <div class="tabordion">
   <section id="section1">
     <input class="t" type="radio" name="sections" id="option1" checked>
-    <label for="option1" class="trr"> Informações Pessoais</label>
+    <label for="option1" class="trr"> Informacoes Pessoais</label>
     <article>
   
 <div class="frm">     
@@ -55,7 +55,7 @@
     <label class="label" for="input">CNPJ</label>	
 	  <input class="input e" type="tel" id="input">
 
-    <label class="label" for="input">Descrição</label>	
+    <label class="label" for="input">Descricao</label>	
     <textarea id="story" name="story"
     rows="5" cols="33">
     </textarea>
@@ -104,18 +104,26 @@
        
      <table>
 
+           <div class="table-title">
+         <h3></h3>
+         </div>
+         <table class="table-fill">
+         <thead>
        		<tr>
-       			<th>Dia:</th>	
-       			<th>Hora</th>
+       			<th class="text-left">Dia:</th>	
+       			<th class="text-left">Hora</th>
        		</tr>
+       		</thead>
+         	<tbody class="table-hover">
        		<%List<Consulta> consultas = (List<Consulta>)request.getAttribute("consultas");
        		for(Consulta lista : consultas) {%>
        			<tr>
-       			<th><%=lista.getDia() %></th>
-       			<th><%=lista.getHora() %></th>
+       			 <td class="text-left"><%=lista.getDia() %></th>
+       			 <td class="text-left"><%=lista.getHora() %></th>
 				<%} %>
-       		</tr>
-       </table>
+      		  </tr>
+         </tbody>
+         </table>
   </article>
   </section>
     

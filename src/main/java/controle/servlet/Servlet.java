@@ -193,6 +193,13 @@ public class Servlet extends HttpServlet {
 		}
 	}
 
+	private void mostrarHome(HttpServletRequest request, HttpServletResponse response, HttpSession sessao) throws ServletException, IOException {
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+		dispatcher.forward(request, response);
+		
+	}
+
 	private void logout(HttpServletRequest request, HttpServletResponse response, HttpSession sessao)
 			throws IOException {
 
@@ -282,14 +289,6 @@ public class Servlet extends HttpServlet {
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("cadastro-paciente.jsp");
 		dispatcher.forward(request, response);
-	}
-
-	public void mostrarHome(HttpServletRequest request, HttpServletResponse response, HttpSession session)
-			throws SQLException, IOException, ServletException {
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-		dispatcher.forward(request, response);
-
 	}
 
 	public void mostrarPerfilPaciente(HttpServletRequest request, HttpServletResponse response, HttpSession sessao)
@@ -414,22 +413,17 @@ public class Servlet extends HttpServlet {
 
 		daoPaciente.atualizarPaciente(paciente);
 		daoNutricionista.atualizarNutriocionista(nutricionista);
-
-		List<Nutricionista> nutricionistas = daoNutricionista.recuperarNutricionistas();
-		request.setAttribute("nutricionista", nutricionistas);
-
-		List<Paciente> pacientes = daoPaciente.recuperarPacientes();
-		request.setAttribute("pacientes", pacientes);
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher("perfil-paciente.jsp");
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/perfil-paciente");
 		dispatcher.forward(request, response);
+
 
 	}
 
 	private void deletarConsulta(HttpServletRequest request, HttpServletResponse response, HttpSession sessao)
 			throws IOException, SQLException {
 
-		long id = Long.parseLong(request.getParameter("id_consulta"));
+		long id = Long.parseLong(request.getParameter("id"));
 		Consulta consulta = daoConsulta.recuperarConsulta(new Consulta(id));
 		daoConsulta.deletarConsulta(consulta);
 
