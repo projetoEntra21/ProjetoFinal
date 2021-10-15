@@ -14,9 +14,9 @@
 	
 	<div class = "header">
 					${sessionScope.usuario.nome}
-					<button>
-						<a href ="logout.jsp">sair</a>
-					</button>
+			
+					<a href="logout.jsp">sair</a>
+				
 				</div>
     
     <title>Nutricionista</title>
@@ -102,7 +102,7 @@
     <label for="option3" class="trr">Consultas</label>
     <article> 
        
-       <table>
+     <table>
 
        		<tr>
        			<th>Dia:</th>	
@@ -115,27 +115,7 @@
        			<th><%=lista.getHora() %></th>
 				<%} %>
        		</tr>
-      		
-      		<tr>
-      			<th>Nome:</th>
-      		</tr>
-      		<%List<Paciente> pacientes = (List<Paciente>)request.getAttribute("pacientes");
-      		for(Paciente lista : pacientes) {%>
-      		<tr>
-      			<th><%=lista.getNome() %></th>
-      			<%} %>
-      		</tr>
        </table>
-<table id="customers">
-    <tr>
-      <div id="divBusca">
-        <input type="text" id="txtBusca" placeholder="Buscar..."/>
-        <button id="btnBusca">buscar</button>
-      </div>
-    </tr>
-    <br>
-
-    
   </article>
   </section>
     

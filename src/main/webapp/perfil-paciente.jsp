@@ -28,14 +28,12 @@
 <div class="sttngs">
 <div class = "header">
 					${sessionScope.usuario.nome}
-					<button>
-						<a href ="logout.jsp">sair</a>
-					</button>
+						<a href="logout.jsp">sair</a>
 				</div>
 
     <h2>Seu perfil</h2>
 <div class="tabordion">
-  <section id="section1">
+  <section id="section1" >
     <input class="t" type="radio" name="sections" id="option1" checked>
     <label for="option1" class="trr"> Atualização conta</label>
     <article>
@@ -108,7 +106,7 @@
     </article>
   </section>
  
-  <section id="section2">
+  <section>
     
     <input class="t" type="radio" name="sections" id="option2">
     
@@ -178,11 +176,10 @@
    </section>
 
   
-  <section id="section5">
+  <section>
  
     <input class="t" type="radio" name="sections" id="option5">
     <label for="option5" class="trr">Minhas Consultas</label>  
- 
 
     <article>
       <form action="">
@@ -195,10 +192,13 @@
      <div class="table-title">
        <h3></h3>
        </div>
-       <table>
+      
+			<table>
+
        		<tr>
        			<th>Dia:</th>	
        			<th>Hora</th>
+       			<th>Nome</th>
        		</tr>
        		<%List<Consulta> consultas = (List<Consulta>)request.getAttribute("consultas");
        		for(Consulta lista : consultas) {%>
@@ -207,9 +207,8 @@
        			<th><%=lista.getHora() %></th>
 				<%} %>
        		</tr>
-      	</table>
-
-       			<!-- Button trigger modal -->
+       </table>
+       </table>
 <a href="<%=request.getContextPath()%>/agendamento"><button type="button" id="botao" class="button" data-toggle="modal" data-target="#exampleModal">
 agendar minha consulta
      </button></a>
