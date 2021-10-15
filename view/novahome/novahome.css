@@ -41,25 +41,14 @@
   font-size: 2rem;}
 
  /*receitas*/
-.acai{
-  position: relative;
-  margin-left: 24em;
-  margin-top: -2em;}
-.cookie{
-  position: relative;
-  margin-left: 24em;
-  margin-top: 3em;}
-.agua{
-  position: relative;
-  margin-left: 24em;
-  margin-top: 3em;}
+
 
 .balao {
   text-align: justify;
   width: 45em;
   height: 10em;
   font-size: 1.4rem;
-  margin-top: -44em;
+  margin-top: -40em;
   margin-left: -35.5em;
   text-indent: 2em;}
 
@@ -73,39 +62,35 @@
   width: 68%;
   }
 
- @media only screen and (max-width: 545px) {
-.container {
-  width: calc(100% - 50px);    }
-.form-section {
-  margin-bottom: 0.5em;
-  display: flex;
-  flex-direction: column;    }
-.form-label {
-  width: 100%;
-  margin-bottom: 0.5em;
-  margin-right: 0;
-  font-size: 0.8em;
-  font-weight: 600;
-  text-align: left;} }
-@media only screen and (max-width: 300px) {
-.container {
-  width: calc(100%);}
-.form-container {
-  border-radius: 0;}}
+  .container2{
+    margin-left: 24em;
+    padding-top: -5em;
+    grid-template-columns: 150px 20px 150px 20px 150px;
+  }
+
+ @media only screen and (max-width: 900px) {
   
-  /* Delete inner and outer arrow of date and time picker */
-  input[type="time"]::-webkit-inner-spin-button,
-  input[type="time"]::-webkit-outer-spin-button,
-  input[type="date"]::-webkit-inner-spin-button,
-  input[type="date"]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none; }
+  .body{width:100%;}
+
+  .sttngs{
+    width: calc(100%);    }
+  .tabordion{
+    width: calc(100%);}
+  .container1{
+    width: calc(100%);} 
+  .balao{
+    width: calc(35em);}
+  .card{
+    width: calc(100%);} 
+  } 
+
+@media only screen and (max-device-width: 900px) {
+  /* .menu { width:100%; } */ }
   @media only screen and (max-device-width: 900px) {
-    /* .menu { width:100%; } */ }
-    @media only screen and (max-device-width: 900px) {
-      /* .menu { width:600px; } */ }
-      @media only screen and (max-device-width: 700px) {
-        /* .menu { width:400px; } */ }
-        @media only screen and (max-device-width: 580px) {
-          /* .menu { width:400px; } */}
+    /* .menu { width:600px; } */ }
+    @media only screen and (max-device-width: 700px) {
+      /* .menu { width:400px; } */ }
+      @media only screen and (max-device-width: 580px) {
+        /* .menu { width:400px; } */}
+ 
+ 
