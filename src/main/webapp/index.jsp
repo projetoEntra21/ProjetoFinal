@@ -70,11 +70,11 @@
 <!-- balão -->
 
   <div  class="balao">     
-    <h3>Você acredita que não consegue emagrecer porque não tem foco? <br></h3>
-      <p>Nós da NutriTech, temos o objetivo de ajudar pessoas que buscam melhorar a sua saúde através de uma alimentação saudável.
-       Afinal o conceito de nutrição se baseia em uma alimentação completa e variada, de forma que atenda às necessidades do organismo.
-       Trabalhando também com os guias alimentares que são opções práticas quando pensamos numa alimentação com qualidade,
-       uma vez que fornece um conjunto de informações, recomendações e orientações sobre escolhas, preparo e consumo de alimentos.</p>
+    <h3>Voce acredita que nao consegue emagrecer porque nao tem foco? <br></h3>
+      <p>Nos da NutriTech, temos o objetivo de ajudar pessoas que buscam melhorar a sua saude atraves de uma alimentacao saudavel.
+       Afinal o conceito de nutricao se baseia em uma alimentacao completa e variada, de forma que atenda as necessidades do organismo.
+       Trabalhando tambem com os guias alimentares que sao opcoes praticas quando pensamos numa alimentacao com qualidade,
+       uma vez que fornece um conjunto de informacoes, recomendacoes e orientacoes sobre escolhas, preparo e consumo de alimentos.</p>
   </div>
  
 <!-- planos -->
@@ -84,34 +84,34 @@
       <div class="card-group">
         <div class="card">
           <img src="https://i.imgur.com/ZpnMOaj.png" class="card-img-top" alt="...">
-          <p class="card-text">Muitos acreditam em uma dieta universal, única para todos ou 
-            ainda apostam em dietas milagrosas, sem perceber que o que realmente conta, é a 
-            individualidade de cada indivíduo, com suas preferencias, estilo de vida, 
-            intolerâncias e necessidades específicas. Então, antes de qualquer leitura, 
-            reflita sobre uma coisa: não existe uma dieta estática e universal. Existem estratégias 
+          <p class="card-text">Muitos acreditam em uma dieta universal, unica para todos ou 
+            ainda apostam em dietas milagrosas, sem perceber que o que realmente conta, e a 
+            individualidade de cada individuo, com suas preferencias, estilo de vida, 
+            intolerancias e necessidades especificas. Entao, antes de qualquer leitura, 
+            reflita sobre uma coisa: nao existe uma dieta estatica e universal. Existem estrategias 
             diferentes, para objetivos diferentes, segundo a necessidade 
-            e individualidade de cada humano. E é assim que o emagrecimento eficiente acontece.</p>
+            e individualidade de cada humano. E e assim que o emagrecimento eficiente acontece.</p>
         </div>
    
         <div class="card">
          <img src="https://i.imgur.com/cTY0ErB.png" class="card-img-top" alt="...">
-         <p class="card-text">A reeducação alimentar é um processo de mudanças e hábitos na alimentação. 
-           Ela consiste em doutrinar as pessoas à aprenderem a comer bem, de maneira saudável, mas sem 
-           necessariamente precisar se privar, de comer alguns alimentos quer goste. É através de pequenas 
-           mudanças que a reeducação vai se construindo e, aos poucos tornando a alimentação do indivíduo 
-           mais saudável e equilibrada. A reeducação alimentar é feita de forma personalizada e, para isso, 
-           devem ser consultados especialistas antes de qualquer decisão. Cada pessoa apresenta suas especialidades e, 
-           por isso, o processo é feito com base nos nutrientes que cada pessoa precisa.</p>
+         <p class="card-text">A reeducacao alimentar e um processo de mudancas e habitos na alimentacao. 
+           Ela consiste em doutrinar as pessoas a aprenderem a comer bem, de maneira saudavel, mas sem 
+           necessariamente precisar se privar, de comer alguns alimentos quer goste. E atraves de pequenas 
+           mudancas que a reeducacao vai se construindo e, aos poucos tornando a alimentacao do individuo 
+           mais saudavel e equilibrada. A reeducacao alimentar e feita de forma personalizada e, para isso, 
+           devem ser consultados especialistas antes de qualquer decisao. Cada pessoa apresenta suas especialidades e, 
+           por isso, o processo e feito com base nos nutrientes que cada pessoa precisa.</p>
         </div>
    
         <div class="card">
          <img src="https://i.imgur.com/iducNSY.png" class="card-img-top" alt="...">
-          <p class="card-text">Se você é um fisiculturista, um atleta profissional ou simplesmente exerce esportes, 
-            musculação, corrida, ciclismo, etc. para melhorar sua saúde, a nutrição esportiva desempenha um papel 
-            fundamental na otimização dos efeitos benéficos da atividade física. Tomar melhores decisões com sua 
-            nutrição e hidratação pode resultar em melhor desempenho, recuperação e prevenção de lesões. Profissionais 
-            de nutrição oferecem uma gama de serviços para apoiar a sua saúde e metas esportivas. Isso pode variar de um 
-            cardápio alimentar diário, a um plano abrangente de alimentação e nutrição e competições que se realizam a curto e médio prazo.</p>
+          <p class="card-text">Se voce e um fisiculturista, um atleta profissional ou simplesmente exerce esportes, 
+            musculacao, corrida, ciclismo, etc. para melhorar sua saude, a nutricao esportiva desempenha um papel 
+            fundamental na otimizacao dos efeitos beneficos da atividade fisica. Tomar melhores decisoes com sua 
+            nutricao e hidratacao pode resultar em melhor desempenho, recuperacao e prevencao de lesoes. Profissionais 
+            de nutricao oferecem uma gama de servicos para apoiar a sua saude e metas esportivas. Isso pode variar de um 
+            cardapio alimentar diario, a um plano abrangente de alimentacao e nutricao e competicoes que se realizam a curto e medio prazo.</p>
         </div>
       </div>
     </div>

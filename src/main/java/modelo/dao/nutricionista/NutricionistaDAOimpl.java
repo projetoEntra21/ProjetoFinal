@@ -4,11 +4,13 @@ import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Join;
 import javax.persistence.criteria.ParameterExpression;
 import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 
+import modelo.entidade.consulta.Consulta;
 import modelo.entidade.nutricionista.Nutricionista;
 import modelo.entidade.paciente.Paciente;
 import modelo.factory.conexao.ConexaoFactory;
@@ -211,6 +213,47 @@ public class NutricionistaDAOimpl implements NutricionistaDAO {
 			criteria.select(raizNutricionista);
 
 			nutricionistas = sessao.createQuery(criteria).getResultList();
+
+			sessao.getTransaction().commit();
+
+		} catch (Exception sqlException) {
+
+			sqlException.printStackTrace();
+
+			if (sessao.getTransaction() != null) {
+				sessao.getTransaction().rollback();
+			}
+
+		} finally {
+
+			if (sessao != null) {
+				sessao.close();
+			}
+		}
+
+		return nutricionistas;
+	}
+
+	public List<Nutricionista> recuperarNutricionistaPelaConsulta(Consulta consulta) {
+		Session sessao = null;
+		List<Nutricionista> nutricionistas = null;
+
+		try {
+
+			sessao = fabrica.getConexao().openSession();
+			sessao.beginTransaction();
+
+			CriteriaBuilder construtor = sessao.getCriteriaBuilder();
+
+			CriteriaQuery<Nutricionista> criteria = construtor.createQuery(Nutricionista.class);
+			Root<Nutricionista> raizNutricionista = criteria.from(Nutricionista.class);
+
+			Join<Nutricionista, Consulta> juncaoConsulta = raizNutricionista.join("consulta");
+
+			ParameterExpression<Long> idConsulta = construtor.parameter(Long.class);
+			criteria.where(construtor.equal(juncaoConsulta.get("id"), idConsulta));
+
+			nutricionistas = sessao.createQuery(criteria).setParameter(idConsulta, consulta.getId()).getResultList();
 
 			sessao.getTransaction().commit();
 
