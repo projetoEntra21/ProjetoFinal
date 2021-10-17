@@ -49,7 +49,7 @@ public class Endereco implements Serializable {
 	private String complemento;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "endereco", cascade = CascadeType.ALL)
-	private List<Paciente> pacientes;
+	private List<Paciente> paciente;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "endereco", cascade = CascadeType.ALL)
 	private List<Nutricionista> nutricionistas;
@@ -65,7 +65,7 @@ public class Endereco implements Serializable {
 	}
 
 	public Endereco(String rua, String bairro, String cidade, String estado, String cep, Long numero,
-			String complemento, List<Paciente> pacientes) {
+			String complemento, List<Paciente> paciente) {
 
 		setRua(rua);
 		setBairro(bairro);
@@ -74,7 +74,7 @@ public class Endereco implements Serializable {
 		setCep(cep);
 		setComplemento(complemento);
 		setNumero(numero);
-		setPacientes(pacientes);
+		setPacientes(paciente);
 	}
 
 	public Endereco(String rua, String bairro, String cidade, String estado, String cep, Long numero,
@@ -127,11 +127,11 @@ public class Endereco implements Serializable {
 
 
 	public List<Paciente> getPacientes() {
-		return pacientes;
+		return paciente;
 	}
 
 	public void setPacientes(List<Paciente> pacientes) {
-		this.pacientes = pacientes;
+		this.paciente = pacientes;
 	}
 
 	public void setComplemento(String complemento) {

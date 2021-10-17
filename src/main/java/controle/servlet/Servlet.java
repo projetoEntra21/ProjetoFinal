@@ -231,7 +231,6 @@ public class Servlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		Nutricionista nutricionista = (Nutricionista) sessao.getAttribute("usuario");
-
 		List<Consulta> consultas = daoConsulta.recuperarConsultasPeloNutricionista(nutricionista);
 		request.setAttribute("consultas", consultas);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("");
@@ -296,9 +295,11 @@ public class Servlet extends HttpServlet {
 			throws IOException, SQLException, ServletException {
 
 		Paciente paciente = (Paciente) sessao.getAttribute("usuario");
+		List<Endereco> enderecos = daoEndereço.recuperarEnderecoPeloPaciente(paciente);
+		request.setAttribute("enderecos", enderecos);
 		List<Consulta> consultas = daoConsulta.recuperarConsultasPeloPaciente(paciente);
 		request.setAttribute("consultas", consultas);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("perfil-paciente.jsp"); // listar
+		RequestDispatcher dispatcher = request.getRequestDispatcher("perfil-paciente.jsp"); 
 		dispatcher.forward(request, response);
 	}
 
