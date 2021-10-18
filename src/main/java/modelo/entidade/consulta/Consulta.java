@@ -31,11 +31,11 @@ public class Consulta {
 	@Column(name = "data_consulta", nullable = false, unique = false)
 	LocalDate data;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_nutricionista")
 	private Nutricionista nutricionista;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_paciente")
 	private Paciente paciente;
 

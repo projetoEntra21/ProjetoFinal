@@ -81,6 +81,8 @@ public class Servlet extends HttpServlet {
 
 			switch (action) {
 
+			
+			
 			case "/listarConsulta":
 				listarConsulta(request, response, sessao);
 
@@ -295,12 +297,9 @@ public class Servlet extends HttpServlet {
 			throws IOException, SQLException, ServletException {
 
 		Paciente paciente = (Paciente) sessao.getAttribute("usuario");
-		List<Endereco> enderecos = daoEndereço.recuperarEnderecoPeloPaciente(paciente);
-		request.setAttribute("enderecos", enderecos);
 		List<Consulta> consultas = daoConsulta.recuperarConsultasPeloPaciente(paciente);
 		request.setAttribute("consultas", consultas);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("perfil-paciente.jsp"); 
-		dispatcher.forward(request, response);
+		request.getRequestDispatcher("perfil-paciente.jsp").forward(request, response); 
 	}
 
 	public void mostrarAgendamento(HttpServletRequest request, HttpServletResponse response, HttpSession sessao)
@@ -321,11 +320,10 @@ public class Servlet extends HttpServlet {
 		Usuario user = new Usuario();
 		user.setLogin(login);
 		Usuario usuario = daoUsuario.recuperarUsuarioLoginSenha(user); // Recupera um obj ou pf ou pj
-
 		if (usuario instanceof Paciente && senha.equals(usuario.getSenha())) {
 
 			sessao.setAttribute("usuario", usuario);
-
+			
 			response.sendRedirect("perfil-paciente");
 
 		}
