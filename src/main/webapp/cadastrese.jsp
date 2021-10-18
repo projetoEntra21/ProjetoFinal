@@ -29,7 +29,7 @@
     <div class="row">
       <div class="col-sm-6">
         <div class="card">
-          <img class="card-img-top" src="https://i.imgur.com/MPCxVfL.png" height= 443 >
+          <img class="card-img-top" src="https://i.imgur.com/MPCxVfL.png" height= 300 width = 200 >
           <div class="card-body">
             <h3 class="card-title">Paciente</h3>
             <a href="<%=request.getContextPath()%>/cadastro-paciente" class="btn btn-outline-success">Cadastre-se</a>
@@ -39,7 +39,7 @@
 
       <div class="col-sm-6">
         <div class="card">
-          <img class="card-img-top" src="https://i.imgur.com/T4KzECx.png">
+          <img class="card-img-top" src="https://i.imgur.com/T4KzECx.png" height = 300 width = 200>
           <div class="card-body">
             <h3 class="card-title">Nutricionista</h3>
              <a href="<%=request.getContextPath()%>/cadastro-nutricionista" class="btn btn-outline-success">Cadastre-se</a>

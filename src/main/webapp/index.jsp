@@ -1,37 +1,79 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-
-     <link rel="stylesheet" href="<%=request.getContextPath()%>resourcers/css/index.css"/>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="<%=request.getContextPath()%>resourcers/css/index.css"/>
 	<style><%@include file="resources/css/index.css"%></style>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
 </head>
+</body>
+<div id="Header">
 
-<!-- partial:index.partial.html -->
-<div class="sttngs">
- <div class="tabordion">
-  <section id="section1">
+	<div class="container">
+		<nav
+			class="navbar navbar-expand-lg navbar-light justify-content-between">
+			<a class="navbar-brand" href="#"> <img src="" class="img-fluid " />
+			</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarNav"
+				aria-controls="navbarNav" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="#">NutriTech</a></li>
+				</ul>
+			</div>
+			<div>
+				<div class="align-self-right">
+					<a href="<%=request.getContextPath()%>/login"
+						class="btn button-primay-outline btn-outline-primary button">login</a>
+					<a href="<%=request.getContextPath()%>/cadastre-se"
+						class="btn button-primay-outline btn-outline-primary button">Crie
+						sua conta</a>
+				</div>
+			</div>
+	</div>
+	</nav>
+</div>
+</div>
+<div>
+      <img class="d-block w-100" src="https://i.imgur.com/kWDjF8I.jpg" alt="First slide">
+  
+</div>
 
- 	<img src="https://i.imgur.com/cinExZu.png" class="logo"alt="some text" 
- 	 width= 150 height= 150>
- 
- 
-    <h1 class="card-title">NutriTech</h1>
-    
-    <a class="btn btn-light" href="<%=request.getContextPath()%>/login" role="button">Login</a>
-    <a class="btn btn-light" href="<%=request.getContextPath()%>/cadastre-se" role="button">Cadastre-se</a>
-   
-  <!--icons-->
+<div id="slider">
 <div class="container">
+  <div class="row">
+    <div class ="col-md-6 align-self-center" >
+<h1>O que voce esta precisando?</h1> 
+<h4>Conheca nossos planos e agende sua consulta!</h4>
+<a href="#" class="btn button-primay btn-primary button">Saiba mais</a>
+<a href="#" class="btn button-primay-outline btn-outline-primary button">Cadastre-se</a>
+    </div>
+    
+    </div>
+  </div>
+</div>
+<div class ="col-lg-6">
+  <img src="https://i.imgur.com/0fIT0mX.png" class="img-fluid" />
+ </div>
+ 
+ <div class="footer">
   <div class="row row-cols-2 row-cols-lg-4">
     <div class="col-10 col-lg-2">
       <i class="bi bi-geo-alt-fill"></i>
@@ -55,74 +97,7 @@
   </div>
 </div>
 
-<!-- receitas -->
+</ul>
+</div>
 
-  <img src="https://i.imgur.com/UIG9NPz.png" class="acai"alt="some text" 
-     width= 550 height= 300>
-
-  <img src="https://i.imgur.com/PdRPDkJ.png" class="cookie"alt="some text" 
-     width= 550 height= 300>
-
-  <img src="https://i.imgur.com/mGZYZTK.png" class="agua"alt="some text" 
-     width= 550 height= 300>
-
-
-<!-- balão -->
-
-  <div  class="balao">     
-    <h3>Voce acredita que nao consegue emagrecer porque nao tem foco? <br></h3>
-      <p>Nos da NutriTech, temos o objetivo de ajudar pessoas que buscam melhorar a sua saude atraves de uma alimentacao saudavel.
-       Afinal o conceito de nutricao se baseia em uma alimentacao completa e variada, de forma que atenda as necessidades do organismo.
-       Trabalhando tambem com os guias alimentares que sao opcoes praticas quando pensamos numa alimentacao com qualidade,
-       uma vez que fornece um conjunto de informacoes, recomendacoes e orientacoes sobre escolhas, preparo e consumo de alimentos.</p>
-  </div>
- 
-<!-- planos -->
-
-  <div class="container1">
-    <div class="row">
-      <div class="card-group">
-        <div class="card">
-          <img src="https://i.imgur.com/ZpnMOaj.png" class="card-img-top" alt="...">
-          <p class="card-text">Muitos acreditam em uma dieta universal, unica para todos ou 
-            ainda apostam em dietas milagrosas, sem perceber que o que realmente conta, e a 
-            individualidade de cada individuo, com suas preferencias, estilo de vida, 
-            intolerancias e necessidades especificas. Entao, antes de qualquer leitura, 
-            reflita sobre uma coisa: nao existe uma dieta estatica e universal. Existem estrategias 
-            diferentes, para objetivos diferentes, segundo a necessidade 
-            e individualidade de cada humano. E e assim que o emagrecimento eficiente acontece.</p>
-        </div>
-   
-        <div class="card">
-         <img src="https://i.imgur.com/cTY0ErB.png" class="card-img-top" alt="...">
-         <p class="card-text">A reeducacao alimentar e um processo de mudancas e habitos na alimentacao. 
-           Ela consiste em doutrinar as pessoas a aprenderem a comer bem, de maneira saudavel, mas sem 
-           necessariamente precisar se privar, de comer alguns alimentos quer goste. E atraves de pequenas 
-           mudancas que a reeducacao vai se construindo e, aos poucos tornando a alimentacao do individuo 
-           mais saudavel e equilibrada. A reeducacao alimentar e feita de forma personalizada e, para isso, 
-           devem ser consultados especialistas antes de qualquer decisao. Cada pessoa apresenta suas especialidades e, 
-           por isso, o processo e feito com base nos nutrientes que cada pessoa precisa.</p>
-        </div>
-   
-        <div class="card">
-         <img src="https://i.imgur.com/iducNSY.png" class="card-img-top" alt="...">
-          <p class="card-text">Se voce e um fisiculturista, um atleta profissional ou simplesmente exerce esportes, 
-            musculacao, corrida, ciclismo, etc. para melhorar sua saude, a nutricao esportiva desempenha um papel 
-            fundamental na otimizacao dos efeitos beneficos da atividade fisica. Tomar melhores decisoes com sua 
-            nutricao e hidratacao pode resultar em melhor desempenho, recuperacao e prevencao de lesoes. Profissionais 
-            de nutricao oferecem uma gama de servicos para apoiar a sua saude e metas esportivas. Isso pode variar de um 
-            cardapio alimentar diario, a um plano abrangente de alimentacao e nutricao e competicoes que se realizam a curto e medio prazo.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  </article>
-  </section>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<!-- partial -->
-<script  src="./script.js"></script>
-
-</body>
 </html>

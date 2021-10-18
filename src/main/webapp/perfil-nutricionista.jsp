@@ -49,45 +49,39 @@
   
   <div class="tr">
 
-    <label class="label" for="input">Nome </label>	
-	  <input class="input e" type="text" id="input">
+    <label class="label" for="input">NOME: </label>	
+	  <input class="input e" value = "${sessionScope.usuario.nome}" type="text" id="input">
+	  
+	<label class="label" for="input">SOBRENOME: </label>	
+	  <input class="input e" value = "${sessionScope.usuario.sobrenome}" type="text" id="input">
   
-    <label class="label" for="input">CNPJ</label>	
-	  <input class="input e" type="tel" id="input">
-
-    <label class="label" for="input">Descricao</label>	
-    <textarea id="story" name="story"
-    rows="5" cols="33">
-    </textarea>
-     
-    <button>Salvar</button>
+    <label class="label" for="input">CPF:</label>	
+	  <input class="input e" value = "${sessionScope.usuario.cpf}" type="tel" id="input">
+	  
+	<label class="label" for="input">IDADE:</label>	
+	  <input class="input e" value = "${sessionScope.usuario.idade}" type="tel" id="input">
+	    
       
-  </div>
   </article>
   </section>
 
   <section >
 
     <input class="t" type="radio" name="sections" id="option2"> 
-    <label for="option2" class="trr"> Atualização conta  </label>
+    <label for="option2" class="trr"> INFORMACOES DA CONTA </label>
 
     <article>
     <div class="tr wwq">
         
       <label class="label" for="input">Nome de usuário</label>
-      <input class="input" type="text" id="input" width = "70">
-      
-      <label class="label" for="input">Email</label>
-      <input class="input" type="email" id="input">
-        
+      <input class="input" type="text" value = "${sessionScope.usuario.login}" id="input" width = "70">
+             
       <label class="label" for="input">Senha</label>
-      <input class="input" type="password" id="input">
+      <input class="input" type="password" value = "${sessionScope.usuario.senha}" id="input">
         
       <label class="label" for="input">Confirmação da senha</label>
-      <input class="input" type="password" id="input">
+      <input class="input" type="password" value = "${sessionScope.usuario.senha}" id="input">
         
-    </div>
-      <button>Salvar</button>
     </article>
     </section>
     
@@ -95,7 +89,7 @@
   </section>
   <section id="section3">
     <input class="t" type="radio" name="sections" id="option3">
-    <label for="option3" class="trr">Consultas</label>
+    <label for="option3" class="trr"> MINHAS CONSULTAS</label>
     <article> 
        
      <table>

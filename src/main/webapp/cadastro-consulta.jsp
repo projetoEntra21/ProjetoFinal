@@ -81,9 +81,9 @@
 						<div class="input-container">
 							<span class="input-icon"> <i class="far fa-user"></i>
 							</span> <select id="service" class="form-select" required = "required" name = "idnutri">
-								  <c:forEach var="nutricionista" items="${nutricionistas}">
 								<option value="" selected disabled>Selecione um
 									nutricionista de sua preferencia</option>
+								  <c:forEach var="nutricionista" items="${nutricionistas}">
 								<option value="${nutricionista.id}">
 							    <c:out value="${nutricionista.nome}"/>
     							 </option>
