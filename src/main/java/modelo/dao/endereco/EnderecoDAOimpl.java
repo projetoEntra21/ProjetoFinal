@@ -12,6 +12,7 @@ import org.hibernate.Session;
 
 import modelo.entidade.endereco.Endereco;
 import modelo.entidade.paciente.Paciente;
+import modelo.entidade.usuario.Usuario;
 import modelo.factory.conexao.ConexaoFactory;
 
 public class EnderecoDAOimpl implements EnderecoDAO {
@@ -194,7 +195,7 @@ public class EnderecoDAOimpl implements EnderecoDAO {
 
 	
 
-	public List<Endereco> recuperarEnderecoPeloPaciente(Paciente paciente) {
+	public List<Endereco> recuperarEnderecoPeloPaciente(Usuario usuario) {
 		
 		Session sessao = null;
 		List<Endereco> enderecos = null;
@@ -209,12 +210,12 @@ public class EnderecoDAOimpl implements EnderecoDAO {
 			CriteriaQuery<Endereco> criteria = construtor.createQuery(Endereco.class);
 			Root<Endereco> raizEndereco = criteria.from(Endereco.class);
 
-			Join<Endereco, Paciente> juncaoPaciente = raizEndereco.join("paciente");
+			Join<Endereco, Paciente> juncaoPaciente = raizEndereco.join("usuario");
 
 			ParameterExpression<Long> idPaciente = construtor.parameter(Long.class);
 			criteria.where(construtor.equal(juncaoPaciente.get("id"), idPaciente));
 
-			enderecos = sessao.createQuery(criteria).setParameter(idPaciente, paciente.getId()).getResultList();
+			enderecos = sessao.createQuery(criteria).setParameter(idPaciente, usuario.getId()).getResultList();
 
 			sessao.getTransaction().commit();
 

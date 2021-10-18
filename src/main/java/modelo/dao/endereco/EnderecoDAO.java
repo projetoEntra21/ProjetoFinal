@@ -4,6 +4,7 @@ import java.util.List;
 
 import modelo.entidade.endereco.Endereco;
 import modelo.entidade.paciente.Paciente;
+import modelo.entidade.usuario.Usuario;
 
 public interface EnderecoDAO {
 
@@ -15,7 +16,7 @@ public interface EnderecoDAO {
 
 	Endereco recuperarEndereco(Endereco endereco);
 
-	List<Endereco> recuperarEnderecoPeloPaciente(Paciente paciente);
+	List<Endereco> recuperarEnderecoPeloPaciente(Usuario usuario);
 	
 	List<Endereco> recuperarEnderecos();
 

@@ -52,50 +52,42 @@
   
   <div class="tr">
 
-   <label class="label" for="input">Nome de usuario </label>
-    <input class="input" type="text" id="input" name="usuario" required pattern="^[a-zA-Z]{3,25}$" title="Indique seu nome completo sem números e sem espaços"> 
+   <label class="label" for="input">Nome:</label>
+    <input class="input" value="${sessionScope.usuario.nome}" type="text" id="input" name="usuario" required pattern="^[a-zA-Z]{3,25}$" title="Indique seu nome completo sem números e sem espaços"> 
   
-    <label class="label" for="input">Email</label>
-    <input class="input" type="email" id="input" name="email"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="O email teve conter um @" required>
+    <label class="label" for="input">Sobrenome:</label>
+    <input class="input" value="${sessionScope.usuario.sobrenome}" type="text" id="input" name="usuario" required pattern="^[a-zA-Z]{3,25}$" title="Indique seu nome completo sem números e sem espaços"> 
     
-    <label class="label" for="input">Senha</label>
-  <input class="input"  onsubmit="validatemyPassword()" type="password" id="myPassword" name="password"  title="Deve conter pelo menos um número e uma letra maiúscula e minúscula e pelo menos 8 ou mais caracteres" required>	
+    <label class="label" for="input">Cpf:</label>
+    <input class="input" value="${sessionScope.usuario.cpf}" type="text" id="input" name="usuario" required pattern="^[a-zA-Z]{3,25}$" title="Indique seu nome completo sem números e sem espaços"> 
+ 
+    <label class="label" for="input">idade:</label>
+    <input class="input" value="${sessionScope.usuario.idade}" type="number" id="input" name="usuario" required pattern="^[a-zA-Z]{3,25}$" title="Indique seu nome completo sem números e sem espaços"> 
   
   <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABDUlEQVQ4jd2SvW3DMBBGbwQVKlyo4BGC4FKFS4+TATKCNxAggkeoSpHSRQbwAB7AA7hQoUKFLH6E2qQQHfgHdpo0yQHX8T3exyPR/ytlQ8kOhgV7FvSx9+xglA3lM3DBgh0LPn/onbJhcQ0bv2SHlgVgQa/suFHVkCg7bm5gzB2OyvjlDFdDcoa19etZMN8Qp7oUDPEM2KFV1ZAQO2zPMBERO7Ra4JQNpRa4K4FDS0R0IdneCbQLb4/zh/c7QdH4NL40tPXrovFpjHQr6PJ6yr5hQV80PiUiIm1OKxZ0LICS8TWvpyyOf2DBQQtcXk8Zi3+JcKfNafVsjZ0WfGgJlZZQxZjdwzX+ykf6u/UF0Fwo5Apfcq8AAAAASUVORK5CYII=" onclick="mouseoverPass();" onmouseout="mouseoutPass();"  id="olho" class="olho" required/>
 
-    <label class="label" for="input">Confirmacao da senha</label>
-    <input class="input" type="password" id="confirm_password" required>
-     
-     	<table>
-         <thead>
-       		<tr>
-  			<th>Cep:</th>
-  			<th>Bairro:</th>
-  			<th>Numero:</th>
-  			<th>Complemento:</th>
-  			<th>Cidade:</th>
-  			<th>Estado</th>
-  		</tr>
-  		 </thead>
-  		 <tbody>
-  		 
-  		 <%List<Endereco> enderecos = (List<Endereco>)request.getAttribute("enderecos");
-  		 for(Endereco lista : enderecos) {%>
-  		 <tr>
-  		 	<th><%=lista.getCep() %></th>
-  		 	<th><%=lista.getBairro() %></th>
-  		 	<th><%=lista.getNumero() %></th>
-  		 	<th><%=lista.getComplemento() %></th>
-  		 	<th><%=lista.getCidade() %></th>
-  		 	<th><%=lista.getEstado() %></th>
-  		 	<%} %>
-  		 	</tr>
-  		 </tbody>
-  	</table>
-      
   </div>
   </article>
   </section>
+  <section >
+
+    <input class="t" type="radio" name="sections" id="option2"> 
+    <label for="option2" class="trr"> CONTA </label>
+
+    <article>
+    <div class="tr wwq">
+        
+      <label class="label" for="input">Nome de usuario</label>
+      <input class="input" value="${sessionScope.usuario.login}" type="text" id="input" width = "70">
+        
+      <label class="label" for="input">Senha</label>
+      <input class="input" value="${sessionScope.usuario.senha}" type="password" id="input">
+        
+      <label class="label" for="input">Confirmacao da senha</label>
+      <input class="input" value="${sessionScope.usuario.senha}" type="password" id="input">
+        
+    </article>
+    </section>
 
   
   <section id="section2">
@@ -115,8 +107,9 @@
          <table class="table-fill">
          <thead>
        		<tr>
-       			<th class="text-left">Dia:</th>	
-       			<th class="text-left">Hora</th>
+       			<th class="text-left">DIA:</th>	
+       			<th class="text-left">HORA:</th>
+       			<th class="text-left">NUTRICIONISTA:</th>
        		</tr>
        		</thead>
          	<tbody class="table-hover">
@@ -125,6 +118,7 @@
        			<tr>
        			 <td class="text-left"><%=lista.getDia() %></th>
        			 <td class="text-left"><%=lista.getHora() %></th>
+       			 <td class="text-left"><%=lista.getNutricionista().getNome()%></th>
 				<%} %>
       		  </tr>
          </tbody>               

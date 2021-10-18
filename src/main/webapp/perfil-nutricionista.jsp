@@ -106,8 +106,9 @@
          <table class="table-fill">
          <thead>
        		<tr>
-       			<th class="text-left">Dia:</th>	
-       			<th class="text-left">Hora</th>
+       			<th class="text-left">DIA:</th>	
+       			<th class="text-left">HORA:</th>
+       			<th class="text-left">PACIENTE:</th>
        		</tr>
        		</thead>
          	<tbody class="table-hover">
@@ -116,6 +117,7 @@
        			<tr>
        			 <td class="text-left"><%=lista.getDia() %></th>
        			 <td class="text-left"><%=lista.getHora() %></th>
+       			 <td class="text-left"><%=lista.getPaciente().getNome() %></th>
 				<%} %>
       		  </tr>
          </tbody>
